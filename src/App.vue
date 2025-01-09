@@ -226,12 +226,20 @@ const hideDropdown = () => {
 const selectTable = async (tableValue) => {
   selectedTable.value = tableValue;
   try {
+    console.log('正在请求数据...');  // 添加日志
     const response = await axios.get(`http://localhost:3000/api/visualization/${tableValue}`);
-    data.value = response.data.data;
-    selectedData.value = data.value[selectedTable.value];
-    view.value = 'chart';
+    console.log('收到响应:', response.data);  // 添加日志
+    
+    if (response.data.success) {
+      selectedData.value = response.data.data[selectedTable.value];  // 直接使用 data 数组
+      view.value = 'chart';
+    } else {
+      console.error('获取数据失败');
+      alert('获取数据失败');
+    }
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('请求出错:', error);
+    alert('请求出错,请检查后端服务是否正常运行');
   }
 };
 
@@ -251,6 +259,27 @@ const handleClose = (type) => {
     showLogin.value = false;
   } else if (type === 'signup') {
     showSignup.value = false;
+  }
+};
+
+const handleTableSelect = async (table) => {
+  try {
+    console.log('选择表格:', table);
+    selectedTable.value = table;
+    // 获取数据
+    const response = await axios.get(`http://localhost:3000/api/data/${table.value}`);
+    console.log('获取到的数据:', response.data);
+    
+    if (response.data.success) {
+      selectedData.value = response.data.data;
+      view.value = 'chart';
+    } else {
+      console.error('获取数据失败:', response.data.message);
+      alert('获取数据失败');
+    }
+  } catch (error) {
+    console.error('请求出错:', error);
+    alert('请求出错,请检查后端服务是否正常运行');
   }
 };
 

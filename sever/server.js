@@ -15,10 +15,10 @@ app.use(cors());
 
 // MySQL database connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '1111',
-  database: 'financial_data'
+  host: '47.107.114.234',
+  user: 'heqi',
+  password: '111111',
+  database: 'heqi'
 });
 
 db.connect((err) => {
@@ -170,24 +170,17 @@ app.get('/api/company-details/:company_name', (req, res) => {
 });
 
 
-
-const data1 = require("./data1")
-const data2 = require("./data2")
-const data3 = require("./data3")
 // API endpoint to get visualization data based on user-selected table
 app.get('/api/visualization/:table?', (req, res) => {
   const tableName = req.params.table || 'table1';
-  tableName ==  'table1' && res.json({ success: true, code: 200, message: 'Data fetched successfully', data: { [tableName]: [data1] } });
-  tableName ==  'table2' && res.json({ success: true, code: 200, message: 'Data fetched successfully', data: { [tableName]: [data2] } });
-  tableName ==  'table3' && res.json({ success: true, code: 200, message: 'Data fetched successfully', data: { [tableName]: [data3] } });
-  // const query = `SELECT * FROM ${db.escapeId(tableName)}`;
-  // db.query(query, (err, results) => {
-  //   if (err) {
-  //     return res.status(500).send({ success: false, code: 500, message: 'Internal server error', error: err.message });
-  //   }
-  //   const responseData = { [tableName]: results };
-  //   res.json({ success: true, code: 200, message: 'Data fetched successfully', data: responseData });
-  // });
+  const query = `SELECT * FROM ${db.escapeId(tableName)}`;
+  db.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).send({ success: false, code: 500, message: 'Internal server error', error: err.message });
+    }
+    const responseData = { [tableName]: results };
+    res.json({ success: true, code: 200, message: 'Data fetched successfully', data: responseData });
+  });
 });
 
 // Start the server
