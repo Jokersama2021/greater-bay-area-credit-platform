@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 const service = axios.create({
-	baseURL: 'http://localhost:3000/api',
+	baseURL: process.env.NODE_ENV === 'production'
+		? 'http://47.107.114.234:3100/api'  // 修改为 3100
+		: 'http://localhost:3100/api',       // 修改为 3100
 	timeout: 5000
 })
 

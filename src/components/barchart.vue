@@ -2,199 +2,241 @@
   <div class="bar-chart">
     <h2 class="chart-title">资产情况（简版）</h2>
     <div class="chart-container">
-      <div class="chart-section">
-        <div ref="chart1" class="chart"></div>
-        <div ref="chart2" class="chart"></div>
-        <div ref="chart3" class="chart"></div>
-      </div>
+      <div ref="chart" class="chart"></div>
       <div class="legend-section">
-        <ul v-for="(set, index) in labels" :key="index">
-          <li v-for="label in set" :key="label" class="legend-item">
-            <span class="legend-color" :style="{ backgroundColor: getLegendColor(index, label) }"></span>
-            <span class="legend-name">{{ label }}</span>
-          </li>
-        </ul>
+        <div v-for="(item, index) in legendData" :key="index" class="legend-item">
+          <span class="legend-color" :style="{ background: getGradientBackground(item.colors) }"></span>
+          <span class="legend-name">{{ item.name }}</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-
 <script setup>
-import { ref, onMounted, nextTick, watch } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
 import * as echarts from 'echarts';
 
 const props = defineProps({
   data: Array
 });
 
-const loading = ref(true);
-const chart1 = ref(null);
-const chart2 = ref(null);
-const chart3 = ref(null);
-let myChart1 = null;
-let myChart2 = null;
-let myChart3 = null;
+const chart = ref(null);
+let chartInstance = null;
 
-const dataSets = [
-  ["notes_receivable", "accounts_receivable", "prepaid_expenses", "other_current_assets", "credit_investments", "development_expenditures"],
-  ["cash_and_cash_equivalents", "inventories", "fixed_assets"],
-  ["deferred_tax_assets", "employee_benefits_payable", "taxes_payable", "noncurrent_liabilities_within_one_year"]
+// 定义所有要展示的数据项
+const dataItems = [
+  // 流动资产
+  { key: 'cash_and_cash_equivalents', name: '货币资金', colors: ['#36A2EB', '#4BC0C0'] },
+  { key: 'notes_receivable', name: '应收票据', colors: ['#FF9F43', '#FFB480'] },
+  { key: 'accounts_receivable', name: '应收账款', colors: ['#FF6B6B', '#FF8E8E'] },
+  { key: 'prepaid_expenses', name: '预付账款', colors: ['#4ECB73', '#7EE79D'] },
+  { key: 'inventories', name: '存货', colors: ['#9B66FF', '#B794F6'] },
+  { key: 'other_current_assets', name: '其他流动资产', colors: ['#FF66B3', '#FF99CC'] },
+  
+  // 非流动资产
+  { key: 'credit_investments', name: '债权投资', colors: ['#FFD93D', '#FFE69C'] },
+  { key: 'fixed_assets', name: '固定资产', colors: ['#4FACFE', '#00F2FE'] },
+  { key: 'development_expenditures', name: '开发支出', colors: ['#6E45E1', '#88D3CE'] },
+  { key: 'deferred_tax_assets', name: '递延所得税资产', colors: ['#FF9A9E', '#FAD0C4'] },
+  
+  // 负债
+  { key: 'employee_benefits_payable', name: '应付职工薪酬', colors: ['#43E97B', '#38F9D7'] },
+  { key: 'taxes_payable', name: '应交税费', colors: ['#FA709A', '#FEE140'] },
+  { key: 'noncurrent_liabilities_within_one_year', name: '一年内到期非流动负债', colors: ['#6236FF', '#8F9FFE'] },
+  
+  // 收入和利润
+  { key: 'revenue_2022', name: '营业收入', colors: ['#FF6B6B', '#FFA07A'] },
+  { key: 'operating_costs', name: '营业成本', colors: ['#4169E1', '#87CEEB'] },
+  { key: 'net_profit_attributable', name: '净利润', colors: ['#32CD32', '#98FB98'] }
 ];
 
-const labels = [
-  ["应收票据", "应收账款", "预付账款", "其他流动资产", "债权投资", "开发支出"],
-  ["货币资金", "存货", "固定资产"],
-  ["递延所得税资产", "应付职工薪酬", "应交税费", "一年内到期的非流动资产"]
-];
+const legendData = ref(dataItems);
 
-const colors = [
-  "#FF6633", "#FFB399", "#FF33FF", "#FFFF99", "#00B3E6",
-  "#E6B333", "#3366E6", "#999966", "#99FF99", "#B34D4D",
-  "#80B300", "#809900", "#E6B3B3", "#6680B3", "#66991A",
-  "#FF99E6", "#CCFF1A", "#FF1A66", "#E6331A", "#33FFCC",
-  "#674EA7", "#B6A1F1", "#D5A6BD", "#EAD1DC", "#C27BA0",
-  "#F4CCCC", "#E06666", "#C9DAF8", "#6FA8DC", "#3D85C6"
-];
-
-
-const getLegendColor = (setIndex, label) => {
-  const labelIndex = labels[setIndex].indexOf(label);
-  return colors[labelIndex + setIndex * labels[0].length]; // 确保不同组的标签使用不同的颜色块
-};
-const initCharts = () => {
-  myChart1 = echarts.init(chart1.value);
-  myChart2 = echarts.init(chart2.value);
-  myChart3 = echarts.init(chart3.value);
+const getGradientBackground = (colors) => {
+  return `linear-gradient(to right, ${colors[0]}, ${colors[1]})`;
 };
 
-const generateCharts = () => {
-  if (!props.data || props.data.length === 0) {
-    loading.value = true;
-    return;
+const initChart = () => {
+  if (!props.data || props.data.length === 0) return;
+  
+  const apiData = props.data[0];
+  const chartData = dataItems.map(item => ({
+    value: apiData[item.key],
+    itemStyle: {
+      color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+        { offset: 0, color: item.colors[0] },
+        { offset: 1, color: item.colors[1] }
+      ])
+    }
+  }));
+
+  const option = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      },
+      formatter: (params) => {
+        const data = params[0];
+        return `<div style="font-weight:500">${dataItems[data.dataIndex].name}</div>
+                <div style="margin-top:5px">
+                金额：${(data.value / 100000000).toFixed(2)}亿元
+                </div>`;
+      },
+      backgroundColor: 'rgba(0,0,0,0.8)',
+      borderColor: 'rgba(255,255,255,0.2)',
+      textStyle: {
+        fontSize: 14,
+        color: '#fff'
+      },
+      padding: [15, 20]
+    },
+    grid: {
+      top: '5%',
+      left: '3%',
+      right: '3%',
+      bottom: '8%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      data: dataItems.map(item => item.name),
+      axisLabel: {
+        interval: 0,
+        rotate: 45,
+        color: 'rgba(255,255,255,0.7)',
+        fontSize: 12
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255,255,255,0.1)'
+        }
+      },
+      axisTick: {
+        show: false
+      }
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        color: 'rgba(255,255,255,0.7)',
+        fontSize: 12,
+        formatter: (value) => {
+          return (value / 100000000).toFixed(1) + '亿';
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: 'rgba(255,255,255,0.1)',
+          type: 'dashed'
+        }
+      },
+      axisLine: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      }
+    },
+    series: [{
+      type: 'bar',
+      barWidth: '60%',
+      data: chartData,
+      itemStyle: {
+        borderRadius: [4, 4, 0, 0]
+      },
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowColor: 'rgba(0,0,0,0.3)'
+        }
+      },
+      animation: true,
+      animationDuration: 1500,
+      animationEasing: 'cubicInOut'
+    }]
+  };
+
+  if (!chartInstance) {
+    chartInstance = echarts.init(chart.value);
   }
-
-  [myChart1, myChart2, myChart3].forEach((chart, index) => {
-    const chartData = props.data.map(item => {
-      return dataSets[index].map((key, idx) => ({
-        value: parseFloat(item[key]) || 0,
-        itemStyle: {
-          color: getLegendColor(index, labels[index][idx]),
-          borderRadius: 20  // 设置圆角柱
-        }
-      }));
-    });
-
-    const option = {
-      tooltip: {
-        trigger: 'item',
-        axisPointer: { type: 'shadow' },
-        formatter: '{b}: {c}',
-        position: function (point, params, dom, rect, size) {
-          // 计算提示框的位置，固定在鼠标右侧
-          return [point[0] + 10, point[1] - 20];  // 鼠标右侧10px, 向上20px
-        }
-      },
-      xAxis: {
-        type: 'category',
-        data: labels[index],
-        show: false
-      },
-      yAxis: {
-        type: 'value',
-        show: false
-      },
-      series: [{
-        data: chartData[0],
-        type: 'bar',
-        barWidth: 15,  // 减小柱子的宽度
-        itemStyle: {
-          borderRadius: 20  // 设置圆角柱
-        }
-      }]
-    };
-
-    chart.setOption(option);
-  });
-
-  loading.value = false;
+  chartInstance.setOption(option);
 };
-
 
 onMounted(() => {
   nextTick(() => {
-    initCharts();
-    generateCharts();
+    initChart();
+    
+    window.addEventListener('resize', () => {
+      chartInstance?.resize();
+    });
   });
 });
-
-watch(() => props.data, () => {
-  generateCharts();
-}, { deep: true });
 </script>
+
 <style scoped>
 .bar-chart {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh; /* 可根据需要调整高度 */
-  background-color: #002040;
+  height: 100%;
+  background-color: #001F3F;
+  padding: 20px;
+  border-radius: 12px;
 }
 
 .chart-title {
-  height: 10%; /* 占总高度的10% */
   color: #fff;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  background-color: #002040;
-  padding: 10px 0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .chart-container {
+  height: calc(100% - 60px);
   display: flex;
-  width: 100%;
-  height: 90%; /* 占剩余的90%高度 */
-}
-
-.chart-section {
-  display: flex;
-  width: 70%; /* 占容器宽度的70% */
+  flex-direction: column;
 }
 
 .chart {
-  flex: 1; /* 三个图表平等分配空间 */
-  height: 100%;
+  flex: 1;
+  min-height: 400px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 15px;
 }
 
 .legend-section {
-  width: 30%; /* 占容器宽度的30% */
+  margin-top: -30px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
   display: flex;
-  flex-direction: column;
-  padding-left: 15px; /* 增大内边距以防止内容紧靠边缘 */
-  padding-top: 20px; /* 顶部内边距 */
-  padding-bottom: 20px; /* 底部内边距 */
-  align-items: flex-start; /* 保证图例项从左侧开始排列 */
-  overflow: auto; /* 允许滚动，以防图例项过多 */
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  margin-bottom: 20px; /* 增大图例项之间的间距 */
-  font-size: 16px; /* 增大字体大小 */
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
 }
 
 .legend-color {
-  width: 20px; /* 增大图例颜色块的宽度 */
-  height: 20px; /* 增大图例颜色块的高度 */
-  margin-right: 10px; /* 增大图例颜色块和文本之间的间距 */
-  border-radius: 50%; /* 可选：使颜色块呈圆形 */
+  width: 20px;
+  height: 8px;
+  border-radius: 4px;
 }
 
 .legend-name {
-  color: #fff;
-  margin-right: 5px; /* 适当增加右侧边距 */
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  white-space: nowrap;
 }
 </style>
 

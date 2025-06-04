@@ -17,7 +17,7 @@ const props = defineProps({
 	}
 })
 
-// 获取 dom 实例
+// 获取 DOM 实例
 const target = ref(null)
 
 // echarts 实例变量

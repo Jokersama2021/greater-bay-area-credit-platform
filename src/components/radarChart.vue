@@ -2,159 +2,293 @@
   <div class="charts-container">
     <h2 class="charts-title">会计数据（简版）</h2>
     <div class="chart-wrapper">
-      <!-- 饼图部分 -->
-      <div class="pie-chart">
-        <PieChart :data="pieChartData" />
-      </div>
-      <!-- 圆环图部分 -->
-      <div class="ring-chart">
-        <div ref="chart" class="chart"></div>
-      </div>
-      <!-- 图例 -->
-      <div class="legend">
-        <ul>
-          <li v-for="item in pieDatas" :key="item.name" class="legend-item">
-            <span class="legend-color" :style="{ backgroundColor: item.color }"></span>
-            <span class="legend-name">{{ item.name }}</span>
-          </li>
-        </ul>
+      <div class="charts-section">
+        <!-- 左侧：资产构成（饼图） -->
+        <div class="pie-section">
+          <div ref="pieChart" class="chart"></div>
+        </div>
+        <!-- 右侧：财务指标（雷达图） -->
+        <div class="radar-section">
+          <div ref="radarChart" class="chart"></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed, defineProps } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import * as echarts from 'echarts';
-import PieChart from './PieChart.vue';
 
 const props = defineProps({
   data: Array
 });
 
-const chart = ref(null);
-const pieChartData = computed(() => {
-  const totals = {
-    total_assets: 0,
-    revenue_2022: 0,
-    operating_costs: 0,
-    net_profit_attributable: 0
-  };
-  
-  props.data.forEach(item => {
-    totals.total_assets += Number(item.total_assets);
-    totals.revenue_2022 += Number(item.revenue_2022);
-    totals.operating_costs += Number(item.operating_costs);
-    totals.net_profit_attributable += Number(item.net_profit_attributable);
+const pieChart = ref(null);
+const radarChart = ref(null);
+let pieInstance = null;
+let radarInstance = null;
+
+// 格式化金额（转换为亿元）
+const formatMoney = (value) => {
+  const amount = value / 100000000;
+  return amount.toLocaleString('zh-CN', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }) + '亿元';
+};
+
+// 格式化一般数值
+const formatValue = (value) => {
+  return Number(value).toLocaleString('zh-CN', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
   });
-  
-  return totals;
-});
+};
 
-onMounted(() => {
-  const myChart = echarts.init(chart.value);
-  const apiData = props.data.length > 0 ? props.data[0] : {
-    earnings_per_share: "0",
-    roa: "0",
-    average_roe: "0",
-    gross_margin: "0",
-    net_margin: "0"
-  };
-
+// 初始化饼图
+const initPieChart = (apiData) => {
   const pieDatas = [
-    { value: parseFloat(apiData.earnings_per_share), name: "每股收益", color: "rgba(78, 167, 249, 1)" },
-    { value: parseFloat(apiData.roa), name: "总资产收益率", color: "rgba(0, 255, 255, 1)" },
-    { value: parseFloat(apiData.average_roe), name: "平均股本回报率", color: "rgba(255, 201, 95, 1)" },
-    { value: parseFloat(apiData.gross_margin), name: "毛利率", color: "rgba(249, 78, 167, 1)" },
-    { value: parseFloat(apiData.net_margin), name: "净利率", color: "rgba(167, 249, 78, 1)" }
+    { 
+      value: apiData.total_assets, 
+      name: "总资产", 
+      color: "#36A2EB",
+      itemStyle: { color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
+        { offset: 0, color: '#36A2EB' },
+        { offset: 1, color: '#4BC0C0' }
+      ])}
+    },
+    { 
+      value: apiData.revenue_2022, 
+      name: "营业收入", 
+      color: "#FF9F43",
+      itemStyle: { color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
+        { offset: 0, color: '#FF9F43' },
+        { offset: 1, color: '#FFB480' }
+      ])}
+    },
+    { 
+      value: apiData.operating_costs, 
+      name: "营业成本", 
+      color: "#FF6B6B",
+      itemStyle: { color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
+        { offset: 0, color: '#FF6B6B' },
+        { offset: 1, color: '#FF8E8E' }
+      ])}
+    },
+    { 
+      value: apiData.net_profit_attributable, 
+      name: "净利润", 
+      color: "#4ECB73",
+      itemStyle: { color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
+        { offset: 0, color: '#4ECB73' },
+        { offset: 1, color: '#7EE79D' }
+      ])}
+    }
   ];
-  const maxRadius = 100;
-  const barWidth = 5;
-  const barGap = 10;
-  const barColor = pieDatas.map(item => item.color);
-
-  let series = [];
-  pieDatas.forEach((item, i) => {
-    series.push({
-      type: 'pie',
-      clockwise: false,
-      hoverAnimation: false,
-      radius: [
-        `${maxRadius - i * (barGap + barWidth)}%`, 
-        `${maxRadius - (i + 1) * barWidth - i * barGap}%`
-      ],
-      center: ["25%", "50%"], // 图左挪到一半
-      label: { show: false },
-      itemStyle: {
-        borderWidth: 5,
-      },
-      data: [{
-        value: item.value,
-        name: item.name,
-        itemStyle: { color: item.color }
-      }, {
-        value: 100 - item.value,
-        name: '',
-        itemStyle: { color: "transparent" }
-      }]
-    });
-  });
 
   const option = {
     tooltip: {
       trigger: 'item',
-      formatter: '{b} : {c} ({d})'
-    },
-    legend: {
-      show: true,
-      orient: 'horizontal',
-      left: 'middle',
-      top: 'middle', // 图例位置调整到上方
-      formatter: name => {
-        const item = pieDatas.find(item => item.name === name);
-        return `${name} (${item.value})`; // 去掉百分号
+      formatter: (params) => {
+        const value = formatMoney(params.value);
+        const percent = params.percent.toFixed(1);
+        return `<div style="font-weight:500">${params.name}</div>
+                <div style="margin-top:5px">
+                  金额：${value}<br/>
+                  占比：${percent}%
+                </div>`;
       },
+      backgroundColor: 'rgba(0,0,0,0.8)',
+      borderColor: 'rgba(255,255,255,0.2)',
       textStyle: {
         fontSize: 14,
         color: '#fff'
-      }
+      },
+      padding: [15, 20]
     },
-    series: series
+    series: [{
+      type: 'pie',
+      radius: ['40%', '70%'],
+      center: ['50%', '50%'],
+      avoidLabelOverlap: true,
+      itemStyle: {
+        borderRadius: 15,
+        borderColor: 'rgba(255, 255, 255, 0.2)',
+        borderWidth: 2
+      },
+      label: {
+        show: true,
+        position: 'outside',
+        formatter: (params) => {
+          return `${params.name}\n${params.percent.toFixed(1)}%`;
+        },
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: 500,
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        padding: [4, 8],
+        borderRadius: 4
+      },
+      labelLine: {
+        show: true,
+        length: 20,
+        length2: 15,
+        smooth: true,
+        lineStyle: {
+          width: 2,
+          color: 'rgba(255, 255, 255, 0.3)'
+        }
+      },
+      emphasis: {
+        scale: true,
+        scaleSize: 10,
+        itemStyle: {
+          shadowBlur: 20,
+          shadowColor: 'rgba(0,0,0,0.5)'
+        }
+      },
+      data: pieDatas.map(item => ({
+        value: item.value,
+        name: item.name,
+        itemStyle: item.itemStyle
+      }))
+    }]
   };
 
-  myChart.setOption(option);
+  if (!pieInstance) {
+    pieInstance = echarts.init(pieChart.value);
+  }
+  pieInstance.setOption(option);
+};
+
+// 初始化雷达图
+const initRadarChart = (apiData) => {
+  const radarDatas = [
+    { value: apiData.earnings_per_share, name: "每股收益", color: "#4FC6FF", unit: "元" },
+    { value: apiData.roa, name: "资产收益率", color: "#FFB74D", unit: "%" },
+    { value: apiData.average_roe, name: "股本回报率", color: "#FF7043", unit: "%" },
+    { value: apiData.gross_margin, name: "毛利率", color: "#66BB6A", unit: "%" },
+    { value: apiData.net_margin, name: "净利率", color: "#EC407A", unit: "%" }
+  ];
+
+  const option = {
+    tooltip: {
+      trigger: 'item',
+      formatter: (params) => {
+        if (Array.isArray(params.value)) {
+          return params.marker + '<b>财务指标</b><br/>' +
+            radarDatas.map((item, index) => 
+              `${item.name}：${formatValue(params.value[index])}${item.unit}`
+            ).join('<br/>');
+        }
+      },
+      backgroundColor: 'rgba(0,0,0,0.8)',
+      padding: [15, 20],
+      textStyle: {
+        fontSize: 14
+      }
+    },
+    radar: {
+      shape: 'polygon',
+      splitNumber: 5,
+      radius: '65%',
+      center: ['50%', '50%'],
+      name: {
+        textStyle: { color: '#fff', fontSize: 12 }
+      },
+      indicator: radarDatas.map(item => ({
+        name: item.name,
+        max: Math.max(100, item.value * 1.2)
+      })),
+      axisLine: { lineStyle: { color: 'rgba(255,255,255,0.4)' } },
+      splitLine: { lineStyle: { color: 'rgba(255,255,255,0.2)', type: 'dashed' } },
+      splitArea: { 
+        areaStyle: { color: ['rgba(255,255,255,0.05)', 'rgba(255,255,255,0.01)'] } 
+      }
+    },
+    series: [{
+      type: 'radar',
+      symbol: 'circle',
+      symbolSize: 8,
+      lineStyle: { width: 3, color: '#4FC6FF' },
+      itemStyle: {
+        color: '#4FC6FF',
+        borderColor: '#fff',
+        borderWidth: 2,
+        shadowBlur: 8,
+        shadowColor: 'rgba(0,0,0,0.3)'
+      },
+      areaStyle: {
+        color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+          { offset: 0, color: 'rgba(79,198,255,0.4)' },
+          { offset: 1, color: 'rgba(79,198,255,0.1)' }
+        ])
+      },
+      data: [{
+        value: radarDatas.map(item => item.value),
+        name: '财务指标'
+      }]
+    }]
+  };
+
+  if (!radarInstance) {
+    radarInstance = echarts.init(radarChart.value);
+  }
+  radarInstance.setOption(option);
+};
+
+onMounted(() => {
+  if (props.data && props.data.length > 0) {
+    const apiData = props.data[0];
+    initPieChart(apiData);
+    initRadarChart(apiData);
+    
+    // 监听窗口大小变化
+    window.addEventListener('resize', () => {
+      pieInstance?.resize();
+      radarInstance?.resize();
+    });
+  }
 });
 </script>
 
 <style scoped>
 .charts-container {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   background-color: #001F3F;
-  padding: 10px;
-  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 12px;
 }
 
 .charts-title {
-  padding-top: 20px; /* 顶部内边距 */
- 
   color: #fff;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  background-color: #002040;
-  padding: 0px 0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .chart-wrapper {
   display: flex;
-  flex: 1;
+  height: calc(100% - 60px);
+  width: 100%;
 }
 
-.pie-chart, .ring-chart {
+.charts-section {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.pie-section, .radar-section {
   flex: 1;
   padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
 }
 
 .chart {
@@ -162,33 +296,5 @@ onMounted(() => {
   height: 100%;
 }
 
-.legend {
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* 确保所有子项右对齐 */
-  width: 150px; /* 设置一个足够的宽度以适应最宽的图例项 */
-  background: rgba(255, 255, 255, 0.1); /* 添加半透明背景以便观察图例容器的实际大小 */
-}
-
-.legend-item {
-  display: flex;
-  width: 100%; /* 使用100%宽度确保填充父容器 */
-  justify-content: space-between; /* 在图例颜色和文本之间提供空间 */
-  margin-bottom: 5px;
-}
-
-.legend-color {
-  width: 20px;
-  height: 20px; /* 增加高度使其更明显 */
-}
-
-.legend-name {
-  color: #fff;
-  flex-grow: 1; /* 允许文本扩展并填充剩余空间 */
-  text-align: right; /* 文字右对齐 */
-}
+/* 若需要添加图例，可在此处增加对应样式 */
 </style>

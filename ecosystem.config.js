@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
-      name: 'MyServer',
-      script: 'server.js',
+      name: 'BayAreaCreditPlatform',
+      script: './sever/server.js',
       instances: 1,
       autorestart: true,
       watch: false,

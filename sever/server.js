@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 const bcrypt = require('bcrypt');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3100;
 
 // 使用express内置的body-parser中间件
 app.use(express.json());
@@ -16,17 +16,22 @@ app.use(cors());
 // MySQL database connection
 const db = mysql.createConnection({
   host: '47.107.114.234',
-  user: 'heqi',
+  user: 'hokei',
   password: '111111',
-  database: 'heqi'
+  database: 'hokei'
 });
 
 db.connect((err) => {
   if (err) {
-    console.error('Failed to connect to MySQL database:', err);
+    console.error('Database connection failed:', err);
+    console.error('Connection config:', {
+      host: db.config.host,
+      user: db.config.user,
+      database: db.config.database
+    });
     return;
   }
-  console.log('Connected to MySQL database.');
+  console.log('Database connected successfully');
 });
 
 // API endpoint for user registration
@@ -169,21 +174,86 @@ app.get('/api/company-details/:company_name', (req, res) => {
   });
 });
 
-
 // API endpoint to get visualization data based on user-selected table
 app.get('/api/visualization/:table?', (req, res) => {
   const tableName = req.params.table || 'table1';
+  console.log('Accessing table:', tableName);
+  console.log('Current database config:', {
+    host: db.config.host,
+    user: db.config.user,
+    database: db.config.database
+  });
+  
   const query = `SELECT * FROM ${db.escapeId(tableName)}`;
+  console.log('Executing query:', query);
+  
   db.query(query, (err, results) => {
     if (err) {
-      return res.status(500).send({ success: false, code: 500, message: 'Internal server error', error: err.message });
+      console.error('Database error:', err);
+      console.error('Query failed:', query);
+      return res.status(500).send({ 
+        success: false, 
+        code: 500, 
+        message: 'Database query failed', 
+        error: err.message 
+      });
     }
+    console.log('Query successful, row count:', results?.length || 0);
     const responseData = { [tableName]: results };
-    res.json({ success: true, code: 200, message: 'Data fetched successfully', data: responseData });
+    res.json({ 
+      success: true, 
+      code: 200, 
+      message: 'Data fetched successfully', 
+      data: responseData 
+    });
   });
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// 添加全局错误处理中间件
+app.use((err, req, res, next) => {
+  console.error('Global error:', err);
+  res.status(500).json({
+    success: false,
+    message: 'Internal Server Error',
+    error: err.message
+  });
+});
+
+// 添加一个测试路由
+app.get('/api/test-db', (req, res) => {
+  db.query('SELECT 1', (err, results) => {
+    if (err) {
+      console.error('Database test failed:', err);
+      return res.status(500).json({
+        success: false,
+        message: 'Database connection test failed',
+        error: err.message
+      });
+    }
+    res.json({
+      success: true,
+      message: 'Database connection test successful',
+      results
+    });
+  });
+});
+
+// 添加进程错误处理
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+// 修改服务器启动代码
+app.listen(port, '0.0.0.0', (err) => {
+  if (err) {
+    console.error('Server start error:', err);
+    process.exit(1);
+  }
+  console.log(`Server is running on port ${port}`);
+  console.log(`Server environment: ${process.env.NODE_ENV}`);
+  console.log(`Database host: ${db.config.host}`);
 });

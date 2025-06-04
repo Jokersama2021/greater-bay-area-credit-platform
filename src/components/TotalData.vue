@@ -1,50 +1,164 @@
 <template>
   <div class="data-container">
-    <div class="total-data-section">
-      <!-- 现有数据展示 -->
-      <div v-for="(item, index) in data" :key="index" class="data-item">
-        <div class="data-item">证券代码: {{ item.stock_code }}</div>
-        <div class="data-item">证券简称: {{ item.stock_name }}</div>
-        <div class="data-item">企业规模: {{ item.registered_capital }}</div>
-        <div class="data-item">注册资本[单位] 元: {{ item.revenue_2022 }}</div>
-        <div class="data-item">成立日期: {{ item.establishment_date }}</div>
-        <div class="data-item">注册地址: {{ item.registered_address }}</div>
-        <div class="data-item">董事长: {{ item.chairman_name }}</div>
-        <div class="data-item">总经理: {{ item.general_manager_name }}</div>
-        <div class="data-item">财务总监: {{ item.financial_director_name }}</div>
-        <div class="data-item">董事会秘书: {{ item.board_secretary_name }}</div>
+    <!-- 添加一个顶部操作区 -->
+    <div class="action-bar">
+      <div v-for="(item, index) in data" :key="index">
+        <button v-if="!transactionInProgress && !transactionCompleted && !transactionSubmitted" 
+                @click="fetchCompanyData(item.stock_name)" 
+                class="transaction-button">
+          <span class="button-icon">🔍</span>
+          跨链事务进度查询
+        </button>
       </div>
     </div>
-    <div class="transaction-section">
-      <!-- 跨链事务进度查询按钮 -->
+
+    <div class="total-data-section">
       <div v-for="(item, index) in data" :key="index" class="data-item">
-        <button v-if="!transactionInProgress && !transactionCompleted && !transactionSubmitted" @click="fetchCompanyData(item.stock_name)" class="rounded-button">跨链事务进度查询</button>
-        <!-- 显示跨链事务进度 -->
-        <div v-if="transactionInProgress" class="status-message">
-          跨链事务已开启
-          <div v-for="record in companyRecords" :key="record.id">
-            <div>公司名称: {{ record.company_name }}</div>
-            <div>交易哈希: {{ record.tx_hash }}</div>
-            <div>交易ID: {{ record.tx_id }}</div>
-            <button @click="nextStep" class="rounded-button">执行事务交易进度查询</button>
+        <!-- 基本信息部分 -->
+        <div class="info-section">
+          <h3 class="section-title">基本信息</h3>
+          <div class="info-grid">
+            <div class="info-row">
+              <span class="label">证券代码:</span>
+              <span class="value code">{{ item.stock_code }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">证券简称:</span>
+              <span class="value name">{{ item.stock_name }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">企业规模:</span>
+              <span class="value">{{ item.company_size }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">注册资本:</span>
+              <span class="value">{{ formatNumber(item.registered_capital) }}元</span>
+            </div>
+            <div class="info-row">
+              <span class="label">成立日期:</span>
+              <span class="value">{{ item.establishment_date }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">注册地址:</span>
+              <span class="value address">{{ item.registered_address }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">董事长:</span>
+              <span class="value">{{ item.chairman_name }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">总经理:</span>
+              <span class="value">{{ item.general_manager_name }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">财务总监:</span>
+              <span class="value">{{ item.financial_director_name }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">董事会秘书:</span>
+              <span class="value">{{ item.board_secretary_name }}</span>
+            </div>
           </div>
         </div>
-        <!-- 显示跨链事务交易成功 -->
-        <div v-if="transactionCompleted" class="status-message">
-          跨链事务交易成功
-          <div v-for="record in companyRecords" :key="record.id">
-            <div>区块编号: {{ record.block_number }}</div>
-            <div>路径: {{ record.path }}</div>
-            <div>方法: {{ record.method }}</div>
-            <button @click="nextStep" class="rounded-button">提交事务进度查询</button>
+        
+        <!-- 财务指标部分 -->
+        <div class="finance-section">
+          <h3 class="section-title">财务指标</h3>
+          <div class="finance-grid">
+            <div class="finance-row">
+              <span class="label">每股收益:</span>
+              <span class="value highlight">{{ formatNumber(item.earnings_per_share) }}元</span>
+            </div>
+            <div class="finance-row">
+              <span class="label">净利润:</span>
+              <span class="value highlight">{{ formatNumber(item.net_profit_attributable) }}元</span>
+            </div>
+            <div class="finance-row">
+              <span class="label">总资产收益率:</span>
+              <span class="value">{{ formatNumber(item.roa) }}%</span>
+            </div>
+            <div class="finance-row">
+              <span class="label">净资产收益率:</span>
+              <span class="value">{{ formatNumber(item.average_roe) }}%</span>
+            </div>
+            <div class="finance-row">
+              <span class="label">毛利率:</span>
+              <span class="value">{{ formatNumber(item.gross_margin) }}%</span>
+            </div>
+            <div class="finance-row">
+              <span class="label">净利率:</span>
+              <span class="value">{{ formatNumber(item.net_margin) }}%</span>
+            </div>
           </div>
         </div>
-        <!-- 显示提交事务进度成功 -->
-        <div v-if="transactionSubmitted" class="status-message">
-          提交事务进度成功
-          <div v-for="record in companyRecords" :key="record.id">
-            <div>属性结果: {{ record.properties_result }}</div>
-            <div>属性消息: {{ record.properties_message }}</div>
+      </div>
+    </div>
+
+    <!-- 进度展示区域移到这里 -->
+    <div class="transaction-progress-container" v-if="transactionInProgress || transactionCompleted || transactionSubmitted">
+      <!-- 进度条 -->
+      <div class="progress-bar">
+        <div class="progress-step" :class="{ active: transactionInProgress, completed: transactionCompleted || transactionSubmitted }">
+          <div class="step-icon">1</div>
+          <div class="step-label">开启跨链事务</div>
+        </div>
+        <div class="progress-line" :class="{ active: transactionCompleted || transactionSubmitted }"></div>
+        <div class="progress-step" :class="{ active: transactionCompleted, completed: transactionSubmitted }">
+          <div class="step-icon">2</div>
+          <div class="step-label">执行事务交易</div>
+        </div>
+        <div class="progress-line" :class="{ active: transactionSubmitted }"></div>
+        <div class="progress-step" :class="{ active: transactionSubmitted }">
+          <div class="step-icon">3</div>
+          <div class="step-label">提交事务完成</div>
+        </div>
+      </div>
+
+      <!-- 事务详情展示 -->
+      <div class="transaction-details" v-if="companyRecords.length">
+        <div class="detail-card" v-if="transactionInProgress">
+          <h4>跨链事务已开启</h4>
+          <div class="detail-item">
+            <span class="detail-label">公司名称:</span>
+            <span class="detail-value">{{ companyRecords[0].company_name }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">交易哈希:</span>
+            <span class="detail-value hash">{{ companyRecords[0].tx_hash }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">交易ID:</span>
+            <span class="detail-value">{{ companyRecords[0].tx_id }}</span>
+          </div>
+          <button @click="nextStep" class="next-button">下一步</button>
+        </div>
+
+        <div class="detail-card" v-if="transactionCompleted">
+          <h4>跨链事务执行成功</h4>
+          <div class="detail-item">
+            <span class="detail-label">区块编号:</span>
+            <span class="detail-value">{{ companyRecords[0].block_number }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">路径:</span>
+            <span class="detail-value">{{ companyRecords[0].path }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">方法:</span>
+            <span class="detail-value">{{ companyRecords[0].method }}</span>
+          </div>
+          <button @click="nextStep" class="next-button">完成提交</button>
+        </div>
+
+        <div class="detail-card success" v-if="transactionSubmitted">
+          <h4>事务提交成功</h4>
+          <div class="detail-item">
+            <span class="detail-label">执行结果:</span>
+            <span class="detail-value">{{ companyRecords[0].properties_result }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">状态消息:</span>
+            <span class="detail-value">{{ companyRecords[0].properties_message }}</span>
           </div>
         </div>
       </div>
@@ -112,51 +226,284 @@ const nextStep = () => {
   }
 };
 
+const formatNumber = (num) => {
+  if (!num) return '0';
+  return Number(num).toLocaleString('zh-CN', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+};
+
 </script>
 <style scoped>
 .data-container {
   padding: 20px;
-  border-radius: 8px;
-  height: 720px; /* 调整容器高度自适应 */
+  background-color: #001F3F;
+  border-radius: 12px;
+  height: 100%;
 }
 
 .total-data-section {
-  margin-bottom: 20px; /* 增加总数据部分与交易部分之间的间距 */
+  height: 100%;
+  overflow-y: auto;
 }
 
-.data-item {
-  color: rgb(255, 254, 254); /* 白色 */
-  margin-bottom: 10px; /* 保持条目之间的间距 */
+.info-section, .finance-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
 }
 
-.transaction-section {
+.section-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.info-grid, .finance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.info-row, .finance-row {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.info-row:hover, .finance-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.label {
+  min-width: 120px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.value {
+  flex: 1;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  padding-left: 15px;
+}
+
+.value.code {
+  color: #4FC6FF;
+  font-weight: 500;
+}
+
+.value.name {
+  color: #FFB74D;
+  font-weight: 600;
+}
+
+.value.highlight {
+  color: #66BB6A;
+  font-weight: 600;
+}
+
+.value.address {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.4;
+}
+
+/* 美化滚动条 */
+.total-data-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.total-data-section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.total-data-section::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.total-data-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .info-grid, .finance-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .label {
+    min-width: 100px;
+    font-size: 13px;
+  }
+  
+  .value {
+    font-size: 13px;
+  }
+}
+
+.action-bar {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.transaction-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #36A2EB 0%, #4BC0C0 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(54, 162, 235, 0.2);
+}
+
+.transaction-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(54, 162, 235, 0.3);
+}
+
+.button-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.transaction-progress-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.progress-step {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* 确保内容顶部和底部分开 */
-  align-items: center; /* 水平居中对齐所有元素 */
-  background-color: #222a96; /* 更深蓝色的背景 */
-  border-radius: 8px; /* 圆角效果 */
-  padding: 20px; /* 内边距 */
-  color: #ffffff; /* 字体颜色为白色 */
-  height: auto; /* 调整容器高度自适应 */
+  align-items: center;
+  position: relative;
 }
 
-.status-message {
-  text-align: center; /* 文本居中显示 */
-  width: 100%; /* 宽度充满容器 */
+.step-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
-.rounded-button {
-  padding: 10px 20px; /* 按钮内边距 */
-  background-color: #007bff; /* 按钮背景颜色 */
-  color: white; /* 按钮文字颜色 */
-  border: none; /* 去除边框 */
-  border-radius: 20px; /* 按钮圆角 */
-  cursor: pointer; /* 鼠标悬停时显示手型图标 */
-  margin-top: 10px; /* 与状态消息之间的距离 */
+.step-label {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.rounded-button:hover {
-  background-color: #0056b3; /* 鼠标悬停时的背景颜色变化 */
+.progress-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 15px;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-icon {
+  background: #36A2EB;
+  color: white;
+}
+
+.progress-step.completed .step-icon {
+  background: #4BC0C0;
+  color: white;
+}
+
+.progress-line.active {
+  background: #36A2EB;
+}
+
+.detail-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.detail-card h4 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.detail-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  color: rgba(255, 255, 255, 0.5);
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  color: white;
+  word-break: break-all;
+}
+
+.detail-value.hash {
+  color: #36A2EB;
+  font-family: monospace;
+}
+
+.next-button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #36A2EB;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-button:hover {
+  background: #4BC0C0;
+}
+
+.detail-card.success {
+  background: rgba(75, 192, 192, 0.1);
+  border: 1px solid rgba(75, 192, 192, 0.3);
 }
 </style>

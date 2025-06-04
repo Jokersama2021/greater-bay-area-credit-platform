@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
+// Vite 配置文件
 export default defineConfig({
 	plugins: [vue()],
 	// 为 ./src 提供别名 @
@@ -10,8 +10,11 @@ export default defineConfig({
 			'@': './src'
 		}
 	},
-	// 主动开启热更新
+	// 服务器配置
 	server: {
-		hmr: true
+		host: '0.0.0.0', // 允许外部访问
+		port: 5173,      // 端口号
+		hmr: true,       // 热更新
+		open: true       // 自动打开浏览器
 	}
 })

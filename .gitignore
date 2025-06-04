@@ -22,3 +22,27 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Data files and temporary files
+*.csv
+*.xlsx
+*.xls
+*.pdf
+*.docx
+*.doc
+*.txt
+*.rar
+*.zip
+
+# Database files
+*.sql
+*.db
+*.sqlite
+
+# Python files (if not part of the project)
+*.py
+*.pyc
+__pycache__/
+
+# Server node_modules
+sever/node_modules/
