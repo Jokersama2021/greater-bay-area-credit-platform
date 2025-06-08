@@ -177,10 +177,12 @@
 
 <script>
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'Enterprises',
   setup() {
+    const router = useRouter()
 
     // 响应式数据
     const searchQuery = ref('')
@@ -648,6 +650,7 @@ export default {
     
     const viewEnterprise = (id) => {
       console.log('查看企业:', id)
+      router.push(`/enterprise/${id}`)
     }
     
     const editEnterprise = (id) => {

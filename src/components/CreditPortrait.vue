@@ -3,25 +3,25 @@
     <!-- 信用评分圆环 -->
     <div class="credit-score-section">
       <div class="score-circle-container">
-        <svg class="score-circle" viewBox="0 0 120 120">
+        <svg class="score-circle" viewBox="0 0 100 100">
           <defs>
             <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" style="stop-color:#007AFF;stop-opacity:1" />
               <stop offset="100%" style="stop-color:#5AC8FA;stop-opacity:1" />
             </linearGradient>
           </defs>
-          <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="7"/>
           <circle
-            cx="60"
-            cy="60"
-            r="50"
+            cx="50"
+            cy="50"
+            r="40"
             fill="none"
             stroke="url(#scoreGradient)"
-            stroke-width="8"
+            stroke-width="7"
             stroke-linecap="round"
             :stroke-dasharray="circumference"
             :stroke-dashoffset="strokeDashoffset"
-            transform="rotate(-90 60 60)"
+            transform="rotate(-90 50 50)"
             class="score-progress"
           />
         </svg>
@@ -47,26 +47,10 @@
             </svg>
             <i v-else :class="item.icon"></i>
           </div>
-          <div class="card-badge" :class="item.badgeClass">
-            {{ item.badge }}
-          </div>
         </div>
         <div class="card-content">
           <h4 class="card-title">{{ item.title }}</h4>
           <div class="card-value" :style="{ color: item.color }">{{ item.value }}</div>
-          <p class="card-description">{{ item.description }}</p>
-        </div>
-        <div class="card-footer">
-          <div class="progress-bar">
-            <div
-              class="progress-fill"
-              :style="{
-                width: item.progress + '%',
-                background: item.gradient
-              }"
-            ></div>
-          </div>
-          <span class="progress-text">{{ item.progress }}%</span>
         </div>
       </div>
     </div>
@@ -84,7 +68,7 @@ export default {
     const creditLevel = ref('优秀')
 
     // 圆环动画计算
-    const circumference = 2 * Math.PI * 50
+    const circumference = 2 * Math.PI * 40
     const strokeDashoffset = computed(() => {
       const progress = creditScore.value / 1000
       return circumference - (progress * circumference)
@@ -95,68 +79,44 @@ export default {
       {
         title: '企业规模',
         value: '大型企业',
-        description: '注册资本超过5000万元',
         icon: 'fas fa-building',
         color: '#007AFF',
-        gradient: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)',
-        badge: '优质',
-        badgeClass: 'badge-excellent',
-        progress: 92
+        gradient: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)'
       },
       {
         title: '经营年限',
         value: '15年',
-        description: '成立于2009年，经营稳定',
         icon: 'fas fa-calendar-alt',
         color: '#30D158',
-        gradient: 'linear-gradient(135deg, #30D158 0%, #32D74B 100%)',
-        badge: '稳定',
-        badgeClass: 'badge-stable',
-        progress: 88
+        gradient: 'linear-gradient(135deg, #30D158 0%, #32D74B 100%)'
       },
       {
         title: '信用等级',
         value: 'AAA',
-        description: '最高信用等级认证',
         icon: 'fas fa-medal',
         color: '#FF9500',
-        gradient: 'linear-gradient(135deg, #FF9500 0%, #FFCC02 100%)',
-        badge: '顶级',
-        badgeClass: 'badge-premium',
-        progress: 95
+        gradient: 'linear-gradient(135deg, #FF9500 0%, #FFCC02 100%)'
       },
       {
         title: '风险评估',
         value: '低风险',
-        description: '风险控制能力优秀',
         icon: 'fas fa-shield-check',
         color: '#32D74B',
-        gradient: 'linear-gradient(135deg, #32D74B 0%, #30D158 100%)',
-        badge: '安全',
-        badgeClass: 'badge-safe',
-        progress: 90
+        gradient: 'linear-gradient(135deg, #32D74B 0%, #30D158 100%)'
       },
       {
         title: '跨境业务',
         value: '活跃',
-        description: '月均交易量超过100笔',
         icon: 'fas fa-globe-americas',
         color: '#5AC8FA',
-        gradient: 'linear-gradient(135deg, #5AC8FA 0%, #007AFF 100%)',
-        badge: '活跃',
-        badgeClass: 'badge-active',
-        progress: 85
+        gradient: 'linear-gradient(135deg, #5AC8FA 0%, #007AFF 100%)'
       },
       {
         title: '合规记录',
         value: '优秀',
-        description: '无违规记录，合规性强',
         icon: 'fas fa-check-double',
         color: '#34C759',
-        gradient: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
-        badge: '合规',
-        badgeClass: 'badge-compliant',
-        progress: 98
+        gradient: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)'
       }
     ])
 
@@ -201,7 +161,7 @@ export default {
 
 <style scoped>
 .credit-portrait {
-  padding: 16px;
+  padding: 20px;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   background: rgba(255, 255, 255, 0.02);
   border-radius: 16px;
@@ -222,8 +182,8 @@ export default {
 
 .score-circle-container {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   flex-shrink: 0;
 }
 
@@ -247,7 +207,7 @@ export default {
 }
 
 .score-number {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #007AFF;
   line-height: 1;
@@ -255,7 +215,7 @@ export default {
 }
 
 .score-level {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
 }
@@ -292,6 +252,9 @@ export default {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
 }
 
 .portrait-card::before {
@@ -322,23 +285,23 @@ export default {
 /* 卡片头部 */
 .card-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .card-icon {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  margin-right: 16px;
 }
 
 .icon-svg {
@@ -368,91 +331,32 @@ export default {
   transform: scale(1.05);
 }
 
-.card-badge {
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
 
-.badge-excellent { background: rgba(0, 122, 255, 0.2); color: #007AFF; }
-.badge-stable { background: rgba(48, 209, 88, 0.2); color: #30D158; }
-.badge-premium { background: rgba(255, 149, 0, 0.2); color: #FF9500; }
-.badge-safe { background: rgba(50, 215, 75, 0.2); color: #32D74B; }
-.badge-active { background: rgba(90, 200, 250, 0.2); color: #5AC8FA; }
-.badge-compliant { background: rgba(52, 199, 89, 0.2); color: #34C759; }
 
 /* 卡片内容 */
 .card-content {
-  margin-bottom: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card-title {
   font-size: 0.9rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   letter-spacing: 0.01em;
 }
 
 .card-value {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin: 0;
   letter-spacing: 0.02em;
 }
 
-.card-description {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.4;
-  margin: 0;
-}
 
-/* 卡片底部进度条 */
-.card-footer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.progress-bar {
-  flex: 1;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-}
-
-.progress-fill {
-  height: 100%;
-  border-radius: 3px;
-  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-fill::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: progressShimmer 2s infinite;
-}
-
-.progress-text {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-  min-width: 35px;
-  text-align: right;
-}
 
 @keyframes iconShimmer {
   0% {
@@ -468,14 +372,7 @@ export default {
   }
 }
 
-@keyframes progressShimmer {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
+
 
 /* 响应式设计 */
 @media (max-width: 768px) {
@@ -486,27 +383,28 @@ export default {
   }
 
   .score-circle-container {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
 
   .score-number {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 
   .portrait-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
   .portrait-card {
-    padding: 16px;
+    padding: 12px;
+    height: 80px;
   }
 
   .card-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 
   .card-value {
