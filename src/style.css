@@ -1,3 +1,6 @@
+/* 引入页面动画样式 */
+@import './styles/page-animations.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -360,22 +363,22 @@ button {
   to { transform: rotate(360deg); }
 }
 
-/* 高级页面过渡效果 - 加快速度 */
+/* 移除页面过渡动画 - 瞬间切换 */
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.4s var(--ease-out-expo); /* 从0.8s减少到0.4s */
+  transition: none; /* 移除过渡动画 */
 }
 
 .page-enter-from {
-  opacity: 0;
-  transform: translateY(30px) scale(0.95);
-  filter: blur(10px);
+  opacity: 1; /* 直接显示 */
+  transform: none;
+  filter: none;
 }
 
 .page-leave-to {
-  opacity: 0;
-  transform: translateY(-30px) scale(1.05);
-  filter: blur(10px);
+  opacity: 1; /* 直接显示 */
+  transform: none;
+  filter: none;
 }
 
 /* 高级动画关键帧 */

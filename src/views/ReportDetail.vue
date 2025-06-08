@@ -1,12 +1,12 @@
 <template>
   <div class="report-detail-container">
-    <div v-if="loading" class="loading-container">
+    <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <p>加载中...</p>
+      <div class="loading-text">加载报告详情中...</div>
     </div>
-    
+
     <div v-else class="content">
-      <div class="page-header">
+      <div class="page-header animate-fade-in-up" :style="{ animationDelay: '0.2s' }">
         <router-link :to="`/enterprise/${enterpriseId}`" class="back-btn">
           <i class="fas fa-arrow-left"></i> 返回企业详情
         </router-link>
@@ -16,31 +16,31 @@
           </button>
         </div>
       </div>
-      
-      <div class="report-header">
+
+      <div class="report-header animate-slide-in-up" :style="{ animationDelay: '0.3s' }">
         <div class="report-title-section">
-          <h1 class="report-title">{{ report.title }}</h1>
+          <h1 class="report-title animate-slide-in-left" :style="{ animationDelay: '0.4s' }">{{ report.title }}</h1>
           <div class="report-meta">
-            <div class="meta-item">
+            <div class="meta-item animate-fade-in-up" :style="{ animationDelay: '0.5s' }">
               <i class="fas fa-calendar-alt"></i>
               <span>生成日期: {{ report.generateDate }}</span>
             </div>
-            <div class="meta-item">
+            <div class="meta-item animate-fade-in-up" :style="{ animationDelay: '0.6s' }">
               <i class="fas fa-id-card"></i>
               <span>报告编号: {{ report.id }}</span>
             </div>
           </div>
         </div>
-        
-        <div class="report-icon">
+
+        <div class="report-icon animate-fade-in-scale" :style="{ animationDelay: '0.5s' }">
           <i :class="report.icon"></i>
         </div>
       </div>
-      
-      <div class="enterprise-summary">
+
+      <div class="enterprise-summary animate-slide-in-up" :style="{ animationDelay: '0.7s' }">
         <h2 class="section-title">企业概况</h2>
         <div class="summary-content">
-          <div class="enterprise-basic">
+          <div class="enterprise-basic animate-slide-in-left" :style="{ animationDelay: '0.8s' }">
             <div class="enterprise-name">{{ report.enterpriseName }}</div>
             <div class="enterprise-info">
               <div class="info-item">
@@ -53,34 +53,44 @@
               </div>
             </div>
           </div>
-          
-          <div class="credit-summary">
+
+          <div class="credit-summary animate-slide-in-right" :style="{ animationDelay: '0.9s' }">
             <div class="credit-score">
-              <div class="score-value">{{ report.creditScore }}</div>
+              <div class="score-value">{{ animatedScore }}</div>
               <div class="score-label">信用评分</div>
             </div>
           </div>
         </div>
       </div>
       
-      <div class="report-section">
+      <div class="report-section animate-slide-in-up" :style="{ animationDelay: '1.0s' }">
         <h2 class="section-title">评估结果</h2>
         <div class="section-content">
           <div class="section-text">{{ report.conclusion }}</div>
         </div>
       </div>
-      
-      <div v-for="(section, index) in report.sections" :key="index" class="report-section">
+
+      <div
+        v-for="(section, index) in report.sections"
+        :key="index"
+        class="report-section animate-slide-in-up"
+        :style="{ animationDelay: `${1.1 + index * 0.08}s` }"
+      >
         <h2 class="section-title">{{ section.title }}</h2>
         <div class="section-content">
           <div class="section-text">{{ section.content }}</div>
         </div>
       </div>
-      
-      <div class="report-section">
+
+      <div class="report-section animate-slide-in-up" :style="{ animationDelay: `${1.3 + report.sections.length * 0.08}s` }">
         <h2 class="section-title">建议与展望</h2>
         <div class="recommendations">
-          <div v-for="(recommendation, index) in report.recommendations" :key="index" class="recommendation-item">
+          <div
+            v-for="(recommendation, index) in report.recommendations"
+            :key="index"
+            class="recommendation-item animate-fade-in-up"
+            :style="{ animationDelay: `${1.4 + report.sections.length * 0.08 + index * 0.06}s` }"
+          >
             <div class="recommendation-icon">
               <i :class="recommendation.icon"></i>
             </div>
@@ -102,6 +112,7 @@ export default {
     return {
       loading: true,
       enterpriseId: null,
+      animatedScore: 0,
       report: {
         id: '',
         title: '',
@@ -123,6 +134,27 @@ export default {
     this.fetchReportDetail(reportId)
   },
   methods: {
+    // 数字动画函数
+    animateScore(target, duration = 2000) {
+      const start = this.animatedScore
+      const startTime = Date.now()
+
+      const animate = () => {
+        const elapsed = Date.now() - startTime
+        const progress = Math.min(elapsed / duration, 1)
+
+        // 使用 easeOutExpo 缓动函数
+        const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
+        this.animatedScore = Math.round(start + (target - start) * easeOutExpo)
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
+      }
+
+      requestAnimationFrame(animate)
+    },
+
     fetchReportDetail(id) {
       // 模拟API请求
       setTimeout(() => {
@@ -389,6 +421,11 @@ export default {
         };
         
         this.loading = false;
+
+        // 启动信用评分动画 - 等待页面过渡完成
+        setTimeout(() => {
+          this.animateScore(this.report.creditScore, 1500)
+        }, 800)
       }, 200);
     }
   }
@@ -400,6 +437,81 @@ export default {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+}
+
+/* 页面进入动画 - 更快更流畅 */
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: smoothFadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+.animate-slide-in-left {
+  opacity: 0;
+  transform: translateX(6px);
+  animation: smoothFadeInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+.animate-slide-in-right {
+  opacity: 0;
+  transform: translateX(-6px);
+  animation: smoothFadeInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+.animate-slide-in-up {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: smoothFadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+.animate-fade-in-scale {
+  opacity: 0;
+  transform: scale(0.99);
+  animation: smoothFadeInScale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+@keyframes smoothFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothFadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smoothFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smoothFadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .loading-container {
@@ -650,24 +762,53 @@ export default {
   line-height: 1.5;
 }
 
+/* 简单加载样式 */
+.simple-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 212, 255, 0.2);
+  border-top: 3px solid #00d4ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
   .report-header {
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .report-icon {
     margin: 0 auto;
   }
-  
+
   .report-meta {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .action-btn {
     flex-direction: column;
     margin-top: 10px;
   }
 }
-</style> 
+</style>

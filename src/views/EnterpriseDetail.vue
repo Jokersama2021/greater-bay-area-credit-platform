@@ -1,12 +1,12 @@
 <template>
   <div class="enterprise-detail-container">
-    <div v-if="loading" class="loading-container">
+    <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <p>加载数据中...</p>
+      <div class="loading-text">加载企业详情中...</div>
     </div>
-    
+
     <div v-else class="content">
-      <div class="page-header">
+      <div class="page-header animate-fade-in-up" :style="{ animationDelay: '0.2s' }">
         <router-link to="/enterprises" class="back-btn">
           <i class="fas fa-arrow-left"></i> 返回列表
         </router-link>
@@ -16,29 +16,29 @@
           </button>
         </div>
       </div>
-      
-      <div class="enterprise-header-card">
+
+      <div class="enterprise-header-card animate-slide-in-up" :style="{ animationDelay: '0.3s' }">
         <div class="enterprise-info-main">
-          <h1 class="enterprise-name">{{ enterprise.name }}</h1>
+          <h1 class="enterprise-name animate-slide-in-left" :style="{ animationDelay: '0.4s' }">{{ enterprise.name }}</h1>
           <div class="enterprise-basic-info">
-            <div class="info-item">
+            <div class="info-item animate-fade-in-up" :style="{ animationDelay: '0.5s' }">
               <i class="fas fa-building"></i>
               <span>信用代码: {{ enterprise.creditCode }}</span>
             </div>
-            <div class="info-item">
+            <div class="info-item animate-fade-in-up" :style="{ animationDelay: '0.6s' }">
               <i class="fas fa-map-marker-alt"></i>
               <span>地区: {{ enterprise.region }}</span>
             </div>
-            <div class="info-item">
+            <div class="info-item animate-fade-in-up" :style="{ animationDelay: '0.7s' }">
               <i class="fas fa-industry"></i>
               <span>行业: {{ enterprise.industry }}</span>
             </div>
           </div>
         </div>
-        
-        <div class="enterprise-score-card">
+
+        <div class="enterprise-score-card animate-fade-in-scale" :style="{ animationDelay: '0.5s' }">
           <div class="score-circle">
-            <div class="score-value">{{ enterprise.creditScore }}</div>
+            <div class="score-value">{{ animatedScore }}</div>
             <div class="score-label">信用评分</div>
           </div>
           <div class="rating">
@@ -49,39 +49,39 @@
       </div>
       
       <div class="detail-grid">
-        <div class="detail-card company-info">
+        <div class="detail-card company-info animate-slide-in-left" :style="{ animationDelay: '0.8s' }">
           <h2 class="card-title">
             <i class="fas fa-info-circle"></i> 企业信息
           </h2>
           <div class="info-grid">
-            <div class="info-row">
+            <div class="info-row animate-fade-in-up" :style="{ animationDelay: '0.9s' }">
               <div class="info-label">公司全称</div>
               <div class="info-value">{{ enterprise.fullName }}</div>
             </div>
-            <div class="info-row">
+            <div class="info-row animate-fade-in-up" :style="{ animationDelay: '0.4s' }">
               <div class="info-label">法定代表人</div>
               <div class="info-value">{{ enterprise.legalRepresentative }}</div>
             </div>
-            <div class="info-row">
+            <div class="info-row animate-fade-in-up" :style="{ animationDelay: '0.5s' }">
               <div class="info-label">注册资本</div>
               <div class="info-value">{{ enterprise.registeredCapital }}万元</div>
             </div>
-            <div class="info-row">
+            <div class="info-row animate-fade-in-up" :style="{ animationDelay: '0.6s' }">
               <div class="info-label">成立日期</div>
               <div class="info-value">{{ enterprise.establishDate }}</div>
             </div>
-            <div class="info-row">
+            <div class="info-row animate-fade-in-up" :style="{ animationDelay: '0.7s' }">
               <div class="info-label">企业类型</div>
               <div class="info-value">{{ enterprise.type }}</div>
             </div>
-            <div class="info-row">
+            <div class="info-row animate-fade-in-up" :style="{ animationDelay: '0.8s' }">
               <div class="info-label">经营范围</div>
               <div class="info-value long-text">{{ enterprise.businessScope }}</div>
             </div>
           </div>
         </div>
-        
-        <div class="detail-card financial-info">
+
+        <div class="detail-card financial-info animate-slide-in-right" :style="{ animationDelay: '0.3s' }">
           <h2 class="card-title">
             <i class="fas fa-chart-line"></i> 财务数据
           </h2>
@@ -179,6 +179,7 @@ export default {
   data() {
     return {
       loading: true,
+      animatedScore: 0,
       enterprise: {
         id: null,
         name: '',
@@ -212,6 +213,27 @@ export default {
     this.fetchEnterpriseDetail(enterpriseId)
   },
   methods: {
+    // 数字动画函数
+    animateScore(target, duration = 2000) {
+      const start = this.animatedScore
+      const startTime = Date.now()
+
+      const animate = () => {
+        const elapsed = Date.now() - startTime
+        const progress = Math.min(elapsed / duration, 1)
+
+        // 使用 easeOutExpo 缓动函数
+        const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
+        this.animatedScore = Math.round(start + (target - start) * easeOutExpo)
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
+      }
+
+      requestAnimationFrame(animate)
+    },
+
     fetchEnterpriseDetail(id) {
       // 模拟API请求
       setTimeout(() => {
@@ -505,6 +527,11 @@ export default {
 
         this.enterprise = enterprise;
         this.loading = false;
+
+        // 启动信用评分动画 - 等待页面过渡完成
+        setTimeout(() => {
+          this.animateScore(enterprise.creditScore, 1500)
+        }, 800)
       }, 200);
     },
     goToReport(reportId) {
@@ -519,6 +546,81 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+}
+
+/* 页面进入动画 - 更快更流畅 */
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: smoothFadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+.animate-slide-in-left {
+  opacity: 0;
+  transform: translateX(6px);
+  animation: smoothFadeInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+.animate-slide-in-right {
+  opacity: 0;
+  transform: translateX(-6px);
+  animation: smoothFadeInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+.animate-slide-in-up {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: smoothFadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+.animate-fade-in-scale {
+  opacity: 0;
+  transform: scale(0.99);
+  animation: smoothFadeInScale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+}
+
+@keyframes smoothFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothFadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smoothFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smoothFadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .loading-container {
@@ -952,22 +1054,51 @@ export default {
   transform: translateX(3px);
 }
 
+/* 简单加载样式 */
+.simple-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 212, 255, 0.2);
+  border-top: 3px solid #00d4ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
   .detail-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .enterprise-header-card {
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .enterprise-score-card {
     justify-content: center;
   }
-  
+
   .risk-stats {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-</style> 
+</style>

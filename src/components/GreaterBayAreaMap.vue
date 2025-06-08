@@ -12,7 +12,7 @@
       <router-link
         v-for="(layout, index) in cityLayout"
         :key="index"
-        class="city-block enhanced-city-button"
+        class="city-block enhanced-city-button city-animate-in"
         :class="{
           'guangzhou': cityData[layout.id].name === '广州',
           'shenzhen': cityData[layout.id].name === '深圳',
@@ -22,7 +22,8 @@
         :style="{
           gridArea: layout.gridArea,
           backgroundColor: cityData[layout.id].color,
-          backgroundImage: `linear-gradient(135deg, ${cityData[layout.id].color} 0%, ${cityData[layout.id].colorEnd} 100%)`
+          backgroundImage: `linear-gradient(135deg, ${cityData[layout.id].color} 0%, ${cityData[layout.id].colorEnd} 100%)`,
+          animationDelay: `${index * 0.03}s`
         }"
         :to="`/enterprises?city=${encodeURIComponent(cityData[layout.id].name)}`"
         @click="handleCityClick"
@@ -96,6 +97,14 @@ export default {
       particles.forEach(particle => {
         animateParticle(particle);
       });
+
+      // 确保所有城市在动画完成后保持可见
+      setTimeout(() => {
+        const cityBlocks = document.querySelectorAll('.city-animate-in');
+        cityBlocks.forEach(block => {
+          block.classList.add('animation-complete');
+        });
+      }, 2000);
     });
 
     const animateParticle = (element) => {
@@ -243,28 +252,56 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 12px;
-  padding: 12px;
-  perspective: 1200px;
+  gap: 8px;
+  padding: 8px;
   position: relative;
   z-index: 2;
+  min-height: 300px;
+  width: 100%;
 }
 
 .city-block {
   position: relative;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  padding: 15px;
+  padding: 12px 8px;
   color: white;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 85px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 城市模块进入动画 - 更自然的淡入效果 */
+.city-animate-in {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: citySmoothIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes citySmoothIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 确保动画完成后城市保持可见 */
+.city-animate-in.animation-complete {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .enhanced-city-button .city-background {
@@ -423,86 +460,54 @@ export default {
 
 /* 广州特殊样式 */
 .guangzhou {
-  transform: scale(1.05);
-  z-index: 6;
+  z-index: 6 !important;
   animation: glow 3s infinite;
-  border: 2px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 20px rgba(74, 25, 66, 0.6);
-}
-
-.guangzhou .city-name {
-  font-size: 1.4rem;
-  letter-spacing: 1.5px;
-}
-
-.guangzhou .city-value {
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
+  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 0 20px rgba(74, 25, 66, 0.6) !important;
 }
 
 /* 深圳特殊样式 */
 .shenzhen {
   animation: shine 2s infinite;
-  transform: scale(1.05);
-  z-index: 5;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(110, 18, 48, 0.5);
-}
-
-.shenzhen .city-name {
-  font-size: 1.3rem;
-  letter-spacing: 1.2px;
-}
-
-.shenzhen .city-value {
-  font-size: 1.4rem;
-  letter-spacing: 1.2px;
+  z-index: 5 !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 0 15px rgba(110, 18, 48, 0.5) !important;
 }
 
 /* 香港特殊样式 */
 .hongkong {
   animation: borderGlow 4s infinite alternate;
-  transform: scale(1.05);
-  z-index: 5;
-  border: 2px solid rgba(0, 174, 255, 0.6);
-  box-shadow: 0 0 15px rgba(0, 112, 186, 0.4);
+  z-index: 5 !important;
+  border: 2px solid rgba(0, 174, 255, 0.6) !important;
+  box-shadow: 0 0 15px rgba(0, 112, 186, 0.4) !important;
   background: rgba(19, 58, 94, 0.9) !important;
   backdrop-filter: blur(8px);
 }
 
 .hongkong .city-name {
-  font-size: 1.3rem;
   color: rgba(0, 174, 255, 0.9);
-  letter-spacing: 1.2px;
 }
 
 .hongkong .city-value {
-  font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 1.2px;
 }
 
 /* 澳门特殊样式 */
 .macau {
   animation: borderGlow 4s infinite alternate;
-  transform: scale(1.05);
-  z-index: 5;
-  border: 2px solid rgba(0, 174, 255, 0.6);
-  box-shadow: 0 0 15px rgba(0, 112, 186, 0.4);
+  z-index: 5 !important;
+  border: 2px solid rgba(0, 174, 255, 0.6) !important;
+  box-shadow: 0 0 15px rgba(0, 112, 186, 0.4) !important;
   background: rgba(19, 58, 94, 0.9) !important;
   backdrop-filter: blur(8px);
 }
 
 .macau .city-name {
-  font-size: 1.3rem;
   color: rgba(0, 174, 255, 0.9);
-  letter-spacing: 1.2px;
 }
 
 .macau .city-value {
-  font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 1.2px;
 }
 
 @keyframes pulse {

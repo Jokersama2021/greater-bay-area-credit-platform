@@ -49,18 +49,14 @@
         </div>
 
         <div class="header-actions">
-          <div class="status-indicator">
-            <svg class="status-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="status-text">系统正常</span>
-          </div>
-          <div class="time-display">
-            <svg class="time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-              <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>{{ currentTime }}</span>
+          <div class="time-display-tech">
+            <div class="time-container">
+              <div class="time-main">{{ formatTime(currentTime) }}</div>
+              <div class="time-date">{{ formatDate(currentTime) }}</div>
+            </div>
+            <div class="time-indicator">
+              <div class="pulse-dot"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -79,26 +75,24 @@
 
     <!-- 主页加载动画已移除 -->
 
-    <!-- 地理动画控制器 -->
-    <GeographicAnimationController />
+
   </div>
 </template>
 
 <script>
-import GeographicAnimationController from './components/GeographicAnimationController.vue'
+
 import DigitalRainBackground from './components/DigitalRainBackground.vue'
 import PageTransition from './components/PageTransition.vue'
 // FinTechLoader import removed
 
 export default {
   components: {
-    GeographicAnimationController,
     DigitalRainBackground,
     PageTransition
   },
   data() {
     return {
-      currentTime: '',
+      currentTime: new Date(),
       isPageTransitioning: false,
       transitionText: '页面加载中...'
     }
@@ -117,8 +111,21 @@ export default {
   },
   methods: {
     updateTime() {
-      const now = new Date()
-      this.currentTime = now.toLocaleTimeString('zh-CN', { hour12: false })
+      this.currentTime = new Date()
+    },
+    formatTime(date) {
+      return date.toLocaleTimeString('zh-CN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      })
+    },
+    formatDate(date) {
+      return date.toLocaleDateString('zh-CN', {
+        month: '2-digit',
+        day: '2-digit'
+      })
     },
     handleTransitionStart(event) {
       const { to } = event.detail
@@ -564,30 +571,112 @@ export default {
 
 
 
-.time-display {
+/* 科技感时钟样式 */
+.time-display-tech {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: var(--background-secondary);
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--text-secondary);
-  transition: all 0.3s var(--ease-out-expo);
+  gap: 12px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(30, 41, 59, 0.8) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.time-display:hover {
-  background: var(--background-tertiary);
-  border-color: var(--border-color);
-  transform: scale(1.05);
+.time-display-tech::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.1) 50%,
+    transparent 100%);
+  animation: shimmer 3s infinite;
 }
 
-.time-icon {
-  width: 16px;
-  height: 16px;
-  color: var(--text-secondary);
+.time-display-tech:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(99, 102, 241, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.time-main {
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+}
+
+.time-date {
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.3px;
+}
+
+.time-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle,
+    rgba(99, 102, 241, 0.2) 0%,
+    rgba(99, 102, 241, 0.05) 70%,
+    transparent 100%);
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #6366f1;
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px rgba(99, 102, 241, 0.6),
+    0 0 20px rgba(99, 102, 241, 0.3);
+  animation: pulse-tech 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes pulse-tech {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 .main-content {

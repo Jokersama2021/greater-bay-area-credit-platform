@@ -27,6 +27,43 @@ const routes = [
     path: '/partner/:id',
     name: 'PartnerDetail',
     component: () => import('../views/PartnerDetail.vue')
+  },
+  // 金融服务页面路由
+  {
+    path: '/invoice-loan',
+    name: 'InvoiceLoan',
+    component: () => import('../views/InvoiceLoan.vue')
+  },
+  {
+    path: '/order-loan',
+    name: 'OrderLoan',
+    component: () => import('../views/OrderLoan.vue')
+  },
+  {
+    path: '/asset-loan',
+    name: 'AssetLoan',
+    component: () => import('../views/AssetLoan.vue')
+  },
+  {
+    path: '/supply-chain-finance',
+    name: 'SupplyChainFinance',
+    component: () => import('../views/SupplyChainFinance.vue')
+  },
+  {
+    path: '/cross-border-settlement',
+    name: 'CrossBorderSettlement',
+    component: () => import('../views/CrossBorderSettlement.vue')
+  },
+  {
+    path: '/credit-guarantee',
+    name: 'CreditGuarantee',
+    component: () => import('../views/CreditGuarantee.vue')
+  },
+  // 报告企业列表路由
+  {
+    path: '/reports/:type',
+    name: 'ReportEnterpriseList',
+    component: () => import('../views/ReportEnterpriseList.vue')
   }
 ]
 
@@ -35,45 +72,17 @@ const router = createRouter({
   routes
 })
 
-// 页面过渡效果
-let isTransitioning = false
-
+// 简化页面过渡效果 - 移除黑屏过渡
 router.beforeEach((to, from, next) => {
-  if (from.name && to.name !== from.name) {
-    // 只在从主页进入二级页面或二级页面之间切换时使用动画
-    if (from.name === 'Home' && to.name !== 'Home') {
-      // 从主页进入二级页面：使用页面过渡动画
-      const event = new CustomEvent('page-transition-start', {
-        detail: { to: to.name, from: from.name }
-      })
-      window.dispatchEvent(event)
-    } else if (from.name !== 'Home' && to.name !== 'Home') {
-      // 二级页面之间切换：使用页面过渡动画
-      const event = new CustomEvent('page-transition-start', {
-        detail: { to: to.name, from: from.name }
-      })
-      window.dispatchEvent(event)
-    }
-    // 返回主页时不触发任何动画，直接显示
-
-    // 立即开始导航
-    next()
-  } else {
-    next()
-  }
+  // 直接导航，不使用过渡动画
+  next()
 })
 
 router.afterEach((to, from) => {
+  // 页面切换完成后的处理
   if (from.name && to.name !== from.name) {
-    // 只在有页面过渡动画时才结束动画
-    if (to.name !== 'Home') {
-      // 进入二级页面或二级页面之间切换：结束页面过渡动画
-      setTimeout(() => {
-        const event = new CustomEvent('page-transition-end')
-        window.dispatchEvent(event)
-      }, 1500)
-    }
-    // 返回主页时不需要结束任何动画
+    // 可以在这里添加页面切换完成后的逻辑
+    console.log(`页面从 ${from.name} 切换到 ${to.name}`)
   }
 })
 

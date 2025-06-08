@@ -783,7 +783,8 @@ export default {
 .chains-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 24px;
+  margin-top: 20px;
 }
 
 .chain-section {
@@ -1177,9 +1178,9 @@ export default {
 .query-action {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 8px;
-  padding: 8px 12px;
+  padding: 10px 14px;
   background: rgba(71, 85, 105, 0.2);
   border-radius: 8px;
   border: 1px solid rgba(100, 116, 139, 0.3);
@@ -1599,12 +1600,13 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 12px 16px;
+  padding: 8px 12px;
   background: rgba(71, 85, 105, 0.2);
   border: 1px solid rgba(100, 116, 139, 0.3);
-  border-radius: 12px;
+  border-radius: 8px;
   transition: all 0.3s ease;
-  min-width: 120px;
+  min-width: 90px;
+  max-width: 110px;
 }
 
 .company-card:hover {
@@ -1633,15 +1635,19 @@ export default {
 }
 
 .company-name {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
-  line-height: 1.3;
-  max-width: 110px;
+  line-height: 1.2;
+  max-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-break: break-all;
 }
 
 .company-role {
@@ -1657,7 +1663,8 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  margin: 0 16px;
+  margin: 0 8px;
+  flex-shrink: 0;
 }
 
 .arrow-icon {
@@ -2084,9 +2091,22 @@ export default {
   }
 }
 
+/* 十寸屏幕及以下 - 切换为上下布局 */
+@media (max-width: 1024px) {
+  .chains-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .chain-section {
+    max-width: none;
+  }
+}
+
 @media (max-width: 768px) {
   .chains-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .chain-header {

@@ -1,8 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <!-- 动画增强组件 -->
-    <animation-enhancements />
-
+    <!-- 跨境数据流动背景 -->
+    <cross-border-data-flow />
     <!-- 快速统计概览 -->
     <div class="quick-stats">
       <compact-stats-card
@@ -55,9 +54,6 @@
               </div>
               <h2 class="card-title-modern gradient-text">风险监测</h2>
             </div>
-            <div class="card-badge">
-              <span class="badge-text">实时</span>
-            </div>
           </div>
           <div class="flex flex-col gap-4 mt-4">
             <div class="flex gap-4">
@@ -86,9 +82,6 @@
               </div>
               <h2 class="card-title-modern gradient-text">信用评分</h2>
             </div>
-            <div class="card-badge">
-              <span class="badge-text">AI分析</span>
-            </div>
           </div>
           <div class="chart-container">
             <credit-radar-chart />
@@ -107,9 +100,6 @@
                 </svg>
               </div>
               <h2 class="card-title-modern gradient-text">信用画像</h2>
-            </div>
-            <div class="card-badge">
-              <span class="badge-text">智能</span>
             </div>
           </div>
           <div class="chart-container">
@@ -195,39 +185,14 @@
               </div>
               <h2 class="card-title-modern gradient-text">信用报告</h2>
             </div>
-            <div class="card-badge">
-              <span class="badge-text">最新</span>
-            </div>
           </div>
           <div class="content-container">
             <report-list />
           </div>
         </div>
 
-        <!-- 跨境服务记录 -->
-        <div class="modern-card card-hover animate-slide-in-right" style="animation-delay: 0.2s">
-          <div class="card-header-modern">
-            <div class="card-title-wrapper">
-              <div class="card-icon-modern service-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                  <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2"/>
-                  <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
-                </svg>
-              </div>
-              <h2 class="card-title-modern gradient-text">跨境服务记录</h2>
-            </div>
-            <div class="card-badge">
-              <span class="badge-text">活跃</span>
-            </div>
-          </div>
-          <div class="content-container">
-            <service-records />
-          </div>
-        </div>
-
         <!-- 合作产品 -->
-        <div class="modern-card card-hover animate-slide-in-right" style="animation-delay: 0.3s">
+        <div class="modern-card card-hover animate-slide-in-right" style="animation-delay: 0.2s">
           <div class="card-header-modern">
             <div class="card-title-wrapper">
               <div class="card-icon-modern product-icon">
@@ -247,6 +212,25 @@
           </div>
           <div class="content-container">
             <product-grid />
+          </div>
+        </div>
+
+        <!-- 跨境服务记录 -->
+        <div class="modern-card card-hover animate-slide-in-right" style="animation-delay: 0.3s">
+          <div class="card-header-modern">
+            <div class="card-title-wrapper">
+              <div class="card-icon-modern service-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <h2 class="card-title-modern gradient-text">跨境服务记录</h2>
+            </div>
+          </div>
+          <div class="content-container">
+            <service-records />
           </div>
         </div>
       </div>
@@ -378,7 +362,8 @@ import ServiceRecords from '../components/ServiceRecords.vue'
 import GreaterBayAreaMap from '../components/GreaterBayAreaMap.vue'
 import PartnerLogos from '../components/PartnerLogos.vue'
 import CrossChainInfo from '../components/CrossChainInfo.vue'
-import AnimationEnhancements from '../components/AnimationEnhancements.vue'
+import CrossBorderDataFlow from '../components/CrossBorderDataFlow.vue'
+
 import ExpandableCard from '../components/ExpandableCard.vue'
 import CompactStatsCard from '../components/CompactStatsCard.vue'
 import DetailModal from '../components/DetailModal.vue'
@@ -395,7 +380,8 @@ export default {
     GreaterBayAreaMap,
     PartnerLogos,
     CrossChainInfo,
-    AnimationEnhancements,
+    CrossBorderDataFlow,
+
     ExpandableCard,
     CompactStatsCard,
     DetailModal,
@@ -663,43 +649,55 @@ export default {
     0 0 40px rgba(99, 102, 241, 0.15);
 }
 
-/* 卡片进入动画 - 加快速度 */
+/* 大模块淡入动画 - 苹果风格 */
 .animate-slide-in-left {
-  animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从0.6s增加到1.2s */
+  animation: appleSlideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   opacity: 0;
-  transform: translateX(-30px);
+  transform: translateX(-20px) scale(0.95);
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从0.6s增加到1.2s */
+  animation: appleSlideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateX(20px) scale(0.95);
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从0.6s增加到1.2s */
+  animation: appleFadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(20px) scale(0.95);
 }
 
-@keyframes slideInLeft {
-  to {
+@keyframes appleSlideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.95);
+  }
+  100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
-@keyframes slideInRight {
-  to {
+@keyframes appleSlideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.95);
+  }
+  100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
-@keyframes fadeInUp {
-  to {
+@keyframes appleFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 

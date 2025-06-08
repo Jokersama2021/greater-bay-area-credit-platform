@@ -1,10 +1,11 @@
 <template>
   <div class="report-grid">
     <router-link
-      v-for="report in reports"
+      v-for="(report, index) in reports"
       :key="report.id"
-      class="report-card enhanced-card-button"
-      :to="`/report/${report.id}`"
+      class="report-card enhanced-card-button bounce-in-card"
+      :style="{ animationDelay: `${index * 0.1}s` }"
+      :to="report.route"
       @click="handleCardClick"
     >
       <div class="card-background"></div>
@@ -30,25 +31,29 @@ export default {
         id: 1,
         title: '企业资信报告',
         description: '全面的企业信用评估报告',
-        icon: 'fas fa-building'
+        icon: 'fas fa-building',
+        route: '/reports/enterprise-credit'
       },
       {
         id: 2,
         title: '资产评估报告',
         description: '企业资产详细评估',
-        icon: 'fas fa-chart-line'
+        icon: 'fas fa-chart-line',
+        route: '/reports/asset-evaluation'
       },
       {
         id: 3,
         title: '企业评分报告',
         description: '多维度信用评分分析',
-        icon: 'fas fa-star'
+        icon: 'fas fa-star',
+        route: '/reports/enterprise-rating'
       },
       {
         id: 4,
         title: '风控预警报告',
         description: '实时风险监控预警',
-        icon: 'fas fa-exclamation-triangle'
+        icon: 'fas fa-exclamation-triangle',
+        route: '/reports/risk-warning'
       }
     ]
 
@@ -57,6 +62,12 @@ export default {
       const ripple = card.querySelector('.card-ripple')
       const rect = card.getBoundingClientRect()
 
+      // 添加淡出动画
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
+      card.style.opacity = '0.6'
+      card.style.transform = 'translateY(-4px) scale(0.95)'
+
+      // 波纹效果
       const size = Math.max(rect.width, rect.height)
       const x = event.clientX - rect.left - size / 2
       const y = event.clientY - rect.top - size / 2
@@ -68,6 +79,12 @@ export default {
       ripple.classList.remove('ripple-animate')
       void ripple.offsetWidth
       ripple.classList.add('ripple-animate')
+
+      // 延迟后恢复
+      setTimeout(() => {
+        card.style.opacity = '1'
+        card.style.transform = 'translateY(-4px) scale(1.02)'
+      }, 200)
     }
 
     return {
@@ -81,8 +98,30 @@ export default {
 <style scoped>
 .report-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* 弹出动画 */
+.bounce-in-card {
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  animation: bounceInCard 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes bounceInCard {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .enhanced-card-button {
@@ -247,77 +286,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-.report-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.report-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
-  height: 100%;
-  text-decoration: none;
-}
-
-.report-card:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.report-icon {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(124, 58, 237, 0.2));
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.report-icon i {
-  background: linear-gradient(to right, #3b82f6, #7c3aed);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: 1.4rem;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
-}
-
-.report-content {
-  width: 100%;
-}
-
-.report-content h4 {
-  color: #fff;
-  font-size: 0.95rem;
-  margin-bottom: 4px;
-  font-weight: 600;
-  font-family: var(--font-heading);
-  letter-spacing: 0.5px;
-  background: linear-gradient(120deg, #ffffff, #60cdff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-.report-content p {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.75rem;
-  line-height: 1.3;
-  font-family: var(--font-body);
-  letter-spacing: 0.3px;
-}
-</style> 
