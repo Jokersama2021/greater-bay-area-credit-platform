@@ -9,26 +9,30 @@
     </div>
     <div class="stats-summary">总数据量: <span class="stats-value">{{ totalValue }}</span> 家企业</div>
     <div class="rectangle-map">
-      <router-link 
-        v-for="(layout, index) in cityLayout" 
+      <router-link
+        v-for="(layout, index) in cityLayout"
         :key="index"
-        class="city-block"
-        :class="{ 
+        class="city-block enhanced-city-button"
+        :class="{
           'guangzhou': cityData[layout.id].name === '广州',
           'shenzhen': cityData[layout.id].name === '深圳',
           'hongkong': cityData[layout.id].name === '香港',
           'macau': cityData[layout.id].name === '澳门'
         }"
-        :style="{ 
+        :style="{
           gridArea: layout.gridArea,
-          backgroundColor: cityData[layout.id].color, 
+          backgroundColor: cityData[layout.id].color,
           backgroundImage: `linear-gradient(135deg, ${cityData[layout.id].color} 0%, ${cityData[layout.id].colorEnd} 100%)`
         }"
         :to="`/enterprises?city=${encodeURIComponent(cityData[layout.id].name)}`"
+        @click="handleCityClick"
       >
+        <div class="city-background"></div>
+        <div class="city-ripple"></div>
         <div class="city-name">{{ cityData[layout.id].name }}</div>
         <div class="city-value">{{ cityData[layout.id].value }}</div>
         <div class="connection-lines" v-if="['广州', '深圳', '香港'].includes(cityData[layout.id].name)"></div>
+        <div class="city-glow-effect"></div>
       </router-link>
     </div>
     <div class="map-legend">
@@ -102,7 +106,7 @@ export default {
       const startY = Math.random() * 100;
       const endX = Math.random() * 100;
       const endY = Math.random() * 100;
-      
+
       element.style.width = `${size}px`;
       element.style.height = `${size}px`;
       element.style.opacity = Math.random() * 0.5 + 0.1;
@@ -110,17 +114,36 @@ export default {
       element.style.top = `${startY}%`;
       element.style.animationDuration = `${duration}s`;
       element.style.animationDelay = `${delay}s`;
-      
+
       // 设置自定义属性用于CSS动画
       element.style.setProperty('--end-x', `${endX}%`);
       element.style.setProperty('--end-y', `${endY}%`);
+    };
+
+    const handleCityClick = (event) => {
+      const city = event.currentTarget
+      const ripple = city.querySelector('.city-ripple')
+      const rect = city.getBoundingClientRect()
+
+      const size = Math.max(rect.width, rect.height)
+      const x = event.clientX - rect.left - size / 2
+      const y = event.clientY - rect.top - size / 2
+
+      ripple.style.width = ripple.style.height = size + 'px'
+      ripple.style.left = x + 'px'
+      ripple.style.top = y + 'px'
+
+      ripple.classList.remove('ripple-animate')
+      void ripple.offsetWidth
+      ripple.classList.add('ripple-animate')
     };
 
     return {
       mapRef,
       cityData,
       cityLayout,
-      totalValue
+      totalValue,
+      handleCityClick
     }
   }
 }
@@ -237,18 +260,80 @@ export default {
   padding: 15px;
   color: white;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.city-block:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
+.enhanced-city-button .city-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.enhanced-city-button .city-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.enhanced-city-button .city-ripple.ripple-animate {
+  animation: cityRippleEffect 0.8s ease-out;
+}
+
+@keyframes cityRippleEffect {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.enhanced-city-button .city-glow-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.enhanced-city-button:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
   z-index: 10;
+}
+
+.enhanced-city-button:hover .city-background {
+  opacity: 1;
+}
+
+.enhanced-city-button:hover .city-glow-effect {
+  opacity: 1;
+}
+
+.enhanced-city-button:active {
+  transform: translateY(-4px) scale(1.02);
 }
 
 .city-block::after {

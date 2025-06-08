@@ -70,7 +70,7 @@
                 <div class="data-value text-rose-400">{{ animatedNumbers.riskPercentage.toFixed(2) }}%</div>
               </div>
             </div>
-            <div class="risk-chart mt-3" ref="riskChartRef"></div>
+            <beautiful-risk-chart class="mt-3" />
           </div>
         </div>
 
@@ -370,7 +370,6 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import * as echarts from 'echarts'
 import CreditRadarChart from '../components/CreditRadarChart.vue'
 import CreditPortrait from '../components/CreditPortrait.vue'
 import ReportList from '../components/ReportList.vue'
@@ -383,6 +382,7 @@ import AnimationEnhancements from '../components/AnimationEnhancements.vue'
 import ExpandableCard from '../components/ExpandableCard.vue'
 import CompactStatsCard from '../components/CompactStatsCard.vue'
 import DetailModal from '../components/DetailModal.vue'
+import BeautifulRiskChart from '../components/BeautifulRiskChart.vue'
 
 export default {
   name: 'Home',
@@ -398,12 +398,11 @@ export default {
     AnimationEnhancements,
     ExpandableCard,
     CompactStatsCard,
-    DetailModal
+    DetailModal,
+    BeautifulRiskChart
   },
   setup() {
     const currentTime = ref('')
-    const riskChartRef = ref(null)
-    let riskChart = null
 
     // 数字动画状态
     const animatedNumbers = ref({
@@ -438,7 +437,7 @@ export default {
     }
 
     // 数字动画函数
-    const animateNumber = (target, key, duration = 3000) => {
+    const animateNumber = (target, key, duration = 4500) => { // 从3000ms增加到4500ms
       const start = animatedNumbers.value[key]
       const startTime = Date.now()
 
@@ -458,64 +457,7 @@ export default {
       requestAnimationFrame(animate)
     }
 
-    const initRiskChart = () => {
-      if (!riskChartRef.value) return
 
-      riskChart = echarts.init(riskChartRef.value)
-      const option = {
-        backgroundColor: 'transparent',
-        grid: {
-          top: '10%',
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
-        },
-        xAxis: {
-          type: 'category',
-          data: ['1月', '2月', '3月', '4月', '5月', '6月'],
-          axisLine: {
-            lineStyle: { color: 'rgba(255, 255, 255, 0.2)' }
-          },
-          axisLabel: { color: 'rgba(255, 255, 255, 0.6)' }
-        },
-        yAxis: {
-          type: 'value',
-          axisLine: {
-            lineStyle: { color: 'rgba(255, 255, 255, 0.2)' }
-          },
-          splitLine: {
-            lineStyle: { color: 'rgba(255, 255, 255, 0.1)' }
-          },
-          axisLabel: { color: 'rgba(255, 255, 255, 0.6)' }
-        },
-        series: [{
-          data: [72, 23, 33, 48, 66, 23],
-          type: 'bar',
-          itemStyle: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: '#f87171' },
-              { offset: 1, color: '#ef4444' }
-            ])
-          },
-          barWidth: '60%',
-          emphasis: {
-            itemStyle: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: '#f43f5e' },
-                { offset: 1, color: '#e11d48' }
-              ])
-            }
-          },
-          showBackground: true,
-          backgroundStyle: {
-            color: 'rgba(255, 255, 255, 0.05)'
-          }
-        }]
-      }
-
-      riskChart.setOption(option)
-    }
 
     // 显示详情方法
     const showRiskDetails = () => {
@@ -569,37 +511,31 @@ export default {
     onMounted(() => {
       updateTime()
       setInterval(updateTime, 1000)
-      initRiskChart()
-      window.addEventListener('resize', initRiskChart)
 
-      // 启动数字动画 - 更柔和的时间间隔
+      // 启动数字动画 - 更快的时间间隔和动画速度
       setTimeout(() => {
-        animateNumber(372, 'riskWarnings', 3000)
-      }, 800)
+        animateNumber(372, 'riskWarnings', 1500) // 从3000ms减少到1500ms
+      }, 300) // 从800ms减少到300ms
       setTimeout(() => {
-        animateNumber(6.45, 'riskPercentage', 3200)
-      }, 1000)
+        animateNumber(6.45, 'riskPercentage', 1600) // 从3200ms减少到1600ms
+      }, 400) // 从1000ms减少到400ms
       setTimeout(() => {
-        animateNumber(6563, 'enterprises', 3500)
-      }, 1200)
+        animateNumber(6563, 'enterprises', 1700) // 从3500ms减少到1700ms
+      }, 500) // 从1200ms减少到500ms
       setTimeout(() => {
-        animateNumber(787, 'transactions', 3300)
-      }, 1400)
+        animateNumber(787, 'transactions', 1650) // 从3300ms减少到1650ms
+      }, 600) // 从1400ms减少到600ms
       setTimeout(() => {
-        animateNumber(5827, 'amount', 3800)
-      }, 1600)
+        animateNumber(5827, 'amount', 1800) // 从3800ms减少到1800ms
+      }, 700) // 从1600ms减少到700ms
     })
 
     onUnmounted(() => {
-      if (riskChart) {
-        riskChart.dispose()
-      }
-      window.removeEventListener('resize', initRiskChart)
+      // 清理工作已移至各个组件内部
     })
 
     return {
       currentTime,
-      riskChartRef,
       animatedNumbers,
       modalState,
       showRiskDetails,
@@ -727,21 +663,21 @@ export default {
     0 0 40px rgba(99, 102, 241, 0.15);
 }
 
-/* 卡片进入动画 */
+/* 卡片进入动画 - 加快速度 */
 .animate-slide-in-left {
-  animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从0.6s增加到1.2s */
   opacity: 0;
   transform: translateX(-30px);
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: slideInRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从0.6s增加到1.2s */
   opacity: 0;
   transform: translateX(30px);
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从0.6s增加到1.2s */
   opacity: 0;
   transform: translateY(20px);
 }

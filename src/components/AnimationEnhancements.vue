@@ -134,20 +134,20 @@ export default {
     ]
 
     onMounted(() => {
-      // 快速加载动画
+      // 更快的加载动画
       let currentStage = 0
       const progressInterval = setInterval(() => {
-        progress.value += Math.random() * 15 + 5
+        progress.value += Math.random() * 25 + 15 // 增加进度增量
 
         if (progress.value >= 100) {
           progress.value = 100
           loadingText.value = loadingStages[5]
           clearInterval(progressInterval)
 
-          // 短暂延迟后隐藏加载画面
+          // 缩短延迟时间
           setTimeout(() => {
             isLoading.value = false
-          }, 500)
+          }, 200) // 从500ms减少到200ms
         } else {
           // 更新加载文本
           const stageIndex = Math.floor((progress.value / 100) * (loadingStages.length - 1))
@@ -156,7 +156,7 @@ export default {
             loadingText.value = loadingStages[stageIndex]
           }
         }
-      }, 200) // 更快的更新频率
+      }, 100) // 从200ms减少到100ms，更快的更新频率
     })
 
     const getParticleStyle = () => {

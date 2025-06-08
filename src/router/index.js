@@ -35,4 +35,46 @@ const router = createRouter({
   routes
 })
 
-export default router 
+// 页面过渡效果
+let isTransitioning = false
+
+router.beforeEach((to, from, next) => {
+  if (from.name && to.name !== from.name) {
+    // 只在从主页进入二级页面或二级页面之间切换时使用动画
+    if (from.name === 'Home' && to.name !== 'Home') {
+      // 从主页进入二级页面：使用页面过渡动画
+      const event = new CustomEvent('page-transition-start', {
+        detail: { to: to.name, from: from.name }
+      })
+      window.dispatchEvent(event)
+    } else if (from.name !== 'Home' && to.name !== 'Home') {
+      // 二级页面之间切换：使用页面过渡动画
+      const event = new CustomEvent('page-transition-start', {
+        detail: { to: to.name, from: from.name }
+      })
+      window.dispatchEvent(event)
+    }
+    // 返回主页时不触发任何动画，直接显示
+
+    // 立即开始导航
+    next()
+  } else {
+    next()
+  }
+})
+
+router.afterEach((to, from) => {
+  if (from.name && to.name !== from.name) {
+    // 只在有页面过渡动画时才结束动画
+    if (to.name !== 'Home') {
+      // 进入二级页面或二级页面之间切换：结束页面过渡动画
+      setTimeout(() => {
+        const event = new CustomEvent('page-transition-end')
+        window.dispatchEvent(event)
+      }, 1500)
+    }
+    // 返回主页时不需要结束任何动画
+  }
+})
+
+export default router

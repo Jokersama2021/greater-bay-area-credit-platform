@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字雨测试</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0f1c;
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .digital-rain-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+            opacity: 0.6;
+        }
+        
+        .rain-drop {
+            position: absolute;
+            top: -50px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #00ff41;
+            text-shadow: 0 0 5px #00ff41;
+            animation: dropFall linear infinite;
+            user-select: none;
+        }
+        
+        @keyframes dropFall {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 50px));
+                opacity: 0;
+            }
+        }
+        
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="digital-rain-background" id="rainContainer"></div>
+    
+    <div class="content">
+        <h1>数字雨测试</h1>
+        <p>如果您能看到绿色的0和1数字从上往下掉落，说明数字雨效果正常工作。</p>
+    </div>
+
+    <script>
+        function createRaindrops() {
+            const container = document.getElementById('rainContainer');
+            container.innerHTML = '';
+            
+            const dropCount = 80;
+            
+            for (let i = 0; i < dropCount; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'rain-drop';
+                drop.textContent = Math.random() > 0.5 ? '0' : '1';
+                
+                drop.style.left = Math.random() * 100 + '%';
+                drop.style.animationDuration = (Math.random() * 5 + 3) + 's';
+                drop.style.animationDelay = Math.random() * 8 + 's';
+                drop.style.fontSize = (Math.random() * 8 + 14) + 'px';
+                
+                container.appendChild(drop);
+            }
+        }
+        
+        createRaindrops();
+        
+        window.addEventListener('resize', createRaindrops);
+    </script>
+</body>
+</html>

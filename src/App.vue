@@ -1,6 +1,9 @@
 <template>
   <div class="app-container min-h-screen">
-    <!-- 简洁背景系统 -->
+    <!-- 数字雨背景 -->
+    <digital-rain-background />
+
+    <!-- 简化背景系统 -->
     <div class="background-container">
       <!-- 静态背景层 -->
       <div class="static-background"></div>
@@ -67,24 +70,73 @@
     <main class="main-content">
       <router-view></router-view>
     </main>
+
+    <!-- 页面过渡效果 -->
+    <page-transition
+      :is-transitioning="isPageTransitioning"
+      :transition-text="transitionText"
+    />
+
+    <!-- 主页加载动画已移除 -->
+
+    <!-- 地理动画控制器 -->
+    <GeographicAnimationController />
   </div>
 </template>
 
 <script>
+import GeographicAnimationController from './components/GeographicAnimationController.vue'
+import DigitalRainBackground from './components/DigitalRainBackground.vue'
+import PageTransition from './components/PageTransition.vue'
+// FinTechLoader import removed
+
 export default {
+  components: {
+    GeographicAnimationController,
+    DigitalRainBackground,
+    PageTransition
+  },
   data() {
     return {
-      currentTime: ''
+      currentTime: '',
+      isPageTransitioning: false,
+      transitionText: '页面加载中...'
     }
   },
   mounted() {
     this.updateTime()
     setInterval(this.updateTime, 1000)
+
+    // 监听页面过渡事件
+    window.addEventListener('page-transition-start', this.handleTransitionStart)
+    window.addEventListener('page-transition-end', this.handleTransitionEnd)
+  },
+  beforeUnmount() {
+    window.removeEventListener('page-transition-start', this.handleTransitionStart)
+    window.removeEventListener('page-transition-end', this.handleTransitionEnd)
   },
   methods: {
     updateTime() {
       const now = new Date()
       this.currentTime = now.toLocaleTimeString('zh-CN', { hour12: false })
+    },
+    handleTransitionStart(event) {
+      const { to } = event.detail
+      this.isPageTransitioning = true
+
+      // 根据目标页面设置不同的过渡文本
+      const pageTexts = {
+        'Home': '正在加载主页...',
+        'Enterprises': '正在加载企业管理...',
+        'EnterpriseDetail': '正在加载企业详情...',
+        'ReportDetail': '正在加载报告详情...',
+        'PartnerDetail': '正在加载合作伙伴详情...'
+      }
+
+      this.transitionText = pageTexts[to] || '页面加载中...'
+    },
+    handleTransitionEnd() {
+      this.isPageTransitioning = false
     }
   }
 }
@@ -107,7 +159,8 @@ export default {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: -3;
+  opacity: 0.4;
 }
 
 /* 静态背景层 */
@@ -117,11 +170,11 @@ export default {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(15, 23, 42, 1) 0%,
-    rgba(30, 41, 59, 0.95) 25%,
-    rgba(51, 65, 85, 0.9) 50%,
-    rgba(30, 41, 59, 0.95) 75%,
-    rgba(15, 23, 42, 1) 100%
+    rgba(15, 23, 42, 0.6) 0%,
+    rgba(30, 41, 59, 0.5) 25%,
+    rgba(51, 65, 85, 0.4) 50%,
+    rgba(30, 41, 59, 0.5) 75%,
+    rgba(15, 23, 42, 0.6) 100%
   );
 }
 
@@ -377,7 +430,7 @@ export default {
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
@@ -391,23 +444,54 @@ export default {
   bottom: 0;
   background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(90, 200, 250, 0.1) 100%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.4s ease;
+  transform: scale(0.8);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .nav-link:hover::before,
 .nav-link.active::before {
   opacity: 1;
+  transform: scale(1);
+}
+
+.nav-link:hover::after {
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+}
+
+.nav-link:active {
+  transform: scale(0.95);
 }
 
 .nav-link:hover {
-  color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
+  color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 122, 255, 0.2);
 }
 
 .nav-link.active {
   background: linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%);
   color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+  box-shadow:
+    0 8px 25px rgba(0, 122, 255, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
 
 .nav-link i {
@@ -508,7 +592,7 @@ export default {
 
 .main-content {
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
 
 .dashboard-card {

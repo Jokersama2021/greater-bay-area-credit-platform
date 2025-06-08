@@ -278,50 +278,186 @@
       </div>
     </div>
 
-    <!-- 交易详情弹窗 -->
-    <div v-if="selectedTx" class="transaction-modal" @click="closeModal">
-      <div class="modal-content" @click.stop>
-        <div class="modal-header">
-          <h3>{{ selectedChain === 'fabric' ? 'Fabric链' : 'BCOS链' }} 交易详情</h3>
-          <button class="close-btn" @click="closeModal">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <!-- 高级交易详情弹窗 -->
+    <div v-if="selectedTx" class="advanced-transaction-modal" @click="closeModal">
+      <div class="advanced-modal-content" @click.stop>
+        <!-- 模态框头部 -->
+        <div class="advanced-modal-header">
+          <div class="header-left">
+            <div class="chain-indicator" :class="selectedChain">
+              <div class="chain-icon-wrapper">
+                <svg v-if="selectedChain === 'fabric'" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <svg v-else viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
+              </div>
+              <div class="chain-pulse"></div>
+            </div>
+            <div class="header-text">
+              <h3>{{ selectedChain === 'fabric' ? 'Fabric链' : 'BCOS链' }} 交易详情</h3>
+              <p class="header-subtitle">跨境企业信用查询记录</p>
+            </div>
+          </div>
+          <button class="advanced-close-btn" @click="closeModal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
           </button>
         </div>
-        <div class="modal-body">
-          <div class="detail-row">
-            <label>查询ID:</label>
-            <code class="full-hash">{{ selectedTx.id }}</code>
+
+        <!-- 模态框主体 -->
+        <div class="advanced-modal-body">
+          <!-- 交易概览卡片 -->
+          <div class="transaction-overview">
+            <div class="overview-header">
+              <div class="overview-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div class="overview-text">
+                <h4>交易概览</h4>
+                <p>企业信用查询交易信息</p>
+              </div>
+              <div class="transaction-status" :class="selectedTx.creditStatus">
+                <div class="status-dot"></div>
+                <span>{{ selectedTx.creditStatusText }}</span>
+              </div>
+            </div>
           </div>
-          <div class="detail-row">
-            <label>查询企业:</label>
-            <span class="full-content">{{ selectedTx.queryCompany }}</span>
-          </div>
-          <div class="detail-row">
-            <label>被查询企业:</label>
-            <span class="full-content">{{ selectedTx.targetCompany }}</span>
-          </div>
-          <div class="detail-row">
-            <label>信用查询结果:</label>
-            <span class="result-badge" :class="selectedTx.creditStatus">{{ selectedTx.creditStatusText }}</span>
-          </div>
-          <div class="detail-row">
-            <label>查询哈希:</label>
-            <code class="full-hash">{{ selectedTx.txHash }}</code>
-          </div>
-          <div class="detail-row">
-            <label>区块编号:</label>
-            <span class="block-number">{{ selectedTx.blockNumber }}</span>
-          </div>
-          <div class="detail-row">
-            <label>查询时间:</label>
-            <span class="timestamp">{{ formatFullTime(selectedTx.timestamp) }}</span>
-          </div>
-          <div class="detail-row">
-            <label>链类型:</label>
-            <span class="chain-type">{{ selectedChain === 'fabric' ? 'Hyperledger Fabric' : 'FISCO BCOS' }}</span>
+
+          <!-- 详细信息网格 -->
+          <div class="details-grid">
+            <!-- 查询ID -->
+            <div class="detail-card">
+              <div class="detail-header">
+                <div class="detail-icon id-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                </div>
+                <span class="detail-label">查询ID</span>
+              </div>
+              <div class="detail-value">
+                <code class="hash-display">{{ selectedTx.id }}</code>
+                <button class="copy-btn" @click="copyToClipboard(selectedTx.id)">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 查询企业 -->
+            <div class="detail-card">
+              <div class="detail-header">
+                <div class="detail-icon company-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                  </svg>
+                </div>
+                <span class="detail-label">查询企业</span>
+              </div>
+              <div class="detail-value">
+                <span class="company-name">{{ selectedTx.queryCompany }}</span>
+              </div>
+            </div>
+
+            <!-- 被查询企业 -->
+            <div class="detail-card">
+              <div class="detail-header">
+                <div class="detail-icon target-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <span class="detail-label">被查询企业</span>
+              </div>
+              <div class="detail-value">
+                <span class="company-name">{{ selectedTx.targetCompany }}</span>
+              </div>
+            </div>
+
+            <!-- 信用结果 -->
+            <div class="detail-card result-card">
+              <div class="detail-header">
+                <div class="detail-icon result-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <span class="detail-label">信用查询结果</span>
+              </div>
+              <div class="detail-value">
+                <div class="advanced-result-badge" :class="selectedTx.creditStatus">
+                  <div class="badge-icon">
+                    <svg v-if="selectedTx.creditStatus === 'excellent'" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                    </svg>
+                    <svg v-else-if="selectedTx.creditStatus === 'qualified'" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <svg v-else viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                  </div>
+                  <span>{{ selectedTx.creditStatusText }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 区块链信息 -->
+            <div class="detail-card blockchain-card">
+              <div class="detail-header">
+                <div class="detail-icon blockchain-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                  </svg>
+                </div>
+                <span class="detail-label">区块链信息</span>
+              </div>
+              <div class="detail-value blockchain-info">
+                <div class="blockchain-item">
+                  <span class="blockchain-label">哈希值</span>
+                  <code class="hash-display">{{ selectedTx.txHash }}</code>
+                  <button class="copy-btn" @click="copyToClipboard(selectedTx.txHash)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="blockchain-item">
+                  <span class="blockchain-label">区块编号</span>
+                  <span class="block-number">#{{ selectedTx.blockNumber }}</span>
+                </div>
+                <div class="blockchain-item">
+                  <span class="blockchain-label">链类型</span>
+                  <span class="chain-type">{{ selectedChain === 'fabric' ? 'Hyperledger Fabric' : 'FISCO BCOS' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 时间信息 -->
+            <div class="detail-card time-card">
+              <div class="detail-header">
+                <div class="detail-icon time-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <span class="detail-label">查询时间</span>
+              </div>
+              <div class="detail-value">
+                <div class="time-display">
+                  <span class="time-main">{{ formatFullTime(selectedTx.timestamp) }}</span>
+                  <span class="time-relative">{{ getRelativeTime(selectedTx.timestamp) }}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -435,6 +571,29 @@ export default {
       })
     }
 
+    const getRelativeTime = (date) => {
+      const now = new Date()
+      const diff = now - date
+      const minutes = Math.floor(diff / 60000)
+      const hours = Math.floor(diff / 3600000)
+      const days = Math.floor(diff / 86400000)
+
+      if (minutes < 1) return '刚刚'
+      if (minutes < 60) return `${minutes}分钟前`
+      if (hours < 24) return `${hours}小时前`
+      return `${days}天前`
+    }
+
+    const copyToClipboard = async (text) => {
+      try {
+        await navigator.clipboard.writeText(text)
+        // 这里可以添加复制成功的提示
+        console.log('复制成功:', text)
+      } catch (err) {
+        console.error('复制失败:', err)
+      }
+    }
+
     // 计算总查询数
     const totalQueries = computed(() => {
       return fabricTransactions.value.length + bcosTransactions.value.length
@@ -456,7 +615,9 @@ export default {
       selectTransaction,
       closeModal,
       formatTime,
-      formatFullTime
+      formatFullTime,
+      getRelativeTime,
+      copyToClipboard
     }
   }
 }
@@ -1714,6 +1875,215 @@ export default {
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
+/* 高级模态框样式 */
+.advanced-transaction-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(25px);
+  animation: modalFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 2vh;
+}
+
+.advanced-modal-content {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+  border-radius: 24px;
+  padding: 0;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 32px 64px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  animation: modalSlideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.advanced-modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(90, 200, 250, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.advanced-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 32px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chain-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chain-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.chain-indicator.fabric .chain-icon-wrapper {
+  background: linear-gradient(135deg, #FF6B35, #F7931E);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+}
+
+.chain-indicator.bcos .chain-icon-wrapper {
+  background: linear-gradient(135deg, #007AFF, #5856D6);
+  box-shadow: 0 8px 24px rgba(0, 122, 255, 0.4);
+}
+
+.chain-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.chain-pulse {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 20px;
+  opacity: 0.6;
+  animation: chainPulse 3s ease-in-out infinite;
+}
+
+.chain-indicator.fabric .chain-pulse {
+  background: linear-gradient(135deg, #FF6B35, #F7931E);
+}
+
+.chain-indicator.bcos .chain-pulse {
+  background: linear-gradient(135deg, #007AFF, #5856D6);
+}
+
+.header-text h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-subtitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.advanced-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+}
+
+.advanced-close-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.advanced-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05) rotate(90deg);
+}
+
+.advanced-close-btn:hover::before {
+  opacity: 1;
+}
+
+.advanced-close-btn svg {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+  stroke-width: 2;
+}
+
+.advanced-close-btn:hover svg {
+  color: rgba(255, 255, 255, 1);
+}
+
+.advanced-modal-body {
+  padding: 0 32px 32px;
+  position: relative;
+  z-index: 2;
+  max-height: calc(90vh - 120px);
+  overflow-y: auto;
+}
+
+@keyframes chainPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.08);
+  }
+}
+
 @media (max-width: 768px) {
   .chains-grid {
     grid-template-columns: 1fr;
@@ -1723,6 +2093,434 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .advanced-transaction-modal {
+    padding: 1vh;
+  }
+
+  .advanced-modal-content {
+    width: 100%;
+    max-height: 95vh;
+  }
+
+  .advanced-modal-header {
+    padding: 20px 20px 16px;
+  }
+
+  .advanced-modal-body {
+    padding: 0 20px 20px;
+  }
+
+  .header-left {
+    gap: 12px;
+  }
+
+  .chain-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-text h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* 交易概览样式 */
+.transaction-overview {
+  margin-bottom: 24px;
+}
+
+.overview-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+}
+
+.overview-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #007AFF, #5AC8FA);
+}
+
+.overview-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #34C759, #30D158);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(52, 199, 89, 0.3);
+}
+
+.overview-icon svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.overview-text {
+  flex: 1;
+}
+
+.overview-text h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 4px 0;
+}
+
+.overview-text p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.transaction-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.transaction-status.qualified {
+  background: rgba(52, 199, 89, 0.15);
+  color: #34C759;
+  border: 1px solid rgba(52, 199, 89, 0.3);
+}
+
+.transaction-status.excellent {
+  background: rgba(0, 122, 255, 0.15);
+  color: #007AFF;
+  border: 1px solid rgba(0, 122, 255, 0.3);
+}
+
+.transaction-status.warning {
+  background: rgba(255, 149, 0, 0.15);
+  color: #FF9500;
+  border: 1px solid rgba(255, 149, 0, 0.3);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.transaction-status.qualified .status-dot {
+  background: #34C759;
+}
+
+.transaction-status.excellent .status-dot {
+  background: #007AFF;
+}
+
+.transaction-status.warning .status-dot {
+  background: #FF9500;
+}
+
+/* 详细信息网格 */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.detail-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.detail-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.detail-card:hover::before {
+  opacity: 1;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.detail-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.detail-icon svg {
+  width: 18px;
+  height: 18px;
+  color: white;
+}
+
+.id-icon {
+  background: linear-gradient(135deg, #8B5CF6, #A855F7);
+}
+
+.company-icon {
+  background: linear-gradient(135deg, #06B6D4, #0891B2);
+}
+
+.target-icon {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+}
+
+.result-icon {
+  background: linear-gradient(135deg, #10B981, #059669);
+}
+
+.blockchain-icon {
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
+}
+
+.time-icon {
+  background: linear-gradient(135deg, #EF4444, #DC2626);
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  position: relative;
+  z-index: 2;
+}
+
+.hash-display {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #007AFF;
+  background: rgba(0, 122, 255, 0.12);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 122, 255, 0.2);
+  word-break: break-all;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.hash-display:hover {
+  background: rgba(0, 122, 255, 0.2);
+  border-color: rgba(0, 122, 255, 0.4);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.company-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.4;
+}
+
+.advanced-result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.advanced-result-badge:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.advanced-result-badge.qualified {
+  background: rgba(52, 199, 89, 0.2);
+  color: #34C759;
+  border-color: rgba(52, 199, 89, 0.4);
+}
+
+.advanced-result-badge.excellent {
+  background: rgba(0, 122, 255, 0.2);
+  color: #007AFF;
+  border-color: rgba(0, 122, 255, 0.4);
+}
+
+.advanced-result-badge.warning {
+  background: rgba(255, 149, 0, 0.2);
+  color: #FF9500;
+  border-color: rgba(255, 149, 0, 0.4);
+}
+
+.badge-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.badge-icon svg {
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+}
+
+.blockchain-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blockchain-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.blockchain-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.blockchain-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  min-width: 50px;
+}
+
+.block-number {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #007AFF;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+}
+
+.chain-type {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.time-display {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.time-main {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+}
+
+.time-relative {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .detail-card {
+    padding: 16px;
+  }
+
+  .overview-header {
+    padding: 14px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .transaction-status {
+    align-self: flex-end;
   }
 }
 </style>
