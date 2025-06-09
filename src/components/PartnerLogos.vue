@@ -20,46 +20,53 @@
         </button>
       </div>
 
-      <div v-show="!isCollapsed" class="filter-tabs">
-        <button
-          v-for="(cat, index) in ['全部', ...categoryNames]"
-          :key="index"
-          @click="filterByCategory(cat)"
-          :class="['filter-tab', { active: activeCategory === cat }]"
-        >
-          {{ cat }}
-        </button>
-      </div>
+      <transition name="slide-fade" mode="out-in">
+        <div v-show="!isCollapsed" class="filter-tabs">
+          <button
+            v-for="(cat, index) in ['全部', ...categoryNames]"
+            :key="index"
+            @click="filterByCategory(cat)"
+            :class="['filter-tab', { active: activeCategory === cat }]"
+            :style="{ animationDelay: `${index * 0.1}s` }"
+          >
+            {{ cat }}
+          </button>
+        </div>
+      </transition>
     </div>
 
-    <div v-show="!isCollapsed" class="partner-logos">
-      <div v-if="filteredCategories.length === 0" class="no-results">
-        <i class="fas fa-search"></i>
-        <p>未找到匹配的合作机构</p>
-      </div>
+    <transition name="expand-fade" mode="out-in">
+      <div v-show="!isCollapsed" class="partner-logos">
+        <div v-if="filteredCategories.length === 0" class="no-results">
+          <i class="fas fa-search"></i>
+          <p>未找到匹配的合作机构</p>
+        </div>
 
-      <div v-for="(category, categoryIndex) in filteredCategories"
-           :key="categoryIndex"
-           class="category-section">
-        <div class="category-title">{{ category.name }}</div>
-        <div class="partners-grid">
-          <router-link
-            v-for="partner in category.partners"
-            :key="partner.id"
-            :to="`/partner/${partner.id}`"
-            class="partner-item"
-          >
-            <div class="partner-logo-wrapper">
-              <div class="partner-logo" :style="{ backgroundColor: partner.bgColor }">
-                <i :class="partner.icon"></i>
+        <div v-for="(category, categoryIndex) in filteredCategories"
+             :key="categoryIndex"
+             class="category-section"
+             :style="{ animationDelay: `${categoryIndex * 0.2}s` }">
+          <div class="category-title">{{ category.name }}</div>
+          <div class="partners-grid">
+            <router-link
+              v-for="(partner, partnerIndex) in category.partners"
+              :key="partner.id"
+              :to="`/partner/${partner.id}`"
+              class="partner-item"
+              :style="{ animationDelay: `${(categoryIndex * 0.2) + (partnerIndex * 0.05)}s` }"
+            >
+              <div class="partner-logo-wrapper">
+                <div class="partner-logo" :style="{ backgroundColor: partner.bgColor }">
+                  <i :class="partner.icon"></i>
+                </div>
+                <div class="partner-glow"></div>
               </div>
-              <div class="partner-glow"></div>
-            </div>
-            <span class="partner-name">{{ partner.name }}</span>
-          </router-link>
+              <span class="partner-name">{{ partner.name }}</span>
+            </router-link>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -243,40 +250,79 @@ export default {
 .collapse-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 16px;
+  border: 2px solid rgba(94, 252, 232, 0.4);
+  background: linear-gradient(135deg, rgba(94, 252, 232, 0.2) 0%, rgba(115, 110, 254, 0.15) 100%);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px);
   white-space: nowrap;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 6px 20px rgba(94, 252, 232, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.collapse-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: buttonShine 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.collapse-btn span,
+.collapse-btn i {
+  position: relative;
+  z-index: 2;
 }
 
 .collapse-btn:hover {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(124, 58, 237, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(94, 252, 232, 0.35) 0%, rgba(115, 110, 254, 0.25) 100%);
   color: white;
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: rgba(94, 252, 232, 0.6);
   box-shadow:
-    0 8px 25px rgba(59, 130, 246, 0.2),
-    0 0 0 1px rgba(59, 130, 246, 0.1),
+    0 10px 30px rgba(94, 252, 232, 0.4),
+    0 0 0 1px rgba(94, 252, 232, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.collapse-btn:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow:
+    0 5px 15px rgba(94, 252, 232, 0.3),
+    0 0 0 1px rgba(94, 252, 232, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
 }
 
 .collapse-btn i {
-  font-size: 0.8rem;
-  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  color: rgba(94, 252, 232, 0.9);
+}
+
+.collapse-btn:hover i {
+  transform: rotate(180deg);
+  color: rgba(94, 252, 232, 1);
+  text-shadow: 0 0 10px rgba(94, 252, 232, 0.5);
 }
 
 .collapse-btn span {
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .search-input {
@@ -344,15 +390,23 @@ export default {
   transform: translateY(0);
 }
 
-.filter-tabs.v-enter-active,
-.filter-tabs.v-leave-active {
-  transition: all 0.3s ease;
+/* 滑动淡入动画 */
+.slide-fade-enter-active {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.filter-tabs.v-enter-from,
-.filter-tabs.v-leave-to {
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.slide-fade-enter-from {
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateY(-20px) scale(0.95);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.98);
 }
 
 .filter-tabs::-webkit-scrollbar {
@@ -382,6 +436,24 @@ export default {
   cursor: pointer;
   backdrop-filter: blur(10px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: slideInTab 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  opacity: 0;
+  transform: translateY(-20px) scale(0.8);
+}
+
+@keyframes slideInTab {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .filter-tab:hover {
@@ -440,20 +512,48 @@ export default {
   transform: translateY(0);
 }
 
-.partner-logos.v-enter-active,
-.partner-logos.v-leave-active {
-  transition: all 0.3s ease;
+/* 展开淡入动画 */
+.expand-fade-enter-active {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.partner-logos.v-enter-from,
-.partner-logos.v-leave-to {
+.expand-fade-leave-active {
+  transition: all 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.expand-fade-enter-from {
   opacity: 0;
-  transform: translateY(-15px);
+  transform: translateY(-30px) scale(0.9);
+  max-height: 0;
+}
+
+.expand-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.95);
+  max-height: 0;
 }
 
 .category-section {
   margin-bottom: 4px;
   position: relative;
+  animation: slideInCategory 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+@keyframes slideInCategory {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.95);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
 
 .category-section::after {
@@ -509,6 +609,12 @@ export default {
   100% { left: 100%; }
 }
 
+@keyframes buttonShine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
 .partners-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
@@ -546,6 +652,24 @@ export default {
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  opacity: 0;
+  transform: translateY(30px) scale(0.8);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .partner-item::before {
@@ -572,6 +696,11 @@ export default {
 
 .partner-item:hover::before {
   opacity: 1;
+}
+
+.partner-item:active {
+  transform: translateY(-2px) scale(1.02);
+  transition: all 0.1s ease;
 }
 
 .partner-logo-wrapper {
@@ -636,6 +765,11 @@ export default {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
 
+.partner-item:hover .partner-glow {
+  opacity: 0.6;
+  animation: partnerPulse 2s ease-in-out infinite;
+}
+
 .partner-name {
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.85rem;
@@ -669,5 +803,20 @@ export default {
   0% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
   100% { transform: translateY(0); }
+}
+
+@keyframes partnerPulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
 }
 </style> 

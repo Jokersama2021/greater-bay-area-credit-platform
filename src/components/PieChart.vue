@@ -62,7 +62,7 @@ watch(() => props.data, () => {
 <style scoped>
 .pie-chart-container {
   position: relative;
-  height: 200px; /* Increase the height */
+  height: 160px; /* Increase the height */
   width: 400px; /* Increase the width to allow 70% space for the chart and 30% for the legend */
 }
 </style>

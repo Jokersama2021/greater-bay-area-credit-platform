@@ -1,109 +1,94 @@
 <template>
   <div class="dashboard-container">
+
     <!-- 跨境数据流动背景 -->
     <cross-border-data-flow />
-    <!-- 快速统计概览 -->
-    <div class="quick-stats">
-      <compact-stats-card
-        icon="fas fa-exclamation-triangle"
-        icon-color="#FF3B30"
-        :value="animatedNumbers.riskWarnings"
-        label="风险预警"
-        :trend="{ type: 'down', value: '12%' }"
-        @click="showRiskDetails"
-      />
-      <compact-stats-card
-        icon="fas fa-building"
-        icon-color="#007AFF"
-        :value="animatedNumbers.enterprises.toLocaleString()"
-        label="注册企业"
-        :trend="{ type: 'up', value: '8%' }"
-        @click="showEnterpriseDetails"
-      />
-      <compact-stats-card
-        icon="fas fa-exchange-alt"
-        icon-color="#30D158"
-        :value="animatedNumbers.transactions.toLocaleString()"
-        label="跨境交易"
-        :trend="{ type: 'up', value: '15%' }"
-        @click="showTransactionDetails"
-      />
-      <compact-stats-card
-        icon="fas fa-chart-line"
-        icon-color="#FF9500"
-        :value="'¥' + animatedNumbers.amount.toLocaleString() + '亿'"
-        label="交易金额"
-        :trend="{ type: 'up', value: '23%' }"
-        @click="showAmountDetails"
-      />
-    </div>
+
 
     <!-- 主要功能区域 -->
     <div class="main-content-grid">
       <!-- 左侧区域 -->
       <div class="sidebar-left">
-        <!-- 风险监测 -->
-        <div class="modern-card card-hover animate-slide-in-left" style="animation-delay: 0.1s">
-          <div class="card-header-modern">
-            <div class="card-title-wrapper">
-              <div class="card-icon-modern risk-icon">
+        <!-- 企业展示大框 -->
+        <div class="enterprise-display-container">
+          <div class="enterprise-display-header">
+            <div class="enterprise-display-title">
+              <div class="enterprise-display-icon">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 22S8 18 8 13V6L12 4L16 6V13C16 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 21H21M5 21V7L13 2L21 7V21M9 9V13M15 9V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <h2 class="card-title-modern gradient-text">风险监测</h2>
+              <h1 class="enterprise-display-title-text">企业信用分析</h1>
+            </div>
+            <div class="enterprise-display-subtitle">
+              实时监控企业信用状况与风险评估
             </div>
           </div>
-          <div class="flex flex-col gap-4 mt-4">
-            <div class="flex gap-4">
-              <div class="data-tile flex-1">
-                <div class="data-title">风险预警次数</div>
-                <div class="data-value text-rose-400">{{ animatedNumbers.riskWarnings }}</div>
-              </div>
-              <div class="data-tile flex-1">
-                <div class="data-title">风险预警占比</div>
-                <div class="data-value text-rose-400">{{ animatedNumbers.riskPercentage.toFixed(2) }}%</div>
-              </div>
-            </div>
-            <beautiful-risk-chart class="mt-3" />
-          </div>
-        </div>
 
-        <!-- 信用评分 -->
-        <div class="modern-card card-hover animate-slide-in-left" style="animation-delay: 0.2s">
-          <div class="card-header-modern">
-            <div class="card-title-wrapper">
-              <div class="card-icon-modern credit-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M22 12A10 10 0 0 0 12 2V12L22 12Z" fill="currentColor" opacity="0.2"/>
-                </svg>
-              </div>
-              <h2 class="card-title-modern gradient-text">信用评分</h2>
-            </div>
-          </div>
-          <div class="chart-container">
-            <credit-radar-chart />
-          </div>
-        </div>
+          <div class="enterprise-modules">
+            <!-- 企业选择器 -->
+            <enterprise-selector />
 
-        <!-- 信用画像 -->
-        <div class="modern-card card-hover animate-slide-in-left" style="animation-delay: 0.3s">
-          <div class="card-header-modern">
-            <div class="card-title-wrapper">
-              <div class="card-icon-modern portrait-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-                  <path d="M14 7H16M14 5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
+            <!-- 风险监测 -->
+            <div class="modern-card card-hover animate-slide-in-left" style="animation-delay: 0.05s">
+              <div class="card-header-modern">
+                <div class="card-title-wrapper">
+                  <div class="card-icon-modern risk-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 22S8 18 8 13V6L12 4L16 6V13C16 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <h2 class="card-title-modern gradient-text">风险监测</h2>
+                </div>
               </div>
-              <h2 class="card-title-modern gradient-text">信用画像</h2>
+              <div class="chart-container">
+                <beautiful-risk-chart />
+              </div>
             </div>
-          </div>
-          <div class="chart-container">
-            <credit-portrait />
+
+            <!-- 信用评分 -->
+            <div class="modern-card card-hover animate-slide-in-left" style="animation-delay: 0.1s">
+              <div class="card-header-modern">
+                <div class="card-title-wrapper">
+                  <div class="card-icon-modern credit-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M21.21 15.89A10 10 0 1 1 8 2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M22 12A10 10 0 0 0 12 2V12L22 12Z" fill="currentColor" opacity="0.2"/>
+                    </svg>
+                  </div>
+                  <h2 class="card-title-modern gradient-text">信用评分</h2>
+                </div>
+              </div>
+              <div class="chart-container">
+                <credit-radar-chart />
+              </div>
+            </div>
+
+            <!-- 跨境业务活跃度 -->
+            <div class="animate-slide-in-left" style="animation-delay: 0.15s">
+              <cross-border-activity />
+            </div>
+
+            <!-- 发展趋势 -->
+            <div class="animate-slide-in-left" style="animation-delay: 0.2s">
+              <enterprise-trend-chart />
+            </div>
+
+            <!-- 行业对比 -->
+            <div class="animate-slide-in-left" style="animation-delay: 0.25s">
+              <industry-comparison-radar />
+            </div>
+
+            <!-- 财务健康度 - 压缩版 -->
+            <div class="animate-slide-in-left" style="animation-delay: 0.3s">
+              <financial-health-gauge-compact />
+            </div>
+
+            <!-- 信用画像 - 压缩版 -->
+            <div class="animate-slide-in-left" style="animation-delay: 0.35s">
+              <enterprise-info-card-compact />
+            </div>
           </div>
         </div>
       </div>
@@ -121,30 +106,7 @@
               </div>
               <h2 class="card-title-modern gradient-text-accent">粤港澳大湾区企业分布</h2>
             </div>
-            <div class="stats-summary">
-              <div class="stats-pill-modern">
-                <svg class="stats-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 21H21M5 21V7L13 2L21 7V21M9 9V13M15 9V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="stats-value">{{ animatedNumbers.enterprises.toLocaleString() }}</span>
-                <span class="stats-label">企业</span>
-              </div>
-              <div class="stats-pill-modern">
-                <svg class="stats-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="stats-value">{{ animatedNumbers.transactions.toLocaleString() }}</span>
-                <span class="stats-label">交易</span>
-              </div>
-              <div class="stats-pill-modern">
-                <svg class="stats-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="1" y="5" width="22" height="14" rx="7" stroke="currentColor" stroke-width="2"/>
-                  <path d="M8 11V13M12 9V15M16 11V13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <span class="stats-value">{{ animatedNumbers.amount.toLocaleString() }}</span>
-                <span class="stats-label">亿</span>
-              </div>
-            </div>
+
           </div>
           <div class="map-wrapper mt-4 rounded-xl overflow-hidden">
             <greater-bay-area-map class="h-[460px]" />
@@ -252,7 +214,7 @@
               <i class="fas fa-exclamation-triangle"></i>
             </div>
             <div class="stat-info">
-              <div class="stat-value">{{ animatedNumbers.riskWarnings }}</div>
+              <div class="stat-value">{{ currentRiskData.total }}</div>
               <div class="stat-label">风险预警次数</div>
             </div>
           </div>
@@ -261,7 +223,7 @@
               <i class="fas fa-percentage"></i>
             </div>
             <div class="stat-info">
-              <div class="stat-value">{{ animatedNumbers.riskPercentage.toFixed(2) }}%</div>
+              <div class="stat-value">{{ currentRiskData.percentage }}%</div>
               <div class="stat-label">风险预警占比</div>
             </div>
           </div>
@@ -304,7 +266,7 @@
               <i class="fas fa-exchange-alt"></i>
             </div>
             <div class="stat-info">
-              <div class="stat-value">{{ animatedNumbers.transactions.toLocaleString() }}</div>
+              <div class="stat-value">{{ animatedNumbers.transactions.toLocaleString() }}万</div>
               <div class="stat-label">跨境交易笔数</div>
             </div>
           </div>
@@ -353,9 +315,11 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { enterpriseDataService } from '../services/enterpriseDataService'
 import CreditRadarChart from '../components/CreditRadarChart.vue'
-import CreditPortrait from '../components/CreditPortrait.vue'
+import FinancialHealthGaugeCompact from '../components/FinancialHealthGaugeCompact.vue'
+import EnterpriseInfoCardCompact from '../components/EnterpriseInfoCardCompact.vue'
 import ReportList from '../components/ReportList.vue'
 import ProductGrid from '../components/ProductGrid.vue'
 import ServiceRecords from '../components/ServiceRecords.vue'
@@ -368,12 +332,19 @@ import ExpandableCard from '../components/ExpandableCard.vue'
 import CompactStatsCard from '../components/CompactStatsCard.vue'
 import DetailModal from '../components/DetailModal.vue'
 import BeautifulRiskChart from '../components/BeautifulRiskChart.vue'
+import EnterpriseSelector from '../components/EnterpriseSelector.vue'
+import EnterpriseInfoCard from '../components/EnterpriseInfoCard.vue'
+import FinancialHealthGauge from '../components/FinancialHealthGauge.vue'
+import CrossBorderActivity from '../components/CrossBorderActivity.vue'
+import EnterpriseTrendChart from '../components/EnterpriseTrendChart.vue'
+import IndustryComparisonRadar from '../components/IndustryComparisonRadar.vue'
 
 export default {
   name: 'Home',
   components: {
     CreditRadarChart,
-    CreditPortrait,
+    FinancialHealthGaugeCompact,
+    EnterpriseInfoCardCompact,
     ReportList,
     ProductGrid,
     ServiceRecords,
@@ -385,10 +356,30 @@ export default {
     ExpandableCard,
     CompactStatsCard,
     DetailModal,
-    BeautifulRiskChart
+    BeautifulRiskChart,
+    EnterpriseSelector,
+    EnterpriseInfoCard,
+    FinancialHealthGauge,
+    CrossBorderActivity,
+    EnterpriseTrendChart,
+    IndustryComparisonRadar
   },
   setup() {
     const currentTime = ref('')
+
+    // 获取当前企业数据
+    const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
+
+    // 计算当前企业的风险数据
+    const currentRiskData = computed(() => {
+      const riskData = currentEnterprise.value.riskData
+      const total = riskData.reduce((sum, val) => sum + val, 0)
+      const percentage = ((total / (riskData.length * 30)) * 100).toFixed(1) // 假设每月最大风险数为30
+      return {
+        total,
+        percentage: parseFloat(percentage)
+      }
+    })
 
     // 数字动画状态
     const animatedNumbers = ref({
@@ -498,22 +489,22 @@ export default {
       updateTime()
       setInterval(updateTime, 1000)
 
-      // 启动数字动画 - 更快的时间间隔和动画速度
+      // 启动数字动画 - 更合理的数据
       setTimeout(() => {
-        animateNumber(372, 'riskWarnings', 1500) // 从3000ms减少到1500ms
-      }, 300) // 从800ms减少到300ms
+        animateNumber(45, 'riskWarnings', 1500) // 风险预警次数
+      }, 300)
       setTimeout(() => {
-        animateNumber(6.45, 'riskPercentage', 1600) // 从3200ms减少到1600ms
-      }, 400) // 从1000ms减少到400ms
+        animateNumber(1.2, 'riskPercentage', 1600) // 风险预警占比
+      }, 400)
       setTimeout(() => {
-        animateNumber(6563, 'enterprises', 1700) // 从3500ms减少到1700ms
-      }, 500) // 从1200ms减少到500ms
+        animateNumber(12580, 'enterprises', 1700) // 注册企业数量
+      }, 500)
       setTimeout(() => {
-        animateNumber(787, 'transactions', 1650) // 从3300ms减少到1650ms
-      }, 600) // 从1400ms减少到600ms
+        animateNumber(8960, 'transactions', 1650) // 跨境交易笔数（万笔）
+      }, 600)
       setTimeout(() => {
-        animateNumber(5827, 'amount', 1800) // 从3800ms减少到1800ms
-      }, 700) // 从1600ms减少到700ms
+        animateNumber(2847, 'amount', 1800) // 交易金额（亿元）
+      }, 700)
     })
 
     onUnmounted(() => {
@@ -524,6 +515,8 @@ export default {
       currentTime,
       animatedNumbers,
       modalState,
+      currentEnterprise,
+      currentRiskData,
       showRiskDetails,
       showEnterpriseDetails,
       showTransactionDetails,
@@ -541,104 +534,244 @@ export default {
   background: transparent;
 }
 
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 500px 1000px 500px;
-  gap: 2rem;
+/* dashboard-grid 已移除，使用 main-content-grid */
+
+/* 响应式设计 - 移除dashboard-grid的响应式规则，使用main-content-grid */
+
+/* 企业展示容器 */
+.enterprise-display-container {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
   padding: 2rem;
-  max-width: 2200px;
-  margin: 0 auto;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.enterprise-display-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%);
+}
+
+.enterprise-display-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.enterprise-display-title {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
-/* 响应式设计 */
-@media (max-width: 2000px) {
-  .dashboard-grid {
-    grid-template-columns: 450px 900px 450px;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    max-width: 2000px;
-  }
+.enterprise-display-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-@media (max-width: 1600px) {
-  .dashboard-grid {
-    grid-template-columns: 400px 800px 400px;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    max-width: 1750px;
-  }
+.enterprise-display-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-@media (max-width: 1400px) {
-  .dashboard-grid {
-    grid-template-columns: 350px 700px 350px;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    max-width: 1550px;
-  }
+.enterprise-display-title-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  font-family: var(--font-heading);
 }
 
-@media (max-width: 1200px) {
-  .dashboard-grid {
-    grid-template-columns: 300px 600px 300px;
-    gap: 1rem;
-    padding: 1.5rem;
-    max-width: 1350px;
-  }
+.enterprise-display-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-family: var(--font-body);
 }
 
-@media (max-width: 1024px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1rem;
-  }
-
-  .sidebar-left,
-  .sidebar-right {
-    order: 2;
-  }
-
-  .main-section {
-    order: 1;
-  }
+.enterprise-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-@media (max-width: 768px) {
-  .dashboard-grid {
-    padding: 0.75rem;
-    gap: 1rem;
-  }
-
-  .dashboard-container {
-    min-height: calc(100vh - 60px);
-  }
+/* 图表行布局 */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-@media (max-width: 480px) {
-  .dashboard-grid {
-    padding: 0.5rem;
-    gap: 0.75rem;
-  }
+/* 紧凑卡片样式 */
+.compact-chart {
+  padding: 1rem !important;
 }
 
-.sidebar-left,
+.compact-portrait {
+  padding: 1rem !important;
+}
+
+.card-header-compact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-icon-small {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.card-icon-small.risk-icon { background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%); }
+.card-icon-small.portrait-icon { background: linear-gradient(135deg, #A8E6CF 0%, #88D8A3 100%); }
+
+.card-icon-small svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.card-title-compact {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+.compact-metrics {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.compact-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.metric-number {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FF6B6B;
+  font-family: var(--font-mono);
+}
+
+.metric-unit {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.mini-chart {
+  height: 100px;
+}
+
+.compact-chart-container {
+  height: 140px;
+}
+
+/* 企业信息卡片包装器 */
+.enterprise-info-card-wrapper {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.enterprise-info-card-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  grid-area: left;
+}
+
 .sidebar-right {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  grid-area: right;
 }
 
 .main-section {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  grid-area: center;
 }
 
 /* 现代化卡片悬停效果 */
 .card-hover {
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 动画关键帧 */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.95);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(10px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
 
 .card-hover:hover {
@@ -812,6 +945,12 @@ export default {
   height: 20px;
   stroke-width: 2;
 }
+
+/* 图标颜色样式 */
+.card-icon-modern.risk-icon { background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%); }
+.card-icon-modern.credit-icon { background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); }
+.card-icon-modern.portrait-icon { background: linear-gradient(135deg, #A8E6CF 0%, #88D8A3 100%); }
+.card-icon-modern.health-icon { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 
 .stats-icon {
   width: 14px;
@@ -1030,8 +1169,8 @@ export default {
 
 /* 风险图表容器 */
 .risk-chart {
-  height: 200px;
-  margin-top: 1.5rem;
+  height: 150px;
+  margin-top: 1rem;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -1085,8 +1224,8 @@ export default {
 }
 
 .risk-chart {
-  height: 180px;
-  margin-top: 1rem;
+  height: 130px;
+  margin-top: 0.75rem;
 }
 
 .stats-pill {
@@ -1236,11 +1375,12 @@ export default {
   display: grid;
   grid-template-columns: 500px 1000px 500px;
   grid-template-areas: "left center right";
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: start;
   max-width: 2200px;
   margin: 0 auto;
   justify-content: center;
+  padding: 1.5rem;
 }
 
 /* 模态框详情内容样式 */
@@ -1311,11 +1451,11 @@ export default {
 }
 
 .detail-chart-container {
-  height: 300px;
+  height: 220px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 10px;
+  padding: 12px;
 }
 
 .detail-chart {
@@ -1345,6 +1485,7 @@ export default {
     grid-template-areas: "left center right";
     max-width: 1500px;
     gap: 1.5rem;
+    padding: 1.5rem;
   }
 }
 
@@ -1354,6 +1495,7 @@ export default {
     grid-template-areas: "left center right";
     max-width: 1350px;
     gap: 1.5rem;
+    padding: 1.5rem;
   }
 }
 
@@ -1363,6 +1505,7 @@ export default {
     grid-template-areas: "left center right";
     max-width: 1150px;
     gap: 1rem;
+    padding: 1.5rem;
   }
 
   .quick-stats {
@@ -1373,15 +1516,21 @@ export default {
 
 @media (max-width: 1024px) {
   .main-content-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     grid-template-areas:
       "center"
       "left"
-      "right";
+      "right" !important;
+    padding: 1rem;
   }
 }
 
 @media (max-width: 768px) {
+  .main-content-grid {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
   .quick-stats {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -1404,6 +1553,13 @@ export default {
 
   .stat-value {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content-grid {
+    padding: 0.5rem;
+    gap: 0.75rem;
   }
 }
 </style>

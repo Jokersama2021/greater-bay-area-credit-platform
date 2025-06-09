@@ -244,9 +244,9 @@ onUnmounted(() => {
 <style scoped>
 .advanced-risk-chart {
   width: 100%;
-  height: 200px;
+  height: 150px;
   position: relative;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
 }
 

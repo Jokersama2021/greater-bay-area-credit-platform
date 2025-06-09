@@ -105,8 +105,8 @@ export default {
 <style scoped>
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
 /* 弹出动画 */
@@ -244,11 +244,10 @@ export default {
   transform: translateX(-4px);
 }
 
-/* 响应式调整 - 适应十寸屏幕 */
+/* 响应式调整 - 适应不同屏幕尺寸 */
 @media (max-width: 1400px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 10px;
   }
 
   .product-item {
@@ -274,33 +273,32 @@ export default {
   }
 }
 
-/* 小尺寸屏幕 - 切换为上下布局 */
+/* 中等尺寸屏幕 */
 @media (max-width: 1024px) {
   .product-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 
   .product-item {
-    padding: 16px;
-    gap: 16px;
+    padding: 14px;
+    gap: 14px;
   }
 
   .product-icon {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 
   .product-icon i {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .product-name {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .product-description {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 

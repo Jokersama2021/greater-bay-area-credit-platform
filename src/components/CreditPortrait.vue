@@ -27,7 +27,7 @@
         </svg>
         <div class="score-content">
           <div class="score-number">{{ creditScore }}</div>
-          <div class="score-level">{{ creditLevel }}</div>
+          <div class="score-level">{{ currentEnterprise.creditLevel }}</div>
         </div>
       </div>
       <div class="score-description">
@@ -58,14 +58,17 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
+import { enterpriseDataService } from '../services/enterpriseDataService'
 
 export default {
   name: 'CreditPortrait',
   setup() {
     const creditScore = ref(0)
-    const targetScore = 850
-    const creditLevel = ref('优秀')
+
+    // 获取当前企业数据
+    const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
+    const targetScore = computed(() => currentEnterprise.value.creditScore)
 
     // 圆环动画计算
     const circumference = 2 * Math.PI * 40
@@ -74,46 +77,46 @@ export default {
       return circumference - (progress * circumference)
     })
 
-    // 信用画像数据
-    const portraitItems = ref([
+    // 信用画像数据 - 基于当前企业
+    const portraitItems = computed(() => [
       {
         title: '企业规模',
-        value: '大型企业',
+        value: currentEnterprise.value.scale,
         icon: 'fas fa-building',
         color: '#007AFF',
         gradient: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)'
       },
       {
         title: '经营年限',
-        value: '15年',
+        value: `${currentEnterprise.value.businessYears}年`,
         icon: 'fas fa-calendar-alt',
         color: '#30D158',
         gradient: 'linear-gradient(135deg, #30D158 0%, #32D74B 100%)'
       },
       {
         title: '信用等级',
-        value: 'AAA',
+        value: currentEnterprise.value.creditLevel,
         icon: 'fas fa-medal',
         color: '#FF9500',
         gradient: 'linear-gradient(135deg, #FF9500 0%, #FFCC02 100%)'
       },
       {
         title: '风险评估',
-        value: '低风险',
+        value: currentEnterprise.value.riskLevel,
         icon: 'fas fa-shield-check',
         color: '#32D74B',
         gradient: 'linear-gradient(135deg, #32D74B 0%, #30D158 100%)'
       },
       {
         title: '跨境业务',
-        value: '活跃',
+        value: currentEnterprise.value.crossBorderBusiness,
         icon: 'fas fa-globe-americas',
         color: '#5AC8FA',
         gradient: 'linear-gradient(135deg, #5AC8FA 0%, #007AFF 100%)'
       },
       {
         title: '合规记录',
-        value: '优秀',
+        value: currentEnterprise.value.complianceRecord,
         icon: 'fas fa-check-double',
         color: '#34C759',
         gradient: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)'
@@ -125,6 +128,7 @@ export default {
       const duration = 2000
       const startTime = Date.now()
       const startScore = 0
+      const target = targetScore.value
 
       const animate = () => {
         const elapsed = Date.now() - startTime
@@ -132,7 +136,7 @@ export default {
 
         // 使用缓动函数
         const easeOutQuart = 1 - Math.pow(1 - progress, 4)
-        creditScore.value = Math.round(startScore + (targetScore - startScore) * easeOutQuart)
+        creditScore.value = Math.round(startScore + (target - startScore) * easeOutQuart)
 
         if (progress < 1) {
           requestAnimationFrame(animate)
@@ -142,6 +146,13 @@ export default {
       requestAnimationFrame(animate)
     }
 
+    // 监听企业变化，重新播放动画
+    watch(currentEnterprise, () => {
+      setTimeout(() => {
+        animateScore()
+      }, 300)
+    })
+
     onMounted(() => {
       setTimeout(() => {
         animateScore()
@@ -150,7 +161,7 @@ export default {
 
     return {
       creditScore,
-      creditLevel,
+      currentEnterprise,
       circumference,
       strokeDashoffset,
       portraitItems

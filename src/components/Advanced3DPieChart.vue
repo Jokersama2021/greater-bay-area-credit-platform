@@ -247,9 +247,9 @@ onUnmounted(() => {
 <style scoped>
 .advanced-3d-pie-chart {
   width: 100%;
-  height: 300px;
+  height: 220px;
   position: relative;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
 }
 

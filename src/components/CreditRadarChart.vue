@@ -13,8 +13,9 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import * as echarts from 'echarts'
+import { enterpriseDataService } from '../services/enterpriseDataService'
 
 export default {
   name: 'CreditRadarChart',
@@ -23,8 +24,12 @@ export default {
     const animatedScore = ref(0)
     let chart = null
 
+    // 获取当前企业数据
+    const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
+
     const finalScore = computed(() => {
-      const scores = [85, 90, 75, 95, 85]
+      const metrics = currentEnterprise.value.creditMetrics
+      const scores = Object.values(metrics)
       return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
     })
 
@@ -64,7 +69,14 @@ export default {
         { name: '企业规模', max: 100, color: '#FFEAA7' }
       ]
 
-      const data = [85, 85, 95, 75, 90]
+      const metrics = currentEnterprise.value.creditMetrics
+      const data = [
+        metrics.riskControl,
+        metrics.creditHistory,
+        metrics.developmentTrend,
+        metrics.businessStatus,
+        metrics.enterpriseScale
+      ]
 
       const option = {
         backgroundColor: 'transparent',
@@ -260,6 +272,14 @@ export default {
       }
     }
 
+    // 监听企业变化，重新初始化图表
+    watch(currentEnterprise, () => {
+      if (chart) {
+        initChart()
+        animateScore()
+      }
+    })
+
     onMounted(() => {
       initChart()
       animateScore()
@@ -285,8 +305,8 @@ export default {
 .premium-credit-radar {
   position: relative;
   width: 100%;
-  height: 300px;
-  border-radius: 20px;
+  height: 220px;
+  border-radius: 16px;
   overflow: hidden;
   background: linear-gradient(135deg,
     rgba(15, 23, 42, 0.8) 0%,

@@ -201,10 +201,10 @@ onMounted(() => {
 
 .chart {
   flex: 1;
-  min-height: 400px;
+  min-height: 280px;
   background: rgba(255, 255, 255, 0.02);
   border-radius: 8px;
-  padding: 15px;
+  padding: 12px;
 }
 
 .legend-section {

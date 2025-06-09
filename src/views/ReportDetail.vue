@@ -203,7 +203,7 @@ export default {
             sections: [
               {
                 title: '资产评估概述',
-                content: '本次评估采用资产基础法和收益法两种方法，最终选取收益法评估结果作为评估结论。评估基准日为2023年6月30日，企业整体资产评估价值为152.8亿元，较账面净资产增值率为28.4%。'
+                content: '本次评估采用资产基础法和收益法两种方法，最终选取收益法评估结果作为评估结论。评估基准日为2025年6月30日，企业整体资产评估价值为152.8亿元，较账面净资产增值率为28.4%。'
               },
               {
                 title: '固定资产评估',
@@ -381,7 +381,7 @@ export default {
           id: `GBA${10000 + parseInt(id)}`,
           title: reportData.title,
           icon: reportData.icon,
-          generateDate: '2023-11-15',
+          generateDate: '2025-11-15',
           enterpriseName: enterprise.name,
           enterpriseRegion: enterprise.region,
           enterpriseIndustry: enterprise.industry,

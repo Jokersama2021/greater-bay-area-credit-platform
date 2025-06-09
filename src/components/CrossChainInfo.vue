@@ -484,7 +484,7 @@ export default {
         creditStatusText: '信用合格',
         txHash: '841591a8e5bf668a4f7419a2cf9436e4d2ddceb0de1177842eed726d9fe64323',
         blockNumber: 11,
-        timestamp: new Date('2024-01-15 14:30:25')
+        timestamp: new Date('2025-01-15 14:30:25')
       },
       {
         id: '85e6e3a57dbf54fc9954fbb1b2f70e52',
@@ -494,7 +494,7 @@ export default {
         creditStatusText: '信用优秀',
         txHash: '952602b9f6ce779b8f8a5c1e3f4d7a8b9c0e1f2a3b4c5d6e7f8a9b0c1d2e3f4',
         blockNumber: 12,
-        timestamp: new Date('2024-01-15 15:45:10')
+        timestamp: new Date('2025-01-15 15:45:10')
       },
       {
         id: 'a1b2c3d4e5f6789012345678901234ab',
@@ -504,7 +504,7 @@ export default {
         creditStatusText: '信用合格',
         txHash: 'f1e2d3c4b5a6978563214789654123ab987654321fedcba0123456789abcdef',
         blockNumber: 13,
-        timestamp: new Date('2024-01-15 16:20:33')
+        timestamp: new Date('2025-01-15 16:20:33')
       }
     ])
 
@@ -518,7 +518,7 @@ export default {
         creditStatusText: '信用合格',
         txHash: '0x44146b8c7a2d4da8b0377e21b2589f07d61e9ebc5ce6e0e1f21405e792dcd9',
         blockNumber: 10,
-        timestamp: new Date('2024-01-15 14:30:20')
+        timestamp: new Date('2025-01-15 14:30:20')
       },
       {
         id: '96f7h8i9j0k1234567890123456789cd',
@@ -528,7 +528,7 @@ export default {
         creditStatusText: '信用预警',
         txHash: '0x55257c9d8b3e5eb9c1488f32c3690g18e72f0fcd6df7f1f2g32516f803ede0',
         blockNumber: 11,
-        timestamp: new Date('2024-01-15 15:12:45')
+        timestamp: new Date('2025-01-15 15:12:45')
       },
       {
         id: 'ef9g0h1i2j3k456789012345678901de',
@@ -538,7 +538,7 @@ export default {
         creditStatusText: '信用优秀',
         txHash: '0x66368d0e9c4f6fc0d2599g43d4701h29f83g1gde7eg8g2g3h43627g914fef1',
         blockNumber: 12,
-        timestamp: new Date('2024-01-15 16:05:18')
+        timestamp: new Date('2025-01-15 16:05:18')
       }
     ])
 
@@ -787,6 +787,22 @@ export default {
   margin-top: 20px;
 }
 
+/* 超大屏幕以下 - 激进切换为单列 */
+@media (max-width: 1920px) {
+  .chains-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}
+
+/* 大屏幕以下 - 确保单列 */
+@media (max-width: 1600px) {
+  .chains-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
 .chain-section {
   background: rgba(30, 41, 59, 0.4);
   border-radius: 20px;
@@ -1032,13 +1048,14 @@ export default {
   background: rgba(51, 65, 85, 0.3);
   border: 1px solid rgba(71, 85, 105, 0.4);
   border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 12px;
+  padding: 18px;
+  margin-bottom: 16px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  min-height: auto;
 }
 
 .transaction-item::before {
@@ -1077,10 +1094,11 @@ export default {
 .tx-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 12px;
 }
 
 .tx-id {
@@ -1172,39 +1190,22 @@ export default {
 }
 
 .query-info {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .query-action {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-  padding: 10px 14px;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 12px 14px;
   background: rgba(71, 85, 105, 0.2);
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid rgba(100, 116, 139, 0.3);
+  flex-wrap: wrap;
 }
 
-.company-a, .company-b {
-  font-size: 13px;
-  font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-}
 
-.company-a {
-  background: rgba(0, 122, 255, 0.1);
-  color: var(--primary-color);
-  border: 1px solid rgba(0, 122, 255, 0.2);
-}
-
-.company-b {
-  background: rgba(52, 199, 89, 0.1);
-  color: var(--success-color);
-  border: 1px solid rgba(52, 199, 89, 0.2);
-}
 
 .arrow-icon {
   width: 16px;
@@ -1260,7 +1261,9 @@ export default {
 
 .tx-details {
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
 }
 
 .detail-item {
@@ -1600,13 +1603,15 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 8px 12px;
+  padding: 10px 14px;
   background: rgba(71, 85, 105, 0.2);
   border: 1px solid rgba(100, 116, 139, 0.3);
-  border-radius: 8px;
+  border-radius: 10px;
   transition: all 0.3s ease;
-  min-width: 90px;
-  max-width: 110px;
+  min-width: 100px;
+  flex: 1;
+  max-width: 130px;
+  text-align: center;
 }
 
 .company-card:hover {
@@ -1635,19 +1640,20 @@ export default {
 }
 
 .company-name {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
-  line-height: 1.2;
-  max-width: 100px;
+  line-height: 1.3;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal;
-  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .company-role {
@@ -1665,6 +1671,7 @@ export default {
   gap: 4px;
   margin: 0 8px;
   flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
 .arrow-icon {
@@ -2091,15 +2098,23 @@ export default {
   }
 }
 
-/* 十寸屏幕及以下 - 切换为上下布局 */
-@media (max-width: 1024px) {
+/* 中等屏幕 - 确保单列布局 */
+@media (max-width: 1400px) {
   .chains-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 22px;
   }
 
   .chain-section {
     max-width: none;
+  }
+}
+
+/* 小屏幕笔记本 - 优化间距 */
+@media (max-width: 1200px) {
+  .chains-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
@@ -2113,6 +2128,47 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .transaction-item {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .query-action {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .company-card {
+    min-width: auto;
+    max-width: none;
+    width: 100%;
+    flex: none;
+  }
+
+  .arrow-container {
+    transform: rotate(90deg);
+    margin: 4px 0;
+  }
+
+  .tx-details {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .detail-item {
+    padding: 6px 10px;
+  }
+
+  .company-name {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 1;
+  }
+
+  .company-role {
+    font-size: 0.65rem;
   }
 
   .advanced-transaction-modal {
@@ -2143,6 +2199,49 @@ export default {
 
   .header-text h3 {
     font-size: 1.3rem;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .cross-chain-container {
+    padding: 16px;
+  }
+
+  .chain-section {
+    padding: 16px;
+  }
+
+  .transaction-item {
+    padding: 12px;
+  }
+
+  .query-action {
+    padding: 10px;
+  }
+
+  .company-card {
+    padding: 8px 10px;
+    min-width: auto;
+  }
+
+  .company-name {
+    font-size: 0.7rem;
+    line-height: 1.2;
+  }
+
+  .company-role {
+    font-size: 0.6rem;
+  }
+
+  .tx-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .tx-time-container {
+    align-self: flex-end;
   }
 }
 

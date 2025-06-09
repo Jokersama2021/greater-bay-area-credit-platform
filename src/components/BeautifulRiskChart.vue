@@ -8,11 +8,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import * as echarts from 'echarts'
+import { enterpriseDataService } from '../services/enterpriseDataService'
 
 const chartContainer = ref(null)
 let chart = null
+
+// 获取当前企业数据
+const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
 
 const initChart = () => {
   if (!chartContainer.value) return
@@ -99,7 +103,7 @@ const initChart = () => {
       {
         name: '风险预警',
         type: 'bar',
-        data: [72, 23, 33, 48, 66, 23],
+        data: currentEnterprise.value.riskData,
         barWidth: '50%',
         itemStyle: {
           borderRadius: [12, 12, 4, 4],
@@ -133,7 +137,7 @@ const initChart = () => {
       {
         name: '趋势线',
         type: 'line',
-        data: [72, 23, 33, 48, 66, 23],
+        data: currentEnterprise.value.riskData,
         smooth: true,
         symbol: 'circle',
         symbolSize: 8,
@@ -200,6 +204,13 @@ const handleResize = () => {
   }
 }
 
+// 监听企业变化，重新初始化图表
+watch(currentEnterprise, () => {
+  if (chart) {
+    initChart()
+  }
+})
+
 onMounted(() => {
   initChart()
   window.addEventListener('resize', handleResize)
@@ -216,12 +227,12 @@ onUnmounted(() => {
 <style scoped>
 .beautiful-risk-chart {
   width: 100%;
-  height: 220px;
+  height: 160px;
   position: relative;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  background: linear-gradient(135deg, 
-    rgba(255, 107, 107, 0.03) 0%, 
+  background: linear-gradient(135deg,
+    rgba(255, 107, 107, 0.03) 0%,
     rgba(244, 67, 54, 0.02) 50%,
     rgba(211, 47, 47, 0.03) 100%);
   border: 1px solid rgba(255, 107, 107, 0.1);
@@ -274,13 +285,13 @@ onUnmounted(() => {
 /* 响应式设计 */
 @media (max-width: 768px) {
   .beautiful-risk-chart {
-    height: 180px;
+    height: 140px;
   }
 }
 
 @media (max-width: 480px) {
   .beautiful-risk-chart {
-    height: 160px;
+    height: 120px;
   }
 }
 </style>

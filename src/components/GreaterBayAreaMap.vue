@@ -58,17 +58,17 @@ export default {
     const mapRef = ref(null)
     
     const cityData = reactive([
-      { name: '肇庆', value: 142, color: '#2c3e50', colorEnd: '#1e2a36', rank: 9 },
-      { name: '广州', value: 621, color: '#4a1942', colorEnd: '#2d1423', rank: 1 },
-      { name: '惠州', value: 289, color: '#1b3a4b', colorEnd: '#072736', rank: 4 },
-      { name: '佛山', value: 418, color: '#3d2c20', colorEnd: '#241a14', rank: 3 },
-      { name: '东莞', value: 566, color: '#3a3104', colorEnd: '#1e1a02', rank: 2 },
-      { name: '江门', value: 156, color: '#2d2d2d', colorEnd: '#1a1a1a', rank: 8 },
-      { name: '中山', value: 321, color: '#333622', colorEnd: '#1e1f14', rank: 6 },
-      { name: '珠海', value: 184, color: '#432234', colorEnd: '#2c1722', rank: 7 },
-      { name: '深圳', value: 532, color: '#6e1230', colorEnd: '#420a1c', rank: 2 },
-      { name: '香港', value: 787, color: '#133a5e', colorEnd: '#0a2239', rank: 1 },
-      { name: '澳门', value: 103, color: '#133a5e', colorEnd: '#0a2239', rank: 10 }
+      { name: '肇庆', value: 2, color: '#2c3e50', colorEnd: '#1e2a36', rank: 10 },
+      { name: '广州', value: 10, color: '#4a1942', colorEnd: '#2d1423', rank: 1 },
+      { name: '惠州', value: 3, color: '#1b3a4b', colorEnd: '#072736', rank: 7 },
+      { name: '佛山', value: 4, color: '#3d2c20', colorEnd: '#241a14', rank: 5 },
+      { name: '东莞', value: 4, color: '#3a3104', colorEnd: '#1e1a02', rank: 4 },
+      { name: '江门', value: 3, color: '#2d2d2d', colorEnd: '#1a1a1a', rank: 8 },
+      { name: '中山', value: 3, color: '#333622', colorEnd: '#1e1f14', rank: 6 },
+      { name: '珠海', value: 4, color: '#432234', colorEnd: '#2c1722', rank: 3 },
+      { name: '深圳', value: 12, color: '#6e1230', colorEnd: '#420a1c', rank: 1 },
+      { name: '香港', value: 10, color: '#133a5e', colorEnd: '#0a2239', rank: 2 },
+      { name: '澳门', value: 8, color: '#133a5e', colorEnd: '#0a2239', rank: 3 }
     ])
 
     // 排列成完整矩形

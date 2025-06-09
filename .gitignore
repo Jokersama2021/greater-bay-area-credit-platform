@@ -44,5 +44,4 @@ dist-ssr
 *.pyc
 __pycache__/
 
-# Server node_modules
-sever/node_modules/
+
