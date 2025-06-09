@@ -1479,6 +1479,77 @@ export default {
 }
 
 /* 响应式设计更新 */
+
+/* 专门针对 1080p 屏幕优化 (1920x1080) */
+@media (max-width: 1920px) and (min-width: 1800px) {
+  .main-content-grid {
+    grid-template-columns: 420px 900px 420px;
+    grid-template-areas: "left center right";
+    max-width: 1840px;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  .enterprise-display-container {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+
+  .enterprise-display-header {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* 1080p 及稍小屏幕优化 */
+@media (max-width: 1800px) and (min-width: 1600px) {
+  .main-content-grid {
+    grid-template-columns: 380px 800px 380px;
+    grid-template-areas: "left center right";
+    max-width: 1640px;
+    gap: 0.75rem;
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  .enterprise-display-container {
+    padding: 1.25rem;
+    border-radius: 18px;
+  }
+
+  .enterprise-display-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .enterprise-display-title-text {
+    font-size: 1.3rem;
+  }
+
+  .enterprise-display-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  /* 优化卡片间距 */
+  .enterprise-modules {
+    gap: 0.75rem;
+  }
+
+  .sidebar-left, .sidebar-right, .main-section {
+    gap: 0.75rem;
+  }
+
+  /* 优化紧凑卡片 */
+  .compact-chart, .compact-portrait {
+    padding: 0.75rem !important;
+  }
+
+  .enterprise-info-card-wrapper {
+    padding: 0.75rem;
+    border-radius: 14px;
+  }
+}
+
 @media (max-width: 1600px) {
   .main-content-grid {
     grid-template-columns: 450px 450px 450px;
