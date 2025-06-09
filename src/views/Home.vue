@@ -65,29 +65,14 @@
               </div>
             </div>
 
-            <!-- 跨境业务活跃度 -->
-            <div class="animate-slide-in-left" style="animation-delay: 0.15s">
-              <cross-border-activity />
-            </div>
-
             <!-- 发展趋势 -->
-            <div class="animate-slide-in-left" style="animation-delay: 0.2s">
+            <div class="animate-slide-in-left" style="animation-delay: 0.15s">
               <enterprise-trend-chart />
             </div>
 
             <!-- 行业对比 -->
-            <div class="animate-slide-in-left" style="animation-delay: 0.25s">
+            <div class="animate-slide-in-left" style="animation-delay: 0.2s">
               <industry-comparison-radar />
-            </div>
-
-            <!-- 财务健康度 - 压缩版 -->
-            <div class="animate-slide-in-left" style="animation-delay: 0.3s">
-              <financial-health-gauge-compact />
-            </div>
-
-            <!-- 信用画像 - 压缩版 -->
-            <div class="animate-slide-in-left" style="animation-delay: 0.35s">
-              <enterprise-info-card-compact />
             </div>
           </div>
         </div>
@@ -318,8 +303,6 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { enterpriseDataService } from '../services/enterpriseDataService'
 import CreditRadarChart from '../components/CreditRadarChart.vue'
-import FinancialHealthGaugeCompact from '../components/FinancialHealthGaugeCompact.vue'
-import EnterpriseInfoCardCompact from '../components/EnterpriseInfoCardCompact.vue'
 import ReportList from '../components/ReportList.vue'
 import ProductGrid from '../components/ProductGrid.vue'
 import ServiceRecords from '../components/ServiceRecords.vue'
@@ -335,7 +318,6 @@ import BeautifulRiskChart from '../components/BeautifulRiskChart.vue'
 import EnterpriseSelector from '../components/EnterpriseSelector.vue'
 import EnterpriseInfoCard from '../components/EnterpriseInfoCard.vue'
 import FinancialHealthGauge from '../components/FinancialHealthGauge.vue'
-import CrossBorderActivity from '../components/CrossBorderActivity.vue'
 import EnterpriseTrendChart from '../components/EnterpriseTrendChart.vue'
 import IndustryComparisonRadar from '../components/IndustryComparisonRadar.vue'
 
@@ -343,8 +325,6 @@ export default {
   name: 'Home',
   components: {
     CreditRadarChart,
-    FinancialHealthGaugeCompact,
-    EnterpriseInfoCardCompact,
     ReportList,
     ProductGrid,
     ServiceRecords,
@@ -360,7 +340,6 @@ export default {
     EnterpriseSelector,
     EnterpriseInfoCard,
     FinancialHealthGauge,
-    CrossBorderActivity,
     EnterpriseTrendChart,
     IndustryComparisonRadar
   },

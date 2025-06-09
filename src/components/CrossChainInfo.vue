@@ -787,16 +787,76 @@ export default {
   margin-top: 20px;
 }
 
-/* 超大屏幕以下 - 激进切换为单列 */
-@media (max-width: 1920px) {
+/* 专门针对1080p屏幕优化 - 保持双栏 */
+@media (max-width: 1920px) and (min-width: 1400px) {
   .chains-grid {
-    grid-template-columns: 1fr;
-    gap: 26px;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .cross-chain-container {
+    padding: 24px;
+  }
+
+  .chain-section {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .chain-title {
+    margin-bottom: 16px;
+  }
+
+  .transaction-item {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+  }
+
+  .query-action {
+    padding: 8px 10px;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .company-card {
+    padding: 4px 8px;
+    max-width: 85px;
+    min-width: 70px;
+  }
+
+  .company-name {
+    font-size: 0.7rem;
+    line-height: 1.1;
+  }
+
+  .company-role {
+    font-size: 0.6rem;
+  }
+
+  .tx-header {
+    margin-bottom: 8px;
+  }
+
+  .tx-id {
+    font-size: 0.7rem;
+  }
+
+  .tx-time {
+    font-size: 0.75rem;
+  }
+
+  .chain-metrics {
+    gap: 12px;
+  }
+
+  .metric-item {
+    font-size: 0.8rem;
   }
 }
 
-/* 大屏幕以下 - 确保单列 */
-@media (max-width: 1600px) {
+/* 中等屏幕 - 切换为单列 */
+@media (max-width: 1400px) {
   .chains-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -1196,13 +1256,13 @@ export default {
 .query-action {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  padding: 12px 14px;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
   background: rgba(71, 85, 105, 0.2);
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid rgba(100, 116, 139, 0.3);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 
@@ -1602,15 +1662,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 10px 14px;
+  gap: 3px;
+  padding: 6px 10px;
   background: rgba(71, 85, 105, 0.2);
   border: 1px solid rgba(100, 116, 139, 0.3);
-  border-radius: 10px;
+  border-radius: 8px;
   transition: all 0.3s ease;
-  min-width: 100px;
+  min-width: 80px;
   flex: 1;
-  max-width: 130px;
+  max-width: 110px;
   text-align: center;
 }
 
@@ -1640,11 +1700,11 @@ export default {
 }
 
 .company-name {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.2;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1657,19 +1717,19 @@ export default {
 }
 
 .company-role {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.6);
   text-align: center;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .arrow-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  margin: 0 8px;
+  gap: 2px;
+  margin: 0 4px;
   flex-shrink: 0;
   transition: all 0.3s ease;
 }
