@@ -85,8 +85,8 @@ export default {
         backgroundColor: 'transparent',
         radar: {
           indicator: indicators,
-          center: ['50%', '55%'],
-          radius: '70%',
+          center: ['50%', '50%'],
+          radius: '65%',
           startAngle: 90,
           axisName: {
             color: 'rgba(255, 255, 255, 0.9)',
@@ -354,8 +354,9 @@ export default {
 }
 
 .chart-container {
-  height: 140px;
+  height: 160px;
   margin-bottom: 0.5rem;
+  overflow: visible;
 }
 
 .comparison-legend {

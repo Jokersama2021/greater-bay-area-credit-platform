@@ -302,6 +302,10 @@ export default {
   gap: 0.5rem;
   font-size: 0.8rem;
   font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .status-indicator {

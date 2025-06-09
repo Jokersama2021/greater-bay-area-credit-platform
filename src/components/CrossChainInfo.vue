@@ -769,6 +769,8 @@ export default {
   font-weight: 500;
   color: #34C759;
   backdrop-filter: blur(10px);
+  white-space: nowrap;
+  min-width: fit-content;
 }
 
 .sync-dot {
