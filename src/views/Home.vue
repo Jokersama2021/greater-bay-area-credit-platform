@@ -65,13 +65,18 @@
               </div>
             </div>
 
-            <!-- 发展趋势 -->
+            <!-- 跨境业务活跃度 -->
             <div class="animate-slide-in-left" style="animation-delay: 0.15s">
+              <cross-border-activity />
+            </div>
+
+            <!-- 发展趋势 -->
+            <div class="animate-slide-in-left" style="animation-delay: 0.2s">
               <enterprise-trend-chart />
             </div>
 
             <!-- 行业对比 -->
-            <div class="animate-slide-in-left" style="animation-delay: 0.2s">
+            <div class="animate-slide-in-left" style="animation-delay: 0.25s">
               <industry-comparison-radar />
             </div>
           </div>
@@ -318,6 +323,7 @@ import BeautifulRiskChart from '../components/BeautifulRiskChart.vue'
 import EnterpriseSelector from '../components/EnterpriseSelector.vue'
 import EnterpriseInfoCard from '../components/EnterpriseInfoCard.vue'
 import FinancialHealthGauge from '../components/FinancialHealthGauge.vue'
+import CrossBorderActivity from '../components/CrossBorderActivity.vue'
 import EnterpriseTrendChart from '../components/EnterpriseTrendChart.vue'
 import IndustryComparisonRadar from '../components/IndustryComparisonRadar.vue'
 
@@ -340,6 +346,7 @@ export default {
     EnterpriseSelector,
     EnterpriseInfoCard,
     FinancialHealthGauge,
+    CrossBorderActivity,
     EnterpriseTrendChart,
     IndustryComparisonRadar
   },

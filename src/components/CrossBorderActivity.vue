@@ -20,49 +20,6 @@
     </div>
 
     <div class="activity-chart" ref="chartRef"></div>
-
-    <div class="activity-metrics">
-      <div class="metric-row">
-        <div class="metric-item">
-          <div class="metric-icon trade">
-            <i class="fas fa-exchange-alt"></i>
-          </div>
-          <div class="metric-info">
-            <div class="metric-value">{{ tradeVolume }}</div>
-            <div class="metric-label">月交易量</div>
-          </div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-icon partners">
-            <i class="fas fa-handshake"></i>
-          </div>
-          <div class="metric-info">
-            <div class="metric-value">{{ partnerCount }}</div>
-            <div class="metric-label">合作伙伴</div>
-          </div>
-        </div>
-      </div>
-      <div class="metric-row">
-        <div class="metric-item">
-          <div class="metric-icon regions">
-            <i class="fas fa-globe-americas"></i>
-          </div>
-          <div class="metric-info">
-            <div class="metric-value">{{ regionCount }}</div>
-            <div class="metric-label">覆盖地区</div>
-          </div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-icon growth">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <div class="metric-info">
-            <div class="metric-value">+{{ growthRate }}%</div>
-            <div class="metric-label">增长率</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -97,10 +54,7 @@ export default {
       }
     })
 
-    const tradeVolume = computed(() => businessData.value.tradeVolume)
-    const partnerCount = computed(() => businessData.value.partnerCount)
-    const regionCount = computed(() => businessData.value.regionCount)
-    const growthRate = computed(() => businessData.value.growthRate)
+
 
     const getActivityClass = (activity) => {
       const classes = {
@@ -235,10 +189,6 @@ export default {
     return {
       chartRef,
       currentEnterprise,
-      tradeVolume,
-      partnerCount,
-      regionCount,
-      growthRate,
       getActivityClass
     }
   }
@@ -344,67 +294,6 @@ export default {
 }
 
 .activity-chart {
-  height: 120px;
-  margin-bottom: 1.5rem;
-}
-
-.activity-metrics {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.metric-row {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.metric-item {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
-}
-
-.metric-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-1px);
-}
-
-.metric-icon {
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 0.8rem;
-}
-
-.metric-icon.trade { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-.metric-icon.partners { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-.metric-icon.regions { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-.metric-icon.growth { background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%); }
-
-.metric-info {
-  flex: 1;
-}
-
-.metric-value {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 0.125rem;
-}
-
-.metric-label {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.6);
+  height: 180px;
 }
 </style>
