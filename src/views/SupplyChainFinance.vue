@@ -84,7 +84,7 @@
         </div>
       </div>
 
-      <!-- 产品优势 */
+      <!-- 产品优势 -->
       <div class="advantages-section">
         <h2 class="section-title">产品优势</h2>
         <div class="advantages-grid">
@@ -135,7 +135,7 @@
         </div>
       </div>
 
-      <!-- 风控体系 */
+      <!-- 风控体系 -->
       <div class="risk-control-section">
         <h2 class="section-title">风控体系</h2>
         <div class="risk-system">
@@ -157,7 +157,7 @@
         </div>
       </div>
 
-      <!-- 操作按钮 */
+      <!-- 操作按钮 -->
       <div class="action-section">
         <button class="primary-btn" @click="startApplication">
           <i class="fas fa-handshake"></i>
