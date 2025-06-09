@@ -79,25 +79,31 @@ export default {
         return Math.round(baseValue * (1 + variation))
       })
 
+      // 创建流动波浪效果的数据
+      const waveData = months.map((_, index) => {
+        return activityData[index] + Math.sin(index * 0.8) * 15
+      })
+
       const option = {
+        backgroundColor: 'transparent',
         grid: {
-          top: 20,
-          left: 10,
-          right: 10,
-          bottom: 20,
+          top: 30,
+          left: 15,
+          right: 15,
+          bottom: 25,
           containLabel: true
         },
         xAxis: {
           type: 'category',
           data: months,
           axisLine: {
-            lineStyle: {
-              color: 'rgba(255, 255, 255, 0.2)'
-            }
+            show: false
           },
           axisLabel: {
-            color: 'rgba(255, 255, 255, 0.7)',
-            fontSize: 10
+            color: 'rgba(255, 255, 255, 0.8)',
+            fontSize: 11,
+            fontWeight: 500,
+            margin: 12
           },
           axisTick: {
             show: false
@@ -105,56 +111,105 @@ export default {
         },
         yAxis: {
           type: 'value',
-          axisLine: {
-            show: false
-          },
-          axisLabel: {
-            color: 'rgba(255, 255, 255, 0.7)',
-            fontSize: 10
-          },
-          splitLine: {
-            lineStyle: {
-              color: 'rgba(255, 255, 255, 0.1)',
-              type: 'dashed'
-            }
-          }
+          show: false
         },
         series: [
+          // 背景波浪层
           {
             type: 'line',
-            data: activityData,
-            smooth: true,
-            symbol: 'circle',
-            symbolSize: 6,
+            data: waveData,
+            smooth: 0.6,
+            symbol: 'none',
             lineStyle: {
-              color: '#00D4FF',
-              width: 3,
-              shadowColor: 'rgba(0, 212, 255, 0.4)',
-              shadowBlur: 10
-            },
-            itemStyle: {
-              color: '#00D4FF',
-              borderColor: '#ffffff',
-              borderWidth: 2,
-              shadowColor: 'rgba(0, 212, 255, 0.6)',
-              shadowBlur: 8
+              color: 'rgba(0, 212, 255, 0.2)',
+              width: 2
             },
             areaStyle: {
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: 'rgba(0, 212, 255, 0.3)' },
-                { offset: 1, color: 'rgba(0, 212, 255, 0.05)' }
+                { offset: 0, color: 'rgba(0, 212, 255, 0.15)' },
+                { offset: 0.5, color: 'rgba(0, 212, 255, 0.08)' },
+                { offset: 1, color: 'rgba(0, 212, 255, 0.02)' }
               ])
             },
-            animationDuration: 2000,
-            animationEasing: 'cubicOut'
+            z: 1
+          },
+          // 主数据流
+          {
+            type: 'line',
+            data: activityData,
+            smooth: 0.4,
+            symbol: 'circle',
+            symbolSize: 8,
+            lineStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                { offset: 0, color: '#00D4FF' },
+                { offset: 0.5, color: '#0099FF' },
+                { offset: 1, color: '#0066CC' }
+              ]),
+              width: 4,
+              shadowColor: 'rgba(0, 212, 255, 0.6)',
+              shadowBlur: 15,
+              shadowOffsetY: 3
+            },
+            itemStyle: {
+              color: new echarts.graphic.RadialGradient(0.5, 0.5, 0.8, [
+                { offset: 0, color: '#FFFFFF' },
+                { offset: 0.4, color: '#00D4FF' },
+                { offset: 1, color: '#0066CC' }
+              ]),
+              borderColor: 'rgba(255, 255, 255, 0.8)',
+              borderWidth: 2,
+              shadowColor: 'rgba(0, 212, 255, 0.8)',
+              shadowBlur: 12
+            },
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: 'rgba(0, 212, 255, 0.4)' },
+                { offset: 0.3, color: 'rgba(0, 212, 255, 0.2)' },
+                { offset: 0.7, color: 'rgba(0, 212, 255, 0.1)' },
+                { offset: 1, color: 'rgba(0, 212, 255, 0.02)' }
+              ])
+            },
+            animationDuration: 3000,
+            animationEasing: 'elasticOut',
+            z: 2
+          },
+          // 流动粒子效果
+          {
+            type: 'effectScatter',
+            data: activityData.map((value, index) => [index, value]),
+            symbolSize: (val) => Math.max(4, val[1] / 50),
+            rippleEffect: {
+              brushType: 'stroke',
+              scale: 3,
+              period: 2
+            },
+            itemStyle: {
+              color: 'rgba(0, 212, 255, 0.8)',
+              shadowBlur: 10,
+              shadowColor: 'rgba(0, 212, 255, 0.6)'
+            },
+            z: 3
           }
         ],
         tooltip: {
           trigger: 'axis',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(255, 255, 255, 0.2)',
+          backgroundColor: 'rgba(15, 23, 42, 0.95)',
+          borderColor: 'rgba(0, 212, 255, 0.5)',
+          borderWidth: 1,
           textStyle: {
-            color: '#ffffff'
+            color: '#ffffff',
+            fontSize: 12
+          },
+          formatter: (params) => {
+            const month = params[0].axisValue
+            const value = params[1].value
+            return `
+              <div style="padding: 8px;">
+                <div style="color: #00D4FF; font-weight: 600; margin-bottom: 4px;">${month}</div>
+                <div style="color: #ffffff;">活跃度: ${value}</div>
+              </div>
+            `
           }
         }
       }

@@ -71,11 +71,12 @@ export default {
       const { years, creditScores, businessVolumes } = generateTrendData()
 
       const option = {
+        backgroundColor: 'transparent',
         grid: {
-          top: 20,
-          left: 30,
-          right: 30,
-          bottom: 30,
+          top: 35,
+          left: 25,
+          right: 25,
+          bottom: 35,
           containLabel: true
         },
         xAxis: {
@@ -83,12 +84,15 @@ export default {
           data: years,
           axisLine: {
             lineStyle: {
-              color: 'rgba(255, 255, 255, 0.2)'
+              color: 'rgba(255, 255, 255, 0.3)',
+              width: 2
             }
           },
           axisLabel: {
-            color: 'rgba(255, 255, 255, 0.7)',
-            fontSize: 10
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontSize: 11,
+            fontWeight: 600,
+            margin: 15
           },
           axisTick: {
             show: false
@@ -99,9 +103,11 @@ export default {
             type: 'value',
             name: '信用评分',
             nameTextStyle: {
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: 10
+              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: 10,
+              fontWeight: 500
             },
+            position: 'left',
             axisLine: {
               show: false
             },
@@ -111,8 +117,8 @@ export default {
             },
             splitLine: {
               lineStyle: {
-                color: 'rgba(255, 255, 255, 0.1)',
-                type: 'dashed'
+                color: 'rgba(255, 255, 255, 0.08)',
+                type: 'solid'
               }
             }
           },
@@ -120,9 +126,11 @@ export default {
             type: 'value',
             name: '业务量',
             nameTextStyle: {
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: 10
+              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: 10,
+              fontWeight: 500
             },
+            position: 'right',
             axisLine: {
               show: false
             },
@@ -136,64 +144,125 @@ export default {
           }
         ],
         series: [
-          {
-            name: '信用评分',
-            type: 'line',
-            yAxisIndex: 0,
-            data: creditScores,
-            smooth: true,
-            symbol: 'circle',
-            symbolSize: 6,
-            lineStyle: {
-              color: '#00D4FF',
-              width: 3,
-              shadowColor: 'rgba(0, 212, 255, 0.4)',
-              shadowBlur: 10
-            },
-            itemStyle: {
-              color: '#00D4FF',
-              borderColor: '#ffffff',
-              borderWidth: 2
-            },
-            areaStyle: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: 'rgba(0, 212, 255, 0.3)' },
-                { offset: 1, color: 'rgba(0, 212, 255, 0.05)' }
-              ])
-            }
-          },
+          // 3D柱状图效果
           {
             name: '业务量',
             type: 'bar',
             yAxisIndex: 1,
             data: businessVolumes,
-            barWidth: '40%',
             itemStyle: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: '#4CAF50' },
-                { offset: 1, color: '#81C784' }
+              color: (params) => {
+                return new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: '#667eea' },
+                  { offset: 0.5, color: '#764ba2' },
+                  { offset: 1, color: '#4a5568' }
+                ])
+              },
+              borderRadius: [6, 6, 0, 0],
+              shadowColor: 'rgba(102, 126, 234, 0.6)',
+              shadowBlur: 15,
+              shadowOffsetY: 8,
+              borderColor: 'rgba(255, 255, 255, 0.2)',
+              borderWidth: 1
+            },
+            barWidth: '45%',
+            animationDuration: 2000,
+            animationEasing: 'bounceOut',
+            z: 1
+          },
+          // 流畅曲线
+          {
+            name: '信用评分',
+            type: 'line',
+            yAxisIndex: 0,
+            data: creditScores,
+            smooth: 0.6,
+            symbol: 'diamond',
+            symbolSize: 10,
+            lineStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                { offset: 0, color: '#4ECDC4' },
+                { offset: 0.5, color: '#44A08D' },
+                { offset: 1, color: '#093637' }
               ]),
-              borderRadius: [4, 4, 0, 0]
-            }
+              width: 4,
+              shadowColor: 'rgba(78, 205, 196, 0.8)',
+              shadowBlur: 20,
+              shadowOffsetY: 5
+            },
+            itemStyle: {
+              color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                { offset: 0, color: '#FFFFFF' },
+                { offset: 0.3, color: '#4ECDC4' },
+                { offset: 1, color: '#44A08D' }
+              ]),
+              borderColor: 'rgba(255, 255, 255, 0.9)',
+              borderWidth: 3,
+              shadowColor: 'rgba(78, 205, 196, 0.9)',
+              shadowBlur: 15
+            },
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: 'rgba(78, 205, 196, 0.4)' },
+                { offset: 0.3, color: 'rgba(78, 205, 196, 0.2)' },
+                { offset: 0.7, color: 'rgba(78, 205, 196, 0.1)' },
+                { offset: 1, color: 'rgba(78, 205, 196, 0.02)' }
+              ])
+            },
+            animationDuration: 3000,
+            animationEasing: 'elasticOut',
+            z: 2
+          },
+          // 动态粒子效果
+          {
+            type: 'effectScatter',
+            coordinateSystem: 'cartesian2d',
+            data: creditScores.map((score, index) => [years[index], score]),
+            symbolSize: 6,
+            rippleEffect: {
+              brushType: 'stroke',
+              scale: 2.5,
+              period: 3
+            },
+            itemStyle: {
+              color: 'rgba(78, 205, 196, 0.8)',
+              shadowBlur: 10,
+              shadowColor: 'rgba(78, 205, 196, 0.6)'
+            },
+            z: 3
           }
         ],
         tooltip: {
           trigger: 'axis',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(255, 255, 255, 0.2)',
+          backgroundColor: 'rgba(15, 23, 42, 0.95)',
+          borderColor: 'rgba(78, 205, 196, 0.5)',
+          borderWidth: 2,
           textStyle: {
             color: '#ffffff',
             fontSize: 12
+          },
+          formatter: (params) => {
+            const year = params[0].axisValue
+            let content = `<div style="padding: 10px;"><div style="color: #4ECDC4; font-weight: 600; margin-bottom: 8px;">${year}年</div>`
+            params.forEach(param => {
+              if (param.seriesName !== '动态粒子效果') {
+                content += `<div style="margin: 4px 0;"><span style="color: ${param.color};">●</span> ${param.seriesName}: ${param.value}</div>`
+              }
+            })
+            content += '</div>'
+            return content
           }
         },
         legend: {
           data: ['信用评分', '业务量'],
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.8)',
-            fontSize: 10
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontSize: 11,
+            fontWeight: 500
           },
-          top: 0,
-          right: 0
+          top: 5,
+          right: 10,
+          itemGap: 15
         }
       }
 

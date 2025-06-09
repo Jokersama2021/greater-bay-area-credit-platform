@@ -82,92 +82,193 @@ export default {
       ]
 
       const option = {
+        backgroundColor: 'transparent',
         radar: {
           indicator: indicators,
-          center: ['50%', '50%'],
+          center: ['50%', '55%'],
           radius: '70%',
+          startAngle: 90,
           axisName: {
-            color: 'rgba(255, 255, 255, 0.8)',
-            fontSize: 10
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontSize: 11,
+            fontWeight: 600,
+            padding: [5, 8],
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            borderRadius: 8,
+            borderColor: 'rgba(255, 255, 255, 0.2)',
+            borderWidth: 1
+          },
+          splitArea: {
+            areaStyle: {
+              color: [
+                'rgba(255, 255, 255, 0.01)',
+                'rgba(255, 255, 255, 0.03)',
+                'rgba(255, 255, 255, 0.05)',
+                'rgba(255, 255, 255, 0.03)',
+                'rgba(255, 255, 255, 0.01)'
+              ]
+            }
           },
           axisLine: {
             lineStyle: {
-              color: 'rgba(255, 255, 255, 0.2)'
+              color: 'rgba(255, 255, 255, 0.3)',
+              width: 2
             }
           },
           splitLine: {
             lineStyle: {
-              color: 'rgba(255, 255, 255, 0.1)',
+              color: 'rgba(255, 255, 255, 0.15)',
               width: 1,
-              type: 'dashed'
-            }
-          },
-          splitArea: {
-            show: true,
-            areaStyle: {
-              color: [
-                'rgba(255, 255, 255, 0.02)',
-                'rgba(255, 255, 255, 0.04)',
-                'rgba(255, 255, 255, 0.06)'
-              ]
+              type: 'solid'
             }
           }
         },
         series: [
+          // 背景光晕效果
+          {
+            type: 'radar',
+            data: [
+              {
+                value: currentData.map(v => v * 1.1),
+                areaStyle: {
+                  color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                    { offset: 0, color: 'rgba(0, 212, 255, 0.1)' },
+                    { offset: 1, color: 'rgba(0, 212, 255, 0.02)' }
+                  ])
+                },
+                lineStyle: {
+                  color: 'transparent'
+                },
+                itemStyle: {
+                  color: 'transparent'
+                }
+              }
+            ],
+            z: 1
+          },
+          // 主数据层
           {
             type: 'radar',
             data: [
               {
                 value: currentData,
                 name: '当前企业',
-                symbol: 'circle',
-                symbolSize: 6,
+                areaStyle: {
+                  color: new echarts.graphic.RadialGradient(0.5, 0.5, 0.8, [
+                    { offset: 0, color: 'rgba(0, 212, 255, 0.4)' },
+                    { offset: 0.5, color: 'rgba(0, 212, 255, 0.2)' },
+                    { offset: 1, color: 'rgba(0, 212, 255, 0.05)' }
+                  ])
+                },
                 lineStyle: {
-                  width: 3,
-                  color: '#00D4FF',
-                  shadowColor: 'rgba(0, 212, 255, 0.4)',
-                  shadowBlur: 10
+                  color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [
+                    { offset: 0, color: '#00D4FF' },
+                    { offset: 0.5, color: '#0099FF' },
+                    { offset: 1, color: '#0066CC' }
+                  ]),
+                  width: 4,
+                  shadowColor: 'rgba(0, 212, 255, 0.8)',
+                  shadowBlur: 15
                 },
                 itemStyle: {
-                  color: '#00D4FF',
-                  borderColor: '#ffffff',
-                  borderWidth: 2
+                  color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                    { offset: 0, color: '#FFFFFF' },
+                    { offset: 0.4, color: '#00D4FF' },
+                    { offset: 1, color: '#0066CC' }
+                  ]),
+                  borderColor: 'rgba(255, 255, 255, 0.9)',
+                  borderWidth: 3,
+                  shadowColor: 'rgba(0, 212, 255, 0.9)',
+                  shadowBlur: 12
                 },
-                areaStyle: {
-                  color: 'rgba(0, 212, 255, 0.2)'
-                }
+                symbol: 'circle',
+                symbolSize: 8
               },
               {
                 value: industryAverage,
                 name: '行业平均',
-                symbol: 'circle',
-                symbolSize: 4,
+                areaStyle: {
+                  color: new echarts.graphic.RadialGradient(0.5, 0.5, 0.8, [
+                    { offset: 0, color: 'rgba(255, 152, 0, 0.3)' },
+                    { offset: 0.5, color: 'rgba(255, 152, 0, 0.15)' },
+                    { offset: 1, color: 'rgba(255, 152, 0, 0.03)' }
+                  ])
+                },
                 lineStyle: {
-                  width: 2,
-                  color: '#FF9800',
-                  type: 'dashed'
+                  color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [
+                    { offset: 0, color: '#FF9800' },
+                    { offset: 0.5, color: '#FF7043' },
+                    { offset: 1, color: '#E65100' }
+                  ]),
+                  width: 3,
+                  type: [5, 5],
+                  shadowColor: 'rgba(255, 152, 0, 0.6)',
+                  shadowBlur: 10
                 },
                 itemStyle: {
-                  color: '#FF9800',
-                  borderColor: '#ffffff',
-                  borderWidth: 1
+                  color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                    { offset: 0, color: '#FFFFFF' },
+                    { offset: 0.4, color: '#FF9800' },
+                    { offset: 1, color: '#E65100' }
+                  ]),
+                  borderColor: 'rgba(255, 255, 255, 0.8)',
+                  borderWidth: 2,
+                  shadowColor: 'rgba(255, 152, 0, 0.8)',
+                  shadowBlur: 10
                 },
-                areaStyle: {
-                  color: 'rgba(255, 152, 0, 0.1)'
-                }
+                symbol: 'diamond',
+                symbolSize: 6
               }
             ],
-            animationDuration: 2000,
-            animationEasing: 'elasticOut'
+            animationDuration: 2500,
+            animationEasing: 'elasticOut',
+            z: 2
+          },
+          // 动态粒子效果
+          {
+            type: 'effectScatter',
+            coordinateSystem: 'radar',
+            data: currentData.map((value, index) => {
+              const angle = (index * 72 - 90) * Math.PI / 180
+              const radius = value * 0.7 / 100
+              return [radius * Math.cos(angle), radius * Math.sin(angle)]
+            }),
+            symbolSize: 4,
+            rippleEffect: {
+              brushType: 'stroke',
+              scale: 2,
+              period: 4
+            },
+            itemStyle: {
+              color: 'rgba(0, 212, 255, 0.8)',
+              shadowBlur: 8,
+              shadowColor: 'rgba(0, 212, 255, 0.6)'
+            },
+            z: 3
           }
         ],
         tooltip: {
           trigger: 'item',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(255, 255, 255, 0.2)',
+          backgroundColor: 'rgba(15, 23, 42, 0.95)',
+          borderColor: 'rgba(0, 212, 255, 0.5)',
+          borderWidth: 2,
           textStyle: {
             color: '#ffffff',
             fontSize: 12
+          },
+          formatter: (params) => {
+            if (params.seriesType === 'radar') {
+              const name = params.name
+              const data = params.value
+              const indicators = ['风险控制', '信用历史', '发展趋势', '经营状况', '企业规模']
+              let content = `<div style="padding: 10px;"><div style="color: ${params.color}; font-weight: 600; margin-bottom: 8px;">${name}</div>`
+              data.forEach((value, index) => {
+                content += `<div style="margin: 4px 0;">${indicators[index]}: ${value}</div>`
+              })
+              content += '</div>'
+              return content
+            }
+            return ''
           }
         }
       }
