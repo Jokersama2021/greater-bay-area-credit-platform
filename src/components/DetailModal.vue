@@ -203,7 +203,7 @@ export default {
   gap: 12px;
 }
 
-/* 动画效果 */
+/* 動画效果 */
 .modal-enter-active,
 .modal-leave-active {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -224,7 +224,7 @@ export default {
   transform: scale(1) translateY(0);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .modal-overlay {
     padding: 16px;

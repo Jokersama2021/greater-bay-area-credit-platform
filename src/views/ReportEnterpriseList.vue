@@ -2,11 +2,11 @@
   <div class="enterprise-list-container">
     <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <div class="loading-text">加载企业列表中...</div>
+      <div class="loading-text">加載企業列表中...</div>
     </div>
     
     <div v-else class="content">
-      <!-- 页面头部 -->
+      <!-- 頁面頭部 -->
       <div class="page-header animate-fade-in-up" style="animation-delay: 0.1s">
         <div class="header-content">
           <div class="header-icon animate-bounce-in" style="animation-delay: 0.2s">
@@ -14,22 +14,22 @@
           </div>
           <div class="header-info animate-slide-in-left" style="animation-delay: 0.3s">
             <h1 class="page-title">{{ reportTypeName }}</h1>
-            <p class="page-subtitle">选择企业查看详细报告</p>
+            <p class="page-subtitle">選择企業查看詳細報告</p>
           </div>
           <div class="header-stats animate-slide-in-right" style="animation-delay: 0.4s">
             <div class="stat-item">
               <div class="stat-value">{{ enterprises.length }}</div>
-              <div class="stat-label">企业总数</div>
+              <div class="stat-label">企業總數</div>
             </div>
             <div class="stat-item">
               <div class="stat-value">{{ onlineCount }}</div>
-              <div class="stat-label">在线企业</div>
+              <div class="stat-label">在線企業</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 搜索和筛选 -->
+      <!-- 搜索和篩選 -->
       <div class="search-filter-section animate-fade-in-up" style="animation-delay: 0.5s">
         <div class="search-box">
           <div class="search-input-wrapper">
@@ -37,7 +37,7 @@
             <input
               v-model="searchQuery"
               type="text"
-              placeholder="搜索企业名称、统一社会信用代码..."
+              placeholder="搜索企業名称、統一社會信用代碼..."
               class="search-input"
             />
             <button v-if="searchQuery" @click="clearSearch" class="clear-btn">
@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <!-- 企业列表 -->
+      <!-- 企業列表 -->
       <div class="enterprises-grid">
         <div
           v-for="(enterprise, index) in filteredEnterprises"
@@ -101,13 +101,13 @@
 
           <div class="enterprise-metrics">
             <div class="metric-item">
-              <span class="metric-label">信用等级</span>
+              <span class="metric-label">信用等級</span>
               <span class="metric-value" :class="enterprise.creditLevel.toLowerCase()">
                 {{ enterprise.creditLevel }}
               </span>
             </div>
             <div class="metric-item">
-              <span class="metric-label">注册资本</span>
+              <span class="metric-label">注册資本</span>
               <span class="metric-value">{{ enterprise.registeredCapital }}</span>
             </div>
           </div>
@@ -115,11 +115,11 @@
           <div class="enterprise-actions">
             <button class="action-btn primary" @click.stop="viewReport(enterprise)">
               <i class="fas fa-file-alt"></i>
-              查看报告
+              查看報告
             </button>
             <button class="action-btn secondary" @click.stop="viewDetails(enterprise)">
               <i class="fas fa-info-circle"></i>
-              详细信息
+              詳細信息
             </button>
           </div>
         </div>
@@ -142,38 +142,38 @@ export default {
     const searchQuery = ref('')
     const activeFilter = ref('all')
     
-    // 根据路由参数确定报告类型
+    // 根據路由参數确定報告类型
     const reportTypes = {
       'enterprise-credit': {
-        name: '企业资信报告',
+        name: '企業資信報告',
         icon: 'fas fa-building'
       },
       'asset-evaluation': {
-        name: '资产评估报告',
+        name: '資產評估報告',
         icon: 'fas fa-chart-line'
       },
       'enterprise-rating': {
-        name: '企业评分报告',
+        name: '企業評分報告',
         icon: 'fas fa-star'
       },
       'risk-warning': {
-        name: '风控预警报告',
+        name: '風控预警報告',
         icon: 'fas fa-exclamation-triangle'
       }
     }
     
     const reportType = computed(() => route.params.type || 'enterprise-credit')
-    const reportTypeName = computed(() => reportTypes[reportType.value]?.name || '企业报告')
+    const reportTypeName = computed(() => reportTypes[reportType.value]?.name || '企業報告')
     const reportTypeIcon = computed(() => reportTypes[reportType.value]?.icon || 'fas fa-building')
     
-    // 模拟企业数据
+    // 模拟企業數據
     const enterprises = ref([
       {
         id: 1,
-        name: '腾讯控股有限公司',
+        name: '騰訊控股有限公司',
         creditCode: '91440300279467019E',
-        location: '深圳市南山区',
-        industry: '互联网科技',
+        location: '深圳市南山區',
+        industry: '互聯網科技',
         establishedYear: '1998',
         creditLevel: 'AAA',
         registeredCapital: '25.6亿港元',
@@ -184,8 +184,8 @@ export default {
         id: 2,
         name: '比亚迪股份有限公司',
         creditCode: '91440300192317458Y',
-        location: '深圳市坪山区',
-        industry: '新能源汽车',
+        location: '深圳市坪山區',
+        industry: '新能源汽車',
         establishedYear: '1995',
         creditLevel: 'AA',
         registeredCapital: '29.4亿元',
@@ -194,10 +194,10 @@ export default {
       },
       {
         id: 3,
-        name: '华为技术有限公司',
+        name: '華為技术有限公司',
         creditCode: '91440300618057294B',
-        location: '深圳市龙岗区',
-        industry: '通信设备',
+        location: '深圳市龍岗區',
+        industry: '通信设備',
         establishedYear: '1987',
         creditLevel: 'AAA',
         registeredCapital: '403.1亿元',
@@ -206,10 +206,10 @@ export default {
       },
       {
         id: 4,
-        name: '招商银行股份有限公司',
+        name: '招商銀行股份有限公司',
         creditCode: '91440300100011047G',
-        location: '深圳市福田区',
-        industry: '银行业',
+        location: '深圳市福田區',
+        industry: '銀行業',
         establishedYear: '1987',
         creditLevel: 'AAA',
         registeredCapital: '252.2亿元',
@@ -218,10 +218,10 @@ export default {
       },
       {
         id: 5,
-        name: '万科企业股份有限公司',
+        name: '万科企業股份有限公司',
         creditCode: '91440300192317458A',
-        location: '深圳市盐田区',
-        industry: '房地产',
+        location: '深圳市盐田區',
+        industry: '房地產',
         establishedYear: '1984',
         creditLevel: 'AA',
         registeredCapital: '110.9亿元',
@@ -230,10 +230,10 @@ export default {
       },
       {
         id: 6,
-        name: '平安保险(集团)股份有限公司',
+        name: '平安保險(集团)股份有限公司',
         creditCode: '91440300100011047H',
-        location: '深圳市福田区',
-        industry: '保险业',
+        location: '深圳市福田區',
+        industry: '保險業',
         establishedYear: '1988',
         creditLevel: 'AAA',
         registeredCapital: '182.8亿元',
@@ -244,8 +244,8 @@ export default {
     
     const filters = ref([
       { id: 'all', name: '全部', icon: 'fas fa-list', count: 0 },
-      { id: 'online', name: '在线', icon: 'fas fa-circle', count: 0 },
-      { id: 'aaa', name: 'AAA级', icon: 'fas fa-star', count: 0 },
+      { id: 'online', name: '在線', icon: 'fas fa-circle', count: 0 },
+      { id: 'aaa', name: 'AAA級', icon: 'fas fa-star', count: 0 },
       { id: 'tech', name: '科技类', icon: 'fas fa-microchip', count: 0 }
     ])
     
@@ -256,7 +256,7 @@ export default {
     const filteredEnterprises = computed(() => {
       let filtered = enterprises.value
       
-      // 搜索过滤
+      // 搜索過滤
       if (searchQuery.value) {
         const query = searchQuery.value.toLowerCase()
         filtered = filtered.filter(e => 
@@ -265,14 +265,14 @@ export default {
         )
       }
       
-      // 状态过滤
+      // 状态過滤
       if (activeFilter.value === 'online') {
         filtered = filtered.filter(e => e.status === 'online')
       } else if (activeFilter.value === 'aaa') {
         filtered = filtered.filter(e => e.creditLevel === 'AAA')
       } else if (activeFilter.value === 'tech') {
         filtered = filtered.filter(e => 
-          e.industry.includes('科技') || e.industry.includes('互联网')
+          e.industry.includes('科技') || e.industry.includes('互聯網')
         )
       }
       
@@ -280,7 +280,7 @@ export default {
     })
     
     const getStatusText = (status) => {
-      return status === 'online' ? '在线' : '离线'
+      return status === 'online' ? '在線' : '離線'
     }
     
     const clearSearch = () => {
@@ -300,7 +300,7 @@ export default {
       filters.value[1].count = enterprises.value.filter(e => e.status === 'online').length
       filters.value[2].count = enterprises.value.filter(e => e.creditLevel === 'AAA').length
       filters.value[3].count = enterprises.value.filter(e => 
-        e.industry.includes('科技') || e.industry.includes('互联网')
+        e.industry.includes('科技') || e.industry.includes('互聯網')
       ).length
     }
     
@@ -371,7 +371,7 @@ export default {
   margin: 0 auto;
 }
 
-/* 页面进入动画 */
+/* 頁面進入動画 */
 .animate-fade-in-up {
   opacity: 0;
   transform: translateY(30px);
@@ -461,7 +461,7 @@ export default {
   }
 }
 
-/* 页面头部样式 */
+/* 頁面頭部樣式 */
 .page-header {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
   border-radius: 20px;
@@ -529,7 +529,7 @@ export default {
   margin-top: 0.25rem;
 }
 
-/* 搜索和筛选样式 */
+/* 搜索和篩選樣式 */
 .search-filter-section {
   margin-bottom: 2rem;
 }
@@ -633,7 +633,7 @@ export default {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* 企业列表样式 */
+/* 企業列表樣式 */
 .enterprises-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -840,7 +840,7 @@ export default {
   color: white;
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 1200px) {
   .enterprises-grid {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));

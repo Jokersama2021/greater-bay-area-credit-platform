@@ -22,7 +22,7 @@ const createPieChart = () => {
   pieChartInstance = new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ['总资产', '营业收入', '营业成本', '净利润'],
+      labels: ['總資產', '营業收入', '营業成本', '净利润'],
       datasets: [{
         data: [
           props.data.total_assets,

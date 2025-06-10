@@ -3,11 +3,11 @@
     <!-- 主背景层 -->
     <div class="background-base"></div>
     
-    <!-- 金融数据流 -->
+    <!-- 金融數據流 -->
     <div class="data-streams">
       <svg class="stream-svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
         <defs>
-          <!-- 数据流渐变 -->
+          <!-- 數據流渐变 -->
           <linearGradient id="dataFlow1" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0" />
             <stop offset="30%" style="stop-color:#00d4ff;stop-opacity:0.8" />
@@ -29,7 +29,7 @@
             <stop offset="100%" style="stop-color:#b45309;stop-opacity:0" />
           </linearGradient>
           
-          <!-- 发光效果 -->
+          <!-- 發光效果 -->
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
             <feMerge> 
@@ -39,9 +39,9 @@
           </filter>
         </defs>
         
-        <!-- 金融数据流路径 -->
+        <!-- 金融數據流路径 -->
         <g class="financial-flows">
-          <!-- 主要数据流 -->
+          <!-- 主要數據流 -->
           <path 
             class="data-path flow-1"
             d="M-200,200 Q400,150 800,250 Q1200,350 1600,200 Q1800,150 2100,250"
@@ -69,7 +69,7 @@
             filter="url(#glow)"
           />
           
-          <!-- 次要数据流 -->
+          <!-- 次要數據流 -->
           <path 
             class="data-path flow-4"
             d="M-100,350 Q600,300 1000,400 Q1400,500 1800,350"
@@ -89,7 +89,7 @@
           />
         </g>
         
-        <!-- 金融节点 -->
+        <!-- 金融节點 -->
         <g class="financial-nodes">
           <!-- 主要金融中心 -->
           <circle class="node major-node" cx="400" cy="200" r="8" fill="#00d4ff" opacity="0.8" filter="url(#glow)" />
@@ -97,12 +97,12 @@
           <circle class="node major-node" cx="1200" cy="350" r="8" fill="#0066ff" opacity="0.8" filter="url(#glow)" />
           <circle class="node major-node" cx="1600" cy="200" r="8" fill="#00d4ff" opacity="0.8" filter="url(#glow)" />
           
-          <!-- 次要节点 -->
+          <!-- 次要节點 -->
           <circle class="node minor-node" cx="600" cy="400" r="4" fill="#10b981" opacity="0.6" />
           <circle class="node minor-node" cx="1000" cy="500" r="4" fill="#059669" opacity="0.6" />
           <circle class="node minor-node" cx="1400" cy="600" r="4" fill="#047857" opacity="0.6" />
           
-          <!-- 交易节点 -->
+          <!-- 交易节點 -->
           <circle class="node trade-node" cx="500" cy="700" r="3" fill="#f59e0b" opacity="0.7" />
           <circle class="node trade-node" cx="900" cy="800" r="3" fill="#d97706" opacity="0.7" />
           <circle class="node trade-node" cx="1300" cy="750" r="3" fill="#b45309" opacity="0.7" />
@@ -110,7 +110,7 @@
       </svg>
     </div>
     
-    <!-- 区块链网格 -->
+    <!-- 區块链網格 -->
     <div class="blockchain-grid">
       <div class="grid-container">
         <div 
@@ -122,7 +122,7 @@
       </div>
     </div>
     
-    <!-- 金融数据粒子 -->
+    <!-- 金融數據粒子 -->
     <div class="financial-particles">
       <div 
         v-for="n in 40" 
@@ -140,7 +140,7 @@
       <div class="beam beam-4"></div>
     </div>
     
-    <!-- 数字雨效果 -->
+    <!-- 數字雨效果 -->
     <div class="digital-rain">
       <div 
         v-for="n in 20" 
@@ -235,7 +235,7 @@ export default {
   );
 }
 
-/* 金融数据流 */
+/* 金融數據流 */
 .data-streams {
   position: absolute;
   width: 100%;
@@ -276,7 +276,7 @@ export default {
   }
 }
 
-/* 金融节点动画 */
+/* 金融节點動画 */
 .node {
   animation: nodePulse 3s ease-in-out infinite;
 }
@@ -304,7 +304,7 @@ export default {
   }
 }
 
-/* 区块链网格 */
+/* 區块链網格 */
 .blockchain-grid {
   position: absolute;
   width: 100%;
@@ -339,7 +339,7 @@ export default {
   }
 }
 
-/* 金融数据粒子 */
+/* 金融數據粒子 */
 .financial-particles {
   position: absolute;
   width: 100%;
@@ -425,7 +425,7 @@ export default {
   }
 }
 
-/* 数字雨效果 */
+/* 數字雨效果 */
 .digital-rain {
   position: absolute;
   width: 100%;
@@ -473,7 +473,7 @@ export default {
   100% { opacity: 1; }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .grid-container {
     grid-template-columns: repeat(8, 1fr);

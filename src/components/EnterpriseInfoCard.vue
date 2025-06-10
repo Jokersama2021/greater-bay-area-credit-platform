@@ -24,7 +24,7 @@
         </div>
         <div class="metric-content">
           <div class="metric-value">{{ currentEnterprise.creditScore }}</div>
-          <div class="metric-label">信用评分</div>
+          <div class="metric-label">信用評分</div>
         </div>
         <div class="metric-badge" :class="getCreditLevelClass(currentEnterprise.creditLevel)">
           {{ currentEnterprise.creditLevel }}
@@ -37,7 +37,7 @@
         </div>
         <div class="metric-content">
           <div class="metric-value">{{ currentEnterprise.businessYears }}</div>
-          <div class="metric-label">经营年限</div>
+          <div class="metric-label">經营年限</div>
         </div>
         <div class="metric-trend">
           <i class="fas fa-arrow-up"></i>
@@ -50,7 +50,7 @@
         </div>
         <div class="metric-content">
           <div class="metric-value">{{ currentEnterprise.scale }}</div>
-          <div class="metric-label">企业规模</div>
+          <div class="metric-label">企業規模</div>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
         </div>
         <div class="metric-content">
           <div class="metric-value">{{ currentEnterprise.crossBorderBusiness }}</div>
-          <div class="metric-label">跨境业务</div>
+          <div class="metric-label">跨境業務</div>
         </div>
         <div class="activity-indicator" :class="getActivityClass(currentEnterprise.crossBorderBusiness)">
           <div class="pulse"></div>
@@ -71,7 +71,7 @@
     <div class="compliance-status">
       <div class="status-header">
         <i class="fas fa-shield-alt"></i>
-        <span>合规记录</span>
+        <span>合規記录</span>
       </div>
       <div class="status-badge" :class="getComplianceClass(currentEnterprise.complianceRecord)">
         <i class="fas fa-check-circle"></i>
@@ -104,20 +104,20 @@ export default {
 
     const getActivityClass = (activity) => {
       const classes = {
-        '非常活跃': 'very-active',
-        '活跃': 'active',
+        '非常活躍': 'very-active',
+        '活躍': 'active',
         '一般': 'normal',
-        '较少': 'low'
+        '較少': 'low'
       }
       return classes[activity] || 'normal'
     }
 
     const getComplianceClass = (compliance) => {
       const classes = {
-        '优秀': 'excellent',
+        '優秀': 'excellent',
         '良好': 'good',
         '一般': 'normal',
-        '较差': 'poor'
+        '較差': 'poor'
       }
       return classes[compliance] || 'normal'
     }

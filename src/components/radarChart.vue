@@ -1,13 +1,13 @@
 <template>
   <div class="charts-container">
-    <h2 class="charts-title">会计数据（简版）</h2>
+    <h2 class="charts-title">會計數據（简版）</h2>
     <div class="chart-wrapper">
       <div class="charts-section">
-        <!-- 左侧：资产构成（饼图） -->
+        <!-- 左侧：資產構成（饼图） -->
         <div class="pie-section">
           <div ref="pieChart" class="chart"></div>
         </div>
-        <!-- 右侧：财务指标（雷达图） -->
+        <!-- 右侧：財務指標（雷达图） -->
         <div class="radar-section">
           <div ref="radarChart" class="chart"></div>
         </div>
@@ -29,7 +29,7 @@ const radarChart = ref(null);
 let pieInstance = null;
 let radarInstance = null;
 
-// 格式化金额（转换为亿元）
+// 格式化金额（转换為亿元）
 const formatMoney = (value) => {
   const amount = value / 100000000;
   return amount.toLocaleString('zh-CN', {
@@ -38,7 +38,7 @@ const formatMoney = (value) => {
   }) + '亿元';
 };
 
-// 格式化一般数值
+// 格式化一般數值
 const formatValue = (value) => {
   return Number(value).toLocaleString('zh-CN', {
     minimumFractionDigits: 2,
@@ -51,7 +51,7 @@ const initPieChart = (apiData) => {
   const pieDatas = [
     { 
       value: apiData.total_assets, 
-      name: "总资产", 
+      name: "總資產", 
       color: "#36A2EB",
       itemStyle: { color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
         { offset: 0, color: '#36A2EB' },
@@ -60,7 +60,7 @@ const initPieChart = (apiData) => {
     },
     { 
       value: apiData.revenue_2022, 
-      name: "营业收入", 
+      name: "营業收入", 
       color: "#FF9F43",
       itemStyle: { color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
         { offset: 0, color: '#FF9F43' },
@@ -69,7 +69,7 @@ const initPieChart = (apiData) => {
     },
     { 
       value: apiData.operating_costs, 
-      name: "营业成本", 
+      name: "营業成本", 
       color: "#FF6B6B",
       itemStyle: { color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
         { offset: 0, color: '#FF6B6B' },
@@ -166,8 +166,8 @@ const initPieChart = (apiData) => {
 const initRadarChart = (apiData) => {
   const radarDatas = [
     { value: apiData.earnings_per_share, name: "每股收益", color: "#4FC6FF", unit: "元" },
-    { value: apiData.roa, name: "资产收益率", color: "#FFB74D", unit: "%" },
-    { value: apiData.average_roe, name: "股本回报率", color: "#FF7043", unit: "%" },
+    { value: apiData.roa, name: "資產收益率", color: "#FFB74D", unit: "%" },
+    { value: apiData.average_roe, name: "股本回報率", color: "#FF7043", unit: "%" },
     { value: apiData.gross_margin, name: "毛利率", color: "#66BB6A", unit: "%" },
     { value: apiData.net_margin, name: "净利率", color: "#EC407A", unit: "%" }
   ];
@@ -177,7 +177,7 @@ const initRadarChart = (apiData) => {
       trigger: 'item',
       formatter: (params) => {
         if (Array.isArray(params.value)) {
-          return params.marker + '<b>财务指标</b><br/>' +
+          return params.marker + '<b>財務指標</b><br/>' +
             radarDatas.map((item, index) => 
               `${item.name}：${formatValue(params.value[index])}${item.unit}`
             ).join('<br/>');
@@ -227,7 +227,7 @@ const initRadarChart = (apiData) => {
       },
       data: [{
         value: radarDatas.map(item => item.value),
-        name: '财务指标'
+        name: '財務指標'
       }]
     }]
   };
@@ -244,7 +244,7 @@ onMounted(() => {
     initPieChart(apiData);
     initRadarChart(apiData);
     
-    // 监听窗口大小变化
+    // 監聽窗口大小变化
     window.addEventListener('resize', () => {
       pieInstance?.resize();
       radarInstance?.resize();
@@ -296,5 +296,5 @@ onMounted(() => {
   height: 100%;
 }
 
-/* 若需要添加图例，可在此处增加对应样式 */
+/* 若需要添加图例，可在此處增加對應樣式 */
 </style>

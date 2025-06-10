@@ -140,7 +140,7 @@ export default {
   transform: translateX(2px);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .compact-stats-card {
     padding: 14px;

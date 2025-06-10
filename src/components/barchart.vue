@@ -1,6 +1,6 @@
 <template>
   <div class="bar-chart">
-    <h2 class="chart-title">资产情况（简版）</h2>
+    <h2 class="chart-title">資產情况（简版）</h2>
     <div class="chart-container">
       <div ref="chart" class="chart"></div>
       <div class="legend-section">
@@ -24,30 +24,30 @@ const props = defineProps({
 const chart = ref(null);
 let chartInstance = null;
 
-// 定义所有要展示的数据项
+// 定义所有要展示的數據项
 const dataItems = [
-  // 流动资产
-  { key: 'cash_and_cash_equivalents', name: '货币资金', colors: ['#36A2EB', '#4BC0C0'] },
-  { key: 'notes_receivable', name: '应收票据', colors: ['#FF9F43', '#FFB480'] },
-  { key: 'accounts_receivable', name: '应收账款', colors: ['#FF6B6B', '#FF8E8E'] },
+  // 流動資產
+  { key: 'cash_and_cash_equivalents', name: '货币資金', colors: ['#36A2EB', '#4BC0C0'] },
+  { key: 'notes_receivable', name: '應收票據', colors: ['#FF9F43', '#FFB480'] },
+  { key: 'accounts_receivable', name: '應收账款', colors: ['#FF6B6B', '#FF8E8E'] },
   { key: 'prepaid_expenses', name: '预付账款', colors: ['#4ECB73', '#7EE79D'] },
   { key: 'inventories', name: '存货', colors: ['#9B66FF', '#B794F6'] },
-  { key: 'other_current_assets', name: '其他流动资产', colors: ['#FF66B3', '#FF99CC'] },
+  { key: 'other_current_assets', name: '其他流動資產', colors: ['#FF66B3', '#FF99CC'] },
   
-  // 非流动资产
-  { key: 'credit_investments', name: '债权投资', colors: ['#FFD93D', '#FFE69C'] },
-  { key: 'fixed_assets', name: '固定资产', colors: ['#4FACFE', '#00F2FE'] },
-  { key: 'development_expenditures', name: '开发支出', colors: ['#6E45E1', '#88D3CE'] },
-  { key: 'deferred_tax_assets', name: '递延所得税资产', colors: ['#FF9A9E', '#FAD0C4'] },
+  // 非流動資產
+  { key: 'credit_investments', name: '债权投資', colors: ['#FFD93D', '#FFE69C'] },
+  { key: 'fixed_assets', name: '固定資產', colors: ['#4FACFE', '#00F2FE'] },
+  { key: 'development_expenditures', name: '開發支出', colors: ['#6E45E1', '#88D3CE'] },
+  { key: 'deferred_tax_assets', name: '递延所得税資產', colors: ['#FF9A9E', '#FAD0C4'] },
   
   // 负债
-  { key: 'employee_benefits_payable', name: '应付职工薪酬', colors: ['#43E97B', '#38F9D7'] },
-  { key: 'taxes_payable', name: '应交税费', colors: ['#FA709A', '#FEE140'] },
-  { key: 'noncurrent_liabilities_within_one_year', name: '一年内到期非流动负债', colors: ['#6236FF', '#8F9FFE'] },
+  { key: 'employee_benefits_payable', name: '應付职工薪酬', colors: ['#43E97B', '#38F9D7'] },
+  { key: 'taxes_payable', name: '應交税费', colors: ['#FA709A', '#FEE140'] },
+  { key: 'noncurrent_liabilities_within_one_year', name: '一年内到期非流動负债', colors: ['#6236FF', '#8F9FFE'] },
   
   // 收入和利润
-  { key: 'revenue_2022', name: '营业收入', colors: ['#FF6B6B', '#FFA07A'] },
-  { key: 'operating_costs', name: '营业成本', colors: ['#4169E1', '#87CEEB'] },
+  { key: 'revenue_2022', name: '营業收入', colors: ['#FF6B6B', '#FFA07A'] },
+  { key: 'operating_costs', name: '营業成本', colors: ['#4169E1', '#87CEEB'] },
   { key: 'net_profit_attributable', name: '净利润', colors: ['#32CD32', '#98FB98'] }
 ];
 

@@ -1,6 +1,6 @@
 <template>
   <div class="expandable-card" :class="{ expanded: isExpanded }">
-    <!-- 卡片头部 - 始终显示 -->
+    <!-- 卡片頭部 - 始终顯示 -->
     <div class="card-header" @click="toggleExpand">
       <div class="header-left">
         <div class="card-icon" :style="{ backgroundColor: iconColor + '20', color: iconColor }">
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <!-- 卡片内容 - 展开时显示 -->
+    <!-- 卡片内容 - 展開時顯示 -->
     <transition name="expand">
       <div v-if="isExpanded" class="card-content">
         <slot></slot>
@@ -214,7 +214,7 @@ export default {
   margin-top: -1px;
 }
 
-/* 展开动画 */
+/* 展開動画 */
 .expand-enter-active,
 .expand-leave-active {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -235,7 +235,7 @@ export default {
   transform: translateY(0);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .card-header {
     padding: 16px;

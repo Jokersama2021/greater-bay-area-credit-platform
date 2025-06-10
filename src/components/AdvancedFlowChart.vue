@@ -12,7 +12,7 @@ let chart = null
 const props = defineProps({
   title: {
     type: String,
-    default: '数据流动趋势'
+    default: '數據流動趋势'
   }
 })
 
@@ -21,10 +21,10 @@ const initChart = () => {
 
   chart = echarts.init(chartContainer.value)
   
-  // 生成流动数据
+  // 生成流動數據
   const generateFlowData = () => {
     const data = []
-    const categories = ['香港', '澳门', '深圳', '广州', '珠海', '东莞']
+    const categories = ['香港', '澳門', '深圳', '廣州', '珠海', '東莞']
     const now = new Date()
     
     for (let i = 0; i < 50; i++) {
@@ -66,13 +66,13 @@ const initChart = () => {
         return `
           <div style="padding: 8px;">
             <div style="font-weight: 600; margin-bottom: 6px;">${data.seriesName}</div>
-            <div style="margin-bottom: 4px;">时间: ${data.axisValueLabel}</div>
+            <div style="margin-bottom: 4px;">時間: ${data.axisValueLabel}</div>
             <div style="display: flex; align-items: center; gap: 8px;">
               <div style="width: 8px; height: 8px; background: ${data.color}; border-radius: 50%;"></div>
               <span>流量: ${data.value[1].toFixed(1)} MB/s</span>
             </div>
             <div style="margin-top: 4px; color: rgba(255, 255, 255, 0.7);">
-              区域: ${data.value[2]}
+              區域: ${data.value[2]}
             </div>
           </div>
         `
@@ -133,7 +133,7 @@ const initChart = () => {
     },
     series: [
       {
-        name: '数据流量',
+        name: '數據流量',
         type: 'line',
         data: flowData,
         smooth: true,
@@ -161,11 +161,11 @@ const initChart = () => {
           color: (params) => {
             const colors = {
               '香港': '#FF6B6B',
-              '澳门': '#4ECDC4',
+              '澳門': '#4ECDC4',
               '深圳': '#45B7D1',
-              '广州': '#96CEB4',
+              '廣州': '#96CEB4',
               '珠海': '#FFEAA7',
-              '东莞': '#DDA0DD'
+              '東莞': '#DDA0DD'
             }
             return colors[params.value[2]] || '#007AFF'
           },
@@ -212,7 +212,7 @@ const initChart = () => {
       },
       // 添加粒子效果
       {
-        name: '流动粒子',
+        name: '流動粒子',
         type: 'effectScatter',
         coordinateSystem: 'cartesian2d',
         data: flowData.filter((_, index) => index % 5 === 0),
@@ -227,11 +227,11 @@ const initChart = () => {
           color: (params) => {
             const colors = {
               '香港': '#FF6B6B',
-              '澳门': '#4ECDC4',
+              '澳門': '#4ECDC4',
               '深圳': '#45B7D1',
-              '广州': '#96CEB4',
+              '廣州': '#96CEB4',
               '珠海': '#FFEAA7',
-              '东莞': '#DDA0DD'
+              '東莞': '#DDA0DD'
             }
             return colors[params.value[2]] || '#007AFF'
           },
@@ -250,7 +250,7 @@ const initChart = () => {
 
   chart.setOption(option)
   
-  // 实时更新数据
+  // 實時更新數據
   const updateData = () => {
     const newData = generateFlowData()
     chart.setOption({
@@ -265,7 +265,7 @@ const initChart = () => {
     })
   }
   
-  // 每30秒更新一次数据
+  // 每30秒更新一次數據
   setInterval(updateData, 30000)
 }
 

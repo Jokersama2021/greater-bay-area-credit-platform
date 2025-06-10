@@ -28,24 +28,24 @@ const renderChart = () => {
 	echarts.registerMap('china', mapJson)
 
 	let options = {
-		// 时间线，提供了在多个 ECharts option 间进行切换
+		// 時間線，提供了在多個 ECharts option 間進行切换
 		timeline: {
-			// 数据
+			// 數據
 			data: props.data.voltageLevel,
 			// 类目轴
 			axisType: 'category',
-			// 自动切换
+			// 自動切换
 			autoPlay: true,
-			// 间隔时间
+			// 間隔時間
 			playInterval: 3000,
 			// 位置
 			left: '10%',
 			right: '10%',
 			bottom: '0%',
 			width: '80%',
-			// 轴的文本标签
+			// 轴的文本標签
 			label: {
-				// 默认状态
+				// 默認状态
 				normal: {
 					textStyle: {
 						color: '#ddd'
@@ -60,27 +60,27 @@ const renderChart = () => {
 			},
 			// 文字大小
 			symbolSize: 10,
-			// 线的样式
+			// 線的樣式
 			lineStyle: {
 				color: '#555'
 			},
-			// 选中点的样式
+			// 選中點的樣式
 			checkpointStyle: {
 				borderColor: '#888',
 				borderWidth: 2
 			},
-			// 控件样式
+			// 控件樣式
 			controlStyle: {
 				// 上一步按钮
 				showNextBtn: true,
 				// 下一步按钮
 				showPrevBtn: true,
-				// 默认样式
+				// 默認樣式
 				normal: {
 					color: '#666',
 					borderColor: '#666'
 				},
-				// 高亮样式
+				// 高亮樣式
 				emphasis: {
 					color: '#aaa',
 					borderColor: '#aaa'
@@ -96,49 +96,49 @@ const renderChart = () => {
 				width: '20%'
 			},
 
-			// 中国地图
+			// 中國地图
 			geo: {
 				// 展示
 				show: true,
-				// 中国地图
+				// 中國地图
 				map: 'china',
-				// 开启缩放
+				// 開启缩放
 				roam: true,
 				// 初始缩放
 				zoom: 0.8,
-				// 中心点
+				// 中心點
 				center: [113.83531246, 34.0267395887],
-				// 默认状态的省份样式
+				// 默認状态的省份樣式
 				itemStyle: {
 					normal: {
 						// 边框色值
 						borderColor: 'rgba(147, 235, 248, 1)',
 						// 边框宽度
 						borderWidth: 1,
-						// 区域颜色
+						// 區域颜色
 						areaColor: {
-							// 经向色值
+							// 經向色值
 							type: 'radial',
 							x: 0.5,
 							y: 0.5,
 							r: 0.5,
 							colorStops: [
-								// 0% 处的颜色
+								// 0% 處的颜色
 								{
 									offset: 0,
 									color: 'rgba(147, 235, 248, 0)'
 								},
-								// 100% 处的颜色
+								// 100% 處的颜色
 								{
 									offset: 1,
 									color: 'rgba(147, 235, 248, .2)'
 								}
 							],
-							// 缺省为 false
+							// 缺省為 false
 							globalCoord: false
 						}
 					},
-					// 鼠标移入的色值
+					// 鼠標移入的色值
 					emphasis: {
 						areaColor: '#389BB7',
 						borderWidth: 0
@@ -146,19 +146,19 @@ const renderChart = () => {
 				}
 			}
 		},
-		// 绑定时间轴的多个图表
+		// 绑定時間轴的多個图表
 		options: []
 	}
 
-	// 为每一年度的图表添加数据
+	// 為每一年度的图表添加數據
 	props.data.voltageLevel.forEach((item, index) => {
 		options.options.push({
 			// 背景色
 			backgroundColor: '#142037',
 			title: [
-				// 主标题，对应地图
+				// 主標題，對應地图
 				{
-					text: '2019-2023 年度数据统计',
+					text: '2019-2023 年度數據統計',
 					left: '0%',
 					top: '0',
 					textStyle: {
@@ -166,10 +166,10 @@ const renderChart = () => {
 						fontSize: 30
 					}
 				},
-				// 副标题，对应柱形图
+				// 副標題，對應柱形图
 				{
 					id: 'statistic',
-					text: item + '年数据统计情况',
+					text: item + '年數據統計情况',
 					right: '0%',
 					top: '4%',
 					textStyle: {
@@ -180,25 +180,25 @@ const renderChart = () => {
 			],
 			// X 轴配置
 			xAxis: {
-				// 数据轴
+				// 數據轴
 				type: 'value',
-				// 脱离 0 值比例
+				// 脱離 0 值比例
 				scale: true,
 				// 位置
 				position: 'top',
-				// 不显示分割线
+				// 不顯示分割線
 				splitLine: {
 					show: false
 				},
-				// 不显示轴线
+				// 不顯示轴線
 				axisLine: {
 					show: false
 				},
-				// 不显示刻度尺
+				// 不顯示刻度尺
 				axisTick: {
 					show: false
 				},
-				// 类别文字
+				// 类別文字
 				axisLabel: {
 					margin: 2,
 					textStyle: {
@@ -208,9 +208,9 @@ const renderChart = () => {
 			},
 			// Y 轴
 			yAxis: {
-				// 选项轴
+				// 選项轴
 				type: 'category',
-				// 轴线
+				// 轴線
 				axisLine: {
 					show: true,
 					lineStyle: {
@@ -224,14 +224,14 @@ const renderChart = () => {
 						color: '#ddd'
 					}
 				},
-				// 轴标签
+				// 轴標签
 				axisLabel: {
 					interval: 0,
 					textStyle: {
 						color: '#ddd'
 					}
 				},
-				// 根据年份，获取对应数据
+				// 根據年份，获取對應數據
 				data: props.data.categoryData[item].map((item) => item.name)
 			},
 			// 核心配置
@@ -241,28 +241,28 @@ const renderChart = () => {
 					zlevel: 1.5,
 					// 柱形图
 					type: 'bar',
-					// 每个柱子的色值
+					// 每個柱子的色值
 					itemStyle: {
 						normal: {
 							color: props.data.colors[index]
 						}
 					},
-					// 根据年份，获取对应数据
+					// 根據年份，获取對應數據
 					data: props.data.categoryData[item].map((item) => item.value)
 				},
-				// 散点图
+				// 散點图
 				{
-					// 散点（气泡）图
+					// 散點（气泡）图
 					type: 'effectScatter',
-					// 使用地理坐标系
+					// 使用地理坐標系
 					coordinateSystem: 'geo',
-					// 数据
+					// 數據
 					data: props.data.topData[item],
-					// 标记大小
+					// 標記大小
 					symbolSize: function (val) {
 						return val[2] / 4
 					},
-					// 绘制完成后显示特效
+					// 绘制完成后顯示特效
 					showEffectOn: 'render',
 					// 展示涟漪特效
 					rippleEffect: {

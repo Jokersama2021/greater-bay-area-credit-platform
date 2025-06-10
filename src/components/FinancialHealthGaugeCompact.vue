@@ -6,11 +6,11 @@
           <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <h3 class="compact-title">财务健康度</h3>
+      <h3 class="compact-title">財務健康度</h3>
     </div>
     
     <div class="compact-content">
-      <!-- 主要指标 -->
+      <!-- 主要指標 -->
       <div class="main-gauge">
         <div class="gauge-container">
           <svg viewBox="0 0 120 80" class="gauge-svg">
@@ -22,7 +22,7 @@
               stroke-width="8"
               stroke-linecap="round"
             />
-            <!-- 进度弧 -->
+            <!-- 進度弧 -->
             <path
               :d="getProgressPath()"
               fill="none"
@@ -38,34 +38,34 @@
         </div>
       </div>
       
-      <!-- 关键指标 -->
+      <!-- 關键指標 -->
       <div class="key-metrics">
         <div class="metric-item">
           <div class="metric-icon">⭐</div>
           <div class="metric-info">
-            <div class="metric-label">信用等级</div>
+            <div class="metric-label">信用等級</div>
             <div class="metric-value">AAA</div>
           </div>
         </div>
         <div class="metric-item">
           <div class="metric-icon">🛡️</div>
           <div class="metric-info">
-            <div class="metric-label">风险等级</div>
-            <div class="metric-value">低风险</div>
+            <div class="metric-label">風險等級</div>
+            <div class="metric-value">低風險</div>
           </div>
         </div>
         <div class="metric-item">
           <div class="metric-icon">📅</div>
           <div class="metric-info">
-            <div class="metric-label">经营年限</div>
+            <div class="metric-label">經营年限</div>
             <div class="metric-value">{{ operatingYears }}年</div>
           </div>
         </div>
         <div class="metric-item">
           <div class="metric-icon">✅</div>
           <div class="metric-info">
-            <div class="metric-label">合规状况</div>
-            <div class="metric-value">优秀</div>
+            <div class="metric-label">合規状况</div>
+            <div class="metric-value">優秀</div>
           </div>
         </div>
       </div>

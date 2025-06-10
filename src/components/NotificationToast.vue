@@ -218,7 +218,7 @@ export default {
   border-radius: 0 0 12px 12px;
 }
 
-/* 主题变体 */
+/* 主題变体 */
 .toast-success {
   background: linear-gradient(135deg, 
     rgba(16, 185, 129, 0.15) 0%, 
@@ -279,7 +279,7 @@ export default {
   background: var(--primary-color);
 }
 
-/* 动画 */
+/* 動画 */
 .toast-enter-active {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -2,36 +2,36 @@
   <div class="invoice-loan-container">
     <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <div class="loading-text">加载发票贷服务中...</div>
+      <div class="loading-text">加載發票贷服務中...</div>
     </div>
     
     <div v-else class="content">
-      <!-- 页面头部 -->
+      <!-- 頁面頭部 -->
       <div class="page-header animate-fade-in-up" style="animation-delay: 0.1s">
         <div class="header-content">
           <div class="header-icon animate-bounce-in" style="animation-delay: 0.2s">
             <i class="fas fa-file-invoice-dollar"></i>
           </div>
           <div class="header-info animate-slide-in-left" style="animation-delay: 0.3s">
-            <h1 class="page-title">发票贷</h1>
-            <p class="page-subtitle">基于发票的融资服务 - 快速、便捷、安全</p>
+            <h1 class="page-title">發票贷</h1>
+            <p class="page-subtitle">基于發票的融資服務 - 快速、便捷、安全</p>
           </div>
           <div class="header-stats animate-slide-in-right" style="animation-delay: 0.4s">
             <div class="stat-item">
               <div class="stat-value">{{ totalLoans.toLocaleString() }}</div>
-              <div class="stat-label">累计放款笔数</div>
+              <div class="stat-label">累計放款笔數</div>
             </div>
             <div class="stat-item">
               <div class="stat-value">{{ (totalAmount / 100000000).toFixed(1) }}亿</div>
-              <div class="stat-label">累计放款金额</div>
+              <div class="stat-label">累計放款金额</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 服务特色 -->
+      <!-- 服務特色 -->
       <div class="features-section animate-fade-in-up" style="animation-delay: 0.5s">
-        <h2 class="section-title">服务特色</h2>
+        <h2 class="section-title">服務特色</h2>
         <div class="features-grid">
           <div class="feature-card animate-card-in" v-for="(feature, index) in features" :key="feature.id" :style="{ animationDelay: `${0.6 + index * 0.1}s` }">
             <div class="feature-icon">
@@ -58,29 +58,29 @@
         </div>
       </div>
 
-      <!-- 产品信息 -->
+      <!-- 產品信息 -->
       <div class="product-info-section animate-fade-in-up" style="animation-delay: 1.9s">
-        <h2 class="section-title">产品信息</h2>
+        <h2 class="section-title">產品信息</h2>
         <div class="info-grid">
           <div class="info-card animate-card-in" style="animation-delay: 2.0s">
             <h3 class="info-title">贷款额度</h3>
             <div class="info-content">
               <div class="amount-range">10万 - 1000万</div>
-              <p class="info-desc">根据发票金额和企业资质确定</p>
+              <p class="info-desc">根據發票金额和企業資质确定</p>
             </div>
           </div>
           <div class="info-card animate-card-in" style="animation-delay: 2.1s">
             <h3 class="info-title">贷款期限</h3>
             <div class="info-content">
-              <div class="term-range">1-12个月</div>
-              <p class="info-desc">灵活选择，随借随还</p>
+              <div class="term-range">1-12個月</div>
+              <p class="info-desc">灵活選择，随借随還</p>
             </div>
           </div>
           <div class="info-card animate-card-in" style="animation-delay: 2.2s">
             <h3 class="info-title">利率水平</h3>
             <div class="info-content">
               <div class="rate-range">年化3.6%-7.2%</div>
-              <p class="info-desc">根据企业信用等级浮动</p>
+              <p class="info-desc">根據企業信用等級浮動</p>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@
         </button>
         <button class="secondary-btn animate-button-bounce" style="animation-delay: 3.0s" @click="consultService">
           <i class="fas fa-comments"></i>
-          在线咨询
+          在線咨詢
         </button>
       </div>
     </div>
@@ -130,73 +130,73 @@ export default {
           id: 1,
           icon: 'fas fa-clock',
           title: '快速审批',
-          description: '基于发票真实性验证，最快1小时完成审批'
+          description: '基于發票真實性验證，最快1小時完成审批'
         },
         {
           id: 2,
           icon: 'fas fa-shield-alt',
           title: '安全可靠',
-          description: '依托区块链技术，确保发票数据真实可信'
+          description: '依托區块链技术，确保發票數據真實可信'
         },
         {
           id: 3,
           icon: 'fas fa-percentage',
-          title: '利率优惠',
-          description: '基于发票信用，享受更低融资成本'
+          title: '利率優惠',
+          description: '基于發票信用，享受更低融資成本'
         },
         {
           id: 4,
           icon: 'fas fa-mobile-alt',
-          title: '线上操作',
-          description: '全程线上申请，无需线下跑腿'
+          title: '線上操作',
+          description: '全程線上申请，無需線下跑腿'
         }
       ],
       processSteps: [
         {
           id: 1,
-          title: '上传发票',
-          description: '上传真实有效的增值税发票'
+          title: '上传發票',
+          description: '上传真實有效的增值税發票'
         },
         {
           id: 2,
-          title: '信息验证',
-          description: '系统自动验证发票真实性'
+          title: '信息验證',
+          description: '系統自動验證發票真實性'
         },
         {
           id: 3,
-          title: '信用评估',
-          description: '基于企业征信进行风险评估'
+          title: '信用評估',
+          description: '基于企業徵信進行風險評估'
         },
         {
           id: 4,
           title: '审批放款',
-          description: '审批通过后快速放款到账'
+          description: '审批通過后快速放款到账'
         }
       ],
       requirements: [
         {
           id: 1,
           icon: 'fas fa-building',
-          title: '企业资质',
-          description: '成立满1年的正常经营企业'
+          title: '企業資质',
+          description: '成立滿1年的正常經营企業'
         },
         {
           id: 2,
           icon: 'fas fa-file-invoice',
-          title: '发票要求',
-          description: '真实有效的增值税专用发票'
+          title: '發票要求',
+          description: '真實有效的增值税專用發票'
         },
         {
           id: 3,
           icon: 'fas fa-star',
-          title: '信用等级',
-          description: '企业信用等级B级以上'
+          title: '信用等級',
+          description: '企業信用等級B級以上'
         },
         {
           id: 4,
           icon: 'fas fa-chart-line',
-          title: '经营状况',
-          description: '近12个月经营状况良好'
+          title: '經营状况',
+          description: '近12個月經营状况良好'
         }
       ]
     }
@@ -206,7 +206,7 @@ export default {
   },
   methods: {
     loadData() {
-      // 模拟数据加载
+      // 模拟數據加載
       setTimeout(() => {
         this.totalLoans = 125680
         this.totalAmount = 8560000000 // 85.6亿
@@ -214,12 +214,12 @@ export default {
       }, 800)
     },
     startApplication() {
-      // 跳转到申请页面
+      // 跳转到申请頁面
       this.$router.push('/invoice-loan/apply')
     },
     consultService() {
-      // 打开在线咨询
-      alert('在线咨询功能开发中...')
+      // 打開在線咨詢
+      alert('在線咨詢功能開發中...')
     }
   }
 }
@@ -266,7 +266,7 @@ export default {
   margin: 0 auto;
 }
 
-/* 页面进入动画 */
+/* 頁面進入動画 */
 .animate-fade-in-up {
   opacity: 0;
   transform: translateY(30px);
@@ -385,7 +385,7 @@ export default {
   }
 }
 
-/* 页面头部样式 */
+/* 頁面頭部樣式 */
 .page-header {
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 153, 255, 0.05) 100%);
   border-radius: 20px;
@@ -453,7 +453,7 @@ export default {
   margin-top: 0.25rem;
 }
 
-/* 通用样式 */
+/* 通用樣式 */
 .section-title {
   font-size: 1.8rem;
   font-weight: 600;
@@ -461,7 +461,7 @@ export default {
   color: white;
 }
 
-/* 服务特色样式 */
+/* 服務特色樣式 */
 .features-section {
   margin-bottom: 3rem;
 }
@@ -510,7 +510,7 @@ export default {
   line-height: 1.5;
 }
 
-/* 申请流程样式 */
+/* 申请流程樣式 */
 .process-section {
   margin-bottom: 3rem;
 }
@@ -569,7 +569,7 @@ export default {
   background: linear-gradient(90deg, #00d4ff, #0099ff);
 }
 
-/* 产品信息样式 */
+/* 產品信息樣式 */
 .product-info-section {
   margin-bottom: 3rem;
 }
@@ -606,7 +606,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 申请条件样式 */
+/* 申请条件樣式 */
 .requirements-section {
   margin-bottom: 3rem;
 }
@@ -651,7 +651,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 操作按钮样式 */
+/* 操作按钮樣式 */
 .action-section {
   display: flex;
   gap: 1rem;
@@ -693,7 +693,7 @@ export default {
   transform: translateY(-2px);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .invoice-loan-container {
     padding: 1rem;

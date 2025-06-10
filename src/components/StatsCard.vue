@@ -368,7 +368,7 @@ export default {
   left: 100%;
 }
 
-/* 主题变体 */
+/* 主題变体 */
 .card-primary {
   background: var(--card-background);
   border-color: var(--card-border);

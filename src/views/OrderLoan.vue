@@ -2,11 +2,11 @@
   <div class="order-loan-container">
     <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <div class="loading-text">加载订单贷服务中...</div>
+      <div class="loading-text">加載订单贷服務中...</div>
     </div>
     
     <div v-else class="content">
-      <!-- 页面头部 -->
+      <!-- 頁面頭部 -->
       <div class="page-header animate-fade-in-up delay-100">
         <div class="header-content">
           <div class="header-icon animate-bounce-in delay-200">
@@ -14,7 +14,7 @@
           </div>
           <div class="header-info animate-slide-in-left delay-300">
             <h1 class="page-title">订单贷</h1>
-            <p class="page-subtitle">订单融资解决方案 - 助力企业订单履约</p>
+            <p class="page-subtitle">订单融資解決方案 - 助力企業订单履约</p>
           </div>
           <div class="header-stats animate-slide-in-right delay-400">
             <div class="stat-item">
@@ -23,7 +23,7 @@
             </div>
             <div class="stat-item">
               <div class="stat-value">{{ avgDays }}天</div>
-              <div class="stat-label">平均放款时间</div>
+              <div class="stat-label">平均放款時間</div>
             </div>
           </div>
         </div>
@@ -46,9 +46,9 @@
         </div>
       </div>
 
-      <!-- 产品优势 */
+      <!-- 產品優势 */
       <div class="advantages-section">
-        <h2 class="section-title">产品优势</h2>
+        <h2 class="section-title">產品優势</h2>
         <div class="advantages-grid">
           <div class="advantage-item" v-for="advantage in advantages" :key="advantage.id">
             <div class="advantage-icon">
@@ -62,9 +62,9 @@
         </div>
       </div>
 
-      <!-- 融资方案 -->
+      <!-- 融資方案 -->
       <div class="plans-section">
-        <h2 class="section-title">融资方案</h2>
+        <h2 class="section-title">融資方案</h2>
         <div class="plans-grid">
           <div class="plan-card" v-for="plan in plans" :key="plan.id" :class="{ 'featured': plan.featured }">
             <div class="plan-header">
@@ -79,11 +79,11 @@
             </div>
             <div class="plan-limits">
               <div class="limit-item">
-                <span class="limit-label">额度范围：</span>
+                <span class="limit-label">额度範围：</span>
                 <span class="limit-value">{{ plan.amountRange }}</span>
               </div>
               <div class="limit-item">
-                <span class="limit-label">期限范围：</span>
+                <span class="limit-label">期限範围：</span>
                 <span class="limit-value">{{ plan.termRange }}</span>
               </div>
             </div>
@@ -107,9 +107,9 @@
         </div>
       </div>
 
-      <!-- 风控措施 -->
+      <!-- 風控措施 -->
       <div class="risk-control-section">
-        <h2 class="section-title">风控措施</h2>
+        <h2 class="section-title">風控措施</h2>
         <div class="risk-measures">
           <div class="measure-item" v-for="measure in riskMeasures" :key="measure.id">
             <div class="measure-icon">
@@ -131,11 +131,11 @@
         </button>
         <button class="secondary-btn animate-button-bounce" style="animation-delay: 3.0s" @click="calculateLoan">
           <i class="fas fa-calculator"></i>
-          贷款计算器
+          贷款計算器
         </button>
         <button class="secondary-btn animate-button-bounce" style="animation-delay: 3.1s" @click="consultService">
           <i class="fas fa-headset"></i>
-          专家咨询
+          專家咨詢
         </button>
       </div>
     </div>
@@ -154,30 +154,30 @@ export default {
         {
           id: 1,
           icon: 'fas fa-industry',
-          title: '生产制造',
+          title: '生產制造',
           description: '接到大额订单，需要采购原材料和支付人工成本',
-          example: '电子制造企业接到500万订单，需要300万资金采购芯片等原材料'
+          example: '電子制造企業接到500万订单，需要300万資金采购芯片等原材料'
         },
         {
           id: 2,
           icon: 'fas fa-truck',
           title: '贸易流通',
-          description: '订单周期长，需要垫付货款和物流费用',
-          example: '贸易公司接到出口订单，需要垫付200万货款给上游供应商'
+          description: '订单周期長，需要垫付货款和物流费用',
+          example: '贸易公司接到出口订单，需要垫付200万货款給上游供應商'
         },
         {
           id: 3,
           icon: 'fas fa-tools',
-          title: '工程服务',
+          title: '工程服務',
           description: '承接工程项目，需要支付材料费和人工费',
-          example: '建筑公司承接政府工程，需要800万启动资金'
+          example: '建筑公司承接政府工程，需要800万启動資金'
         },
         {
           id: 4,
           icon: 'fas fa-laptop-code',
-          title: '科技服务',
-          description: '软件开发项目，需要支付团队薪资和设备费用',
-          example: '软件公司接到系统开发项目，需要100万支付开发团队薪资'
+          title: '科技服務',
+          description: '软件開發项目，需要支付团队薪資和设備费用',
+          example: '软件公司接到系統開發项目，需要100万支付開發团队薪資'
         }
       ],
       advantages: [
@@ -185,53 +185,53 @@ export default {
           id: 1,
           icon: 'fas fa-tachometer-alt',
           title: '快速审批',
-          description: '基于订单真实性和企业信用，最快24小时完成审批放款'
+          description: '基于订单真實性和企業信用，最快24小時完成审批放款'
         },
         {
           id: 2,
           icon: 'fas fa-chart-line',
           title: '额度灵活',
-          description: '根据订单金额和企业实力，提供10万-5000万灵活额度'
+          description: '根據订单金额和企業實力，提供10万-5000万灵活额度'
         },
         {
           id: 3,
           icon: 'fas fa-calendar-alt',
           title: '期限匹配',
-          description: '贷款期限与订单周期匹配，最长可达24个月'
+          description: '贷款期限与订单周期匹配，最長可达24個月'
         },
         {
           id: 4,
           icon: 'fas fa-shield-alt',
-          title: '风险可控',
-          description: '订单作为还款来源，风险相对可控，利率更优惠'
+          title: '風險可控',
+          description: '订单作為還款來源，風險相對可控，利率更優惠'
         }
       ],
       plans: [
         {
           id: 1,
-          name: '标准方案',
+          name: '標準方案',
           rate: '年化4.8%-8.4%',
           amountRange: '10万-500万',
-          termRange: '3-12个月',
+          termRange: '3-12個月',
           featured: false,
           features: [
             '订单金额50%-80%放款',
-            '无需抵押担保',
-            '随借随还',
-            '线上申请'
+            '無需抵押担保',
+            '随借随還',
+            '線上申请'
           ]
         },
         {
           id: 2,
-          name: '优质方案',
+          name: '優质方案',
           rate: '年化3.6%-6.0%',
           amountRange: '50万-2000万',
-          termRange: '6-18个月',
+          termRange: '6-18個月',
           featured: true,
           features: [
             '订单金额80%-90%放款',
-            '优质客户专享',
-            '专属客户经理',
+            '優质客户專享',
+            '專属客户經理',
             '绿色通道审批'
           ]
         },
@@ -240,48 +240,48 @@ export default {
           name: '大额方案',
           rate: '年化3.0%-5.4%',
           amountRange: '1000万-5000万',
-          termRange: '12-24个月',
+          termRange: '12-24個月',
           featured: false,
           features: [
-            '大额订单专项支持',
-            '银团联合放款',
+            '大额订单專项支持',
+            '銀团聯合放款',
             '分阶段投放',
-            '专业风控团队'
+            '專業風控团队'
           ]
         }
       ],
       materials: [
         {
           id: 1,
-          title: '企业基础资料',
+          title: '企業基础資料',
           items: [
-            '营业执照副本',
-            '组织机构代码证',
-            '税务登记证',
-            '开户许可证',
-            '法人身份证'
+            '营業执照副本',
+            '组织機構代碼證',
+            '税務登記證',
+            '開户许可證',
+            '法人身份證'
           ]
         },
         {
           id: 2,
-          title: '订单相关材料',
+          title: '订单相關材料',
           items: [
             '销售合同/订单',
             '采购合同',
-            '订单履约保证',
-            '客户资信证明',
-            '历史合作记录'
+            '订单履约保證',
+            '客户資信證明',
+            '历史合作記录'
           ]
         },
         {
           id: 3,
-          title: '财务资料',
+          title: '財務資料',
           items: [
-            '近三年财务报表',
-            '银行流水',
-            '纳税证明',
-            '审计报告',
-            '资产负债表'
+            '近三年財務報表',
+            '銀行流水',
+            '纳税證明',
+            '审計報告',
+            '資產负债表'
           ]
         }
       ],
@@ -289,26 +289,26 @@ export default {
         {
           id: 1,
           icon: 'fas fa-search',
-          title: '订单真实性验证',
-          description: '通过多渠道验证订单真实性，包括客户确认、合同审查等'
+          title: '订单真實性验證',
+          description: '通過多渠道验證订单真實性，包括客户确認、合同审查等'
         },
         {
           id: 2,
           icon: 'fas fa-user-shield',
-          title: '客户资信调查',
-          description: '深度调查订单客户资信状况，评估付款能力和意愿'
+          title: '客户資信调查',
+          description: '深度调查订单客户資信状况，評估付款能力和意愿'
         },
         {
           id: 3,
           icon: 'fas fa-eye',
-          title: '全程监控',
-          description: '对订单执行过程进行全程监控，确保资金专款专用'
+          title: '全程監控',
+          description: '對订单执行過程進行全程監控，确保資金專款專用'
         },
         {
           id: 4,
           icon: 'fas fa-money-check-alt',
           title: '回款管理',
-          description: '建立回款监控机制，确保订单回款及时归还贷款'
+          description: '建立回款監控機制，确保订单回款及時归還贷款'
         }
       ]
     }
@@ -328,10 +328,10 @@ export default {
       this.$router.push('/order-loan/apply')
     },
     calculateLoan() {
-      alert('贷款计算器功能开发中...')
+      alert('贷款計算器功能開發中...')
     },
     consultService() {
-      alert('专家咨询功能开发中...')
+      alert('專家咨詢功能開發中...')
     }
   }
 }
@@ -378,7 +378,7 @@ export default {
   margin: 0 auto;
 }
 
-/* 页面头部样式 */
+/* 頁面頭部樣式 */
 .page-header {
   background: linear-gradient(135deg, rgba(255, 165, 0, 0.1) 0%, rgba(255, 140, 0, 0.05) 100%);
   border-radius: 20px;
@@ -446,7 +446,7 @@ export default {
   margin-top: 0.25rem;
 }
 
-/* 通用样式 */
+/* 通用樣式 */
 .section-title {
   font-size: 1.8rem;
   font-weight: 600;
@@ -454,7 +454,7 @@ export default {
   color: white;
 }
 
-/* 适用场景样式 */
+/* 适用场景樣式 */
 .scenarios-section {
   margin-bottom: 3rem;
 }
@@ -512,7 +512,7 @@ export default {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* 产品优势样式 */
+/* 產品優势樣式 */
 .advantages-section {
   margin-bottom: 3rem;
 }
@@ -557,7 +557,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 融资方案样式 */
+/* 融資方案樣式 */
 .plans-section {
   margin-bottom: 3rem;
 }
@@ -636,7 +636,7 @@ export default {
   font-weight: 600;
 }
 
-/* 申请材料样式 */
+/* 申请材料樣式 */
 .materials-section {
   margin-bottom: 3rem;
 }
@@ -678,7 +678,7 @@ export default {
   color: #ffa500;
 }
 
-/* 风控措施样式 */
+/* 風控措施樣式 */
 .risk-control-section {
   margin-bottom: 3rem;
 }
@@ -723,7 +723,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 操作按钮样式 */
+/* 操作按钮樣式 */
 .action-section {
   display: flex;
   gap: 1rem;
@@ -766,7 +766,7 @@ export default {
   transform: translateY(-2px);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .order-loan-container {
     padding: 1rem;

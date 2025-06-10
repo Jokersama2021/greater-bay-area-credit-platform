@@ -9,7 +9,7 @@
     @mouseleave="handleMouseLeave"
     ref="cardRef"
   >
-    <!-- 内容区域 -->
+    <!-- 内容區域 -->
     <div class="card-content">
       <slot></slot>
     </div>
@@ -84,7 +84,7 @@ export default {
   border-color: var(--card-border-hover);
 }
 
-/* 变体样式 */
+/* 变体樣式 */
 .card-primary {
   border-color: rgba(99, 102, 241, 0.2);
 }
@@ -121,13 +121,13 @@ export default {
   box-shadow: var(--shadow-xl);
 }
 
-/* 内容区域 */
+/* 内容區域 */
 .card-content {
   position: relative;
   z-index: 1;
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .enhanced-card {
     padding: 1rem;

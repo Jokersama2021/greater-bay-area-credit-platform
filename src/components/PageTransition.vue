@@ -1,5 +1,5 @@
 <template>
-  <!-- 空组件，不再显示页面过渡效果 -->
+  <!-- 空组件，不再顯示頁面過渡效果 -->
   <div></div>
 </template>
 
@@ -41,15 +41,15 @@ export default {
   height: 100%;
   z-index: 9999;
   pointer-events: all;
-  animation: smoothFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 从0.6s减少到0.3s */
+  animation: smoothFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 從0.6s减少到0.3s */
   will-change: opacity, transform;
 }
 
 .page-transition-overlay.exiting {
-  animation: smoothFadeOut 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从0.5s减少到0.25s */
+  animation: smoothFadeOut 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 從0.5s减少到0.25s */
 }
 
-/* 更流畅的淡入淡出动画 */
+/* 更流畅的淡入淡出動画 */
 @keyframes smoothFadeIn {
   from {
     opacity: 0;
@@ -83,8 +83,8 @@ export default {
     rgba(10, 15, 30, 0.92) 0%,
     rgba(15, 25, 40, 0.94) 50%,
     rgba(20, 30, 50, 0.96) 100%);
-  backdrop-filter: blur(10px) saturate(1.1); /* 进一步减少模糊程度 */
-  animation: backgroundFlow 0.15s cubic-bezier(0.23, 1, 0.32, 1); /* 从0.3s减少到0.15s */
+  backdrop-filter: blur(10px) saturate(1.1); /* 進一步减少模糊程度 */
+  animation: backgroundFlow 0.15s cubic-bezier(0.23, 1, 0.32, 1); /* 從0.3s减少到0.15s */
   will-change: backdrop-filter, opacity;
 }
 
@@ -94,18 +94,18 @@ export default {
     opacity: 0;
   }
   to {
-    backdrop-filter: blur(10px) saturate(1.1); /* 进一步减少模糊程度 */
+    backdrop-filter: blur(10px) saturate(1.1); /* 進一步减少模糊程度 */
     opacity: 1;
   }
 }
 
 .page-transition-overlay.exiting .transition-background {
-  animation: backgroundFlowOut 0.15s cubic-bezier(0.23, 1, 0.32, 1) forwards; /* 从0.25s减少到0.15s */
+  animation: backgroundFlowOut 0.15s cubic-bezier(0.23, 1, 0.32, 1) forwards; /* 從0.25s减少到0.15s */
 }
 
 @keyframes backgroundFlowOut {
   from {
-    backdrop-filter: blur(10px) saturate(1.1); /* 进一步减少模糊程度 */
+    backdrop-filter: blur(10px) saturate(1.1); /* 進一步减少模糊程度 */
     opacity: 1;
   }
   to {

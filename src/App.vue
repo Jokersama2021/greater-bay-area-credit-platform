@@ -1,37 +1,37 @@
 <template>
   <div class="app-container min-h-screen">
-    <!-- 数字雨背景 -->
+    <!-- 數字雨背景 -->
     <digital-rain-background />
 
-    <!-- 简化背景系统 -->
+    <!-- 简化背景系統 -->
     <div class="background-container">
       <!-- 静态背景层 -->
       <div class="static-background"></div>
     </div>
 
-    <!-- 顶部标题栏 -->
+    <!-- 頂部標題栏 -->
     <header class="header-modern">
       <div class="header-content">
         <div class="flex items-center">
           <div class="logo-modern">
             <div class="logo-icon-modern">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- 外圈代表大湾区 -->
+                <!-- 外圈代表大灣區 -->
                 <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2" opacity="0.3"/>
-                <!-- 内部三个区域代表港澳内地 -->
+                <!-- 内部三個區域代表港澳内地 -->
                 <path d="M24 8 L36 20 L24 24 L12 20 Z" fill="currentColor" opacity="0.8"/>
                 <path d="M12 20 L24 24 L24 36 L12 28 Z" fill="currentColor" opacity="0.6"/>
                 <path d="M24 24 L36 20 L36 28 L24 36 Z" fill="currentColor" opacity="0.7"/>
-                <!-- 中心连接点 -->
+                <!-- 中心連接點 -->
                 <circle cx="24" cy="24" r="3" fill="currentColor"/>
-                <!-- 数据流动线条 -->
+                <!-- 數據流動線条 -->
                 <path d="M24 4 Q30 10 24 16" stroke="currentColor" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
                 <path d="M40 24 Q34 30 28 24" stroke="currentColor" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
                 <path d="M24 44 Q18 38 24 32" stroke="currentColor" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
                 <path d="M8 24 Q14 18 20 24" stroke="currentColor" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
               </svg>
             </div>
-            <h1 class="logo-title">粤港澳大湾区跨境征信服务平台</h1>
+            <h1 class="logo-title">粵港澳大灣區跨境徵信服務平臺</h1>
           </div>
         </div>
 
@@ -39,11 +39,11 @@
           <nav class="nav-menu">
             <router-link to="/" class="nav-link" :class="{ active: $route.path === '/' }">
               <i class="fas fa-home"></i>
-              <span>首页</span>
+              <span>首頁</span>
             </router-link>
             <router-link to="/enterprises" class="nav-link" :class="{ active: $route.path === '/enterprises' }">
               <i class="fas fa-building"></i>
-              <span>企业管理</span>
+              <span>企業管理</span>
             </router-link>
           </nav>
         </div>
@@ -67,13 +67,13 @@
       <router-view></router-view>
     </main>
 
-    <!-- 页面过渡效果 -->
+    <!-- 頁面過渡效果 -->
     <page-transition
       :is-transitioning="isPageTransitioning"
       :transition-text="transitionText"
     />
 
-    <!-- 主页加载动画已移除 -->
+    <!-- 主頁加載動画已移除 -->
 
 
   </div>
@@ -94,14 +94,14 @@ export default {
     return {
       currentTime: new Date(),
       isPageTransitioning: false,
-      transitionText: '页面加载中...'
+      transitionText: '頁面加載中...'
     }
   },
   mounted() {
     this.updateTime()
     setInterval(this.updateTime, 1000)
 
-    // 监听页面过渡事件
+    // 監聽頁面過渡事件
     window.addEventListener('page-transition-start', this.handleTransitionStart)
     window.addEventListener('page-transition-end', this.handleTransitionEnd)
   },
@@ -131,16 +131,16 @@ export default {
       const { to } = event.detail
       this.isPageTransitioning = true
 
-      // 根据目标页面设置不同的过渡文本
+      // 根據目標頁面设置不同的過渡文本
       const pageTexts = {
-        'Home': '正在加载主页...',
-        'Enterprises': '正在加载企业管理...',
-        'EnterpriseDetail': '正在加载企业详情...',
-        'ReportDetail': '正在加载报告详情...',
-        'PartnerDetail': '正在加载合作伙伴详情...'
+        'Home': '正在加載主頁...',
+        'Enterprises': '正在加載企業管理...',
+        'EnterpriseDetail': '正在加載企業詳情...',
+        'ReportDetail': '正在加載報告詳情...',
+        'PartnerDetail': '正在加載合作夥伴詳情...'
       }
 
-      this.transitionText = pageTexts[to] || '页面加载中...'
+      this.transitionText = pageTexts[to] || '頁面加載中...'
     },
     handleTransitionEnd() {
       this.isPageTransitioning = false
@@ -158,7 +158,7 @@ export default {
   overflow-x: hidden;
 }
 
-/* 简洁背景系统 */
+/* 简洁背景系統 */
 .background-container {
   position: fixed;
   top: 0;
@@ -187,7 +187,7 @@ export default {
 
 
 
-/* 现代化头部 */
+/* 現代化頭部 */
 .header-modern {
   position: sticky;
   top: 0;
@@ -339,7 +339,7 @@ export default {
   height: 24px;
 }
 
-/* Logo动画效果 */
+/* Logo動画效果 */
 .logo-icon-modern svg circle:first-child {
   animation: rotate 8s linear infinite;
   transform-origin: center;
@@ -571,7 +571,7 @@ export default {
 
 
 
-/* 科技感时钟样式 */
+/* 科技感時钟樣式 */
 .time-display-tech {
   display: flex;
   align-items: center;

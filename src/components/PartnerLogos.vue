@@ -7,7 +7,7 @@
           <input
             type="text"
             v-model="searchQuery"
-            placeholder="搜索合作机构..."
+            placeholder="搜索合作機構..."
             class="search-input"
             @input="filterPartners"
           />
@@ -16,7 +16,7 @@
 
         <button @click="toggleCollapse" class="collapse-btn">
           <i :class="isCollapsed ? 'fas fa-chevron-down' : 'fas fa-chevron-up'"></i>
-          <span>{{ isCollapsed ? '展开' : '收起' }}</span>
+          <span>{{ isCollapsed ? '展開' : '收起' }}</span>
         </button>
       </div>
 
@@ -39,7 +39,7 @@
       <div v-show="!isCollapsed" class="partner-logos">
         <div v-if="filteredCategories.length === 0" class="no-results">
           <i class="fas fa-search"></i>
-          <p>未找到匹配的合作机构</p>
+          <p>未找到匹配的合作機構</p>
         </div>
 
         <div v-for="(category, categoryIndex) in filteredCategories"
@@ -78,48 +78,48 @@ export default {
   setup() {
     const categories = [
       {
-        name: '征信公司',
+        name: '徵信公司',
         partners: [
-          { id: 1, name: '环联征信有限公司', icon: 'fas fa-shield-alt', bgColor: 'rgba(255, 87, 51, 0.1)' },
-          { id: 2, name: '深圳百行征信服务有限公司', icon: 'fas fa-building', bgColor: 'rgba(52, 152, 219, 0.1)' },
-          { id: 3, name: '广东德信行信用管理有限公司', icon: 'fas fa-check-circle', bgColor: 'rgba(46, 204, 113, 0.1)' },
-          { id: 4, name: '广东鹏元征信有限公司', icon: 'fas fa-award', bgColor: 'rgba(155, 89, 182, 0.1)' },
-          { id: 5, name: '诺华诚信（Nova Credit）', icon: 'fas fa-star', bgColor: 'rgba(241, 196, 15, 0.1)' },
+          { id: 1, name: '环聯徵信有限公司', icon: 'fas fa-shield-alt', bgColor: 'rgba(255, 87, 51, 0.1)' },
+          { id: 2, name: '深圳百行徵信服務有限公司', icon: 'fas fa-building', bgColor: 'rgba(52, 152, 219, 0.1)' },
+          { id: 3, name: '廣東德信行信用管理有限公司', icon: 'fas fa-check-circle', bgColor: 'rgba(46, 204, 113, 0.1)' },
+          { id: 4, name: '廣東鹏元徵信有限公司', icon: 'fas fa-award', bgColor: 'rgba(155, 89, 182, 0.1)' },
+          { id: 5, name: '诺華诚信（Nova Credit）', icon: 'fas fa-star', bgColor: 'rgba(241, 196, 15, 0.1)' },
           { id: 6, name: '邓白氏（Dun & Bradstreet, D&B）', icon: 'fas fa-globe', bgColor: 'rgba(230, 126, 34, 0.1)' },
-          { id: 7, name: '澳门金融管理局（AMCM）信贷数据库', icon: 'fas fa-landmark', bgColor: 'rgba(52, 73, 94, 0.1)' },
-          { id: 8, name: '澳门银行公会（ABM）信贷信息共享系统', icon: 'fas fa-university', bgColor: 'rgba(26, 188, 156, 0.1)' }
+          { id: 7, name: '澳門金融管理局（AMCM）信贷數據库', icon: 'fas fa-landmark', bgColor: 'rgba(52, 73, 94, 0.1)' },
+          { id: 8, name: '澳門銀行公會（ABM）信贷信息共享系統', icon: 'fas fa-university', bgColor: 'rgba(26, 188, 156, 0.1)' }
         ]
       },
       {
-        name: '银行',
+        name: '銀行',
         partners: [
-          { id: 9, name: '中国工商银行', icon: 'fas fa-landmark', bgColor: 'rgba(231, 76, 60, 0.1)' },
-          { id: 10, name: '中国农业银行', icon: 'fas fa-piggy-bank', bgColor: 'rgba(46, 204, 113, 0.1)' },
-          { id: 11, name: '汇丰银行', icon: 'fas fa-university', bgColor: 'rgba(52, 152, 219, 0.1)' },
-          { id: 12, name: '恒生银行', icon: 'fas fa-building', bgColor: 'rgba(155, 89, 182, 0.1)' },
-          { id: 13, name: '渣打银行', icon: 'fas fa-coins', bgColor: 'rgba(241, 196, 15, 0.1)' }
+          { id: 9, name: '中國工商銀行', icon: 'fas fa-landmark', bgColor: 'rgba(231, 76, 60, 0.1)' },
+          { id: 10, name: '中國农業銀行', icon: 'fas fa-piggy-bank', bgColor: 'rgba(46, 204, 113, 0.1)' },
+          { id: 11, name: '汇丰銀行', icon: 'fas fa-university', bgColor: 'rgba(52, 152, 219, 0.1)' },
+          { id: 12, name: '恒生銀行', icon: 'fas fa-building', bgColor: 'rgba(155, 89, 182, 0.1)' },
+          { id: 13, name: '渣打銀行', icon: 'fas fa-coins', bgColor: 'rgba(241, 196, 15, 0.1)' }
         ]
       },
       {
-        name: '保险公司',
+        name: '保險公司',
         partners: [
-          { id: 14, name: '中国人保（PICC）', icon: 'fas fa-shield-alt', bgColor: 'rgba(231, 76, 60, 0.1)' },
-          { id: 15, name: '中国太保（CPIC）', icon: 'fas fa-umbrella', bgColor: 'rgba(52, 152, 219, 0.1)' },
-          { id: 16, name: '友邦保险（AIA）', icon: 'fas fa-heart', bgColor: 'rgba(46, 204, 113, 0.1)' },
-          { id: 17, name: '安盛保险（AXA）', icon: 'fas fa-shield-alt', bgColor: 'rgba(155, 89, 182, 0.1)' },
-          { id: 18, name: '澳门人寿（Macau Life）', icon: 'fas fa-user-shield', bgColor: 'rgba(241, 196, 15, 0.1)' },
-          { id: 19, name: '太平保险（澳门）（Taiping Macau）', icon: 'fas fa-life-ring', bgColor: 'rgba(230, 126, 34, 0.1)' }
+          { id: 14, name: '中國人保（PICC）', icon: 'fas fa-shield-alt', bgColor: 'rgba(231, 76, 60, 0.1)' },
+          { id: 15, name: '中國太保（CPIC）', icon: 'fas fa-umbrella', bgColor: 'rgba(52, 152, 219, 0.1)' },
+          { id: 16, name: '友邦保險（AIA）', icon: 'fas fa-heart', bgColor: 'rgba(46, 204, 113, 0.1)' },
+          { id: 17, name: '安盛保險（AXA）', icon: 'fas fa-shield-alt', bgColor: 'rgba(155, 89, 182, 0.1)' },
+          { id: 18, name: '澳門人寿（Macau Life）', icon: 'fas fa-user-shield', bgColor: 'rgba(241, 196, 15, 0.1)' },
+          { id: 19, name: '太平保險（澳門）（Taiping Macau）', icon: 'fas fa-life-ring', bgColor: 'rgba(230, 126, 34, 0.1)' }
         ]
       },
       {
-        name: '互联网金融',
+        name: '互聯網金融',
         partners: [
-          { id: 20, name: '平安健康保险', icon: 'fas fa-heartbeat', bgColor: 'rgba(231, 76, 60, 0.1)' },
-          { id: 21, name: '富途证券', icon: 'fas fa-chart-line', bgColor: 'rgba(52, 152, 219, 0.1)' },
+          { id: 20, name: '平安健康保險', icon: 'fas fa-heartbeat', bgColor: 'rgba(231, 76, 60, 0.1)' },
+          { id: 21, name: '富途證券', icon: 'fas fa-chart-line', bgColor: 'rgba(52, 152, 219, 0.1)' },
           { id: 22, name: '同花顺', icon: 'fas fa-chart-bar', bgColor: 'rgba(46, 204, 113, 0.1)' },
-          { id: 23, name: '财付通', icon: 'fas fa-wallet', bgColor: 'rgba(155, 89, 182, 0.1)' },
-          { id: 24, name: '腾讯金融科技', icon: 'fas fa-money-bill-wave', bgColor: 'rgba(241, 196, 15, 0.1)' },
-          { id: 25, name: '度小满金融', icon: 'fas fa-hand-holding-usd', bgColor: 'rgba(230, 126, 34, 0.1)' }
+          { id: 23, name: '財付通', icon: 'fas fa-wallet', bgColor: 'rgba(155, 89, 182, 0.1)' },
+          { id: 24, name: '騰訊金融科技', icon: 'fas fa-money-bill-wave', bgColor: 'rgba(241, 196, 15, 0.1)' },
+          { id: 25, name: '度小滿金融', icon: 'fas fa-hand-holding-usd', bgColor: 'rgba(230, 126, 34, 0.1)' }
         ]
       }
     ]
@@ -132,21 +132,21 @@ export default {
       return categories.map(cat => cat.name);
     });
     
-    // 过滤后的分类和合作伙伴
+    // 過滤后的分类和合作夥伴
     const filteredCategories = computed(() => {
-      // 如果没有搜索词且选择全部分类，返回所有数据
+      // 如果没有搜索詞且選择全部分类，返回所有數據
       if (!searchQuery.value && activeCategory.value === '全部') {
         return categories;
       }
       
       return categories
         .map(category => {
-          // 按分类筛选
+          // 按分类篩選
           if (activeCategory.value !== '全部' && category.name !== activeCategory.value) {
             return null;
           }
           
-          // 按搜索词筛选合作伙伴
+          // 按搜索詞篩選合作夥伴
           if (searchQuery.value) {
             const filteredPartners = category.partners.filter(partner => 
               partner.name.toLowerCase().includes(searchQuery.value.toLowerCase())
@@ -172,14 +172,14 @@ export default {
       searchQuery.value = '';
     };
     
-    // 按分类筛选
+    // 按分类篩選
     const filterByCategory = (category) => {
       activeCategory.value = category;
     };
     
-    // 实时筛选
+    // 實時篩選
     const filterPartners = () => {
-      // 每次输入更新结果，函数体可以为空，因为使用了计算属性
+      // 每次输入更新结果，函數体可以為空，因為使用了計算属性
     };
 
     // 切换折叠状态
@@ -390,7 +390,7 @@ export default {
   transform: translateY(0);
 }
 
-/* 滑动淡入动画 */
+/* 滑動淡入動画 */
 .slide-fade-enter-active {
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -512,7 +512,7 @@ export default {
   transform: translateY(0);
 }
 
-/* 展开淡入动画 */
+/* 展開淡入動画 */
 .expand-fade-enter-active {
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }

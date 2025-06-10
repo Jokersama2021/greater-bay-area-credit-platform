@@ -2,36 +2,36 @@
   <div class="supply-chain-container">
     <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <div class="loading-text">加载供应链金融服务中...</div>
+      <div class="loading-text">加載供應链金融服務中...</div>
     </div>
 
     <div v-else class="content">
-      <!-- 页面头部 -->
+      <!-- 頁面頭部 -->
       <div class="page-header">
         <div class="header-content">
           <div class="header-icon">
             <i class="fas fa-link"></i>
           </div>
           <div class="header-info">
-            <h1 class="page-title">供应链金融</h1>
-            <p class="page-subtitle">供应链融资服务 - 连接上下游，共享金融价值</p>
+            <h1 class="page-title">供應链金融</h1>
+            <p class="page-subtitle">供應链融資服務 - 連接上下游，共享金融价值</p>
           </div>
           <div class="header-stats">
             <div class="stat-item">
               <div class="stat-value">{{ partnerCount }}+</div>
-              <div class="stat-label">合作核心企业</div>
+              <div class="stat-label">合作核心企業</div>
             </div>
             <div class="stat-item">
               <div class="stat-value">{{ financingAmount }}亿</div>
-              <div class="stat-label">累计融资金额</div>
+              <div class="stat-label">累計融資金额</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 服务模式 -->
+      <!-- 服務模式 -->
       <div class="service-modes-section">
-        <h2 class="section-title">服务模式</h2>
+        <h2 class="section-title">服務模式</h2>
         <div class="modes-grid">
           <div class="mode-card" v-for="mode in serviceModes" :key="mode.id">
             <div class="mode-icon">
@@ -46,7 +46,7 @@
             </div>
             <div class="mode-stats">
               <div class="stat">
-                <span class="stat-label">融资期限：</span>
+                <span class="stat-label">融資期限：</span>
                 <span class="stat-value">{{ mode.term }}</span>
               </div>
               <div class="stat">
@@ -58,9 +58,9 @@
         </div>
       </div>
 
-      <!-- 核心企业合作 -->
+      <!-- 核心企業合作 -->
       <div class="core-partners-section">
-        <h2 class="section-title">核心企业合作</h2>
+        <h2 class="section-title">核心企業合作</h2>
         <div class="partners-showcase">
           <div class="partner-category" v-for="category in partnerCategories" :key="category.id">
             <h3 class="category-title">{{ category.title }}</h3>
@@ -84,9 +84,9 @@
         </div>
       </div>
 
-      <!-- 产品优势 -->
+      <!-- 產品優势 -->
       <div class="advantages-section">
-        <h2 class="section-title">产品优势</h2>
+        <h2 class="section-title">產品優势</h2>
         <div class="advantages-grid">
           <div class="advantage-card" v-for="advantage in advantages" :key="advantage.id">
             <div class="advantage-icon">
@@ -135,13 +135,13 @@
         </div>
       </div>
 
-      <!-- 风控体系 -->
+      <!-- 風控体系 -->
       <div class="risk-control-section">
-        <h2 class="section-title">风控体系</h2>
+        <h2 class="section-title">風控体系</h2>
         <div class="risk-system">
           <div class="system-overview">
-            <h3>全链条风险管控</h3>
-            <p>基于供应链真实贸易背景，构建多维度风险防控体系</p>
+            <h3>全链条風險管控</h3>
+            <p>基于供應链真實贸易背景，構建多维度風險防控体系</p>
           </div>
           <div class="control-measures">
             <div class="measure-item" v-for="measure in riskMeasures" :key="measure.id">
@@ -169,7 +169,7 @@
         </button>
         <button class="secondary-btn" @click="consultService">
           <i class="fas fa-phone-alt"></i>
-          业务咨询
+          業務咨詢
         </button>
       </div>
     </div>
@@ -189,36 +189,36 @@ export default {
         {
           id: 1,
           icon: 'fas fa-file-invoice',
-          title: '应收账款融资',
-          description: '基于核心企业应付账款，为供应商提供融资服务',
-          features: ['免担保', '线上操作', '快速放款'],
+          title: '應收账款融資',
+          description: '基于核心企業應付账款，為供應商提供融資服務',
+          features: ['免担保', '線上操作', '快速放款'],
           term: '30-180天',
           rate: '3.5%-6.8%'
         },
         {
           id: 2,
           icon: 'fas fa-warehouse',
-          title: '存货融资',
-          description: '以存货作为质押，为企业提供流动资金支持',
-          features: ['动产质押', '专业监管', '灵活提取'],
-          term: '1-12个月',
+          title: '存货融資',
+          description: '以存货作為质押，為企業提供流動資金支持',
+          features: ['動產质押', '專業監管', '灵活提取'],
+          term: '1-12個月',
           rate: '4.2%-7.5%'
         },
         {
           id: 3,
           icon: 'fas fa-truck',
-          title: '预付款融资',
-          description: '基于真实贸易背景，为采购方提供预付款融资',
-          features: ['贸易背景', '风险可控', '期限匹配'],
+          title: '预付款融資',
+          description: '基于真實贸易背景，為采购方提供预付款融資',
+          features: ['贸易背景', '風險可控', '期限匹配'],
           term: '30-360天',
           rate: '3.8%-7.2%'
         },
         {
           id: 4,
           icon: 'fas fa-credit-card',
-          title: '保理融资',
-          description: '应收账款转让，提供融资、催收、坏账担保服务',
-          features: ['无追索权', '专业催收', '风险转移'],
+          title: '保理融資',
+          description: '應收账款转讓，提供融資、催收、坏账担保服務',
+          features: ['無追索权', '專業催收', '風險转移'],
           term: '30-180天',
           rate: '4.0%-8.0%'
         }
@@ -226,41 +226,41 @@ export default {
       partnerCategories: [
         {
           id: 1,
-          title: '制造业龙头',
+          title: '制造業龍頭',
           partners: [
             {
               id: 1,
               icon: 'fas fa-industry',
-              name: '比亚迪汽车',
-              description: '新能源汽车制造龙头企业',
-              benefits: ['供应商融资', '经销商支持', '全链条服务']
+              name: '比亚迪汽車',
+              description: '新能源汽車制造龍頭企業',
+              benefits: ['供應商融資', '經销商支持', '全链条服務']
             },
             {
               id: 2,
               icon: 'fas fa-microchip',
-              name: '华为技术',
-              description: '通信设备制造领军企业',
-              benefits: ['上游融资', '下游赋能', '技术支持']
+              name: '華為技术',
+              description: '通信设備制造領军企業',
+              benefits: ['上游融資', '下游赋能', '技术支持']
             }
           ]
         },
         {
           id: 2,
-          title: '零售连锁',
+          title: '零售連锁',
           partners: [
             {
               id: 3,
               icon: 'fas fa-shopping-cart',
-              name: '沃尔玛中国',
-              description: '全球零售连锁巨头',
-              benefits: ['供应商融资', '账期优化', '数据共享']
+              name: '沃尔玛中國',
+              description: '全球零售連锁巨頭',
+              benefits: ['供應商融資', '账期優化', '數據共享']
             },
             {
               id: 4,
               icon: 'fas fa-store',
               name: '永辉超市',
-              description: '生鲜零售连锁企业',
-              benefits: ['快速融资', '在线申请', '自动审批']
+              description: '生鲜零售連锁企業',
+              benefits: ['快速融資', '在線申请', '自動审批']
             }
           ]
         }
@@ -270,27 +270,27 @@ export default {
           id: 1,
           icon: 'fas fa-network-wired',
           title: '生态协同',
-          description: '依托核心企业信用，构建供应链金融生态圈',
+          description: '依托核心企業信用，構建供應链金融生态圈',
           metrics: [
-            { value: '500+', label: '合作企业' },
-            { value: '95%', label: '满意度' }
+            { value: '500+', label: '合作企業' },
+            { value: '95%', label: '滿意度' }
           ]
         },
         {
           id: 2,
           icon: 'fas fa-robot',
-          title: '智能风控',
-          description: '运用大数据和AI技术，实现智能化风险管控',
+          title: '智能風控',
+          description: '运用大數據和AI技术，實現智能化風險管控',
           metrics: [
             { value: '0.3%', label: '不良率' },
-            { value: '24小时', label: '审批时效' }
+            { value: '24小時', label: '审批時效' }
           ]
         },
         {
           id: 3,
           icon: 'fas fa-coins',
-          title: '成本优化',
-          description: '降低融资成本，提升供应链整体效率',
+          title: '成本優化',
+          description: '降低融資成本，提升供應链整体效率',
           metrics: [
             { value: '30%', label: '成本降低' },
             { value: '50%', label: '效率提升' }
@@ -300,49 +300,49 @@ export default {
       requirementTabs: [
         {
           id: 1,
-          title: '核心企业',
+          title: '核心企業',
           requirements: [
             {
               id: 1,
               icon: 'fas fa-star',
-              title: '企业资质',
-              description: '行业龙头企业，信用等级AA级以上'
+              title: '企業資质',
+              description: '行業龍頭企業，信用等級AA級以上'
             },
             {
               id: 2,
               icon: 'fas fa-chart-line',
-              title: '经营状况',
-              description: '年营业收入10亿元以上，经营稳定'
+              title: '經营状况',
+              description: '年营業收入10亿元以上，經营稳定'
             },
             {
               id: 3,
               icon: 'fas fa-handshake',
               title: '合作意愿',
-              description: '愿意为供应链伙伴提供信用支持'
+              description: '愿意為供應链夥伴提供信用支持'
             }
           ]
         },
         {
           id: 2,
-          title: '供应商',
+          title: '供應商',
           requirements: [
             {
               id: 1,
               icon: 'fas fa-building',
-              title: '企业基础',
-              description: '成立满2年，与核心企业有稳定合作关系'
+              title: '企業基础',
+              description: '成立滿2年，与核心企業有稳定合作關系'
             },
             {
               id: 2,
               icon: 'fas fa-file-contract',
               title: '贸易背景',
-              description: '具有真实的贸易背景和应收账款'
+              description: '具有真實的贸易背景和應收账款'
             },
             {
               id: 3,
               icon: 'fas fa-shield-alt',
               title: '信用状况',
-              description: '无重大违法违规记录，信用状况良好'
+              description: '無重大违法违規記录，信用状况良好'
             }
           ]
         }
@@ -351,26 +351,26 @@ export default {
         {
           id: 1,
           icon: 'fas fa-search',
-          title: '贸易真实性验证',
-          description: '通过多维度数据交叉验证，确保贸易背景真实'
+          title: '贸易真實性验證',
+          description: '通過多维度數據交叉验證，确保贸易背景真實'
         },
         {
           id: 2,
           icon: 'fas fa-eye',
-          title: '全流程监控',
-          description: '对资金流、物流、信息流进行全程监控'
+          title: '全流程監控',
+          description: '對資金流、物流、信息流進行全程監控'
         },
         {
           id: 3,
           icon: 'fas fa-users',
           title: '多方确权',
-          description: '核心企业、供应商、银行多方确权机制'
+          description: '核心企業、供應商、銀行多方确权機制'
         },
         {
           id: 4,
           icon: 'fas fa-lock',
-          title: '风险隔离',
-          description: '建立风险隔离机制，防范系统性风险'
+          title: '風險隔離',
+          description: '建立風險隔離機制，防範系統性風險'
         }
       ]
     }
@@ -390,10 +390,10 @@ export default {
       this.$router.push('/supply-chain/apply')
     },
     viewCases() {
-      alert('成功案例功能开发中...')
+      alert('成功案例功能開發中...')
     },
     consultService() {
-      alert('业务咨询功能开发中...')
+      alert('業務咨詢功能開發中...')
     }
   }
 }
@@ -440,7 +440,7 @@ export default {
   margin: 0 auto;
 }
 
-/* 页面头部样式 */
+/* 頁面頭部樣式 */
 .page-header {
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%);
   border-radius: 20px;
@@ -508,7 +508,7 @@ export default {
   margin-top: 0.25rem;
 }
 
-/* 通用样式 */
+/* 通用樣式 */
 .section-title {
   font-size: 1.8rem;
   font-weight: 600;
@@ -516,7 +516,7 @@ export default {
   color: white;
 }
 
-/* 服务模式样式 */
+/* 服務模式樣式 */
 .service-modes-section {
   margin-bottom: 3rem;
 }
@@ -602,7 +602,7 @@ export default {
   font-weight: 600;
 }
 
-/* 核心企业合作样式 */
+/* 核心企業合作樣式 */
 .core-partners-section {
   margin-bottom: 3rem;
 }
@@ -692,7 +692,7 @@ export default {
   font-weight: 600;
 }
 
-/* 产品优势样式 */
+/* 產品優势樣式 */
 .advantages-section {
   margin-bottom: 3rem;
 }
@@ -765,7 +765,7 @@ export default {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* 申请条件样式 */
+/* 申请条件樣式 */
 .requirements-section {
   margin-bottom: 3rem;
 }
@@ -845,7 +845,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 风控体系样式 */
+/* 風控体系樣式 */
 .risk-control-section {
   margin-bottom: 3rem;
 }
@@ -914,7 +914,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 操作按钮样式 */
+/* 操作按钮樣式 */
 .action-section {
   display: flex;
   gap: 1rem;
@@ -957,7 +957,7 @@ export default {
   transform: translateY(-2px);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .supply-chain-container {
     padding: 1rem;

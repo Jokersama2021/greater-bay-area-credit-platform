@@ -11,27 +11,27 @@
           <div class="icon-glow"></div>
         </div>
         <div class="title-content">
-          <h3>跨境企业信用查询记录</h3>
-          <p class="title-subtitle">实时监控跨链信用查询活动</p>
+          <h3>跨境企業信用查詢記錄</h3>
+          <p class="title-subtitle">實時監控跨鏈信用查詢活動</p>
         </div>
       </div>
       <div class="header-stats">
         <div class="stat-item">
           <div class="stat-number">{{ totalQueries }}</div>
-          <div class="stat-label">总查询数</div>
+          <div class="stat-label">總查詢數</div>
         </div>
         <div class="stat-divider"></div>
         <div class="sync-status">
           <div class="sync-indicator">
             <div class="sync-dot"></div>
-            <span>实时同步</span>
+            <span>實時同步</span>
           </div>
         </div>
       </div>
     </div>
 
     <div class="chains-grid">
-      <!-- Fabric链 (澳门方) -->
+      <!-- Fabric链 (澳門方) -->
       <div class="chain-section fabric-chain">
         <div class="chain-title">
           <div class="chain-logo fabric-logo">
@@ -43,20 +43,20 @@
           </div>
           <div class="chain-info">
             <h4>Fabric链</h4>
-            <span class="chain-region">澳门特别行政区</span>
+            <span class="chain-region">澳門特別行政區</span>
             <div class="chain-metrics">
               <span class="metric-item">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
-                {{ fabricTransactions.length }} 条记录
+                {{ fabricTransactions.length }} 条記录
               </span>
             </div>
           </div>
           <div class="chain-status-container">
             <div class="chain-status online">
               <div class="status-dot"></div>
-              <span>在线</span>
+              <span>在線</span>
             </div>
             <div class="chain-performance">
               <div class="performance-bar">
@@ -83,7 +83,7 @@
                   </svg>
                 </div>
                 <div class="tx-id-content">
-                  <span class="tx-label">查询ID</span>
+                  <span class="tx-label">查詢ID</span>
                   <code class="tx-hash">{{ tx.id.substring(0, 16) }}...</code>
                 </div>
               </div>
@@ -96,7 +96,7 @@
               <div class="query-action">
                 <div class="company-card company-a">
                   <span class="company-name">{{ tx.queryCompany }}</span>
-                  <span class="company-role">查询方</span>
+                  <span class="company-role">查詢方</span>
                 </div>
                 <div class="arrow-container">
                   <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,12 +106,12 @@
                 </div>
                 <div class="company-card company-b">
                   <span class="company-name">{{ tx.targetCompany }}</span>
-                  <span class="company-role">被查询方</span>
+                  <span class="company-role">被查詢方</span>
                 </div>
               </div>
               <div class="credit-result">
                 <div class="result-content">
-                  <span class="result-label">信用评估结果</span>
+                  <span class="result-label">信用評估结果</span>
                   <div class="result-badge-container">
                     <span class="result-badge" :class="tx.creditStatus">
                       <svg class="result-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +134,7 @@
                   </svg>
                 </div>
                 <div class="detail-content">
-                  <span class="detail-label">区块编号</span>
+                  <span class="detail-label">區块编号</span>
                   <span class="detail-value">#{{ tx.blockNumber }}</span>
                 </div>
               </div>
@@ -166,20 +166,20 @@
           </div>
           <div class="chain-info">
             <h4>BCOS链</h4>
-            <span class="chain-region">中国内地</span>
+            <span class="chain-region">中國内地</span>
             <div class="chain-metrics">
               <span class="metric-item">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
-                {{ bcosTransactions.length }} 条记录
+                {{ bcosTransactions.length }} 条記录
               </span>
             </div>
           </div>
           <div class="chain-status-container">
             <div class="chain-status online">
               <div class="status-dot"></div>
-              <span>在线</span>
+              <span>在線</span>
             </div>
             <div class="chain-performance">
               <div class="performance-bar">
@@ -206,7 +206,7 @@
                   </svg>
                 </div>
                 <div class="tx-id-content">
-                  <span class="tx-label">查询ID</span>
+                  <span class="tx-label">查詢ID</span>
                   <code class="tx-hash">{{ tx.id.substring(0, 16) }}...</code>
                 </div>
               </div>
@@ -219,7 +219,7 @@
               <div class="query-action">
                 <div class="company-card company-a">
                   <span class="company-name">{{ tx.queryCompany }}</span>
-                  <span class="company-role">查询方</span>
+                  <span class="company-role">查詢方</span>
                 </div>
                 <div class="arrow-container">
                   <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -229,12 +229,12 @@
                 </div>
                 <div class="company-card company-b">
                   <span class="company-name">{{ tx.targetCompany }}</span>
-                  <span class="company-role">被查询方</span>
+                  <span class="company-role">被查詢方</span>
                 </div>
               </div>
               <div class="credit-result">
                 <div class="result-content">
-                  <span class="result-label">信用评估结果</span>
+                  <span class="result-label">信用評估结果</span>
                   <div class="result-badge-container">
                     <span class="result-badge" :class="tx.creditStatus">
                       <svg class="result-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +257,7 @@
                   </svg>
                 </div>
                 <div class="detail-content">
-                  <span class="detail-label">区块编号</span>
+                  <span class="detail-label">區块编号</span>
                   <span class="detail-value">#{{ tx.blockNumber }}</span>
                 </div>
               </div>
@@ -278,10 +278,10 @@
       </div>
     </div>
 
-    <!-- 高级交易详情弹窗 -->
+    <!-- 高級交易詳情弹窗 -->
     <div v-if="selectedTx" class="advanced-transaction-modal" @click="closeModal">
       <div class="advanced-modal-content" @click.stop>
-        <!-- 模态框头部 -->
+        <!-- 模态框頭部 -->
         <div class="advanced-modal-header">
           <div class="header-left">
             <div class="chain-indicator" :class="selectedChain">
@@ -296,8 +296,8 @@
               <div class="chain-pulse"></div>
             </div>
             <div class="header-text">
-              <h3>{{ selectedChain === 'fabric' ? 'Fabric链' : 'BCOS链' }} 交易详情</h3>
-              <p class="header-subtitle">跨境企业信用查询记录</p>
+              <h3>{{ selectedChain === 'fabric' ? 'Fabric链' : 'BCOS链' }} 交易詳情</h3>
+              <p class="header-subtitle">跨境企業信用查詢記录</p>
             </div>
           </div>
           <button class="advanced-close-btn" @click="closeModal">
@@ -320,7 +320,7 @@
               </div>
               <div class="overview-text">
                 <h4>交易概览</h4>
-                <p>企业信用查询交易信息</p>
+                <p>企業信用查詢交易信息</p>
               </div>
               <div class="transaction-status" :class="selectedTx.creditStatus">
                 <div class="status-dot"></div>
@@ -329,9 +329,9 @@
             </div>
           </div>
 
-          <!-- 详细信息网格 -->
+          <!-- 詳細信息網格 -->
           <div class="details-grid">
-            <!-- 查询ID -->
+            <!-- 查詢ID -->
             <div class="detail-card">
               <div class="detail-header">
                 <div class="detail-icon id-icon">
@@ -339,7 +339,7 @@
                     <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                   </svg>
                 </div>
-                <span class="detail-label">查询ID</span>
+                <span class="detail-label">查詢ID</span>
               </div>
               <div class="detail-value">
                 <code class="hash-display">{{ selectedTx.id }}</code>
@@ -351,7 +351,7 @@
               </div>
             </div>
 
-            <!-- 查询企业 -->
+            <!-- 查詢企業 -->
             <div class="detail-card">
               <div class="detail-header">
                 <div class="detail-icon company-icon">
@@ -359,14 +359,14 @@
                     <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                   </svg>
                 </div>
-                <span class="detail-label">查询企业</span>
+                <span class="detail-label">查詢企業</span>
               </div>
               <div class="detail-value">
                 <span class="company-name">{{ selectedTx.queryCompany }}</span>
               </div>
             </div>
 
-            <!-- 被查询企业 -->
+            <!-- 被查詢企業 -->
             <div class="detail-card">
               <div class="detail-header">
                 <div class="detail-icon target-icon">
@@ -375,7 +375,7 @@
                     <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                   </svg>
                 </div>
-                <span class="detail-label">被查询企业</span>
+                <span class="detail-label">被查詢企業</span>
               </div>
               <div class="detail-value">
                 <span class="company-name">{{ selectedTx.targetCompany }}</span>
@@ -390,7 +390,7 @@
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                 </div>
-                <span class="detail-label">信用查询结果</span>
+                <span class="detail-label">信用查詢结果</span>
               </div>
               <div class="detail-value">
                 <div class="advanced-result-badge" :class="selectedTx.creditStatus">
@@ -410,7 +410,7 @@
               </div>
             </div>
 
-            <!-- 区块链信息 -->
+            <!-- 區块链信息 -->
             <div class="detail-card blockchain-card">
               <div class="detail-header">
                 <div class="detail-icon blockchain-icon">
@@ -418,7 +418,7 @@
                     <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
                   </svg>
                 </div>
-                <span class="detail-label">区块链信息</span>
+                <span class="detail-label">區块链信息</span>
               </div>
               <div class="detail-value blockchain-info">
                 <div class="blockchain-item">
@@ -431,7 +431,7 @@
                   </button>
                 </div>
                 <div class="blockchain-item">
-                  <span class="blockchain-label">区块编号</span>
+                  <span class="blockchain-label">區块编号</span>
                   <span class="block-number">#{{ selectedTx.blockNumber }}</span>
                 </div>
                 <div class="blockchain-item">
@@ -441,7 +441,7 @@
               </div>
             </div>
 
-            <!-- 时间信息 -->
+            <!-- 時間信息 -->
             <div class="detail-card time-card">
               <div class="detail-header">
                 <div class="detail-icon time-icon">
@@ -449,7 +449,7 @@
                     <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                 </div>
-                <span class="detail-label">查询时间</span>
+                <span class="detail-label">查詢時間</span>
               </div>
               <div class="detail-value">
                 <div class="time-display">
@@ -474,12 +474,12 @@ export default {
     const selectedTx = ref(null)
     const selectedChain = ref('')
 
-    // 模拟Fabric链企业信用查询记录
+    // 模拟Fabric链企業信用查詢記录
     const fabricTransactions = ref([
       {
         id: '74d5d2946cbe43eb9843eaaa1ef69d41',
-        queryCompany: '澳门科技有限公司',
-        targetCompany: '珠海创新企业',
+        queryCompany: '澳門科技有限公司',
+        targetCompany: '珠海創新企業',
         creditStatus: 'qualified',
         creditStatusText: '信用合格',
         txHash: '841591a8e5bf668a4f7419a2cf9436e4d2ddceb0de1177842eed726d9fe64323',
@@ -488,18 +488,18 @@ export default {
       },
       {
         id: '85e6e3a57dbf54fc9954fbb1b2f70e52',
-        queryCompany: '澳门金融集团',
+        queryCompany: '澳門金融集团',
         targetCompany: '深圳贸易公司',
         creditStatus: 'excellent',
-        creditStatusText: '信用优秀',
+        creditStatusText: '信用優秀',
         txHash: '952602b9f6ce779b8f8a5c1e3f4d7a8b9c0e1f2a3b4c5d6e7f8a9b0c1d2e3f4',
         blockNumber: 12,
         timestamp: new Date('2025-01-15 15:45:10')
       },
       {
         id: 'a1b2c3d4e5f6789012345678901234ab',
-        queryCompany: '澳门投资控股',
-        targetCompany: '广州制造企业',
+        queryCompany: '澳門投資控股',
+        targetCompany: '廣州制造企業',
         creditStatus: 'qualified',
         creditStatusText: '信用合格',
         txHash: 'f1e2d3c4b5a6978563214789654123ab987654321fedcba0123456789abcdef',
@@ -508,12 +508,12 @@ export default {
       }
     ])
 
-    // 模拟BCOS链企业信用查询记录
+    // 模拟BCOS链企業信用查詢記录
     const bcosTransactions = ref([
       {
         id: '74d5d2946cbe43eb9843eaaa1ef69d41',
         queryCompany: '深圳科技集团',
-        targetCompany: '澳门贸易公司',
+        targetCompany: '澳門贸易公司',
         creditStatus: 'qualified',
         creditStatusText: '信用合格',
         txHash: '0x44146b8c7a2d4da8b0377e21b2589f07d61e9ebc5ce6e0e1f21405e792dcd9',
@@ -522,8 +522,8 @@ export default {
       },
       {
         id: '96f7h8i9j0k1234567890123456789cd',
-        queryCompany: '广州制造有限公司',
-        targetCompany: '香港物流企业',
+        queryCompany: '廣州制造有限公司',
+        targetCompany: '香港物流企業',
         creditStatus: 'warning',
         creditStatusText: '信用预警',
         txHash: '0x55257c9d8b3e5eb9c1488f32c3690g18e72f0fcd6df7f1f2g32516f803ede0',
@@ -532,10 +532,10 @@ export default {
       },
       {
         id: 'ef9g0h1i2j3k456789012345678901de',
-        queryCompany: '珠海投资控股',
-        targetCompany: '澳门金融服务',
+        queryCompany: '珠海投資控股',
+        targetCompany: '澳門金融服務',
         creditStatus: 'excellent',
-        creditStatusText: '信用优秀',
+        creditStatusText: '信用優秀',
         txHash: '0x66368d0e9c4f6fc0d2599g43d4701h29f83g1gde7eg8g2g3h43627g914fef1',
         blockNumber: 12,
         timestamp: new Date('2025-01-15 16:05:18')
@@ -580,29 +580,29 @@ export default {
 
       if (minutes < 1) return '刚刚'
       if (minutes < 60) return `${minutes}分钟前`
-      if (hours < 24) return `${hours}小时前`
+      if (hours < 24) return `${hours}小時前`
       return `${days}天前`
     }
 
     const copyToClipboard = async (text) => {
       try {
         await navigator.clipboard.writeText(text)
-        // 这里可以添加复制成功的提示
+        // 這里可以添加复制成功的提示
         console.log('复制成功:', text)
       } catch (err) {
         console.error('复制失败:', err)
       }
     }
 
-    // 计算总查询数
+    // 計算總查詢數
     const totalQueries = computed(() => {
       return fabricTransactions.value.length + bcosTransactions.value.length
     })
 
-    // 模拟实时数据更新
+    // 模拟實時數據更新
     onMounted(() => {
       setInterval(() => {
-        // 这里可以添加实时数据更新逻辑
+        // 這里可以添加實時數據更新逻辑
       }, 5000)
     })
 
@@ -789,7 +789,7 @@ export default {
   margin-top: 20px;
 }
 
-/* 专门针对1080p屏幕优化 - 保持双栏 */
+/* 專門针對1080p屏幕優化 - 保持双栏 */
 @media (max-width: 1920px) and (min-width: 1400px) {
   .chains-grid {
     grid-template-columns: 1fr 1fr;
@@ -857,7 +857,7 @@ export default {
   }
 }
 
-/* 中等屏幕 - 切换为单列 */
+/* 中等屏幕 - 切换為单列 */
 @media (max-width: 1400px) {
   .chains-grid {
     grid-template-columns: 1fr;
@@ -1340,7 +1340,7 @@ export default {
   font-family: var(--font-mono);
 }
 
-/* 模态框样式 */
+/* 模态框樣式 */
 .transaction-modal {
   position: fixed;
   top: 0;
@@ -1554,7 +1554,7 @@ export default {
   transform: scale(1.02);
 }
 
-/* 模态框中的特殊样式 */
+/* 模态框中的特殊樣式 */
 .modal-body .result-badge {
   display: inline-flex;
   align-items: center;
@@ -1600,7 +1600,7 @@ export default {
   border-color: rgba(255, 59, 48, 0.4);
 }
 
-/* 动画效果 */
+/* 動画效果 */
 @keyframes iconGlow {
   0%, 100% {
     opacity: 0;
@@ -1659,7 +1659,7 @@ export default {
   }
 }
 
-/* 新的交易项样式 */
+/* 新的交易项樣式 */
 .company-card {
   display: flex;
   flex-direction: column;
@@ -1951,7 +1951,7 @@ export default {
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
-/* 高级模态框样式 */
+/* 高級模态框樣式 */
 .advanced-transaction-modal {
   position: fixed;
   top: 0;
@@ -2172,7 +2172,7 @@ export default {
   }
 }
 
-/* 小屏幕笔记本 - 优化间距 */
+/* 小屏幕笔記本 - 優化間距 */
 @media (max-width: 1200px) {
   .chains-grid {
     grid-template-columns: 1fr;
@@ -2264,7 +2264,7 @@ export default {
   }
 }
 
-/* 超小屏幕优化 */
+/* 超小屏幕優化 */
 @media (max-width: 480px) {
   .cross-chain-container {
     padding: 16px;
@@ -2307,7 +2307,7 @@ export default {
   }
 }
 
-/* 交易概览样式 */
+/* 交易概览樣式 */
 .transaction-overview {
   margin-bottom: 24px;
 }
@@ -2417,7 +2417,7 @@ export default {
   background: #FF9500;
 }
 
-/* 详细信息网格 */
+/* 詳細信息網格 */
 .details-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

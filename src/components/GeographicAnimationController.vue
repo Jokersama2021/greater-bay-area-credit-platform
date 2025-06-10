@@ -1,10 +1,10 @@
 <template>
   <div class="animation-controller">
     <div class="control-panel" v-if="showControls">
-      <h4>🌊 粤港澳地理动画控制</h4>
+      <h4>🌊 粵港澳地理動画控制</h4>
       
       <div class="control-group">
-        <label>动画强度</label>
+        <label>動画强度</label>
         <input 
           type="range" 
           min="0" 
@@ -33,7 +33,7 @@
             v-model="enableConnections"
             @change="toggleConnections"
           />
-          城市连接线
+          城市連接線
         </label>
       </div>
 
@@ -44,7 +44,7 @@
             v-model="enableLandmarks"
             @change="toggleLandmarks"
           />
-          地标建筑
+          地標建筑
         </label>
       </div>
 
@@ -55,23 +55,23 @@
             v-model="enableClouds"
             @change="toggleClouds"
           />
-          云层飘移
+          雲层飘移
         </label>
       </div>
 
       <div class="control-group">
-        <label>动画主题</label>
+        <label>動画主題</label>
         <select v-model="animationTheme" @change="changeTheme">
-          <option value="default">默认</option>
+          <option value="default">默認</option>
           <option value="night">夜景模式</option>
-          <option value="festival">节庆模式</option>
-          <option value="business">商务模式</option>
+          <option value="festival">节慶模式</option>
+          <option value="business">商務模式</option>
         </select>
       </div>
 
       <div class="control-group">
         <button @click="resetAnimations" class="reset-btn">
-          🔄 重置动画
+          🔄 重置動画
         </button>
       </div>
     </div>
@@ -105,7 +105,7 @@ export default {
       const intensity = this.animationIntensity / 100
       document.documentElement.style.setProperty('--animation-intensity', intensity)
       
-      // 调整动画速度
+      // 调整動画速度
       const elements = document.querySelectorAll('.geographic-background *')
       elements.forEach(el => {
         if (el.style.animationDuration) {
@@ -151,18 +151,18 @@ export default {
     },
 
     resetAnimations() {
-      // 重新触发所有动画
+      // 重新触發所有動画
       const animatedElements = document.querySelectorAll('.geographic-background [class*="animation"]')
       animatedElements.forEach(el => {
         el.style.animation = 'none'
-        el.offsetHeight // 触发重排
+        el.offsetHeight // 触發重排
         el.style.animation = null
       })
     }
   },
 
   mounted() {
-    // 初始化动画强度
+    // 初始化動画强度
     this.updateAnimationIntensity()
   }
 }
@@ -284,7 +284,7 @@ export default {
   transform: rotate(90deg);
 }
 
-/* 主题样式 */
+/* 主題樣式 */
 :global(.theme-night) {
   filter: hue-rotate(240deg) brightness(0.7);
 }

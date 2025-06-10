@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div>【服务资源占用比】</div>
+		<div>【服務資源占用比】</div>
 		<div ref="target" class="w-full h-full"></div>
 	</div>
 </template>
@@ -25,47 +25,47 @@ onMounted(() => {
 
 const renderChart = () => {
 	const options = {
-		// X 轴展示选项
+		// X 轴展示選项
 		xAxis: {
 			type: 'category',
-			// 根据根据服务端数据筛选
+			// 根據根據服務端數據篩選
 			data: props.data.servers.map((item) => item.name),
 			// 文字色值
 			axisLabel: {
 				color: '#9EB1C8'
 			}
 		},
-		// Y 轴展示数据
+		// Y 轴展示數據
 		yAxis: {
-			// 数据展示
+			// 數據展示
 			type: 'value',
-			// 不显示轴
+			// 不顯示轴
 			show: false,
-			// 最大值（防止触顶）
+			// 最大值（防止触頂）
 			max: function (value) {
 				// 取整
 				return parseInt(value.max * 1.2)
 			}
 		},
-		// echarts 网格绘制的位置，对应 上、右、下、左
+		// echarts 網格绘制的位置，對應 上、右、下、左
 		grid: {
 			top: 16,
 			right: 0,
 			bottom: 26,
 			left: -26,
-			// 计算边距时，包含标签
+			// 計算边距時，包含標签
 			containLabel: true
 		},
 		// 柱形图核心配置
 		series: {
 			// 柱形图
 			type: 'bar',
-			// 数据筛选
+			// 數據篩選
 			data: props.data.servers.map((item) => ({
 				name: item.name,
 				value: item.value
 			})),
-			// 每个轴的样式
+			// 每個轴的樣式
 			itemStyle: {
 				color: '#479AD3', // 设置柱子的颜色
 				barBorderRadius: 5, // 设置柱子的圆角
@@ -77,10 +77,10 @@ const renderChart = () => {
 			// 文本
 			label: {
 				show: true,
-				// 设置标签位置为右侧
+				// 设置標签位置為右侧
 				position: 'top',
 				textStyle: {
-					// 设置标签文本颜色
+					// 设置標签文本颜色
 					color: '#fff'
 				},
 				formatter: '{c}%'
@@ -91,7 +91,7 @@ const renderChart = () => {
 	mChart.setOption(options)
 }
 
-// 监听数据的变化，重新渲染图表
+// 監聽數據的变化，重新渲染图表
 watch(
 	() => props.data,
 	() => {

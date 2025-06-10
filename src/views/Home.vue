@@ -1,15 +1,15 @@
 <template>
   <div class="dashboard-container">
 
-    <!-- 跨境数据流动背景 -->
+    <!-- 跨境數據流動背景 -->
     <cross-border-data-flow />
 
 
-    <!-- 主要功能区域 -->
+    <!-- 主要功能區域 -->
     <div class="main-content-grid">
-      <!-- 左侧区域 -->
+      <!-- 左侧區域 -->
       <div class="sidebar-left">
-        <!-- 企业展示大框 -->
+        <!-- 企業展示大框 -->
         <div class="enterprise-display-container">
           <div class="enterprise-display-header">
             <div class="enterprise-display-title">
@@ -18,18 +18,18 @@
                   <path d="M3 21H21M5 21V7L13 2L21 7V21M9 9V13M15 9V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <h1 class="enterprise-display-title-text">企业信用分析</h1>
+              <h1 class="enterprise-display-title-text">企業信用分析</h1>
             </div>
             <div class="enterprise-display-subtitle">
-              实时监控企业信用状况与风险评估
+              實時監控企業信用狀況與風險評估
             </div>
           </div>
 
           <div class="enterprise-modules">
-            <!-- 企业选择器 -->
+            <!-- 企業選择器 -->
             <enterprise-selector />
 
-            <!-- 风险监测 -->
+            <!-- 風險監测 -->
             <div class="modern-card card-hover animate-slide-in-left" style="animation-delay: 0.05s">
               <div class="card-header-modern">
                 <div class="card-title-wrapper">
@@ -39,7 +39,7 @@
                       <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </div>
-                  <h2 class="card-title-modern gradient-text">风险监测</h2>
+                  <h2 class="card-title-modern gradient-text">風險監測</h2>
                 </div>
               </div>
               <div class="chart-container">
@@ -47,7 +47,7 @@
               </div>
             </div>
 
-            <!-- 信用评分 -->
+            <!-- 信用評分 -->
             <div class="modern-card card-hover animate-slide-in-left" style="animation-delay: 0.1s">
               <div class="card-header-modern">
                 <div class="card-title-wrapper">
@@ -57,7 +57,7 @@
                       <path d="M22 12A10 10 0 0 0 12 2V12L22 12Z" fill="currentColor" opacity="0.2"/>
                     </svg>
                   </div>
-                  <h2 class="card-title-modern gradient-text">信用评分</h2>
+                  <h2 class="card-title-modern gradient-text">信用評分</h2>
                 </div>
               </div>
               <div class="chart-container">
@@ -65,17 +65,17 @@
               </div>
             </div>
 
-            <!-- 跨境业务活跃度 -->
+            <!-- 跨境業務活躍度 -->
             <div class="animate-slide-in-left" style="animation-delay: 0.15s">
               <cross-border-activity />
             </div>
 
-            <!-- 发展趋势 -->
+            <!-- 發展趨勢 -->
             <div class="animate-slide-in-left" style="animation-delay: 0.2s">
               <enterprise-trend-chart />
             </div>
 
-            <!-- 行业对比 -->
+            <!-- 行業對比 -->
             <div class="animate-slide-in-left" style="animation-delay: 0.25s">
               <industry-comparison-radar />
             </div>
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <!-- 中间地图区域 -->
+      <!-- 中間地图區域 -->
       <div class="main-section">
         <div class="modern-card card-hover map-card animate-fade-in-up" style="animation-delay: 0.2s">
           <div class="card-header-modern">
@@ -94,7 +94,7 @@
                   <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </div>
-              <h2 class="card-title-modern gradient-text-accent">粤港澳大湾区企业分布</h2>
+              <h2 class="card-title-modern gradient-text-accent">粵港澳大灣區企業分佈</h2>
             </div>
 
           </div>
@@ -102,10 +102,10 @@
             <greater-bay-area-map class="h-[460px]" />
           </div>
           
-          <!-- 合作机构 -->
+          <!-- 合作機構 -->
           <div class="partner-logos-wrapper mt-4">
             <div class="partner-section-title">
-              <span class="partner-title-text">合作机构</span>
+              <span class="partner-title-text">合作機構</span>
               <div class="partner-title-line"></div>
             </div>
             <div class="mt-3">
@@ -114,15 +114,15 @@
           </div>
         </div>
 
-        <!-- 跨链信息查询 -->
+        <!-- 跨鏈信息查詢 -->
         <div class="modern-card card-hover animate-fade-in-up" style="animation-delay: 0.4s">
           <cross-chain-info />
         </div>
       </div>
 
-      <!-- 右侧区域 -->
+      <!-- 右侧區域 -->
       <div class="sidebar-right">
-        <!-- 信用报告 -->
+        <!-- 信用報告 -->
         <div class="modern-card card-hover animate-slide-in-right" style="animation-delay: 0.1s">
           <div class="card-header-modern">
             <div class="card-title-wrapper">
@@ -135,7 +135,7 @@
                   <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <h2 class="card-title-modern gradient-text">信用报告</h2>
+              <h2 class="card-title-modern gradient-text">信用報告</h2>
             </div>
           </div>
           <div class="content-container">
@@ -143,7 +143,7 @@
           </div>
         </div>
 
-        <!-- 合作产品 -->
+        <!-- 合作產品 -->
         <div class="modern-card card-hover animate-slide-in-right" style="animation-delay: 0.2s">
           <div class="card-header-modern">
             <div class="card-title-wrapper">
@@ -156,10 +156,10 @@
                   <polyline points="12,22.08 12,17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <h2 class="card-title-modern gradient-text">合作产品</h2>
+              <h2 class="card-title-modern gradient-text">合作產品</h2>
             </div>
             <div class="card-badge">
-              <span class="badge-text">热门</span>
+              <span class="badge-text">熱門</span>
             </div>
           </div>
           <div class="content-container">
@@ -167,7 +167,7 @@
           </div>
         </div>
 
-        <!-- 跨境服务记录 -->
+        <!-- 跨境服務記錄 -->
         <div class="modern-card card-hover animate-slide-in-right" style="animation-delay: 0.3s">
           <div class="card-header-modern">
             <div class="card-title-wrapper">
@@ -178,7 +178,7 @@
                   <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </div>
-              <h2 class="card-title-modern gradient-text">跨境服务记录</h2>
+              <h2 class="card-title-modern gradient-text">跨境服務記錄</h2>
             </div>
           </div>
           <div class="content-container">
@@ -188,7 +188,7 @@
       </div>
     </div>
 
-    <!-- 详情模态框 -->
+    <!-- 詳情模态框 -->
     <detail-modal
       :visible="modalState.visible"
       :title="modalState.title"
@@ -205,7 +205,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">{{ currentRiskData.total }}</div>
-              <div class="stat-label">风险预警次数</div>
+              <div class="stat-label">風險預警次數</div>
             </div>
           </div>
           <div class="detail-stat-item">
@@ -214,7 +214,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">{{ currentRiskData.percentage }}%</div>
-              <div class="stat-label">风险预警占比</div>
+              <div class="stat-label">風險預警佔比</div>
             </div>
           </div>
         </div>
@@ -231,7 +231,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">{{ animatedNumbers.enterprises.toLocaleString() }}</div>
-              <div class="stat-label">注册企业总数</div>
+              <div class="stat-label">註冊企業總數</div>
             </div>
           </div>
           <div class="detail-stat-item">
@@ -240,12 +240,12 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">+8%</div>
-              <div class="stat-label">月增长率</div>
+              <div class="stat-label">月增長率</div>
             </div>
           </div>
         </div>
         <div class="detail-description">
-          <p>粤港澳大湾区企业注册数量持续增长，其中科技创新企业占比显著提升，跨境业务活跃度不断增强。</p>
+          <p>粵港澳大灣區企業註冊數量持續增長，其中科技創新企業佔比顯著提升，跨境業務活躍度不斷增強。</p>
         </div>
       </div>
 
@@ -257,7 +257,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">{{ animatedNumbers.transactions.toLocaleString() }}万</div>
-              <div class="stat-label">跨境交易笔数</div>
+              <div class="stat-label">跨境交易筆數</div>
             </div>
           </div>
           <div class="detail-stat-item">
@@ -271,7 +271,7 @@
           </div>
         </div>
         <div class="detail-description">
-          <p>跨境贸易交易量稳步增长，数字化支付方式普及率达到95%以上，交易效率显著提升。</p>
+          <p>跨境貿易交易量穩步增長，數字化支付方式普及率達到95%以上，交易效率顯著提升。</p>
         </div>
       </div>
 
@@ -283,7 +283,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">¥{{ animatedNumbers.amount.toLocaleString() }}亿</div>
-              <div class="stat-label">交易总金额</div>
+              <div class="stat-label">交易總金額</div>
             </div>
           </div>
           <div class="detail-stat-item">
@@ -292,12 +292,12 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">+23%</div>
-              <div class="stat-label">同比增长</div>
+              <div class="stat-label">同比增長</div>
             </div>
           </div>
         </div>
         <div class="detail-description">
-          <p>跨境贸易金额创历史新高，其中高新技术产品贸易占比超过40%，服务贸易增长迅速。</p>
+          <p>跨境貿易金額創歷史新高，其中高新技術產品貿易佔比超過40%，服務貿易增長迅速。</p>
         </div>
       </div>
     </detail-modal>
@@ -353,21 +353,21 @@ export default {
   setup() {
     const currentTime = ref('')
 
-    // 获取当前企业数据
+    // 获取當前企業數據
     const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
 
-    // 计算当前企业的风险数据
+    // 計算當前企業的風險數據
     const currentRiskData = computed(() => {
       const riskData = currentEnterprise.value.riskData
       const total = riskData.reduce((sum, val) => sum + val, 0)
-      const percentage = ((total / (riskData.length * 30)) * 100).toFixed(1) // 假设每月最大风险数为30
+      const percentage = ((total / (riskData.length * 30)) * 100).toFixed(1) // 假设每月最大風險數為30
       return {
         total,
         percentage: parseFloat(percentage)
       }
     })
 
-    // 数字动画状态
+    // 數字動画状态
     const animatedNumbers = ref({
       riskWarnings: 0,
       riskPercentage: 0,
@@ -399,8 +399,8 @@ export default {
       })
     }
 
-    // 数字动画函数
-    const animateNumber = (target, key, duration = 4500) => { // 从3000ms增加到4500ms
+    // 數字動画函數
+    const animateNumber = (target, key, duration = 4500) => { // 從3000ms增加到4500ms
       const start = animatedNumbers.value[key]
       const startTime = Date.now()
 
@@ -408,7 +408,7 @@ export default {
         const elapsed = Date.now() - startTime
         const progress = Math.min(elapsed / duration, 1)
 
-        // 使用更柔和的缓动函数 - easeOutExpo
+        // 使用更柔和的缓動函數 - easeOutExpo
         const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
         animatedNumbers.value[key] = Math.round(start + (target - start) * easeOutExpo)
 
@@ -422,12 +422,12 @@ export default {
 
 
 
-    // 显示详情方法
+    // 顯示詳情方法
     const showRiskDetails = () => {
       modalState.value = {
         visible: true,
-        title: '风险预警详情',
-        subtitle: '系统风险监控和预警信息',
+        title: '風險預警詳情',
+        subtitle: '系統風險監控和預警信息',
         icon: 'fas fa-exclamation-triangle',
         iconColor: '#FF3B30',
         content: 'risk'
@@ -437,8 +437,8 @@ export default {
     const showEnterpriseDetails = () => {
       modalState.value = {
         visible: true,
-        title: '企业统计详情',
-        subtitle: '大湾区注册企业分布情况',
+        title: '企業統計詳情',
+        subtitle: '大灣區註冊企業分佈情況',
         icon: 'fas fa-building',
         iconColor: '#007AFF',
         content: 'enterprise'
@@ -448,8 +448,8 @@ export default {
     const showTransactionDetails = () => {
       modalState.value = {
         visible: true,
-        title: '跨境交易详情',
-        subtitle: '跨境贸易交易统计分析',
+        title: '跨境交易詳情',
+        subtitle: '跨境貿易交易統計分析',
         icon: 'fas fa-exchange-alt',
         iconColor: '#30D158',
         content: 'transaction'
@@ -459,8 +459,8 @@ export default {
     const showAmountDetails = () => {
       modalState.value = {
         visible: true,
-        title: '交易金额详情',
-        subtitle: '跨境贸易金额统计分析',
+        title: '交易金額詳情',
+        subtitle: '跨境貿易金額統計分析',
         icon: 'fas fa-chart-line',
         iconColor: '#FF9500',
         content: 'amount'
@@ -475,18 +475,18 @@ export default {
       updateTime()
       setInterval(updateTime, 1000)
 
-      // 启动数字动画 - 更合理的数据
+      // 启動數字動画 - 更合理的數據
       setTimeout(() => {
-        animateNumber(45, 'riskWarnings', 1500) // 风险预警次数
+        animateNumber(45, 'riskWarnings', 1500) // 風險预警次數
       }, 300)
       setTimeout(() => {
-        animateNumber(1.2, 'riskPercentage', 1600) // 风险预警占比
+        animateNumber(1.2, 'riskPercentage', 1600) // 風險预警占比
       }, 400)
       setTimeout(() => {
-        animateNumber(12580, 'enterprises', 1700) // 注册企业数量
+        animateNumber(12580, 'enterprises', 1700) // 注册企業數量
       }, 500)
       setTimeout(() => {
-        animateNumber(8960, 'transactions', 1650) // 跨境交易笔数（万笔）
+        animateNumber(8960, 'transactions', 1650) // 跨境交易笔數（万笔）
       }, 600)
       setTimeout(() => {
         animateNumber(2847, 'amount', 1800) // 交易金额（亿元）
@@ -494,7 +494,7 @@ export default {
     })
 
     onUnmounted(() => {
-      // 清理工作已移至各个组件内部
+      // 清理工作已移至各個组件内部
     })
 
     return {
@@ -522,9 +522,9 @@ export default {
 
 /* dashboard-grid 已移除，使用 main-content-grid */
 
-/* 响应式设计 - 移除dashboard-grid的响应式规则，使用main-content-grid */
+/* 响應式设計 - 移除dashboard-grid的响應式規则，使用main-content-grid */
 
-/* 企业展示容器 */
+/* 企業展示容器 */
 .enterprise-display-container {
   background: linear-gradient(135deg,
     rgba(255, 255, 255, 0.1) 0%,
@@ -617,7 +617,7 @@ export default {
   gap: 1rem;
 }
 
-/* 紧凑卡片样式 */
+/* 紧凑卡片樣式 */
 .compact-chart {
   padding: 1rem !important;
 }
@@ -696,7 +696,7 @@ export default {
   height: 140px;
 }
 
-/* 企业信息卡片包装器 */
+/* 企業信息卡片包装器 */
 .enterprise-info-card-wrapper {
   background: linear-gradient(135deg,
     rgba(255, 255, 255, 0.08) 0%,
@@ -739,12 +739,12 @@ export default {
   grid-area: center;
 }
 
-/* 现代化卡片悬停效果 */
+/* 現代化卡片悬停效果 */
 .card-hover {
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 动画关键帧 */
+/* 動画關键帧 */
 @keyframes slideInLeft {
   0% {
     opacity: 0;
@@ -768,7 +768,7 @@ export default {
     0 0 40px rgba(99, 102, 241, 0.15);
 }
 
-/* 大模块淡入动画 - 苹果风格 */
+/* 大模块淡入動画 - 苹果風格 */
 .animate-slide-in-left {
   animation: appleSlideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   opacity: 0;
@@ -860,7 +860,7 @@ export default {
   }
 }
 
-/* 现代化卡片头部 */
+/* 現代化卡片頭部 */
 .card-header-modern {
   display: flex;
   justify-content: space-between;
@@ -932,7 +932,7 @@ export default {
   stroke-width: 2;
 }
 
-/* 图标颜色样式 */
+/* 图標颜色樣式 */
 .card-icon-modern.risk-icon { background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%); }
 .card-icon-modern.credit-icon { background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); }
 .card-icon-modern.portrait-icon { background: linear-gradient(135deg, #A8E6CF 0%, #88D8A3 100%); }
@@ -987,7 +987,7 @@ export default {
   font-weight: 500;
 }
 
-/* 地图卡片特殊样式 */
+/* 地图卡片特殊樣式 */
 .map-card {
   min-height: 600px;
 }
@@ -1089,7 +1089,7 @@ export default {
   z-index: 1;
 }
 
-/* 数据瓦片现代化 */
+/* 數據瓦片現代化 */
 .data-tile {
   background: var(--card-background);
   border: 1px solid var(--card-border);
@@ -1153,7 +1153,7 @@ export default {
   line-height: 1;
 }
 
-/* 风险图表容器 */
+/* 風險图表容器 */
 .risk-chart {
   height: 150px;
   margin-top: 1rem;
@@ -1161,7 +1161,7 @@ export default {
   overflow: hidden;
 }
 
-/* 移除重复的响应式规则 */
+/* 移除重复的响應式規则 */
 
 .dashboard-card:hover {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 
@@ -1196,7 +1196,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 重复的data-tile样式已在上面定义，删除此重复定义 */
+/* 重复的data-tile樣式已在上面定义，删除此重复定义 */
 
 .data-title {
   font-size: 0.9rem;
@@ -1349,7 +1349,7 @@ export default {
   background: linear-gradient(to right, rgba(124, 58, 237, 0.5), transparent);
 }
 
-/* 快速统计样式 */
+/* 快速統計樣式 */
 .quick-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1369,7 +1369,7 @@ export default {
   padding: 1.5rem;
 }
 
-/* 模态框详情内容样式 */
+/* 模态框詳情内容樣式 */
 .modal-detail-content {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -1464,9 +1464,9 @@ export default {
   font-size: 0.95rem;
 }
 
-/* 响应式设计更新 */
+/* 响應式设計更新 */
 
-/* 专门针对 1080p 屏幕优化 (1920x1080) */
+/* 專門针對 1080p 屏幕優化 (1920x1080) */
 @media (max-width: 1920px) and (min-width: 1800px) {
   .main-content-grid {
     grid-template-columns: 420px 900px 420px;
@@ -1487,7 +1487,7 @@ export default {
   }
 }
 
-/* 1080p 及稍小屏幕优化 */
+/* 1080p 及稍小屏幕優化 */
 @media (max-width: 1800px) and (min-width: 1600px) {
   .main-content-grid {
     grid-template-columns: 380px 800px 380px;
@@ -1516,7 +1516,7 @@ export default {
     height: 2.25rem;
   }
 
-  /* 优化卡片间距 */
+  /* 優化卡片間距 */
   .enterprise-modules {
     gap: 0.75rem;
   }
@@ -1525,7 +1525,7 @@ export default {
     gap: 0.75rem;
   }
 
-  /* 优化紧凑卡片 */
+  /* 優化紧凑卡片 */
   .compact-chart, .compact-portrait {
     padding: 0.75rem !important;
   }

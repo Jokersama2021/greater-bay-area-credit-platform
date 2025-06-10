@@ -859,7 +859,7 @@
 			"type": "Feature",
 			"id": "hei_long_jiang",
 			"properties": {
-				"name": "黑龙江",
+				"name": "黑龍江",
 				"cp": [128.1445, 48.5156],
 				"childNum": 13
 			},
@@ -1183,7 +1183,7 @@
 			"type": "Feature",
 			"id": "yun_nan",
 			"properties": {
-				"name": "云南",
+				"name": "雲南",
 				"cp": [101.8652, 25.1807],
 				"childNum": 16
 			},
@@ -1325,7 +1325,7 @@
 			"type": "Feature",
 			"id": "guang_xi",
 			"properties": {
-				"name": "广西",
+				"name": "廣西",
 				"cp": [108.2813, 23.6426],
 				"childNum": 14
 			},
@@ -1617,7 +1617,7 @@
 			"type": "Feature",
 			"id": "guang_dong",
 			"properties": {
-				"name": "广东",
+				"name": "廣東",
 				"cp": [113.4668, 22.8076],
 				"childNum": 21
 			},
@@ -2139,7 +2139,7 @@
 			"type": "Feature",
 			"id": "shan_dong",
 			"properties": {
-				"name": "山东",
+				"name": "山東",
 				"cp": [118.7402, 36.4307],
 				"childNum": 17
 			},
@@ -2801,7 +2801,7 @@
 			"type": "Feature",
 			"id": "chong_qing",
 			"properties": {
-				"name": "重庆",
+				"name": "重慶",
 				"cp": [107.7539, 30.1904],
 				"childNum": 40
 			},
@@ -2973,7 +2973,7 @@
 			"type": "Feature",
 			"id": "tai_wan",
 			"properties": {
-				"name": "台湾",
+				"name": "臺灣",
 				"cp": [121.0254, 23.5986],
 				"childNum": 1
 			},
@@ -3137,7 +3137,7 @@
 			"type": "Feature",
 			"id": "ao_men",
 			"properties": {
-				"name": "澳门",
+				"name": "澳門",
 				"cp": [113.5547, 22.1484],
 				"childNum": 1
 			},

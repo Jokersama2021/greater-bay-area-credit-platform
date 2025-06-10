@@ -7,7 +7,7 @@
     <div class="chart-container" ref="chartRef"></div>
     <div class="center-score">
       <div class="score-value">{{ animatedScore }}</div>
-      <div class="score-label">综合评分</div>
+      <div class="score-label">综合評分</div>
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     const animatedScore = ref(0)
     let chart = null
 
-    // 获取当前企业数据
+    // 获取當前企業數據
     const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
 
     const finalScore = computed(() => {
@@ -62,11 +62,11 @@ export default {
       chart = echarts.init(chartRef.value)
 
       const indicators = [
-        { name: '风险控制', max: 100, color: '#FF6B6B' },
+        { name: '風險控制', max: 100, color: '#FF6B6B' },
         { name: '信用历史', max: 100, color: '#4ECDC4' },
-        { name: '发展趋势', max: 100, color: '#45B7D1' },
-        { name: '经营状况', max: 100, color: '#96CEB4' },
-        { name: '企业规模', max: 100, color: '#FFEAA7' }
+        { name: '發展趋势', max: 100, color: '#45B7D1' },
+        { name: '經营状况', max: 100, color: '#96CEB4' },
+        { name: '企業規模', max: 100, color: '#FFEAA7' }
       ]
 
       const metrics = currentEnterprise.value.creditMetrics
@@ -100,7 +100,7 @@ export default {
                 <div style="font-weight: 600; margin-bottom: 8px; color: ${indicator.color};">${indicator.name}</div>
                 <div style="display: flex; align-items: center; gap: 10px;">
                   <div style="width: 10px; height: 10px; background: ${indicator.color}; border-radius: 50%; box-shadow: 0 0 8px ${indicator.color}60;"></div>
-                  <span style="font-size: 14px;">评分: <strong style="color: ${indicator.color};">${value}</strong>/100</span>
+                  <span style="font-size: 14px;">評分: <strong style="color: ${indicator.color};">${value}</strong>/100</span>
                 </div>
               </div>
             `
@@ -171,7 +171,7 @@ export default {
             data: [
               {
                 value: data,
-                name: '信用评分',
+                name: '信用評分',
                 symbol: 'circle',
                 symbolSize: 10,
                 lineStyle: {
@@ -244,7 +244,7 @@ export default {
 
       chart.setOption(option)
 
-      // 添加动态高亮效果
+      // 添加動态高亮效果
       let currentIndex = 0
       const autoHighlight = () => {
         chart.dispatchAction({
@@ -272,7 +272,7 @@ export default {
       }
     }
 
-    // 监听企业变化，重新初始化图表
+    // 監聽企業变化，重新初始化图表
     watch(currentEnterprise, () => {
       if (chart) {
         initChart()
@@ -415,7 +415,7 @@ export default {
   }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .premium-credit-radar {
     height: 250px;

@@ -15,10 +15,10 @@ const initChart = () => {
   chart = echarts.init(chartContainer.value)
   
   const indicators = [
-    { name: '风险控制', max: 100, color: '#FF6B6B' },
-    { name: '企业规模', max: 100, color: '#4ECDC4' },
-    { name: '经营状况', max: 100, color: '#45B7D1' },
-    { name: '发展趋势', max: 100, color: '#96CEB4' },
+    { name: '風險控制', max: 100, color: '#FF6B6B' },
+    { name: '企業規模', max: 100, color: '#4ECDC4' },
+    { name: '經营状况', max: 100, color: '#45B7D1' },
+    { name: '發展趋势', max: 100, color: '#96CEB4' },
     { name: '信用历史', max: 100, color: '#FFEAA7' }
   ]
   
@@ -44,7 +44,7 @@ const initChart = () => {
             <div style="font-weight: 600; margin-bottom: 6px;">${indicator.name}</div>
             <div style="display: flex; align-items: center; gap: 8px;">
               <div style="width: 8px; height: 8px; background: ${indicator.color}; border-radius: 50%;"></div>
-              <span>评分: ${value}/100</span>
+              <span>評分: ${value}/100</span>
             </div>
           </div>
         `
@@ -113,7 +113,7 @@ const initChart = () => {
         data: [
           {
             value: data,
-            name: '信用评分',
+            name: '信用評分',
             symbol: 'circle',
             symbolSize: 8,
             lineStyle: {
@@ -173,13 +173,13 @@ const initChart = () => {
         animationDuration: 2000,
         animationEasing: 'cubicOut'
       },
-      // 添加背景参考线
+      // 添加背景参考線
       {
         type: 'radar',
         data: [
           {
             value: [100, 100, 100, 100, 100],
-            name: '满分参考',
+            name: '滿分参考',
             symbol: 'none',
             lineStyle: {
               width: 1,
@@ -203,7 +203,7 @@ const initChart = () => {
 
   chart.setOption(option)
   
-  // 添加动态高亮效果
+  // 添加動态高亮效果
   let currentIndex = 0
   const autoHighlight = () => {
     // 清除之前的高亮
@@ -212,7 +212,7 @@ const initChart = () => {
       seriesIndex: 0
     })
     
-    // 高亮当前指标
+    // 高亮當前指標
     chart.dispatchAction({
       type: 'highlight',
       seriesIndex: 0,
@@ -222,7 +222,7 @@ const initChart = () => {
     currentIndex = (currentIndex + 1) % indicators.length
   }
   
-  // 延迟启动自动高亮
+  // 延迟启動自動高亮
   setTimeout(() => {
     setInterval(autoHighlight, 2500)
   }, 3000)

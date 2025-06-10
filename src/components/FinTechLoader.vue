@@ -2,7 +2,7 @@
   <div class="fintech-loader" v-if="loading">
     <div class="loader-background"></div>
     <div class="loader-content">
-      <!-- 主要加载动画 -->
+      <!-- 主要加載動画 -->
       <div class="main-loader">
         <!-- 中心圆环 -->
         <div class="center-ring">
@@ -35,7 +35,7 @@
             </defs>
           </svg>
           
-          <!-- 中心图标 -->
+          <!-- 中心图標 -->
           <div class="center-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
@@ -62,13 +62,13 @@
         </div>
       </div>
       
-      <!-- 加载文本 -->
+      <!-- 加載文本 -->
       <div class="loader-text">
         <h3 class="loading-title">{{ loadingText }}</h3>
-        <p class="loading-subtitle">正在连接区块链网络...</p>
+        <p class="loading-subtitle">正在連接區块链網絡...</p>
       </div>
       
-      <!-- 数据流动效果 -->
+      <!-- 數據流動效果 -->
       <div class="data-flow-container">
         <div class="data-stream" v-for="n in 6" :key="n" :style="getStreamStyle(n)">
           <div class="stream-particle"></div>
@@ -90,22 +90,22 @@ export default {
     },
     duration: {
       type: Number,
-      default: 1800 // 从3000ms减少到1800ms
+      default: 1800 // 從3000ms减少到1800ms
     }
   },
   emits: ['complete'],
   setup(props, { emit }) {
-    const loadingText = ref('粤港澳大湾区跨境征信服务平台')
+    const loadingText = ref('粵港澳大灣區跨境徵信服務平臺')
 
     let textInterval = null
     
     const loadingTexts = [
-      '粤港澳大湾区跨境征信服务平台',
-      '初始化区块链网络...',
-      '连接Fabric链节点...',
-      '连接BCOS链节点...',
-      '同步跨链数据...',
-      '加载完成'
+      '粵港澳大灣區跨境徵信服務平臺',
+      '初始化區块链網絡...',
+      '連接Fabric链节點...',
+      '連接BCOS链节點...',
+      '同步跨链數據...',
+      '加載完成'
     ]
     
     const getStreamStyle = (index) => {
@@ -119,7 +119,7 @@ export default {
     }
     
     const startLoading = () => {
-      // 文本切换动画 - 加快速度
+      // 文本切换動画 - 加快速度
       let textIndex = 0
       textInterval = setInterval(() => {
         if (textIndex < loadingTexts.length - 1) {
@@ -133,7 +133,7 @@ export default {
         loadingText.value = loadingTexts[loadingTexts.length - 1]
         setTimeout(() => {
           emit('complete')
-        }, 300) // 从500ms减少到300ms
+        }, 300) // 從500ms减少到300ms
       }, props.duration)
     }
     
@@ -193,7 +193,7 @@ export default {
   z-index: 1;
 }
 
-/* 主要加载动画 */
+/* 主要加載動画 */
 .main-loader {
   position: relative;
   width: 200px;
@@ -255,7 +255,7 @@ export default {
   }
 }
 
-/* 轨道系统 */
+/* 轨道系統 */
 .orbit-container {
   position: absolute;
   top: 0;
@@ -332,7 +332,7 @@ export default {
   }
 }
 
-/* 加载文本 */
+/* 加載文本 */
 .loader-text {
   text-align: center;
   max-width: 400px;
@@ -359,7 +359,7 @@ export default {
   }
 }
 
-/* 进度条样式已移除 */
+/* 進度条樣式已移除 */
 
 .loading-subtitle {
   font-size: 0.9rem;
@@ -377,7 +377,7 @@ export default {
   }
 }
 
-/* 数据流动效果 */
+/* 數據流動效果 */
 .data-flow-container {
   position: absolute;
   top: 50%;
@@ -437,7 +437,7 @@ export default {
   }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .main-loader {
     width: 150px;

@@ -7,13 +7,13 @@
           <path d="M7 12L12 7L16 11L21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <h3 class="trend-title">发展趋势</h3>
+      <h3 class="trend-title">發展趋势</h3>
     </div>
     <div class="chart-container" ref="chartRef"></div>
     <div class="trend-indicators">
       <div class="indicator">
         <div class="indicator-dot growth"></div>
-        <span>增长期</span>
+        <span>增長期</span>
       </div>
       <div class="indicator">
         <div class="indicator-dot stable"></div>
@@ -46,12 +46,12 @@ export default {
       const creditScores = []
       const businessVolumes = []
       
-      // 生成近5年的数据
+      // 生成近5年的數據
       const currentYear = new Date().getFullYear()
       for (let i = 4; i >= 0; i--) {
         years.push(currentYear - i)
         
-        // 基于企业ID和年份生成模拟数据
+        // 基于企業ID和年份生成模拟數據
         const baseScore = enterprise.creditScore
         const yearVariation = (Math.sin((enterprise.id + i) * 0.5) * 20) + (i * 5)
         creditScores.push(Math.max(600, Math.min(1000, baseScore - 50 + yearVariation)))
@@ -101,7 +101,7 @@ export default {
         yAxis: [
           {
             type: 'value',
-            name: '信用评分',
+            name: '信用評分',
             nameTextStyle: {
               color: 'rgba(255, 255, 255, 0.8)',
               fontSize: 10,
@@ -124,7 +124,7 @@ export default {
           },
           {
             type: 'value',
-            name: '业务量',
+            name: '業務量',
             nameTextStyle: {
               color: 'rgba(255, 255, 255, 0.8)',
               fontSize: 10,
@@ -146,7 +146,7 @@ export default {
         series: [
           // 3D柱状图效果
           {
-            name: '业务量',
+            name: '業務量',
             type: 'bar',
             yAxisIndex: 1,
             data: businessVolumes,
@@ -170,9 +170,9 @@ export default {
             animationEasing: 'bounceOut',
             z: 1
           },
-          // 流畅曲线
+          // 流畅曲線
           {
-            name: '信用评分',
+            name: '信用評分',
             type: 'line',
             yAxisIndex: 0,
             data: creditScores,
@@ -213,7 +213,7 @@ export default {
             animationEasing: 'elasticOut',
             z: 2
           },
-          // 动态粒子效果
+          // 動态粒子效果
           {
             type: 'effectScatter',
             coordinateSystem: 'cartesian2d',
@@ -245,7 +245,7 @@ export default {
             const year = params[0].axisValue
             let content = `<div style="padding: 10px;"><div style="color: #4ECDC4; font-weight: 600; margin-bottom: 8px;">${year}年</div>`
             params.forEach(param => {
-              if (param.seriesName !== '动态粒子效果') {
+              if (param.seriesName !== '動态粒子效果') {
                 content += `<div style="margin: 4px 0;"><span style="color: ${param.color};">●</span> ${param.seriesName}: ${param.value}</div>`
               }
             })
@@ -254,7 +254,7 @@ export default {
           }
         },
         legend: {
-          data: ['信用评分', '业务量'],
+          data: ['信用評分', '業務量'],
           textStyle: {
             color: 'rgba(255, 255, 255, 0.9)',
             fontSize: 11,

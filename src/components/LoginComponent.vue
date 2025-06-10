@@ -5,15 +5,15 @@
       <h2>登录</h2>
       <form @submit.prevent="login">
         <input type="text" v-model="loginDetails.username" placeholder="用户名" required>
-        <input type="password" v-model="loginDetails.password" placeholder="密码" required>
+        <input type="password" v-model="loginDetails.password" placeholder="密碼" required>
         <button type="submit">登录</button>
       </form>
     </div>
     <TransactionInfo v-if="showTransactionInfo" @completed="proceedToNextInfo" />
     <TransactionInfo2 v-if="showTransactionInfo2" @completed="close" />
     <div v-if="showTransactionInfo || showTransactionInfo2" class="controls">
-      <button @click="proceedToNextInfo" class="switch-btn">切换到下一个信息</button>
-      <button @click="close">关闭</button>
+      <button @click="proceedToNextInfo" class="switch-btn">切换到下一個信息</button>
+      <button @click="close">關闭</button>
     </div>
   </div>
 </template>
@@ -30,22 +30,22 @@ const loginDetails = ref({
 });
 const showTransactionInfo = ref(false);
 const showTransactionInfo2 = ref(false);
-const fabricSelected = ref(false); // 默认fabric未选择
+const fabricSelected = ref(false); // 默認fabric未選择
 
 const login = async () => {
   try {
     const response = await axios.post('http://120.24.45.115:3000/api/login', loginDetails.value);
     if (response.data.success) {
       alert('登录成功');
-      const selectedOption = prompt("请选择交易详情类型：\n1. Fabric\n2. bcos"); // 提示用户选择
+      const selectedOption = prompt("请選择交易詳情类型：\n1. Fabric\n2. bcos"); // 提示用户選择
       if (selectedOption === '1') {
-        showTransactionInfo.value = true;  // 显示第一个交易详情组件
-        showTransactionInfo2.value = false; // 不显示第二个交易详情组件
-        fabricSelected.value = true; // 设置fabric选择为true
+        showTransactionInfo.value = true;  // 顯示第一個交易詳情组件
+        showTransactionInfo2.value = false; // 不顯示第二個交易詳情组件
+        fabricSelected.value = true; // 设置fabric選择為true
       } else {
-        showTransactionInfo.value = false; // 不显示第一个交易详情组件
-        showTransactionInfo2.value = true; // 显示第二个交易详情组件
-        fabricSelected.value = false; // 设置fabric选择为false
+        showTransactionInfo.value = false; // 不顯示第一個交易詳情组件
+        showTransactionInfo2.value = true; // 顯示第二個交易詳情组件
+        fabricSelected.value = false; // 设置fabric選择為false
       }
     } else {
       alert('登录失败: ' + response.data.message);
@@ -63,7 +63,7 @@ const proceedToNextInfo = () => {
     showTransactionInfo2.value = true;
   } else {
     showTransactionInfo2.value = false;
-    close(); // 关闭模态或进行其他操作
+    close(); // 關闭模态或進行其他操作
   }
 };
 const emits = defineEmits(['close']);
@@ -71,7 +71,7 @@ const close = () => {
   emits('close');
   showTransactionInfo.value = false;
   showTransactionInfo2.value = false;
-  // 确保重置登录详情
+  // 确保重置登录詳情
   loginDetails.value.username = '';
   loginDetails.value.password = '';
 };

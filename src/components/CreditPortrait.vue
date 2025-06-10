@@ -1,6 +1,6 @@
 <template>
   <div class="credit-portrait">
-    <!-- 信用评分圆环 -->
+    <!-- 信用評分圆环 -->
     <div class="credit-score-section">
       <div class="score-circle-container">
         <svg class="score-circle" viewBox="0 0 100 100">
@@ -31,17 +31,17 @@
         </div>
       </div>
       <div class="score-description">
-        <p>综合信用评分</p>
-        <span class="score-trend">较上月 +5分</span>
+        <p>综合信用評分</p>
+        <span class="score-trend">較上月 +5分</span>
       </div>
     </div>
 
-    <!-- 信用画像网格 -->
+    <!-- 信用画像網格 -->
     <div class="portrait-grid">
       <div class="portrait-card" v-for="(item, index) in portraitItems" :key="index">
         <div class="card-header">
           <div class="card-icon" :style="{ background: item.gradient }">
-            <svg v-if="item.title === '风险评估'" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
+            <svg v-if="item.title === '風險評估'" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
               <path d="M12 22S8 18 8 13V6L12 4L16 6V13C16 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -66,56 +66,56 @@ export default {
   setup() {
     const creditScore = ref(0)
 
-    // 获取当前企业数据
+    // 获取當前企業數據
     const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
     const targetScore = computed(() => currentEnterprise.value.creditScore)
 
-    // 圆环动画计算
+    // 圆环動画計算
     const circumference = 2 * Math.PI * 40
     const strokeDashoffset = computed(() => {
       const progress = creditScore.value / 1000
       return circumference - (progress * circumference)
     })
 
-    // 信用画像数据 - 基于当前企业
+    // 信用画像數據 - 基于當前企業
     const portraitItems = computed(() => [
       {
-        title: '企业规模',
+        title: '企業規模',
         value: currentEnterprise.value.scale,
         icon: 'fas fa-building',
         color: '#007AFF',
         gradient: 'linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%)'
       },
       {
-        title: '经营年限',
+        title: '經营年限',
         value: `${currentEnterprise.value.businessYears}年`,
         icon: 'fas fa-calendar-alt',
         color: '#30D158',
         gradient: 'linear-gradient(135deg, #30D158 0%, #32D74B 100%)'
       },
       {
-        title: '信用等级',
+        title: '信用等級',
         value: currentEnterprise.value.creditLevel,
         icon: 'fas fa-medal',
         color: '#FF9500',
         gradient: 'linear-gradient(135deg, #FF9500 0%, #FFCC02 100%)'
       },
       {
-        title: '风险评估',
+        title: '風險評估',
         value: currentEnterprise.value.riskLevel,
         icon: 'fas fa-shield-check',
         color: '#32D74B',
         gradient: 'linear-gradient(135deg, #32D74B 0%, #30D158 100%)'
       },
       {
-        title: '跨境业务',
+        title: '跨境業務',
         value: currentEnterprise.value.crossBorderBusiness,
         icon: 'fas fa-globe-americas',
         color: '#5AC8FA',
         gradient: 'linear-gradient(135deg, #5AC8FA 0%, #007AFF 100%)'
       },
       {
-        title: '合规记录',
+        title: '合規記录',
         value: currentEnterprise.value.complianceRecord,
         icon: 'fas fa-check-double',
         color: '#34C759',
@@ -123,7 +123,7 @@ export default {
       }
     ])
 
-    // 动画函数
+    // 動画函數
     const animateScore = () => {
       const duration = 2000
       const startTime = Date.now()
@@ -134,7 +134,7 @@ export default {
         const elapsed = Date.now() - startTime
         const progress = Math.min(elapsed / duration, 1)
 
-        // 使用缓动函数
+        // 使用缓動函數
         const easeOutQuart = 1 - Math.pow(1 - progress, 4)
         creditScore.value = Math.round(startScore + (target - startScore) * easeOutQuart)
 
@@ -146,7 +146,7 @@ export default {
       requestAnimationFrame(animate)
     }
 
-    // 监听企业变化，重新播放动画
+    // 監聽企業变化，重新播放動画
     watch(currentEnterprise, () => {
       setTimeout(() => {
         animateScore()
@@ -179,7 +179,7 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* 信用评分圆环部分 */
+/* 信用評分圆环部分 */
 .credit-score-section {
   display: flex;
   align-items: center;
@@ -248,7 +248,7 @@ export default {
   font-weight: 500;
 }
 
-/* 信用画像网格 */
+/* 信用画像網格 */
 .portrait-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -293,7 +293,7 @@ export default {
   opacity: 1;
 }
 
-/* 卡片头部 */
+/* 卡片頭部 */
 .card-header {
   display: flex;
   align-items: center;
@@ -385,7 +385,7 @@ export default {
 
 
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .credit-score-section {
     flex-direction: column;

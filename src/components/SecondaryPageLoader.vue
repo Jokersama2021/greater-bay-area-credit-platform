@@ -1,6 +1,6 @@
 <template>
   <div class="secondary-page-loader" v-if="loading">
-    <!-- 动态背景 -->
+    <!-- 動态背景 -->
     <div class="loader-background">
       <div class="bg-gradient bg-gradient-1"></div>
       <div class="bg-gradient bg-gradient-2"></div>
@@ -12,7 +12,7 @@
 
     <!-- 主要内容 -->
     <div class="loader-content">
-      <!-- 中心加载动画 -->
+      <!-- 中心加載動画 -->
       <div class="main-loader">
         <!-- 中心圆环 -->
         <div class="center-ring">
@@ -47,7 +47,7 @@
             </defs>
           </svg>
           
-          <!-- 中心图标 -->
+          <!-- 中心图標 -->
           <div class="center-icon">
             <i :class="pageIcon"></i>
           </div>
@@ -80,7 +80,7 @@
         <p class="loading-subtitle">{{ pageSubtitle }}</p>
       </div>
 
-      <!-- 高级进度条 -->
+      <!-- 高級進度条 -->
       <div class="progress-container">
         <div class="progress-track">
           <div class="progress-fill" :style="{ width: progress + '%' }"></div>
@@ -89,7 +89,7 @@
         <div class="progress-text">{{ Math.round(progress) }}%</div>
       </div>
 
-      <!-- 加载状态文本 -->
+      <!-- 加載状态文本 -->
       <div class="loading-status">
         <div class="status-text">{{ loadingText }}</div>
         <div class="status-dots">
@@ -98,7 +98,7 @@
       </div>
     </div>
 
-    <!-- 数据流动效果 -->
+    <!-- 數據流動效果 -->
     <div class="data-flow-container">
       <div class="data-stream" v-for="n in 6" :key="n" :style="getStreamStyle(n)">
         <div class="stream-particle"></div>
@@ -119,7 +119,7 @@ export default {
     },
     pageName: {
       type: String,
-      default: '页面'
+      default: '頁面'
     },
     pageIcon: {
       type: String,
@@ -133,59 +133,59 @@ export default {
   emits: ['complete'],
   setup(props, { emit }) {
     const progress = ref(0)
-    const loadingText = ref('初始化系统...')
+    const loadingText = ref('初始化系統...')
     const circumference = 2 * Math.PI * 45
 
-    // 根据页面名称设置不同的加载阶段
+    // 根據頁面名称设置不同的加載阶段
     const loadingStages = computed(() => {
       const baseStages = {
-        '企业管理': [
-          '初始化企业管理系统...',
-          '连接企业数据库...',
-          '加载企业信息...',
-          '同步征信数据...',
-          '渲染企业列表...',
-          '加载完成'
+        '企業管理': [
+          '初始化企業管理系統...',
+          '連接企業數據库...',
+          '加載企業信息...',
+          '同步徵信數據...',
+          '渲染企業列表...',
+          '加載完成'
         ],
-        '企业详情': [
-          '初始化企业详情...',
-          '获取企业基本信息...',
-          '加载财务数据...',
-          '分析风险指标...',
-          '生成信用报告...',
-          '加载完成'
+        '企業詳情': [
+          '初始化企業詳情...',
+          '获取企業基本信息...',
+          '加載財務數據...',
+          '分析風險指標...',
+          '生成信用報告...',
+          '加載完成'
         ],
-        '报告详情': [
-          '初始化报告系统...',
-          '解析报告数据...',
-          '加载图表组件...',
-          '渲染数据可视化...',
-          '优化显示效果...',
-          '加载完成'
+        '報告詳情': [
+          '初始化報告系統...',
+          '解析報告數據...',
+          '加載图表组件...',
+          '渲染數據可视化...',
+          '優化顯示效果...',
+          '加載完成'
         ]
       }
       
       return baseStages[props.pageName] || [
-        '初始化系统...',
-        '连接数据库...',
-        '加载数据...',
+        '初始化系統...',
+        '連接數據库...',
+        '加載數據...',
         '渲染界面...',
-        '优化性能...',
-        '加载完成'
+        '優化性能...',
+        '加載完成'
       ]
     })
 
     const titleChars = computed(() => {
-      return `正在加载${props.pageName}`.split('')
+      return `正在加載${props.pageName}`.split('')
     })
 
     const pageSubtitle = computed(() => {
       const subtitles = {
-        '企业管理': '粤港澳大湾区企业征信管理平台',
-        '企业详情': '企业信用信息详细分析',
-        '报告详情': '专业信用评估报告'
+        '企業管理': '粵港澳大灣區企業徵信管理平臺',
+        '企業詳情': '企業信用信息詳細分析',
+        '報告詳情': '專業信用評估報告'
       }
-      return subtitles[props.pageName] || '跨境征信服务平台'
+      return subtitles[props.pageName] || '跨境徵信服務平臺'
     })
 
     let progressInterval = null
@@ -213,7 +213,7 @@ export default {
     }
 
     const startLoading = () => {
-      // 进度条动画
+      // 進度条動画
       let currentStage = 0
       progressInterval = setInterval(() => {
         progress.value += Math.random() * 20 + 10
@@ -227,7 +227,7 @@ export default {
             emit('complete')
           }, 300)
         } else {
-          // 更新加载文本
+          // 更新加載文本
           const stageIndex = Math.floor((progress.value / 100) * (loadingStages.value.length - 1))
           if (stageIndex !== currentStage && stageIndex < loadingStages.value.length - 1) {
             currentStage = stageIndex
@@ -276,7 +276,7 @@ export default {
   overflow: hidden;
 }
 
-/* 动态背景 */
+/* 動态背景 */
 .loader-background {
   position: absolute;
   width: 100%;
@@ -332,7 +332,7 @@ export default {
   75% { transform: translate(-30px, -10px) scale(1.1); }
 }
 
-/* 加载粒子 */
+/* 加載粒子 */
 .loading-particles {
   position: absolute;
   width: 100%;
@@ -374,7 +374,7 @@ export default {
   padding: 2rem;
 }
 
-/* 主要加载动画 */
+/* 主要加載動画 */
 .main-loader {
   position: relative;
   width: 200px;
@@ -423,7 +423,7 @@ export default {
   }
 }
 
-/* 轨道系统 */
+/* 轨道系統 */
 .orbit-container {
   position: absolute;
   top: 0;
@@ -549,7 +549,7 @@ export default {
   }
 }
 
-/* 高级进度条 */
+/* 高級進度条 */
 .progress-container {
   position: relative;
   margin-bottom: 2rem;
@@ -618,7 +618,7 @@ export default {
   margin-top: 0.5rem;
 }
 
-/* 加载状态 */
+/* 加載状态 */
 .loading-status {
   display: flex;
   align-items: center;
@@ -660,7 +660,7 @@ export default {
   }
 }
 
-/* 数据流动效果 */
+/* 數據流動效果 */
 .data-flow-container {
   position: absolute;
   top: 50%;
@@ -714,7 +714,7 @@ export default {
   }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .main-loader {
     width: 150px;

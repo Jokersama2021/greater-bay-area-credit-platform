@@ -4,20 +4,20 @@
       <div v-for="n in 20" :key="n" class="particle"></div>
     </div>
     <div class="gba-title">
-      <span class="title-glow">粤港澳大湾区</span>
+      <span class="title-glow">粵港澳大灣區</span>
       <div class="title-underline"></div>
     </div>
-    <div class="stats-summary">总数据量: <span class="stats-value">{{ totalValue }}</span> 家企业</div>
+    <div class="stats-summary">總數據量: <span class="stats-value">{{ totalValue }}</span> 家企業</div>
     <div class="rectangle-map">
       <router-link
         v-for="(layout, index) in cityLayout"
         :key="index"
         class="city-block enhanced-city-button city-animate-in"
         :class="{
-          'guangzhou': cityData[layout.id].name === '广州',
+          'guangzhou': cityData[layout.id].name === '廣州',
           'shenzhen': cityData[layout.id].name === '深圳',
           'hongkong': cityData[layout.id].name === '香港',
-          'macau': cityData[layout.id].name === '澳门'
+          'macau': cityData[layout.id].name === '澳門'
         }"
         :style="{
           gridArea: layout.gridArea,
@@ -32,18 +32,18 @@
         <div class="city-ripple"></div>
         <div class="city-name">{{ cityData[layout.id].name }}</div>
         <div class="city-value">{{ cityData[layout.id].value }}</div>
-        <div class="connection-lines" v-if="['广州', '深圳', '香港'].includes(cityData[layout.id].name)"></div>
+        <div class="connection-lines" v-if="['廣州', '深圳', '香港'].includes(cityData[layout.id].name)"></div>
         <div class="city-glow-effect"></div>
       </router-link>
     </div>
     <div class="map-legend">
       <div class="legend-item">
         <div class="legend-color mainland"></div>
-        <div class="legend-text">大陆城市</div>
+        <div class="legend-text">内地城市</div>
       </div>
       <div class="legend-item">
         <div class="legend-color sar"></div>
-        <div class="legend-text">特别行政区</div>
+        <div class="legend-text">特別行政區</div>
       </div>
     </div>
   </div>
@@ -58,47 +58,47 @@ export default {
     const mapRef = ref(null)
     
     const cityData = reactive([
-      { name: '肇庆', value: 2, color: '#2c3e50', colorEnd: '#1e2a36', rank: 10 },
-      { name: '广州', value: 10, color: '#4a1942', colorEnd: '#2d1423', rank: 1 },
+      { name: '肇慶', value: 2, color: '#2c3e50', colorEnd: '#1e2a36', rank: 10 },
+      { name: '廣州', value: 10, color: '#4a1942', colorEnd: '#2d1423', rank: 1 },
       { name: '惠州', value: 3, color: '#1b3a4b', colorEnd: '#072736', rank: 7 },
       { name: '佛山', value: 4, color: '#3d2c20', colorEnd: '#241a14', rank: 5 },
-      { name: '东莞', value: 4, color: '#3a3104', colorEnd: '#1e1a02', rank: 4 },
-      { name: '江门', value: 3, color: '#2d2d2d', colorEnd: '#1a1a1a', rank: 8 },
+      { name: '東莞', value: 4, color: '#3a3104', colorEnd: '#1e1a02', rank: 4 },
+      { name: '江門', value: 3, color: '#2d2d2d', colorEnd: '#1a1a1a', rank: 8 },
       { name: '中山', value: 3, color: '#333622', colorEnd: '#1e1f14', rank: 6 },
       { name: '珠海', value: 4, color: '#432234', colorEnd: '#2c1722', rank: 3 },
       { name: '深圳', value: 12, color: '#6e1230', colorEnd: '#420a1c', rank: 1 },
       { name: '香港', value: 10, color: '#133a5e', colorEnd: '#0a2239', rank: 2 },
-      { name: '澳门', value: 8, color: '#133a5e', colorEnd: '#0a2239', rank: 3 }
+      { name: '澳門', value: 8, color: '#133a5e', colorEnd: '#0a2239', rank: 3 }
     ])
 
     // 排列成完整矩形
     const cityLayout = reactive([
-      { id: 0, gridArea: '1 / 1 / 2 / 2' }, // 肇庆
-      { id: 1, gridArea: '1 / 2 / 2 / 4' }, // 广州 - 占2格
+      { id: 0, gridArea: '1 / 1 / 2 / 2' }, // 肇慶
+      { id: 1, gridArea: '1 / 2 / 2 / 4' }, // 廣州 - 占2格
       { id: 2, gridArea: '1 / 4 / 2 / 5' }, // 惠州
       { id: 3, gridArea: '2 / 1 / 3 / 2' }, // 佛山
-      { id: 4, gridArea: '2 / 2 / 3 / 3' }, // 东莞
+      { id: 4, gridArea: '2 / 2 / 3 / 3' }, // 東莞
       { id: 8, gridArea: '2 / 3 / 3 / 4' }, // 深圳
       { id: 9, gridArea: '2 / 4 / 3 / 5' }, // 香港
-      { id: 5, gridArea: '3 / 1 / 4 / 2' }, // 江门
+      { id: 5, gridArea: '3 / 1 / 4 / 2' }, // 江門
       { id: 6, gridArea: '3 / 2 / 4 / 3' }, // 中山
       { id: 7, gridArea: '3 / 3 / 4 / 4' }, // 珠海
-      { id: 10, gridArea: '3 / 4 / 4 / 5' }  // 澳门
+      { id: 10, gridArea: '3 / 4 / 4 / 5' }  // 澳門
     ])
 
-    // 计算总数值
+    // 計算總數值
     const totalValue = computed(() => {
       return cityData.reduce((sum, city) => sum + city.value, 0);
     });
 
-    // 随机粒子动画
+    // 随機粒子動画
     onMounted(() => {
       const particles = document.querySelectorAll('.particle');
       particles.forEach(particle => {
         animateParticle(particle);
       });
 
-      // 确保所有城市在动画完成后保持可见
+      // 确保所有城市在動画完成后保持可見
       setTimeout(() => {
         const cityBlocks = document.querySelectorAll('.city-animate-in');
         cityBlocks.forEach(block => {
@@ -124,7 +124,7 @@ export default {
       element.style.animationDuration = `${duration}s`;
       element.style.animationDelay = `${delay}s`;
 
-      // 设置自定义属性用于CSS动画
+      // 设置自定义属性用于CSS動画
       element.style.setProperty('--end-x', `${endX}%`);
       element.style.setProperty('--end-y', `${endY}%`);
     };
@@ -280,7 +280,7 @@ export default {
   visibility: visible !important;
 }
 
-/* 城市模块进入动画 - 更自然的淡入效果 */
+/* 城市模块進入動画 - 更自然的淡入效果 */
 .city-animate-in {
   opacity: 0;
   transform: translateY(15px);
@@ -298,7 +298,7 @@ export default {
   }
 }
 
-/* 确保动画完成后城市保持可见 */
+/* 确保動画完成后城市保持可見 */
 .city-animate-in.animation-complete {
   opacity: 1 !important;
   transform: translateY(0) !important;
@@ -410,7 +410,7 @@ export default {
   letter-spacing: 1px;
 }
 
-/* 连接线 */
+/* 連接線 */
 .connection-lines {
   position: absolute;
   width: 100%;
@@ -458,7 +458,7 @@ export default {
   letter-spacing: 0.5px;
 }
 
-/* 广州特殊样式 */
+/* 廣州特殊樣式 */
 .guangzhou {
   z-index: 6 !important;
   animation: glow 3s infinite;
@@ -466,7 +466,7 @@ export default {
   box-shadow: 0 0 20px rgba(74, 25, 66, 0.6) !important;
 }
 
-/* 深圳特殊样式 */
+/* 深圳特殊樣式 */
 .shenzhen {
   animation: shine 2s infinite;
   z-index: 5 !important;
@@ -474,7 +474,7 @@ export default {
   box-shadow: 0 0 15px rgba(110, 18, 48, 0.5) !important;
 }
 
-/* 香港特殊样式 */
+/* 香港特殊樣式 */
 .hongkong {
   animation: borderGlow 4s infinite alternate;
   z-index: 5 !important;
@@ -492,7 +492,7 @@ export default {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* 澳门特殊样式 */
+/* 澳門特殊樣式 */
 .macau {
   animation: borderGlow 4s infinite alternate;
   z-index: 5 !important;

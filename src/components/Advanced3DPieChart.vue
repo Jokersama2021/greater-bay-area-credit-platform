@@ -12,15 +12,15 @@ let chart = null
 const props = defineProps({
   title: {
     type: String,
-    default: '数据分布'
+    default: '數據分布'
   },
   data: {
     type: Array,
     default: () => [
-      { value: 35, name: '优秀企业', color: '#34C759' },
-      { value: 28, name: '良好企业', color: '#007AFF' },
-      { value: 22, name: '一般企业', color: '#FF9500' },
-      { value: 15, name: '风险企业', color: '#FF3B30' }
+      { value: 35, name: '優秀企業', color: '#34C759' },
+      { value: 28, name: '良好企業', color: '#007AFF' },
+      { value: 22, name: '一般企業', color: '#FF9500' },
+      { value: 15, name: '風險企業', color: '#FF3B30' }
     ]
   }
 })
@@ -203,7 +203,7 @@ const initChart = () => {
 
   chart.setOption(option)
   
-  // 添加自动旋转效果
+  // 添加自動旋转效果
   let currentIndex = 0
   const autoRotate = () => {
     chart.dispatchAction({

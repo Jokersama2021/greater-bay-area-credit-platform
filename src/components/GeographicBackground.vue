@@ -1,6 +1,6 @@
 <template>
   <div class="geographic-background">
-    <!-- 珠江水纹动画 -->
+    <!-- 珠江水纹動画 -->
     <div class="pearl-river-waves">
       <div class="wave wave-1"></div>
       <div class="wave wave-2"></div>
@@ -8,10 +8,10 @@
       <div class="wave wave-4"></div>
     </div>
 
-    <!-- 三地连接线动画 -->
+    <!-- 三地連接線動画 -->
     <div class="connection-lines">
       <svg class="connection-svg" viewBox="0 0 1200 800">
-        <!-- 香港到广州 -->
+        <!-- 香港到廣州 -->
         <path 
           class="connection-line hk-gz" 
           d="M 200 600 Q 400 400 600 200"
@@ -19,7 +19,7 @@
           fill="none"
           stroke-width="2"
         />
-        <!-- 澳门到广州 -->
+        <!-- 澳門到廣州 -->
         <path 
           class="connection-line mo-gz" 
           d="M 100 650 Q 350 450 600 200"
@@ -27,7 +27,7 @@
           fill="none"
           stroke-width="2"
         />
-        <!-- 香港到澳门 -->
+        <!-- 香港到澳門 -->
         <path 
           class="connection-line hk-mo" 
           d="M 200 600 Q 150 625 100 650"
@@ -55,9 +55,9 @@
           </linearGradient>
         </defs>
 
-        <!-- 城市节点 -->
+        <!-- 城市节點 -->
         <g class="city-nodes">
-          <!-- 广州 -->
+          <!-- 廣州 -->
           <circle class="city-node guangzhou" cx="600" cy="200" r="8" fill="#ffd700" />
           <circle class="city-pulse guangzhou-pulse" cx="600" cy="200" r="8" fill="none" stroke="#ffd700" stroke-width="2" />
           
@@ -65,12 +65,12 @@
           <circle class="city-node hongkong" cx="200" cy="600" r="6" fill="#00d4ff" />
           <circle class="city-pulse hongkong-pulse" cx="200" cy="600" r="6" fill="none" stroke="#00d4ff" stroke-width="2" />
           
-          <!-- 澳门 -->
+          <!-- 澳門 -->
           <circle class="city-node macau" cx="100" cy="650" r="6" fill="#ff6b6b" />
           <circle class="city-pulse macau-pulse" cx="100" cy="650" r="6" fill="none" stroke="#ff6b6b" stroke-width="2" />
         </g>
 
-        <!-- 数据流动粒子 -->
+        <!-- 數據流動粒子 -->
         <g class="data-particles">
           <circle class="particle particle-1" r="2" fill="#00d4ff">
             <animateMotion dur="8s" repeatCount="indefinite">
@@ -84,7 +84,7 @@
           </circle>
         </g>
 
-        <!-- 隐藏的路径用于粒子动画 -->
+        <!-- 隐藏的路径用于粒子動画 -->
         <defs>
           <path id="hk-gz-path" d="M 200 600 Q 400 400 600 200" />
           <path id="mo-gz-path" d="M 100 650 Q 350 450 600 200" />
@@ -92,7 +92,7 @@
       </svg>
     </div>
 
-    <!-- 地标建筑剪影 -->
+    <!-- 地標建筑剪影 -->
     <div class="landmarks">
       <!-- 港珠澳大桥 -->
       <div class="landmark bridge">
@@ -107,7 +107,7 @@
         </svg>
       </div>
 
-      <!-- 广州塔 -->
+      <!-- 廣州塔 -->
       <div class="landmark tower guangzhou-tower">
         <svg viewBox="0 0 40 100" class="tower-svg">
           <path d="M 15 95 L 12 20 L 20 5 L 28 20 L 25 95 Z" 
@@ -122,7 +122,7 @@
         </svg>
       </div>
 
-      <!-- 澳门观光塔 -->
+      <!-- 澳門观光塔 -->
       <div class="landmark tower macau-tower">
         <svg viewBox="0 0 30 80" class="tower-svg">
           <rect x="12" y="60" width="6" height="35" fill="#ff6b6b" class="tower-base" />
@@ -131,7 +131,7 @@
       </div>
     </div>
 
-    <!-- 云层飘移 -->
+    <!-- 雲层飘移 -->
     <div class="clouds">
       <div class="cloud cloud-1">
         <svg viewBox="0 0 100 40">
@@ -166,9 +166,9 @@ export default {
   },
   methods: {
     initAnimations() {
-      // 初始化连接线动画
+      // 初始化連接線動画
       this.animateConnections()
-      // 初始化地标动画
+      // 初始化地標動画
       this.animateLandmarks()
     },
     
@@ -187,7 +187,7 @@ export default {
     },
     
     animateLandmarks() {
-      // 地标建筑的呼吸动画
+      // 地標建筑的呼吸動画
       const landmarks = document.querySelectorAll('.landmark')
       landmarks.forEach(landmark => {
         landmark.style.animation = 'landmarkGlow 4s ease-in-out infinite'
@@ -209,7 +209,7 @@ export default {
   z-index: 0;
 }
 
-/* 珠江水纹动画 */
+/* 珠江水纹動画 */
 .pearl-river-waves {
   position: absolute;
   bottom: 0;
@@ -267,7 +267,7 @@ export default {
   }
 }
 
-/* 连接线动画 */
+/* 連接線動画 */
 .connection-lines {
   position: absolute;
   top: 0;
@@ -298,7 +298,7 @@ export default {
   }
 }
 
-/* 城市节点动画 */
+/* 城市节點動画 */
 .city-node {
   animation: cityGlow 3s ease-in-out infinite;
 }
@@ -329,7 +329,7 @@ export default {
   }
 }
 
-/* 数据粒子动画 */
+/* 數據粒子動画 */
 .particle {
   opacity: 0;
   animation: particleGlow 2s ease-in-out infinite;
@@ -354,7 +354,7 @@ export default {
   }
 }
 
-/* 地标建筑动画 */
+/* 地標建筑動画 */
 .landmarks {
   position: absolute;
   top: 0;
@@ -432,7 +432,7 @@ export default {
   }
 }
 
-/* 云层动画 */
+/* 雲层動画 */
 .clouds {
   position: absolute;
   top: 0;
@@ -497,7 +497,7 @@ export default {
   }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .landmarks {
     opacity: 0.5;

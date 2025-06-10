@@ -72,7 +72,7 @@ export default {
     },
     trendLabel: {
       type: String,
-      default: '较上月'
+      default: '較上月'
     },
     chartData: {
       type: Array,
@@ -323,7 +323,7 @@ export default {
   width: 100%;
 }
 
-/* 主题变体 */
+/* 主題变体 */
 .card-primary .card-background {
   background: var(--gradient-primary);
 }

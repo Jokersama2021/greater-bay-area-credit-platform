@@ -15,7 +15,7 @@ import { enterpriseDataService } from '../services/enterpriseDataService'
 const chartContainer = ref(null)
 let chart = null
 
-// 获取当前企业数据
+// 获取當前企業數據
 const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
 
 const initChart = () => {
@@ -50,7 +50,7 @@ const initChart = () => {
             <div style="font-weight: 600; margin-bottom: 8px; color: #007AFF;">${data.name}</div>
             <div style="display: flex; align-items: center; gap: 10px;">
               <div style="width: 10px; height: 10px; background: linear-gradient(45deg, #007AFF, #5AC8FA); border-radius: 50%; box-shadow: 0 0 8px rgba(0, 122, 255, 0.6);"></div>
-              <span style="font-size: 14px;">风险预警: <strong style="color: #007AFF;">${data.value}</strong> 次</span>
+              <span style="font-size: 14px;">風險预警: <strong style="color: #007AFF;">${data.value}</strong> 次</span>
             </div>
           </div>
         `
@@ -101,7 +101,7 @@ const initChart = () => {
     },
     series: [
       {
-        name: '风险预警',
+        name: '風險预警',
         type: 'bar',
         data: currentEnterprise.value.riskData,
         barWidth: '50%',
@@ -135,7 +135,7 @@ const initChart = () => {
         animationDelay: (idx) => idx * 200
       },
       {
-        name: '趋势线',
+        name: '趋势線',
         type: 'line',
         data: currentEnterprise.value.riskData,
         smooth: true,
@@ -192,7 +192,7 @@ const initChart = () => {
     })
   }
   
-  // 延迟启动自动高亮
+  // 延迟启動自動高亮
   setTimeout(() => {
     setInterval(autoHighlight, 3000)
   }, 2000)
@@ -204,7 +204,7 @@ const handleResize = () => {
   }
 }
 
-// 监听企业变化，重新初始化图表
+// 監聽企業变化，重新初始化图表
 watch(currentEnterprise, () => {
   if (chart) {
     initChart()
@@ -282,7 +282,7 @@ onUnmounted(() => {
   }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .beautiful-risk-chart {
     height: 140px;

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div>【关键词条】</div>
+		<div>【關键詞条】</div>
 		<div ref="target" class="w-full h-full"></div>
 	</div>
 </template>
@@ -17,12 +17,12 @@ const props = defineProps({
 	}
 })
 
-// 获取 DOM 实例
+// 获取 DOM 實例
 const target = ref(null)
 
-// echarts 实例变量
+// echarts 實例变量
 let mChart = null
-// 在 mounted 生命周期之后，实例化 echarts
+// 在 mounted 生命周期之后，實例化 echarts
 onMounted(() => {
 	mChart = echarts.init(target.value)
 	// 渲染 echarts
@@ -30,7 +30,7 @@ onMounted(() => {
 })
 
 /**
- * 生成随机色值
+ * 生成随機色值
  */
 const randomRGB = () => {
 	const r = Math.floor(Math.random() * 255)
@@ -46,17 +46,17 @@ const renderChart = () => {
 			{
 				// 类型
 				type: 'wordCloud',
-				// 数据映射文本的大小范围
+				// 數據映射文本的大小範围
 				sizeRange: [8, 46],
-				// 文字旋转范围
+				// 文字旋转範围
 				rotationRange: [0, 0],
-				// 单词之间的间距
+				// 单詞之間的間距
 				gridSize: 0,
-				// 渲染动画
+				// 渲染動画
 				layoutAnimation: true,
 				// 字体
 				textStyle: {
-					// 随机色值
+					// 随機色值
 					color: randomRGB
 				},
 				// 高亮字体
@@ -66,7 +66,7 @@ const renderChart = () => {
 						color: '#000'
 					}
 				},
-				// 数据
+				// 數據
 				data: props.data.datas
 			}
 		]
@@ -75,7 +75,7 @@ const renderChart = () => {
 	mChart.setOption(options)
 }
 
-// 监听数据的变化，重新渲染图表
+// 監聽數據的变化，重新渲染图表
 watch(
 	() => props.data,
 	() => {

@@ -2,17 +2,17 @@
   <div class="report-detail-container">
     <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <div class="loading-text">加载报告详情中...</div>
+      <div class="loading-text">加載報告詳情中...</div>
     </div>
 
     <div v-else class="content">
       <div class="page-header animate-fade-in-up" :style="{ animationDelay: '0.2s' }">
         <router-link :to="`/enterprise/${enterpriseId}`" class="back-btn">
-          <i class="fas fa-arrow-left"></i> 返回企业详情
+          <i class="fas fa-arrow-left"></i> 返回企業詳情
         </router-link>
         <div class="action-btn">
           <button class="download-btn">
-            <i class="fas fa-download"></i> 下载报告
+            <i class="fas fa-download"></i> 下載報告
           </button>
         </div>
       </div>
@@ -27,7 +27,7 @@
             </div>
             <div class="meta-item animate-fade-in-up" :style="{ animationDelay: '0.6s' }">
               <i class="fas fa-id-card"></i>
-              <span>报告编号: {{ report.id }}</span>
+              <span>報告编号: {{ report.id }}</span>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
       </div>
 
       <div class="enterprise-summary animate-slide-in-up" :style="{ animationDelay: '0.7s' }">
-        <h2 class="section-title">企业概况</h2>
+        <h2 class="section-title">企業概况</h2>
         <div class="summary-content">
           <div class="enterprise-basic animate-slide-in-left" :style="{ animationDelay: '0.8s' }">
             <div class="enterprise-name">{{ report.enterpriseName }}</div>
@@ -57,14 +57,14 @@
           <div class="credit-summary animate-slide-in-right" :style="{ animationDelay: '0.9s' }">
             <div class="credit-score">
               <div class="score-value">{{ animatedScore }}</div>
-              <div class="score-label">信用评分</div>
+              <div class="score-label">信用評分</div>
             </div>
           </div>
         </div>
       </div>
       
       <div class="report-section animate-slide-in-up" :style="{ animationDelay: '1.0s' }">
-        <h2 class="section-title">评估结果</h2>
+        <h2 class="section-title">評估结果</h2>
         <div class="section-content">
           <div class="section-text">{{ report.conclusion }}</div>
         </div>
@@ -134,7 +134,7 @@ export default {
     this.fetchReportDetail(reportId)
   },
   methods: {
-    // 数字动画函数
+    // 數字動画函數
     animateScore(target, duration = 2000) {
       const start = this.animatedScore
       const startTime = Date.now()
@@ -143,7 +143,7 @@ export default {
         const elapsed = Date.now() - startTime
         const progress = Math.min(elapsed / duration, 1)
 
-        // 使用 easeOutExpo 缓动函数
+        // 使用 easeOutExpo 缓動函數
         const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
         this.animatedScore = Math.round(start + (target - start) * easeOutExpo)
 
@@ -158,223 +158,223 @@ export default {
     fetchReportDetail(id) {
       // 模拟API请求
       setTimeout(() => {
-        // 真实报告数据
+        // 真實報告數據
         const reportTypes = [
           {
             id: 1,
-            title: '企业资信报告',
+            title: '企業資信報告',
             icon: 'fas fa-file-invoice',
             sections: [
               {
                 title: '基本信息分析',
-                content: '该企业在工商注册、法律诉讼、税务缴纳等方面表现良好，企业合规性高。公司成立至今，企业主体资格和经营状态稳定，未发现异常变更记录。法人代表及主要股东个人信用良好，无不良记录。'
+                content: '该企業在工商注册、法律诉讼、税務缴纳等方面表現良好，企業合規性高。公司成立至今，企業主体資格和經营状态稳定，未發現异常变更記录。法人代表及主要股東個人信用良好，無不良記录。'
               },
               {
-                title: '财务状况评估',
-                content: '企业近三年财务状况稳健，资产负债率保持在42%左右，低于行业平均水平。流动比率2.1，速动比率1.8，短期偿债能力较强。营业收入保持平稳增长，毛利率和净利率均高于行业平均水平，体现了良好的盈利能力和成本控制能力。'
+                title: '財務状况評估',
+                content: '企業近三年財務状况稳健，資產负债率保持在42%左右，低于行業平均水平。流動比率2.1，速動比率1.8，短期偿债能力較强。营業收入保持平稳增長，毛利率和净利率均高于行業平均水平，体現了良好的盈利能力和成本控制能力。'
               },
               {
-                title: '市场表现分析',
-                content: '企业在行业内具有较高的市场份额和品牌影响力，主要产品市场占有率位居行业前五。客户结构多元化，无过度依赖单一客户现象。供应商合作稳定，采购渠道多样化，有效降低了供应链风险。'
+                title: '市场表現分析',
+                content: '企業在行業内具有較高的市场份额和品牌影响力，主要產品市场占有率位居行業前五。客户结構多元化，無過度依赖单一客户現象。供應商合作稳定，采购渠道多樣化，有效降低了供應链風險。'
               }
             ],
             recommendations: [
               {
-                title: '拓展融资渠道',
-                content: '建议企业在保持银行贷款良好合作的基础上，适当考虑多元化融资渠道，如发行债券、引入战略投资者等，优化资本结构。',
+                title: '拓展融資渠道',
+                content: '建议企業在保持銀行贷款良好合作的基础上，适當考虑多元化融資渠道，如發行债券、引入战略投資者等，優化資本结構。',
                 icon: 'fas fa-money-bill-wave'
               },
               {
-                title: '增强研发投入',
-                content: '建议持续加大研发投入，提高产品技术含量和附加值，增强企业核心竞争力。',
+                title: '增强研發投入',
+                content: '建议持续加大研發投入，提高產品技术含量和附加值，增强企業核心竞争力。',
                 icon: 'fas fa-lightbulb'
               },
               {
-                title: '优化公司治理',
-                content: '建议完善内部控制制度，强化风险管理，提升公司治理水平，为企业长期稳健发展奠定基础。',
+                title: '優化公司治理',
+                content: '建议完善内部控制制度，强化風險管理，提升公司治理水平，為企業長期稳健發展奠定基础。',
                 icon: 'fas fa-balance-scale'
               }
             ]
           },
           {
             id: 2,
-            title: '资产评估报告',
+            title: '資產評估報告',
             icon: 'fas fa-balance-scale',
             sections: [
               {
-                title: '资产评估概述',
-                content: '本次评估采用资产基础法和收益法两种方法，最终选取收益法评估结果作为评估结论。评估基准日为2025年6月30日，企业整体资产评估价值为152.8亿元，较账面净资产增值率为28.4%。'
+                title: '資產評估概述',
+                content: '本次評估采用資產基础法和收益法两种方法，最终選取收益法評估结果作為評估结论。評估基準日為2025年6月30日，企業整体資產評估价值為152.8亿元，較账面净資產增值率為28.4%。'
               },
               {
-                title: '固定资产评估',
-                content: '企业固定资产主要包括房屋建筑物、机器设备、运输设备和电子设备等。经评估，固定资产评估价值为38.6亿元，增值率为15.2%。增值原因主要是房产价格上涨和部分设备折旧年限与实际经济寿命不一致所致。'
+                title: '固定資產評估',
+                content: '企業固定資產主要包括房屋建筑物、機器设備、运输设備和電子设備等。經評估，固定資產評估价值為38.6亿元，增值率為15.2%。增值原因主要是房產价格上涨和部分设備折旧年限与實際經济寿命不一致所致。'
               },
               {
-                title: '无形资产评估',
-                content: '企业无形资产主要包括土地使用权、专利技术、商标权和软件著作权等。经评估，无形资产评估价值为26.9亿元，增值率为42.8%。增值较大的原因主要是企业拥有的核心技术专利和品牌价值在账面价值中未得到充分体现。'
+                title: '無形資產評估',
+                content: '企業無形資產主要包括土地使用权、專利技术、商標权和软件著作权等。經評估，無形資產評估价值為26.9亿元，增值率為42.8%。增值較大的原因主要是企業拥有的核心技术專利和品牌价值在账面价值中未得到充分体現。'
               },
               {
-                title: '长期股权投资评估',
-                content: '企业共有12家子公司的长期股权投资，经评估，长期股权投资评估价值为45.3亿元，增值率为22.6%。增值原因主要是部分子公司盈利能力较强，未来收益预期良好。'
+                title: '長期股权投資評估',
+                content: '企業共有12家子公司的長期股权投資，經評估，長期股权投資評估价值為45.3亿元，增值率為22.6%。增值原因主要是部分子公司盈利能力較强，未來收益预期良好。'
               }
             ],
             recommendations: [
               {
-                title: '优化资产结构',
-                content: '建议对低效资产进行处置或改造，提高资产使用效率，优化资产结构，提升资产回报率。',
+                title: '優化資產结構',
+                content: '建议對低效資產進行處置或改造，提高資產使用效率，優化資產结構，提升資產回報率。',
                 icon: 'fas fa-chart-pie'
               },
               {
-                title: '加强知识产权管理',
-                content: '建议加强对专利、商标等知识产权的管理和保护，完善知识产权运营策略，充分发挥无形资产的价值。',
+                title: '加强知識產权管理',
+                content: '建议加强對專利、商標等知識產权的管理和保护，完善知識產权运营策略，充分發挥無形資產的价值。',
                 icon: 'fas fa-copyright'
               },
               {
-                title: '推进子公司整合',
-                content: '建议对业务重叠或协同效应不明显的子公司进行整合或调整，优化集团管控模式，提高整体运营效率。',
+                title: '推進子公司整合',
+                content: '建议對業務重叠或协同效應不明顯的子公司進行整合或调整，優化集团管控模式，提高整体运营效率。',
                 icon: 'fas fa-object-group'
               }
             ]
           },
           {
             id: 3,
-            title: '企业评分报告',
+            title: '企業評分報告',
             icon: 'fas fa-chart-line',
             sections: [
               {
-                title: '评分模型说明',
-                content: '本评分报告采用多维度、全方位的评分体系，包括财务表现、市场地位、管理能力、创新能力和社会责任五大维度，每个维度下设多个细分指标，满分100分。根据得分情况，将企业评级划分为AAA、AA、A、BBB、BB、B、CCC、CC、C九个等级。'
+                title: '評分模型說明',
+                content: '本評分報告采用多维度、全方位的評分体系，包括財務表現、市场地位、管理能力、創新能力和社會责任五大维度，每個维度下设多個細分指標，滿分100分。根據得分情况，将企業評級划分為AAA、AA、A、BBB、BB、B、CCC、CC、C九個等級。'
               },
               {
-                title: '财务表现（得分：85分）',
-                content: '企业财务状况良好，利润率、资产回报率和现金流量等指标均高于行业平均水平。资产负债结构合理，短期和长期偿债能力强。财务管理规范，信息披露及时、准确、完整。'
+                title: '財務表現（得分：85分）',
+                content: '企業財務状况良好，利润率、資產回報率和現金流量等指標均高于行業平均水平。資產负债结構合理，短期和長期偿债能力强。財務管理規範，信息披露及時、準确、完整。'
               },
               {
                 title: '市场地位（得分：88分）',
-                content: '企业在行业内处于领先地位，市场份额稳步提升。品牌知名度高，客户满意度和忠诚度强。产品竞争力突出，定价能力强，毛利率水平高于行业平均。'
+                content: '企業在行業内處于領先地位，市场份额稳步提升。品牌知名度高，客户滿意度和忠诚度强。產品竞争力突出，定价能力强，毛利率水平高于行業平均。'
               },
               {
                 title: '管理能力（得分：82分）',
-                content: '企业管理团队经验丰富，战略规划明确，执行力强。公司治理结构完善，内控体系健全。人力资源管理体系完善，员工满意度和稳定性高。'
+                content: '企業管理团队經验丰富，战略規划明确，执行力强。公司治理结構完善，内控体系健全。人力資源管理体系完善，员工滿意度和稳定性高。'
               },
               {
-                title: '创新能力（得分：78分）',
-                content: '企业研发投入占比较高，拥有多项核心专利技术。产品创新能力强，新产品贡献率高。技术创新与商业模式创新并重，有较强的行业引领性。'
+                title: '創新能力（得分：78分）',
+                content: '企業研發投入占比較高，拥有多项核心專利技术。產品創新能力强，新產品贡献率高。技术創新与商業模式創新并重，有較强的行業引領性。'
               },
               {
-                title: '社会责任（得分：80分）',
-                content: '企业环保达标率100%，积极推进节能减排和绿色制造。参与社会公益活动，履行企业社会责任。劳动关系和谐，员工权益保障完善。'
+                title: '社會责任（得分：80分）',
+                content: '企業环保达標率100%，积極推進节能减排和绿色制造。参与社會公益活動，履行企業社會责任。劳動關系和谐，员工权益保障完善。'
               },
               {
-                title: '综合评分与评级',
-                content: '企业综合评分为83分，对应信用评级为AA级。表明企业整体实力较强，经营稳健，抗风险能力强，发展前景良好。'
+                title: '综合評分与評級',
+                content: '企業综合評分為83分，對應信用評級為AA級。表明企業整体實力較强，經营稳健，抗風險能力强，發展前景良好。'
               }
             ],
             recommendations: [
               {
-                title: '提升创新能力',
-                content: '建议加大研发投入，完善创新激励机制，提高技术创新能力和新产品开发速度，增强企业核心竞争力。',
+                title: '提升創新能力',
+                content: '建议加大研發投入，完善創新激励機制，提高技术創新能力和新產品開發速度，增强企業核心竞争力。',
                 icon: 'fas fa-rocket'
               },
               {
-                title: '优化管理体系',
-                content: '建议进一步完善企业管理体系，推进信息化和数字化转型，提高管理效率和决策水平。',
+                title: '優化管理体系',
+                content: '建议進一步完善企業管理体系，推進信息化和數字化转型，提高管理效率和決策水平。',
                 icon: 'fas fa-cogs'
               },
               {
-                title: '拓展国际市场',
-                content: '建议积极拓展国际市场，优化全球资源配置，提高国际化经营水平，降低单一市场依赖风险。',
+                title: '拓展國際市场',
+                content: '建议积極拓展國際市场，優化全球資源配置，提高國際化經营水平，降低单一市场依赖風險。',
                 icon: 'fas fa-globe'
               }
             ]
           },
           {
             id: 4,
-            title: '风控预警报告',
+            title: '風控预警報告',
             icon: 'fas fa-exclamation-circle',
             sections: [
               {
-                title: '风险评估概述',
-                content: '本报告基于企业经营数据、行业环境、政策变化等多维度信息，对企业面临的各类风险进行综合评估和预警。风险等级分为高、中、低三级，并提供针对性的风险管控建议。'
+                title: '風險評估概述',
+                content: '本報告基于企業經营數據、行業环境、政策变化等多维度信息，對企業面临的各类風險進行综合評估和预警。風險等級分為高、中、低三級，并提供针對性的風險管控建议。'
               },
               {
-                title: '经营风险（等级：中）',
-                content: '企业主营业务收入增速放缓，较上年同期下降5.2个百分点，毛利率有所下滑。主要原因是原材料价格上涨和行业竞争加剧。建议加强成本管控，优化产品结构，提高高毛利产品占比。'
+                title: '經营風險（等級：中）',
+                content: '企業主营業務收入增速放缓，較上年同期下降5.2個百分點，毛利率有所下滑。主要原因是原材料价格上涨和行業竞争加剧。建议加强成本管控，優化產品结構，提高高毛利產品占比。'
               },
               {
-                title: '财务风险（等级：低）',
-                content: '企业整体财务状况稳健，偿债能力强，但应收账款周转率有所下降，较上年同期延长8天。建议加强应收账款管理，完善客户信用评估体系，防范坏账风险。'
+                title: '財務風險（等級：低）',
+                content: '企業整体財務状况稳健，偿债能力强，但應收账款周转率有所下降，較上年同期延長8天。建议加强應收账款管理，完善客户信用評估体系，防範坏账風險。'
               },
               {
-                title: '市场风险（等级：中）',
-                content: '行业竞争加剧，新进入者增多，市场份额面临挑战。部分区域市场饱和度高，增长空间有限。建议深耕优势区域，积极开拓新兴市场，加强品牌差异化建设。'
+                title: '市场風險（等級：中）',
+                content: '行業竞争加剧，新進入者增多，市场份额面临挑战。部分區域市场饱和度高，增長空間有限。建议深耕優势區域，积極開拓新兴市场，加强品牌差异化建设。'
               },
               {
-                title: '政策风险（等级：中）',
-                content: '行业监管趋严，环保、安全、质量等标准提高，合规成本增加。相关税收优惠政策可能调整，影响企业盈利水平。建议密切关注政策变化，提前做好应对准备。'
+                title: '政策風險（等級：中）',
+                content: '行業監管趋严，环保、安全、质量等標準提高，合規成本增加。相關税收優惠政策可能调整，影响企業盈利水平。建议密切關注政策变化，提前做好應對準備。'
               },
               {
-                title: '运营风险（等级：低）',
-                content: '企业供应链总体稳定，但个别关键原材料供应商集中度较高，存在供应风险。信息系统安全防护需要加强，防范网络安全风险。建议优化供应商结构，加强信息系统安全建设。'
+                title: '运营風險（等級：低）',
+                content: '企業供應链總体稳定，但個別關键原材料供應商集中度較高，存在供應風險。信息系統安全防护需要加强，防範網絡安全風險。建议優化供應商结構，加强信息系統安全建设。'
               }
             ],
             recommendations: [
               {
-                title: '构建全面风险管理体系',
-                content: '建议建立健全全面风险管理体系，明确风险管理责任，完善风险识别、评估、应对和监控机制，提高风险管理的系统性和有效性。',
+                title: '構建全面風險管理体系',
+                content: '建议建立健全全面風險管理体系，明确風險管理责任，完善風險識別、評估、應對和監控機制，提高風險管理的系統性和有效性。',
                 icon: 'fas fa-shield-alt'
               },
               {
-                title: '加强财务风险预警',
-                content: '建议建立财务风险预警机制，定期开展财务风险排查，关注现金流、负债、应收账款等关键指标，防范财务风险。',
+                title: '加强財務風險预警',
+                content: '建议建立財務風險预警機制，定期開展財務風險排查，關注現金流、负债、應收账款等關键指標，防範財務風險。',
                 icon: 'fas fa-chart-line'
               },
               {
-                title: '完善业务连续性计划',
-                content: '建议制定完善的业务连续性计划，做好重大风险事件的应急预案，提高企业应对突发事件的能力，确保业务持续稳定运行。',
+                title: '完善業務連续性計划',
+                content: '建议制定完善的業務連续性計划，做好重大風險事件的應急预案，提高企業應對突發事件的能力，确保業務持续稳定运行。',
                 icon: 'fas fa-random'
               }
             ]
           }
         ];
 
-        // 根据ID获取报告数据
+        // 根據ID获取報告數據
         const reportData = reportTypes.find(r => r.id === parseInt(id)) || reportTypes[0];
         
-        // 获取关联的企业
+        // 获取關聯的企業
         const enterpriseId = this.$route.query.enterprise || Math.floor(Math.random() * 5) + 1;
         const enterprises = {
           1: {
-            name: '腾讯科技（深圳）有限公司',
+            name: '騰訊科技（深圳）有限公司',
             region: '深圳',
-            industry: '互联网'
+            industry: '互聯網'
           },
           2: {
-            name: '华为技术有限公司',
+            name: '華為技术有限公司',
             region: '深圳',
-            industry: '通信设备制造'
+            industry: '通信设備制造'
           },
           3: {
             name: '比亚迪股份有限公司',
             region: '深圳',
-            industry: '汽车制造'
+            industry: '汽車制造'
           },
           4: {
-            name: '广州恒大集团有限公司',
-            region: '广州',
-            industry: '房地产'
+            name: '廣州恒大集团有限公司',
+            region: '廣州',
+            industry: '房地產'
           },
           5: {
-            name: '珠海格力电器股份有限公司',
+            name: '珠海格力電器股份有限公司',
             region: '珠海',
-            industry: '家电制造'
+            industry: '家電制造'
           }
         };
         
         const enterprise = enterprises[enterpriseId] || {
-          name: `大湾区企业${enterpriseId}`,
-          region: ['广州', '深圳', '香港', '珠海'][Math.floor(Math.random() * 4)],
-          industry: ['金融', '科技', '制造', '服务'][Math.floor(Math.random() * 4)]
+          name: `大灣區企業${enterpriseId}`,
+          region: ['廣州', '深圳', '香港', '珠海'][Math.floor(Math.random() * 4)],
+          industry: ['金融', '科技', '制造', '服務'][Math.floor(Math.random() * 4)]
         };
         
         this.report = {
@@ -386,35 +386,35 @@ export default {
           enterpriseRegion: enterprise.region,
           enterpriseIndustry: enterprise.industry,
           creditScore: 85 + Math.floor(Math.random() * 15),
-          conclusion: '该企业整体经营状况良好，具有较高的资信水平和偿债能力。在市场表现、财务状况、合规性等方面均保持良好水平，但存在一定的经营风险，建议持续关注其现金流变化和市场环境影响。',
+          conclusion: '该企業整体經营状况良好，具有較高的資信水平和偿债能力。在市场表現、財務状况、合規性等方面均保持良好水平，但存在一定的經营風險，建议持续關注其現金流变化和市场环境影响。',
           sections: reportData.sections || [
             {
               title: '基本信息分析',
-              content: '企业成立于2015年，位于广州市南沙区，主要从事科技产品研发与销售业务。近三年营业收入持续增长，年均增长率达15%，具有良好的发展潜力。公司员工规模稳定在200人左右，核心管理团队稳定。'
+              content: '企業成立于2015年，位于廣州市南沙區，主要從事科技產品研發与销售業務。近三年营業收入持续增長，年均增長率达15%，具有良好的發展潜力。公司员工規模稳定在200人左右，核心管理团队稳定。'
             },
             {
-              title: '财务状况评估',
-              content: '该企业财务状况总体健康，资产负债率为45%，处于行业平均水平。流动比率1.8，速动比率1.3，短期偿债能力良好。营业利润率为18%，净资产收益率为16%，盈利能力较强。'
+              title: '財務状况評估',
+              content: '该企業財務状况總体健康，資產负债率為45%，處于行業平均水平。流動比率1.8，速動比率1.3，短期偿债能力良好。营業利润率為18%，净資產收益率為16%，盈利能力較强。'
             },
             {
-              title: '经营风险分析',
-              content: '企业经营风险总体可控，但需关注行业政策变化和市场竞争加剧带来的挑战。主要风险点包括：技术创新风险、客户集中度风险、资金周转风险。建议加强风险管理，拓展客户群体，优化资金使用效率。'
+              title: '經营風險分析',
+              content: '企業經营風險總体可控，但需關注行業政策变化和市场竞争加剧带來的挑战。主要風險點包括：技术創新風險、客户集中度風險、資金周转風險。建议加强風險管理，拓展客户群体，優化資金使用效率。'
             }
           ],
           recommendations: reportData.recommendations || [
             {
-              title: '优化客户结构',
-              content: '建议企业积极拓展新客户群体，降低对大客户的依赖度，分散经营风险。',
+              title: '優化客户结構',
+              content: '建议企業积極拓展新客户群体，降低對大客户的依赖度，分散經营風險。',
               icon: 'fas fa-user-plus'
             },
             {
-              title: '加强现金流管理',
-              content: '提高应收账款管理效率，合理规划投资节奏，确保企业现金流健康。',
+              title: '加强現金流管理',
+              content: '提高應收账款管理效率，合理規划投資节奏，确保企業現金流健康。',
               icon: 'fas fa-money-bill-wave'
             },
             {
-              title: '增强技术研发',
-              content: '持续加大研发投入，保持技术领先性，提高产品附加值和市场竞争力。',
+              title: '增强技术研發',
+              content: '持续加大研發投入，保持技术領先性，提高產品附加值和市场竞争力。',
               icon: 'fas fa-lightbulb'
             }
           ]
@@ -422,7 +422,7 @@ export default {
         
         this.loading = false;
 
-        // 启动信用评分动画 - 等待页面过渡完成
+        // 启動信用評分動画 - 等待頁面過渡完成
         setTimeout(() => {
           this.animateScore(this.report.creditScore, 1500)
         }, 800)
@@ -439,35 +439,35 @@ export default {
   padding: 20px;
 }
 
-/* 页面进入动画 - 更快更流畅 */
+/* 頁面進入動画 - 更快更流畅 */
 .animate-fade-in-up {
   opacity: 0;
   transform: translateY(6px);
-  animation: smoothFadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+  animation: smoothFadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 從1.2s减少到0.6s */
 }
 
 .animate-slide-in-left {
   opacity: 0;
   transform: translateX(6px);
-  animation: smoothFadeInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+  animation: smoothFadeInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 從1.2s减少到0.6s */
 }
 
 .animate-slide-in-right {
   opacity: 0;
   transform: translateX(-6px);
-  animation: smoothFadeInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+  animation: smoothFadeInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 從1.2s减少到0.6s */
 }
 
 .animate-slide-in-up {
   opacity: 0;
   transform: translateY(6px);
-  animation: smoothFadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+  animation: smoothFadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 從1.2s减少到0.6s */
 }
 
 .animate-fade-in-scale {
   opacity: 0;
   transform: scale(0.99);
-  animation: smoothFadeInScale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 从1.2s减少到0.6s */
+  animation: smoothFadeInScale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 從1.2s减少到0.6s */
 }
 
 @keyframes smoothFadeInUp {
@@ -762,7 +762,7 @@ export default {
   line-height: 1.5;
 }
 
-/* 简单加载样式 */
+/* 简单加載樣式 */
 .simple-loading {
   display: flex;
   flex-direction: column;

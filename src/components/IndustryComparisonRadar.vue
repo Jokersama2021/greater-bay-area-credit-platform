@@ -7,17 +7,17 @@
           <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
         </svg>
       </div>
-      <h3 class="radar-title">行业对比</h3>
+      <h3 class="radar-title">行業對比</h3>
     </div>
     <div class="chart-container" ref="chartRef"></div>
     <div class="comparison-legend">
       <div class="legend-item">
         <div class="legend-dot current"></div>
-        <span>当前企业</span>
+        <span>當前企業</span>
       </div>
       <div class="legend-item">
         <div class="legend-dot industry"></div>
-        <span>行业平均</span>
+        <span>行業平均</span>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@ export default {
     const generateComparisonData = () => {
       const enterprise = currentEnterprise.value
       
-      // 当前企业数据
+      // 當前企業數據
       const currentData = [
         enterprise.creditMetrics.riskControl,
         enterprise.creditMetrics.creditHistory,
@@ -48,12 +48,12 @@ export default {
         enterprise.creditMetrics.enterpriseScale
       ]
       
-      // 行业平均数据（基于企业规模调整）
+      // 行業平均數據（基于企業規模调整）
       const scaleMultiplier = {
-        '大型企业': 0.9,
-        '中型企业': 0.8,
-        '小型企业': 0.7,
-        '微型企业': 0.6
+        '大型企業': 0.9,
+        '中型企業': 0.8,
+        '小型企業': 0.7,
+        '微型企業': 0.6
       }[enterprise.scale] || 0.8
       
       const industryAverage = [
@@ -74,11 +74,11 @@ export default {
       const { currentData, industryAverage } = generateComparisonData()
 
       const indicators = [
-        { name: '风险控制', max: 100 },
+        { name: '風險控制', max: 100 },
         { name: '信用历史', max: 100 },
-        { name: '发展趋势', max: 100 },
-        { name: '经营状况', max: 100 },
-        { name: '企业规模', max: 100 }
+        { name: '發展趋势', max: 100 },
+        { name: '經营状况', max: 100 },
+        { name: '企業規模', max: 100 }
       ]
 
       const option = {
@@ -146,13 +146,13 @@ export default {
             ],
             z: 1
           },
-          // 主数据层
+          // 主數據层
           {
             type: 'radar',
             data: [
               {
                 value: currentData,
-                name: '当前企业',
+                name: '當前企業',
                 areaStyle: {
                   color: new echarts.graphic.RadialGradient(0.5, 0.5, 0.8, [
                     { offset: 0, color: 'rgba(0, 212, 255, 0.4)' },
@@ -186,7 +186,7 @@ export default {
               },
               {
                 value: industryAverage,
-                name: '行业平均',
+                name: '行業平均',
                 areaStyle: {
                   color: new echarts.graphic.RadialGradient(0.5, 0.5, 0.8, [
                     { offset: 0, color: 'rgba(255, 152, 0, 0.3)' },
@@ -224,7 +224,7 @@ export default {
             animationEasing: 'elasticOut',
             z: 2
           },
-          // 动态粒子效果
+          // 動态粒子效果
           {
             type: 'effectScatter',
             coordinateSystem: 'radar',
@@ -260,7 +260,7 @@ export default {
             if (params.seriesType === 'radar') {
               const name = params.name
               const data = params.value
-              const indicators = ['风险控制', '信用历史', '发展趋势', '经营状况', '企业规模']
+              const indicators = ['風險控制', '信用历史', '發展趋势', '經营状况', '企業規模']
               let content = `<div style="padding: 10px;"><div style="color: ${params.color}; font-weight: 600; margin-bottom: 8px;">${name}</div>`
               data.forEach((value, index) => {
                 content += `<div style="margin: 4px 0;">${indicators[index]}: ${value}</div>`

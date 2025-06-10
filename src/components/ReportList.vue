@@ -29,29 +29,29 @@ export default {
     const reports = [
       {
         id: 1,
-        title: '企业资信报告',
-        description: '全面的企业信用评估报告',
+        title: '企業資信報告',
+        description: '全面的企業信用評估報告',
         icon: 'fas fa-building',
         route: '/reports/enterprise-credit'
       },
       {
         id: 2,
-        title: '资产评估报告',
-        description: '企业资产详细评估',
+        title: '資產評估報告',
+        description: '企業資產詳細評估',
         icon: 'fas fa-chart-line',
         route: '/reports/asset-evaluation'
       },
       {
         id: 3,
-        title: '企业评分报告',
-        description: '多维度信用评分分析',
+        title: '企業評分報告',
+        description: '多维度信用評分分析',
         icon: 'fas fa-star',
         route: '/reports/enterprise-rating'
       },
       {
         id: 4,
-        title: '风控预警报告',
-        description: '实时风险监控预警',
+        title: '風控预警報告',
+        description: '實時風險監控预警',
         icon: 'fas fa-exclamation-triangle',
         route: '/reports/risk-warning'
       }
@@ -62,7 +62,7 @@ export default {
       const ripple = card.querySelector('.card-ripple')
       const rect = card.getBoundingClientRect()
 
-      // 添加淡出动画
+      // 添加淡出動画
       card.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
       card.style.opacity = '0.6'
       card.style.transform = 'translateY(-4px) scale(0.95)'
@@ -102,7 +102,7 @@ export default {
   gap: 1rem;
 }
 
-/* 弹出动画 */
+/* 弹出動画 */
 .bounce-in-card {
   opacity: 0;
   transform: scale(0.8) translateY(20px);
@@ -265,7 +265,7 @@ export default {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .report-grid {
     grid-template-columns: 1fr;

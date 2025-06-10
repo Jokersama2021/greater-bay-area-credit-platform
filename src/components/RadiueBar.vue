@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div>【大区异常处理】</div>
+		<div>【大區异常處理】</div>
 		<div ref="target" class="w-full h-full"></div>
 	</div>
 </template>
@@ -25,9 +25,9 @@ onMounted(() => {
 
 /**
  * 双环形图绘制原理：
- * 1. 环形图通过饼图绘制。内外边距的距离减小，即为环形。环形中心点需要不断改变，否则会重叠
- * 2. 环形图绘制分为 上层和底层 两部分。上层作为绘制进度，底层作为背景图
- * 3. 依据 getSeriesData 生成对应的 上层和底层 series 数据，进行渲染
+ * 1. 环形图通過饼图绘制。内外边距的距離减小，即為环形。环形中心點需要不断改变，否则會重叠
+ * 2. 环形图绘制分為 上层和底层 两部分。上层作為绘制進度，底层作為背景图
+ * 3. 依據 getSeriesData 生成對應的 上层和底层 series 數據，進行渲染
  */
 const getSeriesData = () => {
 	const series = []
@@ -36,23 +36,23 @@ const getSeriesData = () => {
 		// 上层环形绘制
 		series.push({
 			name: item.name,
-			// 使用饼图绘制，减少饼图宽度即为环形图
+			// 使用饼图绘制，减少饼图宽度即為环形图
 			type: 'pie',
-			// 逆时针排布
+			// 逆時针排布
 			clockWise: false,
-			// 不展示鼠标移入动画
+			// 不展示鼠標移入動画
 			hoverAnimation: false,
-			// 半径位置，需要依次递减，否则会重复在一处进行展示
+			// 半径位置，需要依次递减，否则會重复在一處進行展示
 			radius: [73 - index * 15 + '%', 68 - index * 15 + '%'],
-			// 中心点
+			// 中心點
 			center: ['55%', '55%'],
 			// 不展示 label
 			label: { show: false },
-			// 数据配置
+			// 數據配置
 			data: [
-				// 设置数据与名称
+				// 设置數據与名称
 				{ value: item.value, name: item.name },
-				// 最大数据，展示比例
+				// 最大數據，展示比例
 				{
 					value: 1000,
 					name: '',
@@ -67,30 +67,30 @@ const getSeriesData = () => {
 		series.push({
 			name: item.name,
 			type: 'pie',
-			// 图形不响应事件
+			// 图形不响應事件
 			silent: true,
 			// z-index: 置于底层
 			z: 1,
-			// 逆时针排布
+			// 逆時针排布
 			clockWise: false,
-			// 不展示鼠标移入动画
+			// 不展示鼠標移入動画
 			hoverAnimation: false,
-			// 半径位置，需要依次递减，否则会重复在一处进行展示
+			// 半径位置，需要依次递减，否则會重复在一處進行展示
 			radius: [73 - index * 15 + '%', 68 - index * 15 + '%'],
-			// 中心点
+			// 中心點
 			center: ['55%', '55%'],
 			// 不展示 label
 			label: { show: false },
-			// 数据
+			// 數據
 			data: [
-				// 绘制底线 75%
+				// 绘制底線 75%
 				{
 					value: 7.5,
 					itemStyle: { color: 'rgb(3, 31, 62)', borderWidth: 0 },
 					tooltip: { show: false },
 					hoverAnimation: false
 				},
-				// 绘制底线 25% 透明区域
+				// 绘制底線 25% 透明區域
 				{
 					value: 2.5,
 					name: '',
@@ -115,15 +115,15 @@ const renderChart = () => {
 			// 位置
 			top: '14%',
 			left: '60%',
-			// 展示数据
+			// 展示數據
 			data: props.data.abnormals.map((item) => item.name),
-			// 总宽度（一列）
+			// 總宽度（一列）
 			width: -5,
-			// 每个色块的宽
+			// 每個色块的宽
 			itemWidth: 10,
-			// 每个色块的高度
+			// 每個色块的高度
 			itemHeight: 10,
-			// item 间距
+			// item 間距
 			itemGap: 6,
 			// 展示内容
 			formatter: function (name) {
@@ -146,13 +146,13 @@ const renderChart = () => {
 			trigger: 'item',
 			formatter: '{a}<br>{b}:{c}({d}%)'
 		},
-		// Y 轴展示选项
+		// Y 轴展示選项
 		yAxis: [
 			{
 				type: 'category',
 				// 反向展示
 				inverse: true,
-				// 不展示轴线
+				// 不展示轴線
 				axisLine: {
 					show: false
 				},
@@ -168,14 +168,14 @@ const renderChart = () => {
 				show: false
 			}
 		],
-		// 每两个标记一条线
+		// 每两個標記一条線
 		series: getSeriesData()
 	}
 
 	mChart.setOption(options)
 }
 
-// 监听数据的变化，重新渲染图表
+// 監聽數據的变化，重新渲染图表
 watch(
 	() => props.data,
 	() => {

@@ -20,7 +20,7 @@ export default {
     const raindrops = ref([])
 
     const createRaindrops = () => {
-      const dropCount = 80 // 80个独立的数字雨滴
+      const dropCount = 80 // 80個独立的數字雨滴
       const newDrops = []
 
       for (let i = 0; i < dropCount; i++) {
@@ -29,9 +29,9 @@ export default {
           char: Math.random() > 0.5 ? '0' : '1',
           style: {
             left: Math.random() * 100 + '%',
-            animationDuration: (Math.random() * 5 + 3) + 's', // 3-8秒随机速度
-            animationDelay: Math.random() * 8 + 's', // 0-8秒随机延迟
-            fontSize: (Math.random() * 8 + 14) + 'px' // 14-22px随机大小
+            animationDuration: (Math.random() * 5 + 3) + 's', // 3-8秒随機速度
+            animationDelay: Math.random() * 8 + 's', // 0-8秒随機延迟
+            fontSize: (Math.random() * 8 + 14) + 'px' // 14-22px随機大小
           }
         }
         newDrops.push(drop)
@@ -101,7 +101,7 @@ export default {
   }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .digital-rain-background {
     opacity: 0.2;

@@ -2,11 +2,11 @@
   <div class="cross-border-container">
     <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <div class="loading-text">加载跨境结算服务中...</div>
+      <div class="loading-text">加載跨境结算服務中...</div>
     </div>
     
     <div v-else class="content">
-      <!-- 页面头部 -->
+      <!-- 頁面頭部 -->
       <div class="page-header">
         <div class="header-content">
           <div class="header-icon">
@@ -14,12 +14,12 @@
           </div>
           <div class="header-info">
             <h1 class="page-title">跨境结算</h1>
-            <p class="page-subtitle">跨境支付结算 - 连通全球，畅享无界金融</p>
+            <p class="page-subtitle">跨境支付结算 - 連通全球，畅享無界金融</p>
           </div>
           <div class="header-stats">
             <div class="stat-item">
               <div class="stat-value">{{ supportedCountries }}+</div>
-              <div class="stat-label">支持国家/地区</div>
+              <div class="stat-label">支持國家/地區</div>
             </div>
             <div class="stat-item">
               <div class="stat-value">{{ dailyVolume }}亿</div>
@@ -29,9 +29,9 @@
         </div>
       </div>
 
-      <!-- 服务范围 */
+      <!-- 服務範围 */
       <div class="service-scope-section">
-        <h2 class="section-title">服务范围</h2>
+        <h2 class="section-title">服務範围</h2>
         <div class="scope-grid">
           <div class="scope-card" v-for="scope in serviceScopes" :key="scope.id">
             <div class="scope-icon">
@@ -71,9 +71,9 @@
         </div>
       </div>
 
-      <!-- 产品特色 */
+      <!-- 產品特色 */
       <div class="features-section">
-        <h2 class="section-title">产品特色</h2>
+        <h2 class="section-title">產品特色</h2>
         <div class="features-grid">
           <div class="feature-card" v-for="feature in features" :key="feature.id">
             <div class="feature-icon">
@@ -89,14 +89,14 @@
         </div>
       </div>
 
-      <!-- 费率标准 */
+      <!-- 费率標準 */
       <div class="pricing-section">
-        <h2 class="section-title">费率标准</h2>
+        <h2 class="section-title">费率標準</h2>
         <div class="pricing-table">
           <div class="pricing-header">
             <div class="header-item">交易类型</div>
             <div class="header-item">手续费率</div>
-            <div class="header-item">到账时间</div>
+            <div class="header-item">到账時間</div>
             <div class="header-item">最低费用</div>
           </div>
           <div class="pricing-row" v-for="pricing in pricingData" :key="pricing.id">
@@ -111,9 +111,9 @@
         </div>
       </div>
 
-      <!-- 合规保障 */
+      <!-- 合規保障 */
       <div class="compliance-section">
-        <h2 class="section-title">合规保障</h2>
+        <h2 class="section-title">合規保障</h2>
         <div class="compliance-grid">
           <div class="compliance-item" v-for="item in complianceItems" :key="item.id">
             <div class="compliance-icon">
@@ -137,15 +137,15 @@
       <div class="action-section">
         <button class="primary-btn" @click="startService">
           <i class="fas fa-play-circle"></i>
-          开通服务
+          開通服務
         </button>
         <button class="secondary-btn" @click="checkRates">
           <i class="fas fa-chart-line"></i>
-          汇率查询
+          汇率查詢
         </button>
         <button class="secondary-btn" @click="consultService">
           <i class="fas fa-customer-service"></i>
-          客服咨询
+          客服咨詢
         </button>
       </div>
     </div>
@@ -165,29 +165,29 @@ export default {
           id: 1,
           icon: 'fas fa-exchange-alt',
           title: '跨境汇款',
-          description: '个人和企业跨境汇款服务，支持多种汇款方式',
-          features: ['实时汇率', '快速到账', '安全可靠', '费率优惠']
+          description: '個人和企業跨境汇款服務，支持多种汇款方式',
+          features: ['實時汇率', '快速到账', '安全可靠', '费率優惠']
         },
         {
           id: 2,
           icon: 'fas fa-credit-card',
           title: '贸易结算',
-          description: '国际贸易项下的货款收付和结算服务',
-          features: ['信用证结算', '托收结算', 'T/T结算', '风险管控']
+          description: '國際贸易项下的货款收付和结算服務',
+          features: ['信用證结算', '托收结算', 'T/T结算', '風險管控']
         },
         {
           id: 3,
           icon: 'fas fa-building',
-          title: '企业金融',
-          description: '为企业提供专业的跨境金融解决方案',
-          features: ['资金池管理', '外汇套保', '融资服务', '账户管理']
+          title: '企業金融',
+          description: '為企業提供專業的跨境金融解決方案',
+          features: ['資金池管理', '外汇套保', '融資服務', '账户管理']
         },
         {
           id: 4,
           icon: 'fas fa-mobile-alt',
-          title: '数字支付',
-          description: '基于区块链技术的数字货币跨境支付',
-          features: ['数字人民币', '稳定币支付', '智能合约', '即时清算']
+          title: '數字支付',
+          description: '基于區块链技术的數字货币跨境支付',
+          features: ['數字人民币', '稳定币支付', '智能合约', '即時清算']
         }
       ],
       currencyCategories: [
@@ -216,63 +216,63 @@ export default {
         {
           id: 1,
           icon: 'fas fa-clock',
-          title: '极速到账',
-          description: '采用先进的支付网络，实现秒级跨境转账',
+          title: '極速到账',
+          description: '采用先進的支付網絡，實現秒級跨境转账',
           highlight: { label: '最快到账', value: '3秒' }
         },
         {
           id: 2,
           icon: 'fas fa-percentage',
           title: '费率透明',
-          description: '无隐藏费用，实时汇率，费率公开透明',
+          description: '無隐藏费用，實時汇率，费率公開透明',
           highlight: { label: '手续费低至', value: '0.1%' }
         },
         {
           id: 3,
           icon: 'fas fa-shield-alt',
           title: '安全保障',
-          description: '银行级安全防护，多重加密保护资金安全',
-          highlight: { label: '安全等级', value: '银行级' }
+          description: '銀行級安全防护，多重加密保护資金安全',
+          highlight: { label: '安全等級', value: '銀行級' }
         },
         {
           id: 4,
           icon: 'fas fa-headset',
-          title: '7×24服务',
-          description: '全天候客服支持，随时解决您的问题',
-          highlight: { label: '服务时间', value: '7×24小时' }
+          title: '7×24服務',
+          description: '全天候客服支持，随時解決您的問題',
+          highlight: { label: '服務時間', value: '7×24小時' }
         }
       ],
       pricingData: [
         {
           id: 1,
-          service: '个人汇款',
-          description: '个人跨境汇款服务',
+          service: '個人汇款',
+          description: '個人跨境汇款服務',
           rate: '0.15%-0.25%',
-          time: '1-3个工作日',
+          time: '1-3個工作日',
           minFee: '¥50'
         },
         {
           id: 2,
-          service: '企业汇款',
-          description: '企业跨境汇款服务',
+          service: '企業汇款',
+          description: '企業跨境汇款服務',
           rate: '0.10%-0.20%',
-          time: '当日到账',
+          time: '當日到账',
           minFee: '¥100'
         },
         {
           id: 3,
           service: '贸易结算',
-          description: '国际贸易结算服务',
+          description: '國際贸易结算服務',
           rate: '0.08%-0.15%',
-          time: '即时到账',
+          time: '即時到账',
           minFee: '¥200'
         },
         {
           id: 4,
-          service: '数字支付',
-          description: '数字货币跨境支付',
+          service: '數字支付',
+          description: '數字货币跨境支付',
           rate: '0.05%-0.10%',
-          time: '实时到账',
+          time: '實時到账',
           minFee: '¥20'
         }
       ],
@@ -280,23 +280,23 @@ export default {
         {
           id: 1,
           icon: 'fas fa-certificate',
-          title: '监管合规',
-          description: '严格遵守各国金融监管要求，确保业务合规',
-          details: ['央行备案', '外汇管理', 'AML合规', 'KYC认证']
+          title: '監管合規',
+          description: '严格遵守各國金融監管要求，确保業務合規',
+          details: ['央行備案', '外汇管理', 'AML合規', 'KYC認證']
         },
         {
           id: 2,
           icon: 'fas fa-user-shield',
           title: '隐私保护',
-          description: '严格保护客户隐私信息，符合数据保护法规',
-          details: ['数据加密', '隐私保护', '信息安全', '合规审计']
+          description: '严格保护客户隐私信息，符合數據保护法規',
+          details: ['數據加密', '隐私保护', '信息安全', '合規审計']
         },
         {
           id: 3,
           icon: 'fas fa-balance-scale',
-          title: '风险管控',
-          description: '建立完善的风险管控体系，保障资金安全',
-          details: ['实时监控', '风险评估', '异常预警', '应急处置']
+          title: '風險管控',
+          description: '建立完善的風險管控体系，保障資金安全',
+          details: ['實時監控', '風險評估', '异常预警', '應急處置']
         }
       ]
     }
@@ -316,10 +316,10 @@ export default {
       this.$router.push('/cross-border/apply')
     },
     checkRates() {
-      alert('汇率查询功能开发中...')
+      alert('汇率查詢功能開發中...')
     },
     consultService() {
-      alert('客服咨询功能开发中...')
+      alert('客服咨詢功能開發中...')
     }
   }
 }
@@ -366,7 +366,7 @@ export default {
   margin: 0 auto;
 }
 
-/* 页面头部样式 */
+/* 頁面頭部樣式 */
 .page-header {
   background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(65, 105, 225, 0.05) 100%);
   border-radius: 20px;
@@ -434,7 +434,7 @@ export default {
   margin-top: 0.25rem;
 }
 
-/* 通用样式 */
+/* 通用樣式 */
 .section-title {
   font-size: 1.8rem;
   font-weight: 600;
@@ -442,7 +442,7 @@ export default {
   color: white;
 }
 
-/* 服务范围样式 */
+/* 服務範围樣式 */
 .service-scope-section {
   margin-bottom: 3rem;
 }
@@ -510,7 +510,7 @@ export default {
   color: #1e90ff;
 }
 
-/* 支持币种样式 */
+/* 支持币种樣式 */
 .currencies-section {
   margin-bottom: 3rem;
 }
@@ -591,7 +591,7 @@ export default {
   font-weight: 600;
 }
 
-/* 产品特色样式 */
+/* 產品特色樣式 */
 .features-section {
   margin-bottom: 3rem;
 }
@@ -660,7 +660,7 @@ export default {
   font-size: 1rem;
 }
 
-/* 费率标准样式 */
+/* 费率標準樣式 */
 .pricing-section {
   margin-bottom: 3rem;
 }
@@ -733,7 +733,7 @@ export default {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* 合规保障样式 */
+/* 合規保障樣式 */
 .compliance-section {
   margin-bottom: 3rem;
 }
@@ -800,7 +800,7 @@ export default {
   color: #1e90ff;
 }
 
-/* 操作按钮样式 */
+/* 操作按钮樣式 */
 .action-section {
   display: flex;
   gap: 1rem;
@@ -843,7 +843,7 @@ export default {
   transform: translateY(-2px);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .cross-border-container {
     padding: 1rem;

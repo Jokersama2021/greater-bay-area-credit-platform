@@ -11,7 +11,7 @@
         </div>
         <div class="auto-switch-indicator" :class="{ active: isAutoSwitching }">
           <div class="indicator-dot"></div>
-          <span>{{ isAutoSwitching ? '自动切换' : '手动模式' }}</span>
+          <span>{{ isAutoSwitching ? '自動切换' : '手動模式' }}</span>
         </div>
       </div>
       
@@ -45,7 +45,7 @@
     
     <div class="enterprise-dropdown" v-if="showDropdown">
       <div class="dropdown-header">
-        <span>选择企业</span>
+        <span>選择企業</span>
         <button class="close-btn" @click="showDropdown = false">
           <i class="fas fa-times"></i>
         </button>
@@ -73,7 +73,7 @@
     </div>
     
     <button class="dropdown-toggle" @click="showDropdown = !showDropdown">
-      <span>选择其他企业</span>
+      <span>選择其他企業</span>
       <i class="fas fa-chevron-down" :class="{ rotated: showDropdown }"></i>
     </button>
   </div>
@@ -112,7 +112,7 @@ export default {
     const selectEnterprise = (enterpriseId) => {
       enterpriseDataService.setCurrentEnterprise(enterpriseId)
       showDropdown.value = false
-      // 选择企业后停止自动切换
+      // 選择企業后停止自動切换
       if (isAutoSwitching.value) {
         toggleAutoSwitch()
       }
@@ -136,7 +136,7 @@ export default {
       }
     }
     
-    // 点击外部关闭下拉菜单
+    // 點击外部關闭下拉菜单
     const handleClickOutside = (event) => {
       if (!event.target.closest('.enterprise-selector')) {
         showDropdown.value = false
@@ -391,7 +391,7 @@ export default {
   50% { opacity: 0.5; }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .selector-header {
     flex-direction: column;

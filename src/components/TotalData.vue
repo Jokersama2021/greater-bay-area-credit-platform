@@ -1,13 +1,13 @@
 <template>
   <div class="data-container">
-    <!-- 添加一个顶部操作区 -->
+    <!-- 添加一個頂部操作區 -->
     <div class="action-bar">
       <div v-for="(item, index) in data" :key="index">
         <button v-if="!transactionInProgress && !transactionCompleted && !transactionSubmitted" 
                 @click="fetchCompanyData(item.stock_name)" 
                 class="transaction-button">
           <span class="button-icon">🔍</span>
-          跨链事务进度查询
+          跨链事務進度查詢
         </button>
       </div>
     </div>
@@ -19,19 +19,19 @@
           <h3 class="section-title">基本信息</h3>
           <div class="info-grid">
             <div class="info-row">
-              <span class="label">证券代码:</span>
+              <span class="label">證券代碼:</span>
               <span class="value code">{{ item.stock_code }}</span>
             </div>
             <div class="info-row">
-              <span class="label">证券简称:</span>
+              <span class="label">證券简称:</span>
               <span class="value name">{{ item.stock_name }}</span>
             </div>
             <div class="info-row">
-              <span class="label">企业规模:</span>
+              <span class="label">企業規模:</span>
               <span class="value">{{ item.company_size }}</span>
             </div>
             <div class="info-row">
-              <span class="label">注册资本:</span>
+              <span class="label">注册資本:</span>
               <span class="value">{{ formatNumber(item.registered_capital) }}元</span>
             </div>
             <div class="info-row">
@@ -43,27 +43,27 @@
               <span class="value address">{{ item.registered_address }}</span>
             </div>
             <div class="info-row">
-              <span class="label">董事长:</span>
+              <span class="label">董事長:</span>
               <span class="value">{{ item.chairman_name }}</span>
             </div>
             <div class="info-row">
-              <span class="label">总经理:</span>
+              <span class="label">總經理:</span>
               <span class="value">{{ item.general_manager_name }}</span>
             </div>
             <div class="info-row">
-              <span class="label">财务总监:</span>
+              <span class="label">財務總監:</span>
               <span class="value">{{ item.financial_director_name }}</span>
             </div>
             <div class="info-row">
-              <span class="label">董事会秘书:</span>
+              <span class="label">董事會秘書:</span>
               <span class="value">{{ item.board_secretary_name }}</span>
             </div>
           </div>
         </div>
         
-        <!-- 财务指标部分 -->
+        <!-- 財務指標部分 -->
         <div class="finance-section">
-          <h3 class="section-title">财务指标</h3>
+          <h3 class="section-title">財務指標</h3>
           <div class="finance-grid">
             <div class="finance-row">
               <span class="label">每股收益:</span>
@@ -74,11 +74,11 @@
               <span class="value highlight">{{ formatNumber(item.net_profit_attributable) }}元</span>
             </div>
             <div class="finance-row">
-              <span class="label">总资产收益率:</span>
+              <span class="label">總資產收益率:</span>
               <span class="value">{{ formatNumber(item.roa) }}%</span>
             </div>
             <div class="finance-row">
-              <span class="label">净资产收益率:</span>
+              <span class="label">净資產收益率:</span>
               <span class="value">{{ formatNumber(item.average_roe) }}%</span>
             </div>
             <div class="finance-row">
@@ -94,30 +94,30 @@
       </div>
     </div>
 
-    <!-- 进度展示区域移到这里 -->
+    <!-- 進度展示區域移到這里 -->
     <div class="transaction-progress-container" v-if="transactionInProgress || transactionCompleted || transactionSubmitted">
-      <!-- 进度条 -->
+      <!-- 進度条 -->
       <div class="progress-bar">
         <div class="progress-step" :class="{ active: transactionInProgress, completed: transactionCompleted || transactionSubmitted }">
           <div class="step-icon">1</div>
-          <div class="step-label">开启跨链事务</div>
+          <div class="step-label">開启跨链事務</div>
         </div>
         <div class="progress-line" :class="{ active: transactionCompleted || transactionSubmitted }"></div>
         <div class="progress-step" :class="{ active: transactionCompleted, completed: transactionSubmitted }">
           <div class="step-icon">2</div>
-          <div class="step-label">执行事务交易</div>
+          <div class="step-label">执行事務交易</div>
         </div>
         <div class="progress-line" :class="{ active: transactionSubmitted }"></div>
         <div class="progress-step" :class="{ active: transactionSubmitted }">
           <div class="step-icon">3</div>
-          <div class="step-label">提交事务完成</div>
+          <div class="step-label">提交事務完成</div>
         </div>
       </div>
 
-      <!-- 事务详情展示 -->
+      <!-- 事務詳情展示 -->
       <div class="transaction-details" v-if="companyRecords.length">
         <div class="detail-card" v-if="transactionInProgress">
-          <h4>跨链事务已开启</h4>
+          <h4>跨链事務已開启</h4>
           <div class="detail-item">
             <span class="detail-label">公司名称:</span>
             <span class="detail-value">{{ companyRecords[0].company_name }}</span>
@@ -134,9 +134,9 @@
         </div>
 
         <div class="detail-card" v-if="transactionCompleted">
-          <h4>跨链事务执行成功</h4>
+          <h4>跨链事務执行成功</h4>
           <div class="detail-item">
-            <span class="detail-label">区块编号:</span>
+            <span class="detail-label">區块编号:</span>
             <span class="detail-value">{{ companyRecords[0].block_number }}</span>
           </div>
           <div class="detail-item">
@@ -151,7 +151,7 @@
         </div>
 
         <div class="detail-card success" v-if="transactionSubmitted">
-          <h4>事务提交成功</h4>
+          <h4>事務提交成功</h4>
           <div class="detail-item">
             <span class="detail-label">执行结果:</span>
             <span class="detail-value">{{ companyRecords[0].properties_result }}</span>
@@ -322,7 +322,7 @@ const formatNumber = (num) => {
   line-height: 1.4;
 }
 
-/* 美化滚动条 */
+/* 美化滚動条 */
 .total-data-section::-webkit-scrollbar {
   width: 6px;
 }

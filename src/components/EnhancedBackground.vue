@@ -3,14 +3,14 @@
     <!-- 主背景层 -->
     <div class="background-base"></div>
     
-    <!-- 动态光效层 -->
+    <!-- 動态光效层 -->
     <div class="light-effects">
       <div class="light-beam light-beam-1"></div>
       <div class="light-beam light-beam-2"></div>
       <div class="light-beam light-beam-3"></div>
     </div>
     
-    <!-- 粤港澳地理轮廓 -->
+    <!-- 粵港澳地理轮廓 -->
     <div class="geographic-outline">
       <svg class="outline-svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -29,7 +29,7 @@
           </filter>
         </defs>
         
-        <!-- 大湾区轮廓 -->
+        <!-- 大灣區轮廓 -->
         <path 
           class="bay-outline"
           d="M400,300 Q600,200 800,300 Q1000,400 1200,350 Q1400,300 1500,400 Q1600,500 1400,600 Q1200,700 1000,650 Q800,600 600,650 Q400,700 300,600 Q200,500 300,400 Z"
@@ -39,9 +39,9 @@
           filter="url(#glow)"
         />
         
-        <!-- 城市连接点 -->
+        <!-- 城市連接點 -->
         <g class="city-connections">
-          <!-- 广州 -->
+          <!-- 廣州 -->
           <circle class="city-point guangzhou" cx="800" cy="350" r="6" fill="#ffd700" />
           <circle class="city-glow guangzhou-glow" cx="800" cy="350" r="12" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.6" />
           
@@ -53,7 +53,7 @@
           <circle class="city-point hongkong" cx="1200" cy="500" r="5" fill="#ff6b6b" />
           <circle class="city-glow hongkong-glow" cx="1200" cy="500" r="10" fill="none" stroke="#ff6b6b" stroke-width="2" opacity="0.6" />
           
-          <!-- 澳门 -->
+          <!-- 澳門 -->
           <circle class="city-point macau" cx="950" cy="520" r="4" fill="#10b981" />
           <circle class="city-glow macau-glow" cx="950" cy="520" r="8" fill="none" stroke="#10b981" stroke-width="2" opacity="0.6" />
           
@@ -62,7 +62,7 @@
           <circle class="city-glow zhuhai-glow" cx="900" cy="480" r="8" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.6" />
         </g>
         
-        <!-- 数据流动线 -->
+        <!-- 數據流動線 -->
         <g class="data-flows">
           <path class="flow-line flow-1" d="M800,350 Q950,400 1100,450" stroke="#6366f1" stroke-width="1.5" fill="none" opacity="0.7" />
           <path class="flow-line flow-2" d="M1100,450 Q1150,475 1200,500" stroke="#06b6d4" stroke-width="1.5" fill="none" opacity="0.7" />
@@ -72,7 +72,7 @@
       </svg>
     </div>
     
-    <!-- 浮动粒子 -->
+    <!-- 浮動粒子 -->
     <div class="floating-particles">
       <div 
         v-for="n in 30" 
@@ -82,7 +82,7 @@
       ></div>
     </div>
     
-    <!-- 网格纹理 -->
+    <!-- 網格纹理 -->
     <div class="grid-texture">
       <div class="grid-lines">
         <div v-for="n in 15" :key="'h' + n" class="grid-line horizontal" :style="{ top: (n * 6.67) + '%' }"></div>
@@ -143,7 +143,7 @@ export default {
   );
 }
 
-/* 动态光效层 */
+/* 動态光效层 */
 .light-effects {
   position: absolute;
   width: 100%;
@@ -219,7 +219,7 @@ export default {
   }
 }
 
-/* 城市连接点 */
+/* 城市連接點 */
 .city-point {
   animation: cityPulse 3s ease-in-out infinite;
 }
@@ -250,7 +250,7 @@ export default {
   }
 }
 
-/* 数据流动线 */
+/* 數據流動線 */
 .flow-line {
   stroke-dasharray: 100 50;
   animation: dataFlow 6s linear infinite;
@@ -278,7 +278,7 @@ export default {
   }
 }
 
-/* 浮动粒子 */
+/* 浮動粒子 */
 .floating-particles {
   position: absolute;
   width: 100%;
@@ -311,7 +311,7 @@ export default {
   }
 }
 
-/* 网格纹理 */
+/* 網格纹理 */
 .grid-texture {
   position: absolute;
   width: 100%;

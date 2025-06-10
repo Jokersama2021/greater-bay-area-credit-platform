@@ -24,12 +24,12 @@
     
     <!-- 内容 -->
     <div class="btn-content">
-      <!-- 加载状态 -->
+      <!-- 加載状态 -->
       <div v-if="loading" class="btn-loading-spinner">
         <div class="spinner-ring"></div>
       </div>
       
-      <!-- 图标 -->
+      <!-- 图標 -->
       <i v-if="icon && !loading" :class="icon" class="btn-icon"></i>
       
       <!-- 文字 -->
@@ -37,7 +37,7 @@
         <slot></slot>
       </span>
       
-      <!-- 右侧图标 -->
+      <!-- 右侧图標 -->
       <i v-if="iconRight && !loading" :class="iconRight" class="btn-icon-right"></i>
     </div>
     
@@ -91,7 +91,7 @@ export default {
     const handleClick = (e) => {
       if (props.disabled || props.loading) return
       
-      // 创建涟漪效果
+      // 創建涟漪效果
       createRipple(e)
       
       emit('click', e)
@@ -124,7 +124,7 @@ export default {
 
     const handleMouseLeave = () => {
       if (props.disabled || props.loading) return
-      // 可以添加额外的离开效果
+      // 可以添加额外的離開效果
     }
 
     return {
@@ -334,7 +334,7 @@ export default {
   white-space: nowrap;
 }
 
-/* 加载动画 */
+/* 加載動画 */
 .btn-loading-spinner {
   display: flex;
   align-items: center;

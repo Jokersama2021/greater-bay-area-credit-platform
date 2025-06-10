@@ -2,19 +2,19 @@
   <div class="asset-loan-container">
     <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <div class="loading-text">加载资产贷服务中...</div>
+      <div class="loading-text">加載資產贷服務中...</div>
     </div>
     
     <div v-else class="content">
-      <!-- 页面头部 -->
+      <!-- 頁面頭部 -->
       <div class="page-header">
         <div class="header-content">
           <div class="header-icon">
             <i class="fas fa-building"></i>
           </div>
           <div class="header-info">
-            <h1 class="page-title">资产贷</h1>
-            <p class="page-subtitle">资产抵押融资 - 盘活企业固定资产</p>
+            <h1 class="page-title">資產贷</h1>
+            <p class="page-subtitle">資產抵押融資 - 盘活企業固定資產</p>
           </div>
           <div class="header-stats">
             <div class="stat-item">
@@ -29,9 +29,9 @@
         </div>
       </div>
 
-      <!-- 抵押资产类型 -->
+      <!-- 抵押資產类型 -->
       <div class="asset-types-section">
-        <h2 class="section-title">抵押资产类型</h2>
+        <h2 class="section-title">抵押資產类型</h2>
         <div class="asset-types-grid">
           <div class="asset-type-card" v-for="assetType in assetTypes" :key="assetType.id">
             <div class="asset-icon">
@@ -44,7 +44,7 @@
                 <span class="detail-value">{{ assetType.loanRatio }}</span>
               </div>
               <div class="detail-item">
-                <span class="detail-label">评估周期：</span>
+                <span class="detail-label">評估周期：</span>
                 <span class="detail-value">{{ assetType.evaluationPeriod }}</span>
               </div>
             </div>
@@ -53,9 +53,9 @@
         </div>
       </div>
 
-      <!-- 产品特色 */
+      <!-- 產品特色 */
       <div class="features-section">
-        <h2 class="section-title">产品特色</h2>
+        <h2 class="section-title">產品特色</h2>
         <div class="features-grid">
           <div class="feature-card" v-for="feature in features" :key="feature.id">
             <div class="feature-icon">
@@ -117,9 +117,9 @@
         </div>
       </div>
 
-      <!-- 风险提示 -->
+      <!-- 風險提示 -->
       <div class="risk-warning-section">
-        <h2 class="section-title">风险提示</h2>
+        <h2 class="section-title">風險提示</h2>
         <div class="warning-content">
           <div class="warning-icon">
             <i class="fas fa-exclamation-triangle"></i>
@@ -127,11 +127,11 @@
           <div class="warning-text">
             <h3>重要提醒</h3>
             <ul class="warning-list">
-              <li>抵押资产需要进行专业评估，评估费用由借款人承担</li>
-              <li>抵押期间资产不得转让、出租或再次抵押</li>
-              <li>如无法按时还款，抵押资产可能被依法处置</li>
-              <li>请根据自身还款能力合理申请贷款额度</li>
-              <li>详细条款请仔细阅读贷款合同</li>
+              <li>抵押資產需要進行專業評估，評估费用由借款人承担</li>
+              <li>抵押期間資產不得转讓、出租或再次抵押</li>
+              <li>如無法按時還款，抵押資產可能被依法處置</li>
+              <li>请根據自身還款能力合理申请贷款额度</li>
+              <li>詳細条款请仔細阅讀贷款合同</li>
             </ul>
           </div>
         </div>
@@ -145,11 +145,11 @@
         </button>
         <button class="secondary-btn" @click="assetEvaluation">
           <i class="fas fa-search-dollar"></i>
-          资产评估
+          資產評估
         </button>
         <button class="secondary-btn" @click="consultExpert">
           <i class="fas fa-user-tie"></i>
-          专家咨询
+          專家咨詢
         </button>
       </div>
     </div>
@@ -168,34 +168,34 @@ export default {
         {
           id: 1,
           icon: 'fas fa-home',
-          title: '房产抵押',
+          title: '房產抵押',
           loanRatio: '最高70%',
-          evaluationPeriod: '3-5个工作日',
-          description: '商业用房、厂房、写字楼等不动产抵押融资'
+          evaluationPeriod: '3-5個工作日',
+          description: '商業用房、厂房、寫字楼等不動產抵押融資'
         },
         {
           id: 2,
           icon: 'fas fa-industry',
-          title: '设备抵押',
+          title: '设備抵押',
           loanRatio: '最高60%',
-          evaluationPeriod: '2-3个工作日',
-          description: '生产设备、机械设备、车辆等动产抵押融资'
+          evaluationPeriod: '2-3個工作日',
+          description: '生產设備、機械设備、車辆等動產抵押融資'
         },
         {
           id: 3,
           icon: 'fas fa-warehouse',
           title: '土地使用权',
           loanRatio: '最高80%',
-          evaluationPeriod: '5-7个工作日',
-          description: '工业用地、商业用地使用权抵押融资'
+          evaluationPeriod: '5-7個工作日',
+          description: '工業用地、商業用地使用权抵押融資'
         },
         {
           id: 4,
           icon: 'fas fa-gem',
-          title: '其他资产',
+          title: '其他資產',
           loanRatio: '最高50%',
-          evaluationPeriod: '3-5个工作日',
-          description: '股权、知识产权、应收账款等资产抵押融资'
+          evaluationPeriod: '3-5個工作日',
+          description: '股权、知識產权、應收账款等資產抵押融資'
         }
       ],
       features: [
@@ -203,65 +203,65 @@ export default {
           id: 1,
           icon: 'fas fa-coins',
           title: '额度充足',
-          description: '根据抵押资产价值确定贷款额度，最高可达资产评估价值的80%',
+          description: '根據抵押資產价值确定贷款额度，最高可达資產評估价值的80%',
           highlight: '最高5亿元授信'
         },
         {
           id: 2,
           icon: 'fas fa-calendar-check',
           title: '期限灵活',
-          description: '贷款期限1-10年，可根据企业经营周期灵活选择',
-          highlight: '最长10年期限'
+          description: '贷款期限1-10年，可根據企業經营周期灵活選择',
+          highlight: '最長10年期限'
         },
         {
           id: 3,
           icon: 'fas fa-percentage',
-          title: '利率优惠',
-          description: '抵押贷款风险较低，享受更优惠的利率政策',
+          title: '利率優惠',
+          description: '抵押贷款風險較低，享受更優惠的利率政策',
           highlight: '年化3.0%起'
         },
         {
           id: 4,
           icon: 'fas fa-redo-alt',
           title: '循环使用',
-          description: '额度内可循环使用，随借随还，提高资金使用效率',
+          description: '额度内可循环使用，随借随還，提高資金使用效率',
           highlight: '循环授信额度'
         }
       ],
       loanPlans: [
         {
           id: 1,
-          name: '标准抵押贷',
+          name: '標準抵押贷',
           rate: '3.0%-5.5%',
           recommended: false,
           features: [
             { label: '贷款额度', value: '50万-2000万' },
             { label: '贷款期限', value: '1-5年' },
             { label: '抵押率', value: '最高70%' },
-            { label: '还款方式', value: '等额本息/先息后本' }
+            { label: '還款方式', value: '等额本息/先息后本' }
           ],
           advantages: [
             '手续简便，审批快速',
-            '利率相对较低',
-            '适合中小企业',
-            '可提前还款'
+            '利率相對較低',
+            '适合中小企業',
+            '可提前還款'
           ]
         },
         {
           id: 2,
-          name: '优质抵押贷',
+          name: '優质抵押贷',
           rate: '2.8%-4.8%',
           recommended: true,
           features: [
             { label: '贷款额度', value: '500万-1亿' },
             { label: '贷款期限', value: '3-10年' },
             { label: '抵押率', value: '最高80%' },
-            { label: '还款方式', value: '灵活还款' }
+            { label: '還款方式', value: '灵活還款' }
           ],
           advantages: [
-            '优质客户专享',
+            '優质客户專享',
             '更高抵押率',
-            '专属客户经理',
+            '專属客户經理',
             '绿色审批通道'
           ]
         },
@@ -274,12 +274,12 @@ export default {
             { label: '贷款额度', value: '5000万-5亿' },
             { label: '贷款期限', value: '5-10年' },
             { label: '抵押率', value: '最高75%' },
-            { label: '还款方式', value: '个性化定制' }
+            { label: '還款方式', value: '個性化定制' }
           ],
           advantages: [
-            '大额资金支持',
-            '银团联合放款',
-            '专业服务团队',
+            '大额資金支持',
+            '銀团聯合放款',
+            '專業服務团队',
             '定制化方案'
           ]
         }
@@ -288,26 +288,26 @@ export default {
         {
           id: 1,
           title: '提交申请',
-          description: '提交贷款申请及相关资料',
-          timeframe: '1个工作日'
+          description: '提交贷款申请及相關資料',
+          timeframe: '1個工作日'
         },
         {
           id: 2,
-          title: '资产评估',
-          description: '委托专业机构进行资产评估',
-          timeframe: '3-7个工作日'
+          title: '資產評估',
+          description: '委托專業機構進行資產評估',
+          timeframe: '3-7個工作日'
         },
         {
           id: 3,
-          title: '审批决策',
-          description: '银行进行信贷审批决策',
-          timeframe: '3-5个工作日'
+          title: '审批決策',
+          description: '銀行進行信贷审批決策',
+          timeframe: '3-5個工作日'
         },
         {
           id: 4,
           title: '签约放款',
-          description: '签署合同并办理抵押登记',
-          timeframe: '2-3个工作日'
+          description: '签署合同并办理抵押登記',
+          timeframe: '2-3個工作日'
         }
       ]
     }
@@ -327,10 +327,10 @@ export default {
       this.$router.push('/asset-loan/apply')
     },
     assetEvaluation() {
-      alert('资产评估功能开发中...')
+      alert('資產評估功能開發中...')
     },
     consultExpert() {
-      alert('专家咨询功能开发中...')
+      alert('專家咨詢功能開發中...')
     }
   }
 }
@@ -377,7 +377,7 @@ export default {
   margin: 0 auto;
 }
 
-/* 页面头部样式 */
+/* 頁面頭部樣式 */
 .page-header {
   background: linear-gradient(135deg, rgba(34, 139, 34, 0.1) 0%, rgba(46, 125, 50, 0.05) 100%);
   border-radius: 20px;
@@ -445,7 +445,7 @@ export default {
   margin-top: 0.25rem;
 }
 
-/* 通用样式 */
+/* 通用樣式 */
 .section-title {
   font-size: 1.8rem;
   font-weight: 600;
@@ -453,7 +453,7 @@ export default {
   color: white;
 }
 
-/* 抵押资产类型样式 */
+/* 抵押資產类型樣式 */
 .asset-types-section {
   margin-bottom: 3rem;
 }
@@ -522,7 +522,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 产品特色样式 */
+/* 產品特色樣式 */
 .features-section {
   margin-bottom: 3rem;
 }
@@ -582,7 +582,7 @@ export default {
   font-size: 0.9rem;
 }
 
-/* 贷款方案样式 */
+/* 贷款方案樣式 */
 .loan-plans-section {
   margin-bottom: 3rem;
 }
@@ -682,7 +682,7 @@ export default {
   color: #228b22;
 }
 
-/* 申请流程样式 */
+/* 申请流程樣式 */
 .process-section {
   margin-bottom: 3rem;
 }
@@ -747,7 +747,7 @@ export default {
   font-size: 1.2rem;
 }
 
-/* 风险提示样式 */
+/* 風險提示樣式 */
 .risk-warning-section {
   margin-bottom: 3rem;
 }
@@ -789,7 +789,7 @@ export default {
   margin-bottom: 0.5rem;
 }
 
-/* 操作按钮样式 */
+/* 操作按钮樣式 */
 .action-section {
   display: flex;
   gap: 1rem;
@@ -832,7 +832,7 @@ export default {
   transform: translateY(-2px);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .asset-loan-container {
     padding: 1rem;

@@ -31,67 +31,67 @@ export default {
 
     const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
 
-    // 计算财务健康度评分
+    // 計算財務健康度評分
     const healthScore = computed(() => {
       const enterprise = currentEnterprise.value
       let score = 0
       
-      // 信用评分权重 40%
+      // 信用評分权重 40%
       score += (enterprise.creditScore / 1000) * 40
       
-      // 经营年限权重 25% (最高30年)
+      // 經营年限权重 25% (最高30年)
       score += Math.min(enterprise.businessYears / 30, 1) * 25
       
-      // 企业规模权重 20%
+      // 企業規模权重 20%
       const scaleScore = {
-        '大型企业': 20,
-        '中型企业': 15,
-        '小型企业': 10,
-        '微型企业': 5
+        '大型企業': 20,
+        '中型企業': 15,
+        '小型企業': 10,
+        '微型企業': 5
       }
       score += scaleScore[enterprise.scale] || 10
       
-      // 跨境业务活跃度权重 15%
+      // 跨境業務活躍度权重 15%
       const businessScore = {
-        '非常活跃': 15,
-        '活跃': 12,
+        '非常活躍': 15,
+        '活躍': 12,
         '一般': 8,
-        '较少': 5
+        '較少': 5
       }
       score += businessScore[enterprise.crossBorderBusiness] || 8
       
       return Math.round(score)
     })
 
-    // 健康度指标
+    // 健康度指標
     const healthIndicators = computed(() => [
       {
-        name: '信用等级',
+        name: '信用等級',
         value: currentEnterprise.value.creditLevel,
         icon: 'fas fa-star',
         color: 'linear-gradient(135deg, #ffd700 0%, #ffb347 100%)',
         trend: 'up'
       },
       {
-        name: '风险等级',
+        name: '風險等級',
         value: currentEnterprise.value.riskLevel,
         icon: 'fas fa-shield-alt',
         color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-        trend: currentEnterprise.value.riskLevel === '低风险' ? 'up' : 'down'
+        trend: currentEnterprise.value.riskLevel === '低風險' ? 'up' : 'down'
       },
       {
-        name: '经营年限',
+        name: '經营年限',
         value: `${currentEnterprise.value.businessYears}年`,
         icon: 'fas fa-calendar-alt',
         color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
         trend: 'up'
       },
       {
-        name: '合规状况',
+        name: '合規状况',
         value: currentEnterprise.value.complianceRecord,
         icon: 'fas fa-check-circle',
         color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-        trend: currentEnterprise.value.complianceRecord === '优秀' ? 'up' : 'down'
+        trend: currentEnterprise.value.complianceRecord === '優秀' ? 'up' : 'down'
       }
     ])
 
@@ -166,7 +166,7 @@ export default {
             data: [
               {
                 value: healthScore.value,
-                name: '财务健康度',
+                name: '財務健康度',
                 title: {
                   offsetCenter: [0, '-20%'],
                   fontSize: 14,
@@ -192,7 +192,7 @@ export default {
               data: [
                 {
                   value: healthScore.value,
-                  name: '财务健康度'
+                  name: '財務健康度'
                 }
               ]
             }

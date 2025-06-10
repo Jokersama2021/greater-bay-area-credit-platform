@@ -1,6 +1,6 @@
 <template>
   <div class="advanced-animations">
-    <!-- 高级背景光效 -->
+    <!-- 高級背景光效 -->
     <div class="background-lights">
       <div class="light-orb light-1" :style="{ animationDelay: '0s' }"></div>
       <div class="light-orb light-2" :style="{ animationDelay: '2s' }"></div>
@@ -9,7 +9,7 @@
       <div class="light-orb light-5" :style="{ animationDelay: '8s' }"></div>
     </div>
 
-    <!-- 粒子系统 -->
+    <!-- 粒子系統 -->
     <div class="particle-system">
       <div 
         v-for="n in 50" 
@@ -19,7 +19,7 @@
       ></div>
     </div>
 
-    <!-- 数据流动线条 -->
+    <!-- 數據流動線条 -->
     <div class="data-streams">
       <svg class="stream-svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -35,7 +35,7 @@
           </linearGradient>
         </defs>
         
-        <!-- 流动路径 -->
+        <!-- 流動路径 -->
         <path 
           class="stream-path stream-1" 
           d="M-100,200 Q400,100 800,300 T1600,200" 
@@ -60,7 +60,7 @@
       </svg>
     </div>
 
-    <!-- 网格背景 */
+    <!-- 網格背景 */
     <div class="grid-background">
       <div class="grid-lines-horizontal">
         <div v-for="n in 20" :key="'h' + n" class="grid-line horizontal" :style="{ top: (n * 5) + '%' }"></div>
@@ -110,7 +110,7 @@ export default {
   overflow: hidden;
 }
 
-/* 高级背景光效 */
+/* 高級背景光效 */
 .background-lights {
   position: absolute;
   width: 100%;
@@ -184,7 +184,7 @@ export default {
   }
 }
 
-/* 粒子系统 */
+/* 粒子系統 */
 .particle-system {
   position: absolute;
   width: 100%;
@@ -217,7 +217,7 @@ export default {
   }
 }
 
-/* 数据流动线条 */
+/* 數據流動線条 */
 .data-streams {
   position: absolute;
   width: 100%;
@@ -263,7 +263,7 @@ export default {
   }
 }
 
-/* 网格背景 */
+/* 網格背景 */
 .grid-background {
   position: absolute;
   width: 100%;

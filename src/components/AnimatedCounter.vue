@@ -22,7 +22,7 @@ export default {
     },
     duration: {
       type: Number,
-      default: 1000 // 从2000ms减少到1000ms
+      default: 1000 // 從2000ms减少到1000ms
     },
     suffix: {
       type: String,
@@ -68,7 +68,7 @@ export default {
         const elapsed = Date.now() - startTime
         const progress = Math.min(elapsed / props.duration, 1)
 
-        // 使用 easeOutExpo 缓动函数
+        // 使用 easeOutExpo 缓動函數
         const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
         
         displayValue.value = startValue + (targetValue - startValue) * easeOutExpo
@@ -95,7 +95,7 @@ export default {
 
     onMounted(() => {
       if (props.autoStart) {
-        // 延迟启动动画以获得更好的视觉效果
+        // 延迟启動動画以获得更好的视覺效果
         setTimeout(() => {
           startAnimation()
         }, 100)
@@ -176,7 +176,7 @@ export default {
   }
 }
 
-/* 数字滚动效果 */
+/* 數字滚動效果 */
 .counter-display::before {
   content: '';
   position: absolute;

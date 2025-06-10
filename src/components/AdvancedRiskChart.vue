@@ -39,7 +39,7 @@ const initChart = () => {
             <div style="font-weight: 600; margin-bottom: 6px;">${data.name}</div>
             <div style="display: flex; align-items: center; gap: 8px;">
               <div style="width: 8px; height: 8px; background: ${data.color}; border-radius: 50%;"></div>
-              <span>风险预警: ${data.value} 次</span>
+              <span>風險预警: ${data.value} 次</span>
             </div>
           </div>
         `
@@ -85,14 +85,14 @@ const initChart = () => {
     },
     series: [
       {
-        name: '风险预警',
+        name: '風險预警',
         type: 'bar',
         data: [72, 23, 33, 48, 66, 23],
         barWidth: '45%',
         itemStyle: {
           borderRadius: [8, 8, 0, 0],
           color: (params) => {
-            // 根据数值动态调整颜色强度
+            // 根據數值動态调整颜色强度
             const intensity = params.value / 80
             return {
               type: 'linear',
@@ -150,7 +150,7 @@ const initChart = () => {
         animationDuration: 1500,
         animationEasing: 'cubicOut'
       },
-      // 添加趋势线
+      // 添加趋势線
       {
         name: '趋势',
         type: 'line',
@@ -197,7 +197,7 @@ const initChart = () => {
 
   chart.setOption(option)
   
-  // 添加自动播放效果
+  // 添加自動播放效果
   let currentIndex = 0
   const autoPlay = () => {
     chart.dispatchAction({
@@ -216,7 +216,7 @@ const initChart = () => {
     }, 1000)
   }
   
-  // 延迟启动自动播放
+  // 延迟启動自動播放
   setTimeout(() => {
     setInterval(autoPlay, 2000)
   }, 3000)

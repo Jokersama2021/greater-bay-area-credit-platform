@@ -1,6 +1,6 @@
-/* 通用页面进入动画样式 */
+/* 通用頁面進入動画樣式 */
 
-/* 基础动画类 */
+/* 基础動画类 */
 .animate-fade-in-up {
   opacity: 0;
   transform: translateY(30px);
@@ -61,7 +61,7 @@
   animation: rotateIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* 关键帧动画定义 */
+/* 關键帧動画定义 */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -159,7 +159,7 @@
   }
 }
 
-/* 延迟动画工具类 */
+/* 延迟動画工具类 */
 .delay-100 { animation-delay: 0.1s !important; }
 .delay-200 { animation-delay: 0.2s !important; }
 .delay-300 { animation-delay: 0.3s !important; }
@@ -171,7 +171,7 @@
 .delay-900 { animation-delay: 0.9s !important; }
 .delay-1000 { animation-delay: 1.0s !important; }
 
-/* 响应式动画优化 */
+/* 响應式動画優化 */
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-up,
   .animate-bounce-in,
@@ -189,7 +189,7 @@
   }
 }
 
-/* 移动端动画优化 */
+/* 移動端動画優化 */
 @media (max-width: 768px) {
   .animate-fade-in-up,
   .animate-bounce-in,

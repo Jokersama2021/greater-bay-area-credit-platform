@@ -2,13 +2,13 @@
   <div class="partner-detail-container">
     <div v-if="loading" class="loading-container">
       <div class="loading-spinner"></div>
-      <p>加载中...</p>
+      <p>加載中...</p>
     </div>
     
     <div v-else class="content">
       <div class="page-header animate-slide-down">
         <router-link to="/" class="back-btn">
-          <i class="fas fa-arrow-left"></i> 返回首页
+          <i class="fas fa-arrow-left"></i> 返回首頁
         </router-link>
       </div>
 
@@ -20,7 +20,7 @@
           <h1 class="partner-name">{{ partner.name }}</h1>
           <div class="partner-tags">
             <span class="tag animate-bounce-in" style="animation-delay: 0.3s">{{ partner.category }}</span>
-            <span class="tag animate-bounce-in" v-if="partner.isVerified" style="animation-delay: 0.4s">已认证</span>
+            <span class="tag animate-bounce-in" v-if="partner.isVerified" style="animation-delay: 0.4s">已認證</span>
           </div>
         </div>
       </div>
@@ -28,25 +28,25 @@
       <div class="partner-grid">
         <div class="partner-card about animate-slide-up" style="animation-delay: 0.2s">
           <h2 class="card-title">
-            <i class="fas fa-building"></i> 机构简介
+            <i class="fas fa-building"></i> 機構简介
           </h2>
           <div class="card-content">
             <p class="description">{{ partner.description }}</p>
             <div class="info-grid">
               <div class="info-item">
-                <div class="info-label">成立时间</div>
+                <div class="info-label">成立時間</div>
                 <div class="info-value">{{ partner.foundingDate }}</div>
               </div>
               <div class="info-item">
-                <div class="info-label">注册资本</div>
+                <div class="info-label">注册資本</div>
                 <div class="info-value">{{ partner.registeredCapital }}</div>
               </div>
               <div class="info-item">
-                <div class="info-label">所在地区</div>
+                <div class="info-label">所在地區</div>
                 <div class="info-value">{{ partner.location }}</div>
               </div>
               <div class="info-item">
-                <div class="info-label">员工规模</div>
+                <div class="info-label">员工規模</div>
                 <div class="info-value">{{ partner.employeeCount }}</div>
               </div>
             </div>
@@ -55,7 +55,7 @@
         
         <div class="partner-card services animate-slide-up" style="animation-delay: 0.3s">
           <h2 class="card-title">
-            <i class="fas fa-hands-helping"></i> 服务内容
+            <i class="fas fa-hands-helping"></i> 服務内容
           </h2>
           <div class="card-content">
             <div class="service-list">
@@ -92,14 +92,14 @@
             </div>
             <div class="empty-state" v-else>
               <i class="fas fa-inbox"></i>
-              <p>暂无合作案例</p>
+              <p>暂無合作案例</p>
             </div>
           </div>
         </div>
 
         <div class="partner-card contact animate-slide-up" style="animation-delay: 0.5s">
           <h2 class="card-title">
-            <i class="fas fa-address-card"></i> 联系信息
+            <i class="fas fa-address-card"></i> 聯系信息
           </h2>
           <div class="card-content">
             <div class="contact-list">
@@ -164,72 +164,72 @@ export default {
   methods: {
     getServicesForCategory(category) {
       const serviceMap = {
-        '征信公司': [
+        '徵信公司': [
           {
             icon: 'fas fa-chart-line',
-            name: '信用评估服务',
-            description: '提供个人和企业信用评估，建立完善的信用档案和评分体系。'
+            name: '信用評估服務',
+            description: '提供個人和企業信用評估，建立完善的信用档案和評分体系。'
           },
           {
             icon: 'fas fa-shield-alt',
-            name: '风险监控服务',
-            description: '实时监控信用风险变化，提供预警和风险管理建议。'
+            name: '風險監控服務',
+            description: '實時監控信用風險变化，提供预警和風險管理建议。'
           },
           {
             icon: 'fas fa-database',
-            name: '征信数据服务',
-            description: '提供全面的征信数据查询和分析服务，支持金融决策。'
+            name: '徵信數據服務',
+            description: '提供全面的徵信數據查詢和分析服務，支持金融決策。'
           }
         ],
-        '银行': [
+        '銀行': [
           {
             icon: 'fas fa-money-bill-wave',
-            name: '信贷服务',
-            description: '提供个人和企业贷款服务，包括抵押贷款、信用贷款等多种产品。'
+            name: '信贷服務',
+            description: '提供個人和企業贷款服務，包括抵押贷款、信用贷款等多种產品。'
           },
           {
             icon: 'fas fa-credit-card',
             name: '支付结算',
-            description: '提供便捷的支付结算服务，支持跨境汇款和贸易融资。'
+            description: '提供便捷的支付结算服務，支持跨境汇款和贸易融資。'
           },
           {
             icon: 'fas fa-piggy-bank',
-            name: '财富管理',
-            description: '为客户提供专业的财富管理和投资理财服务。'
+            name: '財富管理',
+            description: '為客户提供專業的財富管理和投資理財服務。'
           }
         ],
-        '保险公司': [
+        '保險公司': [
           {
             icon: 'fas fa-umbrella',
-            name: '保险产品',
-            description: '提供人寿保险、财产保险、健康保险等全方位保险产品。'
+            name: '保險產品',
+            description: '提供人寿保險、財產保險、健康保險等全方位保險產品。'
           },
           {
             icon: 'fas fa-heart',
-            name: '理赔服务',
-            description: '快速、专业的理赔服务，保障客户权益。'
+            name: '理赔服務',
+            description: '快速、專業的理赔服務，保障客户权益。'
           },
           {
             icon: 'fas fa-user-shield',
-            name: '风险评估',
-            description: '专业的风险评估和保险方案设计服务。'
+            name: '風險評估',
+            description: '專業的風險評估和保險方案设計服務。'
           }
         ],
-        '互联网金融': [
+        '互聯網金融': [
           {
             icon: 'fas fa-mobile-alt',
-            name: '移动支付',
-            description: '提供便捷的移动支付解决方案，支持多种支付场景。'
+            name: '移動支付',
+            description: '提供便捷的移動支付解決方案，支持多种支付场景。'
           },
           {
             icon: 'fas fa-chart-bar',
             name: '金融科技',
-            description: '运用大数据、AI等技术提供智能化金融服务。'
+            description: '运用大數據、AI等技术提供智能化金融服務。'
           },
           {
             icon: 'fas fa-wallet',
-            name: '数字钱包',
-            description: '安全便捷的数字钱包服务，支持多种数字资产管理。'
+            name: '數字錢包',
+            description: '安全便捷的數字錢包服務，支持多种數字資產管理。'
           }
         ]
       };
@@ -237,112 +237,112 @@ export default {
       return serviceMap[category] || [
         {
           icon: 'fas fa-chart-line',
-          name: '专业咨询',
-          description: '提供专业的行业咨询和解决方案服务。'
+          name: '專業咨詢',
+          description: '提供專業的行業咨詢和解決方案服務。'
         },
         {
           icon: 'fas fa-handshake',
-          name: '合作服务',
-          description: '建立长期合作关系，共同推进业务发展。'
+          name: '合作服務',
+          description: '建立長期合作關系，共同推進業務發展。'
         },
         {
           icon: 'fas fa-cogs',
           name: '技术支持',
-          description: '提供专业的技术支持和系统集成服务。'
+          description: '提供專業的技术支持和系統集成服務。'
         }
       ];
     },
     getCasesForCategory(category) {
       const caseMap = {
-        '征信公司': [
+        '徵信公司': [
           {
-            title: '大湾区银行风控系统升级项目',
+            title: '大灣區銀行風控系統升級项目',
             date: '2023年8月',
-            description: '为大湾区某大型银行提供征信数据服务，升级其风控系统，提升信贷审批效率。',
-            result: '帮助银行信贷审批效率提升50%，不良贷款率降低0.5个百分点。'
+            description: '為大灣區某大型銀行提供徵信數據服務，升級其風控系統，提升信贷审批效率。',
+            result: '帮助銀行信贷审批效率提升50%，不良贷款率降低0.5個百分點。'
           },
           {
-            title: '跨境电商征信服务项目',
+            title: '跨境電商徵信服務项目',
             date: '2023年5月',
-            description: '为跨境电商平台提供商户征信服务，建立完善的商户信用评级体系。',
-            result: '平台交易纠纷率降低40%，商户满意度提升35%。'
+            description: '為跨境電商平臺提供商户徵信服務，建立完善的商户信用評級体系。',
+            result: '平臺交易纠纷率降低40%，商户滿意度提升35%。'
           }
         ],
-        '银行': [
+        '銀行': [
           {
-            title: '大湾区中小企业融资服务项目',
+            title: '大灣區中小企業融資服務项目',
             date: '2023年9月',
-            description: '推出专门针对大湾区中小企业的融资产品，简化审批流程，降低融资门槛。',
-            result: '累计为500+中小企业提供融资支持，总额超过50亿元。'
+            description: '推出專門针對大灣區中小企業的融資產品，简化审批流程，降低融資門槛。',
+            result: '累計為500+中小企業提供融資支持，總额超過50亿元。'
           },
           {
-            title: '跨境贸易金融服务创新',
+            title: '跨境贸易金融服務創新',
             date: '2023年6月',
-            description: '创新跨境贸易金融产品，为大湾区企业提供便捷的跨境结算和融资服务。',
-            result: '跨境贸易融资业务量增长80%，客户满意度达到95%。'
+            description: '創新跨境贸易金融產品，為大灣區企業提供便捷的跨境结算和融資服務。',
+            result: '跨境贸易融資業務量增長80%，客户滿意度达到95%。'
           }
         ],
-        '保险公司': [
+        '保險公司': [
           {
-            title: '大湾区企业综合保险方案',
+            title: '大灣區企業综合保險方案',
             date: '2023年7月',
-            description: '为大湾区制造业企业设计综合保险方案，涵盖财产险、责任险、货运险等。',
-            result: '为300+企业提供保险保障，理赔效率提升60%。'
+            description: '為大灣區制造業企業设計综合保險方案，涵盖財產險、责任險、货运險等。',
+            result: '為300+企業提供保險保障，理赔效率提升60%。'
           },
           {
-            title: '跨境保险服务创新项目',
+            title: '跨境保險服務創新项目',
             date: '2023年4月',
-            description: '推出跨境保险产品，为大湾区居民和企业提供跨境保险保障。',
-            result: '跨境保险业务增长120%，服务覆盖三地居民。'
+            description: '推出跨境保險產品，為大灣區居民和企業提供跨境保險保障。',
+            result: '跨境保險業務增長120%，服務覆盖三地居民。'
           }
         ],
-        '互联网金融': [
+        '互聯網金融': [
           {
-            title: '数字化支付解决方案',
+            title: '數字化支付解決方案',
             date: '2023年10月',
-            description: '为大湾区商户提供一体化数字支付解决方案，支持多种支付方式。',
-            result: '服务商户数量增长200%，交易成功率达到99.9%。'
+            description: '為大灣區商户提供一体化數字支付解決方案，支持多种支付方式。',
+            result: '服務商户數量增長200%，交易成功率达到99.9%。'
           },
           {
-            title: 'AI智能投顾服务',
+            title: 'AI智能投顾服務',
             date: '2023年6月',
-            description: '推出AI智能投顾服务，为用户提供个性化的投资建议和资产配置方案。',
-            result: '用户投资收益率平均提升15%，服务用户超过10万人。'
+            description: '推出AI智能投顾服務，為用户提供個性化的投資建议和資產配置方案。',
+            result: '用户投資收益率平均提升15%，服務用户超過10万人。'
           }
         ]
       };
 
       return caseMap[category] || [
         {
-          title: '大湾区企业服务创新项目',
+          title: '大灣區企業服務創新项目',
           date: '2023年6月',
-          description: '为大湾区企业提供创新服务解决方案，提升企业运营效率和竞争力。',
-          result: '帮助企业运营效率提升30%，客户满意度达到90%以上。'
+          description: '為大灣區企業提供創新服務解決方案，提升企業运营效率和竞争力。',
+          result: '帮助企業运营效率提升30%，客户滿意度达到90%以上。'
         },
         {
-          title: '数字化转型咨询项目',
+          title: '數字化转型咨詢项目',
           date: '2023年3月',
-          description: '为传统企业提供数字化转型咨询服务，助力企业实现数字化升级。',
-          result: '成功帮助企业完成数字化转型，业务效率提升40%。'
+          description: '為传統企業提供數字化转型咨詢服務，助力企業實現數字化升級。',
+          result: '成功帮助企業完成數字化转型，業務效率提升40%。'
         }
       ];
     },
     getAddressForCategory(category) {
       const addresses = {
-        '征信公司': ['深圳市福田区深南大道1006号国际创新中心', '广州市天河区珠江新城冼村路11号', '香港中环国际金融中心'],
-        '银行': ['深圳市福田区深南大道5047号', '广州市越秀区东风东路713号', '香港中环皇后大道中1号'],
-        '保险公司': ['深圳市南山区深南大道9678号', '广州市天河区体育西路191号', '香港湾仔告士打道108号'],
-        '互联网金融': ['深圳市南山区科技园南区', '广州市天河区天河北路233号', '香港数码港道100号']
+        '徵信公司': ['深圳市福田區深南大道1006号國際創新中心', '廣州市天河區珠江新城冼村路11号', '香港中环國際金融中心'],
+        '銀行': ['深圳市福田區深南大道5047号', '廣州市越秀區東風東路713号', '香港中环皇后大道中1号'],
+        '保險公司': ['深圳市南山區深南大道9678号', '廣州市天河區体育西路191号', '香港灣仔告士打道108号'],
+        '互聯網金融': ['深圳市南山區科技园南區', '廣州市天河區天河北路233号', '香港數碼港道100号']
       };
-      const categoryAddresses = addresses[category] || ['广州市天河区珠江新城冼村路5号凯华国际中心'];
+      const categoryAddresses = addresses[category] || ['廣州市天河區珠江新城冼村路5号凯華國際中心'];
       return categoryAddresses[Math.floor(Math.random() * categoryAddresses.length)] + `${Math.floor(Math.random() * 30) + 10}楼`;
     },
     getPhoneForCategory(category) {
       const areaCodes = {
-        '征信公司': ['0755', '020', '852'],
-        '银行': ['0755', '020', '852'],
-        '保险公司': ['0755', '020', '852'],
-        '互联网金融': ['0755', '020', '400']
+        '徵信公司': ['0755', '020', '852'],
+        '銀行': ['0755', '020', '852'],
+        '保險公司': ['0755', '020', '852'],
+        '互聯網金融': ['0755', '020', '400']
       };
       const codes = areaCodes[category] || ['020'];
       const areaCode = codes[Math.floor(Math.random() * codes.length)];
@@ -350,9 +350,9 @@ export default {
       return `${areaCode}-${number.toString().substring(0, 8)}`;
     },
     getEmailForPartner(name) {
-      const domain = name.includes('银行') ? 'bank.com' :
-                   name.includes('保险') ? 'insurance.com' :
-                   name.includes('征信') ? 'credit.com' :
+      const domain = name.includes('銀行') ? 'bank.com' :
+                   name.includes('保險') ? 'insurance.com' :
+                   name.includes('徵信') ? 'credit.com' :
                    name.includes('金融') ? 'fintech.com' : 'partner.com';
       return `service@${name.toLowerCase().replace(/[^a-z0-9]/g, '')}.${domain}`;
     },
@@ -362,16 +362,16 @@ export default {
     fetchPartnerDetail(id) {
       // 模拟API请求
       setTimeout(() => {
-        // 真实合作伙伴数据 - 对应PartnerLogos.vue中的所有机构
+        // 真實合作夥伴數據 - 對應PartnerLogos.vue中的所有機構
         const partners = [
-          // 征信公司
+          // 徵信公司
           {
             id: 1,
-            name: '环联征信有限公司',
+            name: '环聯徵信有限公司',
             icon: 'fas fa-shield-alt',
-            category: '征信公司',
+            category: '徵信公司',
             isVerified: true,
-            description: '环联征信有限公司是中国领先的征信服务提供商，致力于为金融机构和企业提供全面的信用信息服务。公司拥有丰富的数据资源和先进的技术平台，通过大数据分析和人工智能技术，为客户提供精准的信用评估和风险管理解决方案。',
+            description: '环聯徵信有限公司是中國領先的徵信服務提供商，致力于為金融機構和企業提供全面的信用信息服務。公司拥有丰富的數據資源和先進的技术平臺，通過大數據分析和人工智能技术，為客户提供精準的信用評估和風險管理解決方案。',
             foundingDate: '2013年',
             registeredCapital: '5亿元',
             location: '深圳',
@@ -379,46 +379,46 @@ export default {
             services: [
               {
                 icon: 'fas fa-chart-line',
-                name: '个人征信服务',
-                description: '为金融机构提供全面的个人信用报告和评分服务，涵盖信贷记录、还款历史、信用行为等多维度信息。'
+                name: '個人徵信服務',
+                description: '為金融機構提供全面的個人信用報告和評分服務，涵盖信贷記录、還款历史、信用行為等多维度信息。'
               },
               {
                 icon: 'fas fa-building',
-                name: '企业征信服务',
-                description: '提供企业信用报告、风险评估和监控服务，帮助金融机构和合作伙伴做出明智的商业决策。'
+                name: '企業徵信服務',
+                description: '提供企業信用報告、風險評估和監控服務，帮助金融機構和合作夥伴做出明智的商業決策。'
               },
               {
                 icon: 'fas fa-shield-alt',
-                name: '反欺诈服务',
-                description: '运用先进的机器学习算法和大数据分析技术，提供实时的反欺诈检测和风险预警服务。'
+                name: '反欺诈服務',
+                description: '运用先進的機器學习算法和大數據分析技术，提供實時的反欺诈检测和風險预警服務。'
               }
             ],
             cases: [
               {
-                title: '大湾区银行个人信贷风控项目',
+                title: '大灣區銀行個人信贷風控项目',
                 date: '2023年6月',
-                description: '为大湾区某大型银行提供个人信贷风控服务，建立完善的信用评估模型，有效降低不良贷款率。',
-                result: '帮助银行个人信贷不良率降低0.8个百分点，信贷审批效率提升40%。'
+                description: '為大灣區某大型銀行提供個人信贷風控服務，建立完善的信用評估模型，有效降低不良贷款率。',
+                result: '帮助銀行個人信贷不良率降低0.8個百分點，信贷审批效率提升40%。'
               },
               {
-                title: '跨境电商企业征信服务项目',
+                title: '跨境電商企業徵信服務项目',
                 date: '2023年3月',
-                description: '为香港某跨境电商平台提供商户征信服务，建立商户信用评级体系，降低平台交易风险。',
-                result: '平台交易纠纷率降低30%，商户满意度提升25%，交易额增长15%。'
+                description: '為香港某跨境電商平臺提供商户徵信服務，建立商户信用評級体系，降低平臺交易風險。',
+                result: '平臺交易纠纷率降低30%，商户滿意度提升25%，交易额增長15%。'
               }
             ],
-            address: '深圳市福田区深南大道1006号国际创新中心A座20楼',
+            address: '深圳市福田區深南大道1006号國際創新中心A座20楼',
             phone: '0755-83216789',
             email: 'service@transunion.cn',
             website: 'www.transunion.cn'
           },
           {
             id: 2,
-            name: '深圳百行征信服务有限公司',
+            name: '深圳百行徵信服務有限公司',
             icon: 'fas fa-building',
-            category: '征信公司',
+            category: '徵信公司',
             isVerified: true,
-            description: '深圳百行征信服务有限公司是中国首家市场化个人征信机构，由中国互联网金融协会与芝麻信用、腾讯征信等8家机构共同发起设立。公司致力于建设覆盖全社会的征信系统，为传统金融和新金融业态提供全面的征信服务，促进普惠金融发展。',
+            description: '深圳百行徵信服務有限公司是中國首家市场化個人徵信機構，由中國互聯網金融协會与芝麻信用、騰訊徵信等8家機構共同發起设立。公司致力于建设覆盖全社會的徵信系統，為传統金融和新金融業态提供全面的徵信服務，促進普惠金融發展。',
             foundingDate: '2018年',
             registeredCapital: '10亿元',
             location: '深圳',
@@ -426,140 +426,140 @@ export default {
             services: [
               {
                 icon: 'fas fa-exclamation-triangle',
-                name: '企业风险评估',
-                description: '基于行业领先的风险评估方法论，全面识别和评估企业面临的战略风险、运营风险、财务风险和合规风险，提供系统性风险管理建议。'
+                name: '企業風險評估',
+                description: '基于行業領先的風險評估方法论，全面識別和評估企業面临的战略風險、运营風險、財務風險和合規風險，提供系統性風險管理建议。'
               },
               {
                 icon: 'fas fa-sitemap',
-                name: '企业治理优化',
-                description: '评估企业现有治理结构，提供公司治理优化方案，完善董事会运作机制，提升企业治理水平和管理效率。'
+                name: '企業治理優化',
+                description: '評估企業現有治理结構，提供公司治理優化方案，完善董事會运作機制，提升企業治理水平和管理效率。'
               },
               {
                 icon: 'fas fa-file-contract',
-                name: '合规管理服务',
-                description: '协助企业建立健全合规管理体系，识别合规风险点，制定合规管理策略，降低法律和监管风险。'
+                name: '合規管理服務',
+                description: '协助企業建立健全合規管理体系，識別合規風險點，制定合規管理策略，降低法律和監管風險。'
               }
             ],
             cases: [
               {
-                title: '某上市公司全面风险管理体系构建项目',
+                title: '某上市公司全面風險管理体系構建项目',
                 date: '2023年2月',
-                description: '为深圳某上市科技公司设计并实施全面风险管理体系，包括风险识别、评估、应对和监控的完整流程，建立风险管理组织架构和制度体系。',
-                result: '帮助企业建立了符合国际标准的风险管理体系，有效识别和应对了多项重大风险，保障了企业稳健运营。'
+                description: '為深圳某上市科技公司设計并實施全面風險管理体系，包括風險識別、評估、應對和監控的完整流程，建立風險管理组织架構和制度体系。',
+                result: '帮助企業建立了符合國際標準的風險管理体系，有效識別和應對了多项重大風險，保障了企業稳健运营。'
               },
               {
-                title: '金融科技企业合规体系建设项目',
+                title: '金融科技企業合規体系建设项目',
                 date: '2022年9月',
-                description: '为广州某金融科技企业提供合规管理咨询服务，结合国内外金融科技监管要求，建立健全合规管理体系。',
-                result: '帮助企业顺利通过监管合规检查，避免了潜在的合规风险和处罚。'
+                description: '為廣州某金融科技企業提供合規管理咨詢服務，结合國内外金融科技監管要求，建立健全合規管理体系。',
+                result: '帮助企業顺利通過監管合規检查，避免了潜在的合規風險和處罚。'
               }
             ],
-            address: '深圳市福田区福华一路6号免税商务大厦20层',
+            address: '深圳市福田區福華一路6号免税商務大厦20层',
             phone: '0755-82463100',
             email: 'gbarisk@deloitte.com',
             website: 'www.deloitte.com/cn/gba'
           },
           {
             id: 3,
-            name: '香港贸发局大湾区服务中心',
+            name: '香港贸發局大灣區服務中心',
             icon: 'fas fa-globe-asia',
-            category: '服务机构',
+            category: '服務機構',
             isVerified: true,
-            description: '香港贸发局大湾区服务中心致力于促进香港与大湾区其他城市的经贸合作，为大湾区企业提供市场信息、商业配对、展览推广和政策咨询等专业服务。中心拥有庞大的全球商业网络和丰富的国际市场经验，能够帮助大湾区企业拓展海外市场，提升国际竞争力。',
+            description: '香港贸發局大灣區服務中心致力于促進香港与大灣區其他城市的經贸合作，為大灣區企業提供市场信息、商業配對、展览推廣和政策咨詢等專業服務。中心拥有庞大的全球商業網絡和丰富的國際市场經验，能够帮助大灣區企業拓展海外市场，提升國際竞争力。',
             foundingDate: '2019年',
-            registeredCapital: '政府支持机构',
+            registeredCapital: '政府支持機構',
             location: '香港',
             employeeCount: '100-150人',
             services: [
               {
                 icon: 'fas fa-handshake',
-                name: '商业配对服务',
-                description: '根据企业需求，精准匹配全球合作伙伴，促成商业合作，帮助企业拓展国际市场和寻找投资机会。'
+                name: '商業配對服務',
+                description: '根據企業需求，精準匹配全球合作夥伴，促成商業合作，帮助企業拓展國際市场和寻找投資機會。'
               },
               {
                 icon: 'fas fa-search-dollar',
-                name: '市场信息咨询',
-                description: '提供全球主要市场的经济数据、行业研究报告和市场趋势分析，帮助企业制定有针对性的市场开拓策略。'
+                name: '市场信息咨詢',
+                description: '提供全球主要市场的經济數據、行業研究報告和市场趋势分析，帮助企業制定有针對性的市场開拓策略。'
               },
               {
                 icon: 'fas fa-certificate',
-                name: '国际认证辅导',
-                description: '协助企业了解和获取国际市场准入所需的各类认证，提供认证标准咨询和认证申请辅导服务。'
+                name: '國際認證辅导',
+                description: '协助企業了解和获取國際市场準入所需的各类認證，提供認證標準咨詢和認證申请辅导服務。'
               }
             ],
             cases: [
               {
-                title: '大湾区企业"走出去"系列活动',
+                title: '大灣區企業"走出去"系列活動',
                 date: '2023年5月',
-                description: '组织大湾区企业参加多个国际展览会和商贸考察团，涵盖东南亚、欧洲和中东等重点市场，为企业提供展示产品和寻找合作伙伴的平台。',
-                result: '帮助超过200家大湾区企业达成合作意向，签订贸易合同总额超过10亿美元。'
+                description: '组织大灣區企業参加多個國際展览會和商贸考察团，涵盖東南亚、欧洲和中東等重點市场，為企業提供展示產品和寻找合作夥伴的平臺。',
+                result: '帮助超過200家大灣區企業达成合作意向，签订贸易合同總额超過10亿美元。'
               },
               {
-                title: '大湾区-东盟经贸合作论坛',
+                title: '大灣區-東盟經贸合作论坛',
                 date: '2022年12月',
-                description: '在香港举办大湾区-东盟经贸合作论坛，邀请东盟各国商会和政府代表，与大湾区企业进行深入交流和商业配对。',
-                result: '促成50多个合作项目，总投资额超过5亿美元，建立了大湾区与东盟的长期合作机制。'
+                description: '在香港举办大灣區-東盟經贸合作论坛，邀请東盟各國商會和政府代表，与大灣區企業進行深入交流和商業配對。',
+                result: '促成50多個合作项目，總投資额超過5亿美元，建立了大灣區与東盟的長期合作機制。'
               }
             ],
-            address: '香港湾仔博览道1号香港会展中心办公大楼38楼',
+            address: '香港灣仔博览道1号香港會展中心办公大楼38楼',
             phone: '852-18428',
             email: 'gbaservice@hktdc.org',
             website: 'www.hktdc.com/gba'
           },
           {
             id: 4,
-            name: '粤港澳大湾区数字经济研究院',
+            name: '粵港澳大灣區數字經济研究院',
             icon: 'fas fa-laptop-code',
-            category: '技术服务商',
+            category: '技术服務商',
             isVerified: true,
-            description: '粤港澳大湾区数字经济研究院是由政府支持、行业共建的专业研究机构，致力于推动大湾区数字经济发展和数字化转型。研究院汇聚了一批数字技术和产业研究专家，为企业提供数字化转型咨询、数据价值评估、数字技术应用等专业服务，助力大湾区数字经济高质量发展。',
+            description: '粵港澳大灣區數字經济研究院是由政府支持、行業共建的專業研究機構，致力于推動大灣區數字經济發展和數字化转型。研究院汇聚了一批數字技术和產業研究專家，為企業提供數字化转型咨詢、數據价值評估、數字技术應用等專業服務，助力大灣區數字經济高质量發展。',
             foundingDate: '2020年',
             registeredCapital: '3亿元',
-            location: '广州',
+            location: '廣州',
             employeeCount: '120-180人',
             services: [
               {
                 icon: 'fas fa-digital-tachograph',
-                name: '数字化转型咨询',
-                description: '基于企业实际情况，设计个性化数字化转型路径和实施方案，帮助企业实现数字化升级和智能化运营。'
+                name: '數字化转型咨詢',
+                description: '基于企業實際情况，设計個性化數字化转型路径和實施方案，帮助企業實現數字化升級和智能化运营。'
               },
               {
                 icon: 'fas fa-database',
-                name: '数据资产评估',
-                description: '运用专业评估方法，对企业数据资产进行全面盘点和价值评估，发掘数据潜在价值，提供数据治理和应用建议。'
+                name: '數據資產評估',
+                description: '运用專業評估方法，對企業數據資產進行全面盘點和价值評估，發掘數據潜在价值，提供數據治理和應用建议。'
               },
               {
                 icon: 'fas fa-brain',
-                name: '人工智能应用',
-                description: '提供AI技术应用咨询和解决方案，帮助企业在生产、营销、服务等环节引入AI技术，提升效率和创新能力。'
+                name: '人工智能應用',
+                description: '提供AI技术應用咨詢和解決方案，帮助企業在生產、营销、服務等环节引入AI技术，提升效率和創新能力。'
               }
             ],
             cases: [
               {
-                title: '传统制造企业数字化转型项目',
+                title: '传統制造企業數字化转型项目',
                 date: '2023年1月',
-                description: '为东莞某传统制造企业设计并实施数字化转型方案，引入工业互联网、物联网和大数据技术，建设智能工厂。',
-                result: '帮助企业生产效率提升30%，能源消耗降低20%，产品不良率降低15%，成功实现传统制造向智能制造的转型。'
+                description: '為東莞某传統制造企業设計并實施數字化转型方案，引入工業互聯網、物聯網和大數據技术，建设智能工厂。',
+                result: '帮助企業生產效率提升30%，能源消耗降低20%，產品不良率降低15%，成功實現传統制造向智能制造的转型。'
               },
               {
-                title: '零售行业数据价值挖掘项目',
+                title: '零售行業數據价值挖掘项目',
                 date: '2022年8月',
-                description: '为香港某大型零售集团提供数据价值挖掘服务，构建客户画像和消费行为分析模型，挖掘数据商业价值。',
-                result: '帮助企业精准营销效果提升40%，客户留存率提高15%，实现数据驱动的经营决策。'
+                description: '為香港某大型零售集团提供數據价值挖掘服務，構建客户画像和消费行為分析模型，挖掘數據商業价值。',
+                result: '帮助企業精準营销效果提升40%，客户留存率提高15%，實現數據驱動的經营決策。'
               }
             ],
-            address: '广州市黄埔区科学城科学大道181号',
+            address: '廣州市黄埔區科學城科學大道181号',
             phone: '020-82356789',
             email: 'info@gbadei.org',
             website: 'www.gbadei.org'
           },
           {
             id: 5,
-            name: '大湾区知识产权保护联盟',
+            name: '大灣區知識產权保护聯盟',
             icon: 'fas fa-copyright',
-            category: '评估机构',
+            category: '評估機構',
             isVerified: true,
-            description: '大湾区知识产权保护联盟是由大湾区各地知识产权局、专业机构和企业共同发起成立的非营利性组织，致力于为大湾区企业提供知识产权保护、评估、运营和交易等专业服务。联盟拥有一支由知识产权律师、专利代理人和评估专家组成的专业团队，为企业知识产权保驾护航。',
+            description: '大灣區知識產权保护聯盟是由大灣區各地知識產权局、專業機構和企業共同發起成立的非营利性组织，致力于為大灣區企業提供知識產权保护、評估、运营和交易等專業服務。聯盟拥有一支由知識產权律师、專利代理人和評估專家组成的專業团队，為企業知識產权保驾护航。',
             foundingDate: '2017年',
             registeredCapital: '非营利组织',
             location: '深圳',
@@ -567,93 +567,93 @@ export default {
             services: [
               {
                 icon: 'fas fa-balance-scale',
-                name: '知识产权评估',
-                description: '运用国际通用的知识产权评估方法，对企业专利、商标、版权等知识产权进行全面评估，确定其市场价值和商业潜力。'
+                name: '知識產权評估',
+                description: '运用國際通用的知識產权評估方法，對企業專利、商標、版权等知識產权進行全面評估，确定其市场价值和商業潜力。'
               },
               {
                 icon: 'fas fa-gavel',
-                name: '知识产权保护',
-                description: '提供知识产权侵权监测、维权援助和纠纷调解等服务，帮助企业构建完善的知识产权保护体系。'
+                name: '知識產权保护',
+                description: '提供知識產权侵权監测、维权援助和纠纷调解等服務，帮助企業構建完善的知識產权保护体系。'
               },
               {
                 icon: 'fas fa-exchange-alt',
-                name: '知识产权交易',
-                description: '运营知识产权交易平台，提供专利转让、许可、质押等交易服务，促进知识产权的市场化流通和价值变现。'
+                name: '知識產权交易',
+                description: '运营知識產权交易平臺，提供專利转讓、许可、质押等交易服務，促進知識產权的市场化流通和价值变現。'
               }
             ],
             cases: [
               {
-                title: '高科技企业专利组合评估项目',
+                title: '高科技企業專利组合評估项目',
                 date: '2023年3月',
-                description: '为珠海某高科技企业提供专利组合评估服务，对其200余项专利进行全面评估，发掘高价值专利，制定专利运营策略。',
-                result: '帮助企业识别30项核心专利，成功实现专利许可，获得许可收入2000万元。'
+                description: '為珠海某高科技企業提供專利组合評估服務，對其200余项專利進行全面評估，發掘高价值專利，制定專利运营策略。',
+                result: '帮助企業識別30项核心專利，成功實現專利许可，获得许可收入2000万元。'
               },
               {
-                title: '跨境知识产权保护行动',
+                title: '跨境知識產权保护行動',
                 date: '2022年10月',
-                description: '组织开展跨境知识产权保护行动，针对侵犯大湾区企业知识产权的跨境侵权行为，提供联合维权服务。',
-                result: '成功处理50余起跨境侵权案件，挽回经济损失超过1亿元，有效保护了企业知识产权。'
+                description: '组织開展跨境知識產权保护行動，针對侵犯大灣區企業知識產权的跨境侵权行為，提供聯合维权服務。',
+                result: '成功處理50余起跨境侵权案件，挽回經济损失超過1亿元，有效保护了企業知識產权。'
               }
             ],
-            address: '深圳市南山区高新南九道10号深圳湾科技生态园10栋A座18楼',
+            address: '深圳市南山區高新南九道10号深圳灣科技生态园10栋A座18楼',
             phone: '0755-86123456',
             email: 'service@gbaip.org',
             website: 'www.gbaip.org'
           }
         ];
 
-        // 合作伙伴基础信息映射（对应PartnerLogos.vue中的数据）
+        // 合作夥伴基础信息映射（對應PartnerLogos.vue中的數據）
         const partnerMapping = {
-          // 征信公司
-          1: { name: '环联征信有限公司', icon: 'fas fa-shield-alt', category: '征信公司' },
-          2: { name: '深圳百行征信服务有限公司', icon: 'fas fa-building', category: '征信公司' },
-          3: { name: '广东德信行信用管理有限公司', icon: 'fas fa-check-circle', category: '征信公司' },
-          4: { name: '广东鹏元征信有限公司', icon: 'fas fa-award', category: '征信公司' },
-          5: { name: '诺华诚信（Nova Credit）', icon: 'fas fa-star', category: '征信公司' },
-          6: { name: '邓白氏（Dun & Bradstreet, D&B）', icon: 'fas fa-globe', category: '征信公司' },
-          7: { name: '澳门金融管理局（AMCM）信贷数据库', icon: 'fas fa-landmark', category: '征信公司' },
-          8: { name: '澳门银行公会（ABM）信贷信息共享系统', icon: 'fas fa-university', category: '征信公司' },
-          // 银行
-          9: { name: '中国工商银行', icon: 'fas fa-landmark', category: '银行' },
-          10: { name: '中国农业银行', icon: 'fas fa-piggy-bank', category: '银行' },
-          11: { name: '汇丰银行', icon: 'fas fa-university', category: '银行' },
-          12: { name: '恒生银行', icon: 'fas fa-building', category: '银行' },
-          13: { name: '渣打银行', icon: 'fas fa-coins', category: '银行' },
-          // 保险公司
-          14: { name: '中国人保（PICC）', icon: 'fas fa-shield-alt', category: '保险公司' },
-          15: { name: '中国太保（CPIC）', icon: 'fas fa-umbrella', category: '保险公司' },
-          16: { name: '友邦保险（AIA）', icon: 'fas fa-heart', category: '保险公司' },
-          17: { name: '安盛保险（AXA）', icon: 'fas fa-shield-alt', category: '保险公司' },
-          18: { name: '澳门人寿（Macau Life）', icon: 'fas fa-user-shield', category: '保险公司' },
-          19: { name: '太平保险（澳门）（Taiping Macau）', icon: 'fas fa-life-ring', category: '保险公司' },
-          // 互联网金融
-          20: { name: '平安健康保险', icon: 'fas fa-heartbeat', category: '互联网金融' },
-          21: { name: '富途证券', icon: 'fas fa-chart-line', category: '互联网金融' },
-          22: { name: '同花顺', icon: 'fas fa-chart-bar', category: '互联网金融' },
-          23: { name: '财付通', icon: 'fas fa-wallet', category: '互联网金融' },
-          24: { name: '腾讯金融科技', icon: 'fas fa-money-bill-wave', category: '互联网金融' },
-          25: { name: '度小满金融', icon: 'fas fa-hand-holding-usd', category: '互联网金融' }
+          // 徵信公司
+          1: { name: '环聯徵信有限公司', icon: 'fas fa-shield-alt', category: '徵信公司' },
+          2: { name: '深圳百行徵信服務有限公司', icon: 'fas fa-building', category: '徵信公司' },
+          3: { name: '廣東德信行信用管理有限公司', icon: 'fas fa-check-circle', category: '徵信公司' },
+          4: { name: '廣東鹏元徵信有限公司', icon: 'fas fa-award', category: '徵信公司' },
+          5: { name: '诺華诚信（Nova Credit）', icon: 'fas fa-star', category: '徵信公司' },
+          6: { name: '邓白氏（Dun & Bradstreet, D&B）', icon: 'fas fa-globe', category: '徵信公司' },
+          7: { name: '澳門金融管理局（AMCM）信贷數據库', icon: 'fas fa-landmark', category: '徵信公司' },
+          8: { name: '澳門銀行公會（ABM）信贷信息共享系統', icon: 'fas fa-university', category: '徵信公司' },
+          // 銀行
+          9: { name: '中國工商銀行', icon: 'fas fa-landmark', category: '銀行' },
+          10: { name: '中國农業銀行', icon: 'fas fa-piggy-bank', category: '銀行' },
+          11: { name: '汇丰銀行', icon: 'fas fa-university', category: '銀行' },
+          12: { name: '恒生銀行', icon: 'fas fa-building', category: '銀行' },
+          13: { name: '渣打銀行', icon: 'fas fa-coins', category: '銀行' },
+          // 保險公司
+          14: { name: '中國人保（PICC）', icon: 'fas fa-shield-alt', category: '保險公司' },
+          15: { name: '中國太保（CPIC）', icon: 'fas fa-umbrella', category: '保險公司' },
+          16: { name: '友邦保險（AIA）', icon: 'fas fa-heart', category: '保險公司' },
+          17: { name: '安盛保險（AXA）', icon: 'fas fa-shield-alt', category: '保險公司' },
+          18: { name: '澳門人寿（Macau Life）', icon: 'fas fa-user-shield', category: '保險公司' },
+          19: { name: '太平保險（澳門）（Taiping Macau）', icon: 'fas fa-life-ring', category: '保險公司' },
+          // 互聯網金融
+          20: { name: '平安健康保險', icon: 'fas fa-heartbeat', category: '互聯網金融' },
+          21: { name: '富途證券', icon: 'fas fa-chart-line', category: '互聯網金融' },
+          22: { name: '同花顺', icon: 'fas fa-chart-bar', category: '互聯網金融' },
+          23: { name: '財付通', icon: 'fas fa-wallet', category: '互聯網金融' },
+          24: { name: '騰訊金融科技', icon: 'fas fa-money-bill-wave', category: '互聯網金融' },
+          25: { name: '度小滿金融', icon: 'fas fa-hand-holding-usd', category: '互聯網金融' }
         };
 
-        // 根据ID获取合作伙伴数据
+        // 根據ID获取合作夥伴數據
         const baseInfo = partnerMapping[parseInt(id)];
         const partner = partners.find(p => p.id === parseInt(id)) || {
           id: id,
-          name: baseInfo?.name || `大湾区合作机构${id}`,
+          name: baseInfo?.name || `大灣區合作機構${id}`,
           icon: baseInfo?.icon || 'fas fa-university',
-          category: baseInfo?.category || '金融服务',
+          category: baseInfo?.category || '金融服務',
           isVerified: true,
-          description: `${baseInfo?.name || '本机构'}是大湾区领先的${baseInfo?.category || '金融服务'}提供商，致力于为企业和个人提供全方位、专业化的服务和解决方案。凭借多年的行业经验和专业团队，我们深入了解客户面临的挑战和需求，提供定制化的服务，帮助客户实现可持续发展。`,
+          description: `${baseInfo?.name || '本機構'}是大灣區領先的${baseInfo?.category || '金融服務'}提供商，致力于為企業和個人提供全方位、專業化的服務和解決方案。凭借多年的行業經验和專業团队，我们深入了解客户面临的挑战和需求，提供定制化的服務，帮助客户實現可持续發展。`,
           foundingDate: '2015年',
           registeredCapital: '5000万元',
-          location: ['广州', '深圳', '香港', '澳门'][Math.floor(Math.random() * 4)],
+          location: ['廣州', '深圳', '香港', '澳門'][Math.floor(Math.random() * 4)],
           employeeCount: '200-500人',
-          services: this.getServicesForCategory(baseInfo?.category || '金融服务'),
-          cases: this.getCasesForCategory(baseInfo?.category || '金融服务'),
-          address: this.getAddressForCategory(baseInfo?.category || '金融服务'),
-          phone: this.getPhoneForCategory(baseInfo?.category || '金融服务'),
-          email: this.getEmailForPartner(baseInfo?.name || '合作机构'),
-          website: this.getWebsiteForPartner(baseInfo?.name || '合作机构')
+          services: this.getServicesForCategory(baseInfo?.category || '金融服務'),
+          cases: this.getCasesForCategory(baseInfo?.category || '金融服務'),
+          address: this.getAddressForCategory(baseInfo?.category || '金融服務'),
+          phone: this.getPhoneForCategory(baseInfo?.category || '金融服務'),
+          email: this.getEmailForPartner(baseInfo?.name || '合作機構'),
+          website: this.getWebsiteForPartner(baseInfo?.name || '合作機構')
         };
         
         this.partner = partner;
@@ -996,7 +996,7 @@ export default {
   }
 }
 
-/* 动画样式 */
+/* 動画樣式 */
 .animate-fade-in {
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
@@ -1032,7 +1032,7 @@ export default {
   animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
-/* 动画关键帧 */
+/* 動画關键帧 */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1104,7 +1104,7 @@ export default {
   }
 }
 
-/* 页面整体进入动画 */
+/* 頁面整体進入動画 */
 .content {
   animation: pageEnter 0.5s ease-out;
 }
@@ -1120,7 +1120,7 @@ export default {
   }
 }
 
-/* 增强现有元素的动画效果 */
+/* 增强現有元素的動画效果 */
 .partner-logo {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }

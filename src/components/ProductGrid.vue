@@ -26,10 +26,10 @@ export default {
     const products = [
       {
         id: 1,
-        name: '发票贷',
+        name: '發票贷',
         icon: 'fas fa-file-invoice-dollar',
         bgColor: 'rgba(0, 122, 255, 0.15)',
-        description: '基于发票的融资服务',
+        description: '基于發票的融資服務',
         route: '/invoice-loan'
       },
       {
@@ -37,23 +37,23 @@ export default {
         name: '订单贷',
         icon: 'fas fa-shopping-cart',
         bgColor: 'rgba(255, 149, 0, 0.15)',
-        description: '订单融资解决方案',
+        description: '订单融資解決方案',
         route: '/order-loan'
       },
       {
         id: 3,
-        name: '资产贷',
+        name: '資產贷',
         icon: 'fas fa-landmark',
         bgColor: 'rgba(52, 199, 89, 0.15)',
-        description: '资产抵押融资',
+        description: '資產抵押融資',
         route: '/asset-loan'
       },
       {
         id: 4,
-        name: '供应链金融',
+        name: '供應链金融',
         icon: 'fas fa-link',
         bgColor: 'rgba(88, 86, 214, 0.15)',
-        description: '供应链融资服务',
+        description: '供應链融資服務',
         route: '/supply-chain-finance'
       },
       {
@@ -69,7 +69,7 @@ export default {
         name: '信用担保',
         icon: 'fas fa-shield-alt',
         bgColor: 'rgba(175, 82, 222, 0.15)',
-        description: '信用担保服务',
+        description: '信用担保服務',
         route: '/credit-guarantee'
       }
     ]
@@ -77,7 +77,7 @@ export default {
     const navigateToProduct = (route, event) => {
       const item = event.currentTarget
 
-      // 添加点击动画
+      // 添加點击動画
       item.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
       item.style.opacity = '0.6'
       item.style.transform = 'translateY(-4px) scale(0.95)'
@@ -87,7 +87,7 @@ export default {
         item.style.opacity = '1'
         item.style.transform = 'translateY(-4px) scale(1.02)'
 
-        // 再延迟一点跳转页面
+        // 再延迟一點跳转頁面
         setTimeout(() => {
           router.push(route)
         }, 100)
@@ -109,7 +109,7 @@ export default {
   gap: 12px;
 }
 
-/* 弹出动画 */
+/* 弹出動画 */
 .bounce-in-card {
   opacity: 0;
   transform: scale(0.8) translateY(20px);
@@ -244,7 +244,7 @@ export default {
   transform: translateX(-4px);
 }
 
-/* 响应式调整 - 适应不同屏幕尺寸 */
+/* 响應式调整 - 适應不同屏幕尺寸 */
 @media (max-width: 1400px) {
   .product-grid {
     gap: 10px;

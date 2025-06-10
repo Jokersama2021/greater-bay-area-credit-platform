@@ -2,11 +2,11 @@
   <div class="credit-guarantee-container">
     <div v-if="loading" class="simple-loading">
       <div class="loading-spinner"></div>
-      <div class="loading-text">加载信用担保服务中...</div>
+      <div class="loading-text">加載信用担保服務中...</div>
     </div>
     
     <div v-else class="content">
-      <!-- 页面头部 -->
+      <!-- 頁面頭部 -->
       <div class="page-header">
         <div class="header-content">
           <div class="header-icon">
@@ -14,12 +14,12 @@
           </div>
           <div class="header-info">
             <h1 class="page-title">信用担保</h1>
-            <p class="page-subtitle">信用担保服务 - 增信助力，共创价值</p>
+            <p class="page-subtitle">信用担保服務 - 增信助力，共創价值</p>
           </div>
           <div class="header-stats">
             <div class="stat-item">
               <div class="stat-value">{{ guaranteeAmount }}亿</div>
-              <div class="stat-label">累计担保金额</div>
+              <div class="stat-label">累計担保金额</div>
             </div>
             <div class="stat-item">
               <div class="stat-value">{{ successRate }}%</div>
@@ -29,16 +29,16 @@
         </div>
       </div>
 
-      <!-- 担保产品 -->
+      <!-- 担保產品 -->
       <div class="guarantee-products-section">
-        <h2 class="section-title">担保产品</h2>
+        <h2 class="section-title">担保產品</h2>
         <div class="products-grid">
           <div class="product-card" v-for="product in guaranteeProducts" :key="product.id">
             <div class="product-header">
               <div class="product-icon">
                 <i :class="product.icon"></i>
               </div>
-              <div class="product-badge" v-if="product.hot">热门</div>
+              <div class="product-badge" v-if="product.hot">热門</div>
             </div>
             <h3 class="product-title">{{ product.title }}</h3>
             <p class="product-desc">{{ product.description }}</p>
@@ -57,9 +57,9 @@
         </div>
       </div>
 
-      <!-- 服务流程 */
+      <!-- 服務流程 */
       <div class="service-process-section">
-        <h2 class="section-title">服务流程</h2>
+        <h2 class="section-title">服務流程</h2>
         <div class="process-timeline">
           <div class="timeline-item" v-for="(step, index) in serviceSteps" :key="step.id">
             <div class="timeline-marker">
@@ -74,20 +74,20 @@
                   <span>{{ detail }}</span>
                 </div>
               </div>
-              <div class="step-time">预计时间：{{ step.timeframe }}</div>
+              <div class="step-time">预計時間：{{ step.timeframe }}</div>
             </div>
             <div class="timeline-connector" v-if="index < serviceSteps.length - 1"></div>
           </div>
         </div>
       </div>
 
-      <!-- 风险管控 -->
+      <!-- 風險管控 -->
       <div class="risk-management-section">
-        <h2 class="section-title">风险管控</h2>
+        <h2 class="section-title">風險管控</h2>
         <div class="risk-system-overview">
           <div class="overview-content">
-            <h3>全方位风险管控体系</h3>
-            <p>建立事前、事中、事后全流程风险管控机制，确保担保业务安全稳健运行</p>
+            <h3>全方位風險管控体系</h3>
+            <p>建立事前、事中、事后全流程風險管控機制，确保担保業務安全稳健运行</p>
           </div>
           <div class="risk-metrics">
             <div class="metric-item" v-for="metric in riskMetrics" :key="metric.id">
@@ -113,9 +113,9 @@
         </div>
       </div>
 
-      <!-- 合作机构 -->
+      <!-- 合作機構 -->
       <div class="partners-section">
-        <h2 class="section-title">合作机构</h2>
+        <h2 class="section-title">合作機構</h2>
         <div class="partners-showcase">
           <div class="partner-category" v-for="category in partnerCategories" :key="category.id">
             <h3 class="category-title">{{ category.title }}</h3>
@@ -174,11 +174,11 @@
         </button>
         <button class="secondary-btn" @click="riskAssessment">
           <i class="fas fa-chart-pie"></i>
-          风险评估
+          風險評估
         </button>
         <button class="secondary-btn" @click="consultExpert">
           <i class="fas fa-user-graduate"></i>
-          专家咨询
+          專家咨詢
         </button>
       </div>
     </div>
@@ -197,143 +197,143 @@ export default {
         {
           id: 1,
           icon: 'fas fa-handshake',
-          title: '融资担保',
-          description: '为企业银行贷款提供担保服务，解决融资难题',
+          title: '融資担保',
+          description: '為企業銀行贷款提供担保服務，解決融資难題',
           hot: true,
           features: [
             { label: '担保金额', value: '50万-5000万' },
             { label: '担保期限', value: '1-3年' },
             { label: '担保费率', value: '1.5%-3.0%' },
-            { label: '反担保方式', value: '灵活多样' }
+            { label: '反担保方式', value: '灵活多樣' }
           ],
-          advantages: ['快速审批', '费率优惠', '专业服务']
+          advantages: ['快速审批', '费率優惠', '專業服務']
         },
         {
           id: 2,
           icon: 'fas fa-file-invoice',
           title: '履约担保',
-          description: '为企业合同履约提供担保，增强商业信用',
+          description: '為企業合同履约提供担保，增强商業信用',
           hot: false,
           features: [
             { label: '担保金额', value: '10万-2000万' },
             { label: '担保期限', value: '按合同期限' },
             { label: '担保费率', value: '0.8%-2.0%' },
-            { label: '适用范围', value: '工程、贸易等' }
+            { label: '适用範围', value: '工程、贸易等' }
           ],
-          advantages: ['信用增级', '降低保证金', '提升竞争力']
+          advantages: ['信用增級', '降低保證金', '提升竞争力']
         },
         {
           id: 3,
           icon: 'fas fa-money-check-alt',
-          title: '投标担保',
-          description: '为企业投标提供担保，替代保证金缴纳',
+          title: '投標担保',
+          description: '為企業投標提供担保，替代保證金缴纳',
           hot: false,
           features: [
             { label: '担保金额', value: '5万-1000万' },
-            { label: '担保期限', value: '投标有效期' },
+            { label: '担保期限', value: '投標有效期' },
             { label: '担保费率', value: '0.5%-1.5%' },
-            { label: '出具时间', value: '1-2个工作日' }
+            { label: '出具時間', value: '1-2個工作日' }
           ],
-          advantages: ['资金释放', '快速出具', '全程服务']
+          advantages: ['資金释放', '快速出具', '全程服務']
         }
       ],
       serviceSteps: [
         {
           id: 1,
-          title: '咨询申请',
-          description: '客户咨询担保需求，提交申请材料',
-          details: ['需求分析', '方案设计', '材料清单'],
-          timeframe: '1个工作日'
+          title: '咨詢申请',
+          description: '客户咨詢担保需求，提交申请材料',
+          details: ['需求分析', '方案设計', '材料清单'],
+          timeframe: '1個工作日'
         },
         {
           id: 2,
           title: '尽职调查',
-          description: '对申请企业进行全面尽职调查',
-          details: ['实地调研', '财务分析', '风险评估'],
-          timeframe: '3-5个工作日'
+          description: '對申请企業進行全面尽职调查',
+          details: ['實地调研', '財務分析', '風險評估'],
+          timeframe: '3-5個工作日'
         },
         {
           id: 3,
-          title: '审批决策',
-          description: '担保委员会审议并作出担保决策',
-          details: ['材料审核', '集体决策', '条件确定'],
-          timeframe: '2-3个工作日'
+          title: '审批決策',
+          description: '担保委员會审议并作出担保決策',
+          details: ['材料审核', '集体決策', '条件确定'],
+          timeframe: '2-3個工作日'
         },
         {
           id: 4,
           title: '签约放款',
-          description: '签署担保合同，协助客户获得融资',
-          details: ['合同签署', '反担保落实', '放款协助'],
-          timeframe: '1-2个工作日'
+          description: '签署担保合同，协助客户获得融資',
+          details: ['合同签署', '反担保落實', '放款协助'],
+          timeframe: '1-2個工作日'
         }
       ],
       riskMetrics: [
         { id: 1, value: '0.8%', label: '代偿率' },
-        { id: 2, value: '95%', label: '风险识别准确率' },
-        { id: 3, value: '24小时', label: '风险响应时间' },
-        { id: 4, value: '100%', label: '合规覆盖率' }
+        { id: 2, value: '95%', label: '風險識別準确率' },
+        { id: 3, value: '24小時', label: '風險响應時間' },
+        { id: 4, value: '100%', label: '合規覆盖率' }
       ],
       riskMeasures: [
         {
           id: 1,
           icon: 'fas fa-search',
-          title: '事前风控',
-          description: '建立完善的准入标准和评估体系',
-          methods: ['客户准入标准', '信用评级体系', '担保决策机制']
+          title: '事前風控',
+          description: '建立完善的準入標準和評估体系',
+          methods: ['客户準入標準', '信用評級体系', '担保決策機制']
         },
         {
           id: 2,
           icon: 'fas fa-eye',
-          title: '事中监控',
-          description: '对担保项目进行全程跟踪监控',
-          methods: ['定期检查', '财务监控', '预警机制']
+          title: '事中監控',
+          description: '對担保项目進行全程跟踪監控',
+          methods: ['定期检查', '財務監控', '预警機制']
         },
         {
           id: 3,
           icon: 'fas fa-shield-alt',
-          title: '事后处置',
-          description: '建立高效的风险处置和代偿机制',
-          methods: ['应急预案', '代偿处置', '追偿回收']
+          title: '事后處置',
+          description: '建立高效的風險處置和代偿機制',
+          methods: ['應急预案', '代偿處置', '追偿回收']
         }
       ],
       partnerCategories: [
         {
           id: 1,
-          title: '银行机构',
+          title: '銀行機構',
           partners: [
             {
               id: 1,
               icon: 'fas fa-university',
-              name: '中国银行',
-              description: '国有大型商业银行',
-              scope: ['融资担保', '票据担保', '履约担保']
+              name: '中國銀行',
+              description: '國有大型商業銀行',
+              scope: ['融資担保', '票據担保', '履约担保']
             },
             {
               id: 2,
               icon: 'fas fa-university',
-              name: '招商银行',
-              description: '股份制商业银行',
-              scope: ['中小企业贷款', '供应链金融', '贸易融资']
+              name: '招商銀行',
+              description: '股份制商業銀行',
+              scope: ['中小企業贷款', '供應链金融', '贸易融資']
             }
           ]
         },
         {
           id: 2,
-          title: '政府机构',
+          title: '政府機構',
           partners: [
             {
               id: 3,
               icon: 'fas fa-building',
               name: '市金融局',
-              description: '地方金融监管部门',
-              scope: ['政策支持', '风险补偿', '业务指导']
+              description: '地方金融監管部門',
+              scope: ['政策支持', '風險补偿', '業務指导']
             },
             {
               id: 4,
               icon: 'fas fa-building',
-              name: '中小企业局',
-              description: '中小企业服务机构',
-              scope: ['企业推荐', '政策扶持', '服务对接']
+              name: '中小企業局',
+              description: '中小企業服務機構',
+              scope: ['企業推荐', '政策扶持', '服務對接']
             }
           ]
         }
@@ -346,25 +346,25 @@ export default {
             {
               id: 1,
               icon: 'fas fa-building',
-              title: '企业资质',
-              description: '申请企业应具备的基本资质要求',
+              title: '企業資质',
+              description: '申请企業應具備的基本資质要求',
               criteria: [
-                '依法设立并有效存续的企业法人',
-                '具有固定的经营场所',
-                '经营状况良好，财务状况稳定',
-                '无重大违法违规记录'
+                '依法设立并有效存续的企業法人',
+                '具有固定的經营场所',
+                '經营状况良好，財務状况稳定',
+                '無重大违法违規記录'
               ]
             },
             {
               id: 2,
               icon: 'fas fa-chart-line',
-              title: '经营状况',
-              description: '企业经营和财务状况要求',
+              title: '經营状况',
+              description: '企業經营和財務状况要求',
               criteria: [
-                '成立时间满2年以上',
-                '年营业收入1000万元以上',
-                '资产负债率不超过70%',
-                '现金流状况良好'
+                '成立時間滿2年以上',
+                '年营業收入1000万元以上',
+                '資產负债率不超過70%',
+                '現金流状况良好'
               ]
             }
           ]
@@ -379,9 +379,9 @@ export default {
               title: '反担保措施',
               description: '提供充分有效的反担保措施',
               criteria: [
-                '房产抵押或设备抵押',
-                '股东个人连带责任保证',
-                '第三方保证或质押',
+                '房產抵押或设備抵押',
+                '股東個人連带责任保證',
+                '第三方保證或质押',
                 '其他有效担保方式'
               ]
             },
@@ -391,10 +391,10 @@ export default {
               title: '担保比例',
               description: '合理的担保金额和比例',
               criteria: [
-                '担保金额与企业规模匹配',
-                '担保比例不超过净资产3倍',
+                '担保金额与企業規模匹配',
+                '担保比例不超過净資產3倍',
                 '单笔担保金额上限5000万',
-                '集中度风险控制'
+                '集中度風險控制'
               ]
             }
           ]
@@ -417,10 +417,10 @@ export default {
       this.$router.push('/credit-guarantee/apply')
     },
     riskAssessment() {
-      alert('风险评估功能开发中...')
+      alert('風險評估功能開發中...')
     },
     consultExpert() {
-      alert('专家咨询功能开发中...')
+      alert('專家咨詢功能開發中...')
     }
   }
 }
@@ -467,7 +467,7 @@ export default {
   margin: 0 auto;
 }
 
-/* 页面头部样式 */
+/* 頁面頭部樣式 */
 .page-header {
   background: linear-gradient(135deg, rgba(128, 0, 128, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%);
   border-radius: 20px;
@@ -535,7 +535,7 @@ export default {
   margin-top: 0.25rem;
 }
 
-/* 通用样式 */
+/* 通用樣式 */
 .section-title {
   font-size: 1.8rem;
   font-weight: 600;
@@ -543,7 +543,7 @@ export default {
   color: white;
 }
 
-/* 担保产品样式 */
+/* 担保產品樣式 */
 .guarantee-products-section {
   margin-bottom: 3rem;
 }
@@ -645,7 +645,7 @@ export default {
   font-weight: 600;
 }
 
-/* 服务流程样式 */
+/* 服務流程樣式 */
 .service-process-section {
   margin-bottom: 3rem;
 }
@@ -739,7 +739,7 @@ export default {
   background: linear-gradient(180deg, #800080, rgba(128, 0, 128, 0.3));
 }
 
-/* 风险管控样式 */
+/* 風險管控樣式 */
 .risk-management-section {
   margin-bottom: 3rem;
 }
@@ -852,7 +852,7 @@ export default {
   color: #800080;
 }
 
-/* 合作机构样式 */
+/* 合作機構樣式 */
 .partners-section {
   margin-bottom: 3rem;
 }
@@ -942,7 +942,7 @@ export default {
   font-weight: 600;
 }
 
-/* 申请条件样式 */
+/* 申请条件樣式 */
 .application-requirements-section {
   margin-bottom: 3rem;
 }
@@ -1030,7 +1030,7 @@ export default {
   font-size: 0.6rem;
 }
 
-/* 操作按钮样式 */
+/* 操作按钮樣式 */
 .action-section {
   display: flex;
   gap: 1rem;
@@ -1073,7 +1073,7 @@ export default {
   transform: translateY(-2px);
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .credit-guarantee-container {
     padding: 1rem;

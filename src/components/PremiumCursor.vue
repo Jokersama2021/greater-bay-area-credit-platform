@@ -1,6 +1,6 @@
 <template>
   <div class="premium-cursor" v-if="isVisible">
-    <!-- 简化的主光标 -->
+    <!-- 简化的主光標 -->
     <div
       class="cursor-main"
       :style="mainCursorStyle"
@@ -24,7 +24,7 @@ export default {
 
     let animationId = null
 
-    // 简化的主光标样式
+    // 简化的主光標樣式
     const mainCursorStyle = computed(() => {
       const scale = isPressed.value ? 0.8 : isHovering.value ? 1.2 : 1
 
@@ -36,12 +36,12 @@ export default {
       }
     })
 
-    // 线性插值函数
+    // 線性插值函數
     const lerp = (start, end, factor) => start + (end - start) * factor
 
-    // 简化的光标更新
+    // 简化的光標更新
     const updateCursor = () => {
-      // 平滑主光标跟随
+      // 平滑主光標跟随
       smoothPos.value.x = lerp(smoothPos.value.x, mousePos.value.x, 0.15)
       smoothPos.value.y = lerp(smoothPos.value.y, mousePos.value.y, 0.15)
 
@@ -50,35 +50,35 @@ export default {
 
 
 
-    // 简化的鼠标移动处理
+    // 简化的鼠標移動處理
     const handleMouseMove = (e) => {
       mousePos.value = { x: e.clientX, y: e.clientY }
       isVisible.value = true
     }
 
-    // 鼠标按下
+    // 鼠標按下
     const handleMouseDown = () => {
       isPressed.value = true
     }
 
-    // 鼠标释放
+    // 鼠標释放
     const handleMouseUp = () => {
       isPressed.value = false
     }
 
-    // 鼠标进入元素
+    // 鼠標進入元素
     const handleMouseEnter = (e) => {
       if (e.target.matches('button, a, [role="button"], .clickable')) {
         isHovering.value = true
       }
     }
 
-    // 鼠标离开元素
+    // 鼠標離開元素
     const handleMouseLeave = () => {
       isHovering.value = false
     }
 
-    // 鼠标离开窗口
+    // 鼠標離開窗口
     const handleMouseLeave2 = () => {
       isVisible.value = false
     }
@@ -129,7 +129,7 @@ export default {
   mix-blend-mode: difference;
 }
 
-/* 简化的主光标 */
+/* 简化的主光標 */
 .cursor-main {
   position: fixed;
   width: 20px;
@@ -150,7 +150,7 @@ export default {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
-/* 响应式隐藏 */
+/* 响應式隐藏 */
 @media (max-width: 768px) {
   .premium-cursor {
     display: none;

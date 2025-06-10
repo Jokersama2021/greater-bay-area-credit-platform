@@ -36,8 +36,8 @@ export default {
     const records = ref([
       {
         id: 1,
-        title: '香港汇丰银行信用评估',
-        type: '信用评估',
+        title: '香港汇丰銀行信用評估',
+        type: '信用評估',
         time: '2025-03-31 14:30',
         status: 'completed',
         statusText: '已完成',
@@ -48,11 +48,11 @@ export default {
       },
       {
         id: 2,
-        title: '澳门中银跨境融资',
-        type: '融资服务',
+        title: '澳門中銀跨境融資',
+        type: '融資服務',
         time: '2025-03-30 16:45',
         status: 'processing',
-        statusText: '处理中',
+        statusText: '處理中',
         icon: 'fas fa-sync',
         color: '#007AFF',
         amount: '¥5,800,000',
@@ -61,7 +61,7 @@ export default {
       {
         id: 3,
         title: '深圳工行授信申请',
-        type: '授信服务',
+        type: '授信服務',
         time: '2025-03-29 10:15',
         status: 'completed',
         statusText: '已完成',
@@ -72,11 +72,11 @@ export default {
       },
       {
         id: 4,
-        title: '广州农行风险评估',
-        type: '风险评估',
+        title: '廣州农行風險評估',
+        type: '風險評估',
         time: '2025-03-28 09:20',
         status: 'pending',
-        statusText: '待处理',
+        statusText: '待處理',
         icon: 'fas fa-clock',
         color: '#FF9500',
         amount: '¥1,800,000',
@@ -84,8 +84,8 @@ export default {
       },
       {
         id: 5,
-        title: '珠海建行贸易融资',
-        type: '贸易融资',
+        title: '珠海建行贸易融資',
+        type: '贸易融資',
         time: '2025-03-27 15:30',
         status: 'completed',
         statusText: '已完成',
@@ -315,7 +315,7 @@ export default {
   }
 }
 
-/* 响应式设计 */
+/* 响應式设計 */
 @media (max-width: 768px) {
   .record-item {
     padding: 12px;

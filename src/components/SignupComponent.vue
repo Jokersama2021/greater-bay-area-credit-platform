@@ -5,7 +5,7 @@
         <form @submit.prevent="signup">
           <input type="text" v-model="signupDetails.username" placeholder="用户名" required>
           <input type="email" v-model="signupDetails.email" placeholder="邮箱" required>
-          <input type="password" v-model="signupDetails.password" placeholder="密码" required>
+          <input type="password" v-model="signupDetails.password" placeholder="密碼" required>
           <button type="submit">注册</button>
         </form>
       </div>

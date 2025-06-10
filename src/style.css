@@ -1,4 +1,4 @@
-/* 引入页面动画样式 */
+/* 引入頁面動画樣式 */
 @import './styles/page-animations.css';
 
 @tailwind base;
@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 :root {
-  /* 主色调 - 更现代的蓝紫色系 */
+  /* 主色调 - 更現代的蓝紫色系 */
   --primary-color: #6366f1;
   --primary-light: #818cf8;
   --primary-dark: #4f46e5;
@@ -16,12 +16,12 @@
   --warning-color: #f59e0b;
   --error-color: #ef4444;
 
-  /* 背景色 - 更深更统一 */
+  /* 背景色 - 更深更統一 */
   --background-color: #0a0f1c;
   --background-secondary: #0f1419;
   --background-tertiary: #1a1f2e;
 
-  /* 统一卡片背景色 - 更暗更高级 */
+  /* 統一卡片背景色 - 更暗更高級 */
   --card-background: rgba(6, 12, 25, 0.9);
   --card-background-hover: rgba(8, 16, 30, 0.95);
   --card-border: rgba(255, 255, 255, 0.02);
@@ -34,18 +34,18 @@
   --text-dim: rgba(248, 250, 252, 0.6);
   --text-muted: rgba(248, 250, 252, 0.4);
 
-  /* 边框和分割线 */
+  /* 边框和分割線 */
   --border-color: rgba(255, 255, 255, 0.08);
   --border-light: rgba(255, 255, 255, 0.03);
 
-  /* 高级阴影系统 */
+  /* 高級阴影系統 */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.2), 0 2px 8px -2px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 25px -5px rgba(0, 0, 0, 0.3), 0 4px 12px -4px rgba(0, 0, 0, 0.15);
   --shadow-xl: 0 20px 40px -8px rgba(0, 0, 0, 0.4), 0 8px 20px -6px rgba(0, 0, 0, 0.2);
   --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15), 0 0 40px rgba(99, 102, 241, 0.1);
 
-  /* 高级渐变系统 */
+  /* 高級渐变系統 */
   --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color));
   --gradient-success: linear-gradient(135deg, var(--success-color), var(--accent-color));
@@ -53,7 +53,7 @@
   --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
   --gradient-border: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
 
-  /* 动画缓动函数 */
+  /* 動画缓動函數 */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -145,7 +145,7 @@ button {
   letter-spacing: 0.05em;
 }
 
-/* 滚动条样式 */
+/* 滚動条樣式 */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -165,7 +165,7 @@ button {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* 过渡动画 */
+/* 過渡動画 */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -184,7 +184,7 @@ button {
   border-radius: 12px;
 }
 
-/* 现代卡片样式 - 高级版本 */
+/* 現代卡片樣式 - 高級版本 */
 .modern-card {
   background: var(--card-background);
   backdrop-filter: blur(24px);
@@ -192,7 +192,7 @@ button {
   border: 1px solid var(--card-border);
   border-radius: 20px;
   box-shadow: var(--shadow-lg);
-  transition: all 0.3s var(--ease-out-expo); /* 从0.6s减少到0.3s */
+  transition: all 0.3s var(--ease-out-expo); /* 從0.6s减少到0.3s */
   position: relative;
   overflow: hidden;
   padding: 1.5rem;
@@ -207,7 +207,7 @@ button {
   bottom: 0;
   background: var(--gradient-card);
   opacity: 0;
-  transition: opacity 0.3s var(--ease-out-expo); /* 从0.6s减少到0.3s */
+  transition: opacity 0.3s var(--ease-out-expo); /* 從0.6s减少到0.3s */
   pointer-events: none;
 }
 
@@ -238,7 +238,7 @@ button {
   color: transparent;
 }
 
-/* 现代按钮 */
+/* 現代按钮 */
 .btn-primary {
   background: var(--gradient-primary);
   color: white;
@@ -336,7 +336,7 @@ button {
   -webkit-text-fill-color: transparent;
 }
 
-/* 添加加载动画 */
+/* 添加加載動画 */
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -363,25 +363,25 @@ button {
   to { transform: rotate(360deg); }
 }
 
-/* 移除页面过渡动画 - 瞬间切换 */
+/* 移除頁面過渡動画 - 瞬間切换 */
 .page-enter-active,
 .page-leave-active {
-  transition: none; /* 移除过渡动画 */
+  transition: none; /* 移除過渡動画 */
 }
 
 .page-enter-from {
-  opacity: 1; /* 直接显示 */
+  opacity: 1; /* 直接顯示 */
   transform: none;
   filter: none;
 }
 
 .page-leave-to {
-  opacity: 1; /* 直接显示 */
+  opacity: 1; /* 直接顯示 */
   transform: none;
   filter: none;
 }
 
-/* 高级动画关键帧 */
+/* 高級動画關键帧 */
 @keyframes slideInUp {
   from {
     opacity: 0;
@@ -453,7 +453,7 @@ button {
   }
 }
 
-/* 动画工具类 */
+/* 動画工具类 */
 .animate-slide-up {
   animation: slideInUp 0.8s var(--ease-out-expo) forwards;
 }

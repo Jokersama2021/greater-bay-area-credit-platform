@@ -11,7 +11,7 @@
     </div>
     
     <div class="compact-content">
-      <!-- 企业基本信息 -->
+      <!-- 企業基本信息 -->
       <div class="enterprise-basic">
         <div class="enterprise-name">
           <div class="company-icon">🏢</div>
@@ -22,13 +22,13 @@
         </div>
       </div>
       
-      <!-- 关键指标网格 -->
+      <!-- 關键指標網格 -->
       <div class="metrics-grid">
         <div class="metric-card">
           <div class="metric-icon">⭐</div>
           <div class="metric-content">
             <div class="metric-value">{{ currentEnterprise.creditScore }}</div>
-            <div class="metric-label">信用评分</div>
+            <div class="metric-label">信用評分</div>
             <div class="metric-badge success">{{ currentEnterprise.creditLevel }}</div>
           </div>
         </div>
@@ -37,7 +37,7 @@
           <div class="metric-icon">📅</div>
           <div class="metric-content">
             <div class="metric-value">{{ currentEnterprise.operatingYears }}</div>
-            <div class="metric-label">经营年限</div>
+            <div class="metric-label">經营年限</div>
           </div>
         </div>
         
@@ -45,7 +45,7 @@
           <div class="metric-icon">🏭</div>
           <div class="metric-content">
             <div class="metric-value">{{ currentEnterprise.scale }}</div>
-            <div class="metric-label">企业规模</div>
+            <div class="metric-label">企業規模</div>
           </div>
         </div>
         
@@ -53,7 +53,7 @@
           <div class="metric-icon">🌐</div>
           <div class="metric-content">
             <div class="metric-value">{{ currentEnterprise.crossBorderStatus }}</div>
-            <div class="metric-label">跨境业务</div>
+            <div class="metric-label">跨境業務</div>
             <div class="status-indicator active"></div>
           </div>
         </div>
@@ -61,7 +61,7 @@
         <div class="metric-card full-width">
           <div class="metric-icon">🛡️</div>
           <div class="metric-content">
-            <div class="metric-label">合规记录</div>
+            <div class="metric-label">合規記录</div>
             <div class="compliance-status">
               <div class="metric-badge success">{{ currentEnterprise.complianceRecord }}</div>
             </div>
@@ -83,8 +83,8 @@ export default {
         creditScore: '880',
         creditLevel: 'AAA',
         operatingYears: '30',
-        scale: '大型企业',
-        crossBorderStatus: '活跃',
+        scale: '大型企業',
+        crossBorderStatus: '活躍',
         complianceRecord: '良好'
       }
     }

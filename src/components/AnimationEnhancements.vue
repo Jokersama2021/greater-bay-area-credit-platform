@@ -1,9 +1,9 @@
 <template>
   <div class="animation-enhancements">
-    <!-- 高级加载画面 -->
+    <!-- 高級加載画面 -->
     <transition name="page-load" appear>
       <div class="premium-loading-overlay" v-if="isLoading">
-        <!-- 动态背景 -->
+        <!-- 動态背景 -->
         <div class="loading-background">
           <div class="bg-gradient bg-gradient-1"></div>
           <div class="bg-gradient bg-gradient-2"></div>
@@ -28,7 +28,7 @@
                   <path d="M60 60 L80 40 L80 80 L60 100 Z" fill="url(#diamondGradient3)" opacity="0.8"/>
                   <!-- 中心核心 -->
                   <circle cx="60" cy="60" r="8" fill="url(#coreGradient)"/>
-                  <!-- 能量线条 -->
+                  <!-- 能量線条 -->
                   <path d="M60 10 Q70 25 60 40" stroke="url(#energyGradient)" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
                   <path d="M110 60 Q95 70 80 60" stroke="url(#energyGradient)" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
                   <path d="M60 110 Q50 95 60 80" stroke="url(#energyGradient)" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
@@ -73,10 +73,10 @@
                 {{ char }}
               </span>
             </h1>
-            <p class="loading-subtitle">跨境征信服务平台</p>
+            <p class="loading-subtitle">跨境徵信服務平臺</p>
           </div>
 
-          <!-- 高级进度条 -->
+          <!-- 高級進度条 -->
           <div class="progress-container">
             <div class="progress-track">
               <div class="progress-fill" :style="{ width: progress + '%' }"></div>
@@ -85,7 +85,7 @@
             <div class="progress-text">{{ Math.round(progress) }}%</div>
           </div>
 
-          <!-- 加载状态 -->
+          <!-- 加載状态 -->
           <div class="loading-status">
             <div class="status-dots">
               <span class="dot" v-for="n in 3" :key="n"></span>
@@ -96,12 +96,12 @@
       </div>
     </transition>
 
-    <!-- 浮动粒子效果 -->
+    <!-- 浮動粒子效果 -->
     <div class="floating-particles">
       <div v-for="i in 20" :key="i" class="particle" :style="getParticleStyle(i)"></div>
     </div>
 
-    <!-- 数据流动效果 -->
+    <!-- 數據流動效果 -->
     <div class="data-streams">
       <div class="stream stream-1"></div>
       <div class="stream stream-2"></div>
@@ -118,45 +118,45 @@ export default {
   setup() {
     const isLoading = ref(true)
     const progress = ref(0)
-    const loadingText = ref('正在初始化系统...')
+    const loadingText = ref('正在初始化系統...')
 
-    // 标题字符数组
-    const titleChars = computed(() => '粤港澳大湾区'.split(''))
+    // 標題字符數组
+    const titleChars = computed(() => '粵港澳大灣區'.split(''))
 
-    // 加载阶段文本
+    // 加載阶段文本
     const loadingStages = [
-      '正在初始化系统...',
-      '正在加载数据模块...',
-      '正在连接区块链网络...',
-      '正在验证安全证书...',
-      '正在同步最新数据...',
-      '系统准备就绪'
+      '正在初始化系統...',
+      '正在加載數據模块...',
+      '正在連接區块链網絡...',
+      '正在验證安全證書...',
+      '正在同步最新數據...',
+      '系統準備就緒'
     ]
 
     onMounted(() => {
-      // 更快的加载动画
+      // 更快的加載動画
       let currentStage = 0
       const progressInterval = setInterval(() => {
-        progress.value += Math.random() * 25 + 15 // 增加进度增量
+        progress.value += Math.random() * 25 + 15 // 增加進度增量
 
         if (progress.value >= 100) {
           progress.value = 100
           loadingText.value = loadingStages[5]
           clearInterval(progressInterval)
 
-          // 缩短延迟时间
+          // 缩短延迟時間
           setTimeout(() => {
             isLoading.value = false
-          }, 200) // 从500ms减少到200ms
+          }, 200) // 從500ms减少到200ms
         } else {
-          // 更新加载文本
+          // 更新加載文本
           const stageIndex = Math.floor((progress.value / 100) * (loadingStages.length - 1))
           if (stageIndex !== currentStage && stageIndex < loadingStages.length - 1) {
             currentStage = stageIndex
             loadingText.value = loadingStages[stageIndex]
           }
         }
-      }, 100) // 从200ms减少到100ms，更快的更新频率
+      }, 100) // 從200ms减少到100ms，更快的更新频率
     })
 
     const getParticleStyle = () => {
@@ -198,7 +198,7 @@ export default {
   z-index: 9999;
 }
 
-/* 高级加载画面 */
+/* 高級加載画面 */
 .premium-loading-overlay {
   position: fixed;
   top: 0;
@@ -214,7 +214,7 @@ export default {
   overflow: hidden;
 }
 
-/* 动态背景 */
+/* 動态背景 */
 .loading-background {
   position: absolute;
   width: 100%;
@@ -252,7 +252,7 @@ export default {
   animation: gradientMove3 12s ease-in-out infinite;
 }
 
-/* 加载粒子 */
+/* 加載粒子 */
 .loading-particles {
   position: absolute;
   width: 100%;
@@ -335,7 +335,7 @@ export default {
   animation: subtitleFade 2s ease-in-out infinite alternate;
 }
 
-/* 高级进度条 */
+/* 高級進度条 */
 .progress-container {
   margin-bottom: 2rem;
 }
@@ -380,7 +380,7 @@ export default {
   font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
 }
 
-/* 加载状态 */
+/* 加載状态 */
 .loading-status {
   display: flex;
   align-items: center;
@@ -411,7 +411,7 @@ export default {
   font-weight: 500;
 }
 
-/* 浮动粒子效果 */
+/* 浮動粒子效果 */
 .floating-particles {
   position: fixed;
   top: 0;
@@ -430,7 +430,7 @@ export default {
   animation: floatUp linear infinite;
 }
 
-/* 数据流动效果 */
+/* 數據流動效果 */
 .data-streams {
   position: fixed;
   top: 0;
@@ -467,7 +467,7 @@ export default {
   animation-delay: 6s;
 }
 
-/* 动画关键帧 */
+/* 動画關键帧 */
 @keyframes logo3DRotate {
   0% {
     transform: rotateY(0deg) rotateX(0deg) scale(1);
@@ -600,7 +600,7 @@ export default {
   }
 }
 
-/* 页面过渡动画 */
+/* 頁面過渡動画 */
 .page-load-enter-active {
   transition: all 0.5s ease-out;
 }
@@ -619,7 +619,7 @@ export default {
   transform: scale(0.9);
 }
 
-/* 响应式适配 */
+/* 响應式适配 */
 @media (max-width: 1024px) {
   .loading-content {
     padding: 1.5rem;
@@ -668,7 +668,7 @@ export default {
   }
 
   .loading-particles {
-    display: none; /* 移动端隐藏粒子以提升性能 */
+    display: none; /* 移動端隐藏粒子以提升性能 */
   }
 }
 

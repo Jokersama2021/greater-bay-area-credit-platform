@@ -33,7 +33,7 @@ const routes = [
     name: 'PartnerDetail',
     component: () => import('../views/PartnerDetail.vue')
   },
-  // 金融服务页面路由
+  // 金融服務頁面路由
   {
     path: '/invoice-loan',
     name: 'InvoiceLoan',
@@ -64,7 +64,7 @@ const routes = [
     name: 'CreditGuarantee',
     component: () => import('../views/CreditGuarantee.vue')
   },
-  // 报告企业列表路由
+  // 報告企業列表路由
   {
     path: '/reports/:type',
     name: 'ReportEnterpriseList',
@@ -77,17 +77,17 @@ const router = createRouter({
   routes
 })
 
-// 简化页面过渡效果 - 移除黑屏过渡
+// 简化頁面過渡效果 - 移除黑屏過渡
 router.beforeEach((to, from, next) => {
-  // 直接导航，不使用过渡动画
+  // 直接导航，不使用過渡動画
   next()
 })
 
 router.afterEach((to, from) => {
-  // 页面切换完成后的处理
+  // 頁面切换完成后的處理
   if (from.name && to.name !== from.name) {
-    // 可以在这里添加页面切换完成后的逻辑
-    console.log(`页面从 ${from.name} 切换到 ${to.name}`)
+    // 可以在這里添加頁面切换完成后的逻辑
+    console.log(`頁面從 ${from.name} 切换到 ${to.name}`)
   }
 })
 

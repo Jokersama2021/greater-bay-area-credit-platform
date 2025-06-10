@@ -5,7 +5,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810001,
-        "name": "中西区",
+        "name": "中西區",
         "center": [
           114.1543731,
           22.28198083
@@ -331,7 +331,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810002,
-        "name": "湾仔区",
+        "name": "灣仔區",
         "center": [
           114.1829153,
           22.27638889
@@ -565,7 +565,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810003,
-        "name": "东区",
+        "name": "東區",
         "center": [
           114.2260031,
           22.27969306
@@ -951,7 +951,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810004,
-        "name": "南区",
+        "name": "南區",
         "center": [
           114.1600117,
           22.24589667
@@ -2081,7 +2081,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810005,
-        "name": "油尖旺区",
+        "name": "油尖旺區",
         "center": [
           114.1733317,
           22.31170389
@@ -2251,7 +2251,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810006,
-        "name": "深水埗区",
+        "name": "深水埗區",
         "center": [
           114.1632417,
           22.33385417
@@ -2557,7 +2557,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810007,
-        "name": "九龙城区",
+        "name": "九龍城區",
         "center": [
           114.1928467,
           22.31251
@@ -2843,7 +2843,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810008,
-        "name": "黄大仙区",
+        "name": "黄大仙區",
         "center": [
           114.2038856,
           22.33632056
@@ -3121,7 +3121,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810009,
-        "name": "观塘区",
+        "name": "观塘區",
         "center": [
           114.2140542,
           22.32083778
@@ -3419,7 +3419,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810010,
-        "name": "荃湾区",
+        "name": "荃灣區",
         "center": [
           114.1210792,
           22.36830667
@@ -4093,7 +4093,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810011,
-        "name": "屯门区",
+        "name": "屯門區",
         "center": [
           113.9765742,
           22.39384417
@@ -5103,7 +5103,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810012,
-        "name": "元朗区",
+        "name": "元朗區",
         "center": [
           114.0324381,
           22.44142833
@@ -6041,7 +6041,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810013,
-        "name": "北区",
+        "name": "北區",
         "center": [
           114.1473639,
           22.49610389
@@ -9495,7 +9495,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810014,
-        "name": "大埔区",
+        "name": "大埔區",
         "center": [
           114.1717431,
           22.44565306
@@ -12349,7 +12349,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810015,
-        "name": "西贡区",
+        "name": "西贡區",
         "center": [
           114.264645,
           22.31421306
@@ -17887,7 +17887,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810016,
-        "name": "沙田区",
+        "name": "沙田區",
         "center": [
           114.1953653,
           22.37953167
@@ -18597,7 +18597,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810017,
-        "name": "葵青区",
+        "name": "葵青區",
         "center": [
           114.1393194,
           22.36387667
@@ -19075,7 +19075,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 810018,
-        "name": "离岛区",
+        "name": "離岛區",
         "center": [
           113.94612,
           22.28640778
@@ -23417,7 +23417,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 820001,
-        "name": "花地玛堂区",
+        "name": "花地玛堂區",
         "center": [
           113.5528956,
           22.20787
@@ -23787,7 +23787,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 820002,
-        "name": "花王堂区",
+        "name": "花王堂區",
         "center": [
           113.5489608,
           22.1992075
@@ -23973,7 +23973,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 820003,
-        "name": "望德堂区",
+        "name": "望德堂區",
         "center": [
           113.5501828,
           22.19372083
@@ -24171,7 +24171,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 820004,
-        "name": "大堂区",
+        "name": "大堂區",
         "center": [
           113.5536475,
           22.18853944
@@ -24521,7 +24521,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 820005,
-        "name": "风顺堂区",
+        "name": "風顺堂區",
         "center": [
           113.5419278,
           22.18736806
@@ -24731,7 +24731,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 820006,
-        "name": "嘉模堂区",
+        "name": "嘉模堂區",
         "center": [
           113.5587044,
           22.15375944
@@ -25025,7 +25025,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 820007,
-        "name": "路凼填海区",
+        "name": "路凼填海區",
         "center": [
           113.5695992,
           22.13663
@@ -25407,7 +25407,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 820008,
-        "name": "圣方济各堂区",
+        "name": "圣方济各堂區",
         "center": [
           113.5599542,
           22.12348639
@@ -25609,7 +25609,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440103,
-        "name": "荔湾区",
+        "name": "荔灣區",
         "center": [
           113.243038,
           23.124943
@@ -25948,7 +25948,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440104,
-        "name": "越秀区",
+        "name": "越秀區",
         "center": [
           113.280714,
           23.125624
@@ -26259,7 +26259,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440105,
-        "name": "海珠区",
+        "name": "海珠區",
         "center": [
           113.262008,
           23.103131
@@ -26494,7 +26494,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440106,
-        "name": "天河区",
+        "name": "天河區",
         "center": [
           113.335367,
           23.13559
@@ -26949,7 +26949,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440111,
-        "name": "白云区",
+        "name": "白雲區",
         "center": [
           113.262831,
           23.162281
@@ -28360,7 +28360,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440112,
-        "name": "黄埔区",
+        "name": "黄埔區",
         "center": [
           113.450761,
           23.103239
@@ -29695,7 +29695,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440113,
-        "name": "番禺区",
+        "name": "番禺區",
         "center": [
           113.364619,
           22.938582
@@ -30250,7 +30250,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440114,
-        "name": "花都区",
+        "name": "花都區",
         "center": [
           113.211184,
           23.39205
@@ -31925,7 +31925,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440115,
-        "name": "南沙区",
+        "name": "南沙區",
         "center": [
           113.53738,
           22.794531
@@ -32444,7 +32444,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440117,
-        "name": "从化区",
+        "name": "從化區",
         "center": [
           113.587386,
           23.545283
@@ -34759,7 +34759,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440118,
-        "name": "增城区",
+        "name": "增城區",
         "center": [
           113.829579,
           23.290497
@@ -36550,7 +36550,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440303,
-        "name": "罗湖区",
+        "name": "罗湖區",
         "center": [
           114.123885,
           22.555341
@@ -37301,7 +37301,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440304,
-        "name": "福田区",
+        "name": "福田區",
         "center": [
           114.05096,
           22.541009
@@ -37780,7 +37780,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440305,
-        "name": "南山区",
+        "name": "南山區",
         "center": [
           113.92943,
           22.531221
@@ -38763,7 +38763,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440306,
-        "name": "宝安区",
+        "name": "宝安區",
         "center": [
           113.828671,
           22.754741
@@ -40866,7 +40866,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440307,
-        "name": "龙岗区",
+        "name": "龍岗區",
         "center": [
           114.251372,
           22.721511
@@ -44117,7 +44117,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440308,
-        "name": "盐田区",
+        "name": "盐田區",
         "center": [
           114.235366,
           22.555069
@@ -44724,7 +44724,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440309,
-        "name": "龙华区",
+        "name": "龍華區",
         "center": [
           114.044346,
           22.691963
@@ -46107,7 +46107,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440310,
-        "name": "坪山区",
+        "name": "坪山區",
         "center": [
           114.338441,
           22.69423
@@ -47298,7 +47298,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440311,
-        "name": "光明区",
+        "name": "光明區",
         "center": [
           113.935895,
           22.748816
@@ -48529,7 +48529,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440402,
-        "name": "香洲区",
+        "name": "香洲區",
         "center": [
           113.55027,
           22.271249
@@ -54708,7 +54708,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440403,
-        "name": "斗门区",
+        "name": "斗門區",
         "center": [
           113.297739,
           22.209117
@@ -55667,7 +55667,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440404,
-        "name": "金湾区",
+        "name": "金灣區",
         "center": [
           113.345071,
           22.139122
@@ -56862,7 +56862,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440604,
-        "name": "禅城区",
+        "name": "禅城區",
         "center": [
           113.112414,
           23.019643
@@ -57417,7 +57417,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440605,
-        "name": "南海区",
+        "name": "南海區",
         "center": [
           113.145577,
           23.031562
@@ -59388,7 +59388,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440606,
-        "name": "顺德区",
+        "name": "顺德區",
         "center": [
           113.281826,
           22.75851
@@ -60527,7 +60527,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440607,
-        "name": "三水区",
+        "name": "三水區",
         "center": [
           112.899414,
           23.16504
@@ -62242,7 +62242,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440608,
-        "name": "高明区",
+        "name": "高明區",
         "center": [
           112.882123,
           22.893855
@@ -64701,7 +64701,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441302,
-        "name": "惠城区",
+        "name": "惠城區",
         "center": [
           114.413978,
           23.079883
@@ -67340,7 +67340,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441303,
-        "name": "惠阳区",
+        "name": "惠陽區",
         "center": [
           114.469444,
           22.78851
@@ -73078,7 +73078,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441323,
-        "name": "惠东县",
+        "name": "惠東县",
         "center": [
           114.723092,
           22.983036
@@ -76717,7 +76717,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441324,
-        "name": "龙门县",
+        "name": "龍門县",
         "center": [
           114.259986,
           23.723894
@@ -78996,7 +78996,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441900,
-        "name": "东莞市",
+        "name": "東莞市",
         "center": [
           113.746262,
           23.046237
@@ -84030,7 +84030,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440703,
-        "name": "蓬江区",
+        "name": "蓬江區",
         "center": [
           113.07859,
           22.59677
@@ -84929,7 +84929,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440704,
-        "name": "江海区",
+        "name": "江海區",
         "center": [
           113.120601,
           22.572211
@@ -85244,7 +85244,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440705,
-        "name": "新会区",
+        "name": "新會區",
         "center": [
           113.038584,
           22.520247
@@ -86831,7 +86831,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440781,
-        "name": "台山市",
+        "name": "臺山市",
         "center": [
           112.793414,
           22.250713
@@ -91766,7 +91766,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 440783,
-        "name": "开平市",
+        "name": "開平市",
         "center": [
           112.692262,
           22.366286
@@ -100575,7 +100575,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441202,
-        "name": "端州区",
+        "name": "端州區",
         "center": [
           112.472329,
           23.052662
@@ -101006,7 +101006,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441203,
-        "name": "鼎湖区",
+        "name": "鼎湖區",
         "center": [
           112.565249,
           23.155822
@@ -101949,7 +101949,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441204,
-        "name": "高要区",
+        "name": "高要區",
         "center": [
           112.460846,
           23.027694
@@ -105236,7 +105236,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441223,
-        "name": "广宁县",
+        "name": "廣宁县",
         "center": [
           112.440419,
           23.631486
@@ -110330,7 +110330,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441225,
-        "name": "封开县",
+        "name": "封開县",
         "center": [
           111.502973,
           23.434731
@@ -113465,7 +113465,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441226,
-        "name": "德庆县",
+        "name": "德慶县",
         "center": [
           111.78156,
           23.141711
@@ -115432,7 +115432,7 @@
       "type": "Feature",
       "properties": {
         "adcode": 441284,
-        "name": "四会市",
+        "name": "四會市",
         "center": [
           112.695028,
           23.340324

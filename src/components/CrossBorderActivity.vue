@@ -9,7 +9,7 @@
         </svg>
       </div>
       <div class="header-content">
-        <h3 class="activity-title">跨境业务活跃度</h3>
+        <h3 class="activity-title">跨境業務活躍度</h3>
         <div class="activity-status" :class="getActivityClass(currentEnterprise.crossBorderBusiness)">
           <div class="status-indicator">
             <div class="pulse-dot"></div>
@@ -36,14 +36,14 @@ export default {
 
     const currentEnterprise = computed(() => enterpriseDataService.getCurrentEnterprise())
 
-    // 根据企业生成模拟的跨境业务数据
+    // 根據企業生成模拟的跨境業務數據
     const businessData = computed(() => {
       const enterprise = currentEnterprise.value
       const baseMultiplier = {
-        '非常活跃': 1.0,
-        '活跃': 0.8,
+        '非常活躍': 1.0,
+        '活躍': 0.8,
         '一般': 0.6,
-        '较少': 0.4
+        '較少': 0.4
       }[enterprise.crossBorderBusiness] || 0.6
 
       return {
@@ -58,10 +58,10 @@ export default {
 
     const getActivityClass = (activity) => {
       const classes = {
-        '非常活跃': 'very-active',
-        '活跃': 'active',
+        '非常活躍': 'very-active',
+        '活躍': 'active',
         '一般': 'normal',
-        '较少': 'low'
+        '較少': 'low'
       }
       return classes[activity] || 'normal'
     }
@@ -71,7 +71,7 @@ export default {
 
       chart = echarts.init(chartRef.value)
 
-      // 生成近6个月的活跃度数据
+      // 生成近6個月的活躍度數據
       const months = ['1月', '2月', '3月', '4月', '5月', '6月']
       const baseValue = businessData.value.tradeVolume / 6
       const activityData = months.map((_, index) => {
@@ -79,7 +79,7 @@ export default {
         return Math.round(baseValue * (1 + variation))
       })
 
-      // 创建流动波浪效果的数据
+      // 創建流動波浪效果的數據
       const waveData = months.map((_, index) => {
         return activityData[index] + Math.sin(index * 0.8) * 15
       })
@@ -133,7 +133,7 @@ export default {
             },
             z: 1
           },
-          // 主数据流
+          // 主數據流
           {
             type: 'line',
             data: activityData,
@@ -174,7 +174,7 @@ export default {
             animationEasing: 'elasticOut',
             z: 2
           },
-          // 流动粒子效果
+          // 流動粒子效果
           {
             type: 'effectScatter',
             data: activityData.map((value, index) => [index, value]),
@@ -207,7 +207,7 @@ export default {
             return `
               <div style="padding: 8px;">
                 <div style="color: #00D4FF; font-weight: 600; margin-bottom: 4px;">${month}</div>
-                <div style="color: #ffffff;">活跃度: ${value}</div>
+                <div style="color: #ffffff;">活躍度: ${value}</div>
               </div>
             `
           }
