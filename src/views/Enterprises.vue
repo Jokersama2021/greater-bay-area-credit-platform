@@ -415,43 +415,7 @@ export default {
           establishDate: new Date(1997, 8, 3),
           lastUpdate: new Date(2025, 3, 17)
         },
-        // 澳門知名企業
-        {
-          id: 16,
-          name: '澳門博彩股份有限公司',
-          type: '股份有限公司',
-          creditCode: 'MO0027000001',
-          region: '澳門',
-          creditLevel: 'AA',
-          scale: '大型',
-          registeredCapital: 280000,
-          establishDate: new Date(1962, 0, 1),
-          lastUpdate: new Date(2025, 3, 9)
-        },
-        {
-          id: 17,
-          name: '銀河娱乐集团有限公司',
-          type: '有限公司',
-          creditCode: 'MO0027000002',
-          region: '澳門',
-          creditLevel: 'AA',
-          scale: '大型',
-          registeredCapital: 350000,
-          establishDate: new Date(1980, 4, 15),
-          lastUpdate: new Date(2025, 3, 7)
-        },
-        {
-          id: 18,
-          name: '澳門電訊有限公司',
-          type: '有限公司',
-          creditCode: 'MO0311000001',
-          region: '澳門',
-          creditLevel: 'AA',
-          scale: '中型',
-          registeredCapital: 120000,
-          establishDate: new Date(1981, 1, 1),
-          lastUpdate: new Date(2025, 3, 6)
-        },
+
         // 珠海知名企業
         {
           id: 19,
@@ -799,18 +763,6 @@ export default {
           establishDate: new Date(1961, 0, 1),
           lastUpdate: new Date(2025, 3, 4)
         },
-        {
-          id: 47,
-          name: '澳門自來水股份有限公司',
-          type: '股份有限公司',
-          creditCode: 'MO0311000002',
-          region: '澳門',
-          creditLevel: 'A',
-          scale: '中型',
-          registeredCapital: 80000,
-          establishDate: new Date(1935, 0, 1),
-          lastUpdate: new Date(2025, 3, 2)
-        },
         // 更多珠海企業
         {
           id: 48,
@@ -1009,6 +961,103 @@ export default {
           registeredCapital: 65000,
           establishDate: new Date(1984, 0, 1),
           lastUpdate: new Date(2025, 2, 10)
+        },
+        // 澳門知名企業
+        {
+          id: 11,
+          name: '澳門博彩控股有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000001',
+          region: '澳門',
+          creditLevel: 'AAA',
+          scale: '大型',
+          registeredCapital: 2800000,
+          establishDate: new Date(2002, 5, 26),
+          lastUpdate: new Date(2025, 2, 20)
+        },
+        {
+          id: 12,
+          name: '銀河娛樂集团有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000002',
+          region: '澳門',
+          creditLevel: 'AAA',
+          scale: '大型',
+          registeredCapital: 1500000,
+          establishDate: new Date(1994, 7, 15),
+          lastUpdate: new Date(2025, 2, 18)
+        },
+        {
+          id: 13,
+          name: '新濠國際發展有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000003',
+          region: '澳門',
+          creditLevel: 'AA',
+          scale: '大型',
+          registeredCapital: 980000,
+          establishDate: new Date(2006, 3, 12),
+          lastUpdate: new Date(2025, 2, 16)
+        },
+        {
+          id: 14,
+          name: '澳門電訊有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000004',
+          region: '澳門',
+          creditLevel: 'AA',
+          scale: '中型',
+          registeredCapital: 450000,
+          establishDate: new Date(1999, 11, 8),
+          lastUpdate: new Date(2025, 2, 14)
+        },
+        {
+          id: 15,
+          name: '澳門國際機場專營股份有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000005',
+          region: '澳門',
+          creditLevel: 'AA',
+          scale: '中型',
+          registeredCapital: 320000,
+          establishDate: new Date(1996, 9, 20),
+          lastUpdate: new Date(2025, 2, 12)
+        },
+        {
+          id: 16,
+          name: '澳門自來水股份有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000006',
+          region: '澳門',
+          creditLevel: 'AA',
+          scale: '中型',
+          registeredCapital: 180000,
+          establishDate: new Date(1989, 4, 15),
+          lastUpdate: new Date(2025, 2, 10)
+        },
+        {
+          id: 17,
+          name: '澳門通股份有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000007',
+          region: '澳門',
+          creditLevel: 'AA',
+          scale: '小型',
+          registeredCapital: 85000,
+          establishDate: new Date(2009, 1, 28),
+          lastUpdate: new Date(2025, 2, 8)
+        },
+        {
+          id: 18,
+          name: '澳門金沙中國有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000008',
+          region: '澳門',
+          creditLevel: 'AAA',
+          scale: '大型',
+          registeredCapital: 1200000,
+          establishDate: new Date(2004, 8, 10),
+          lastUpdate: new Date(2025, 2, 6)
         }
       ]
 
@@ -1095,7 +1144,6 @@ export default {
     }
     
     const viewEnterprise = (id) => {
-      console.log('查看企業:', id)
       router.push(`/enterprise/${id}`)
     }
     
