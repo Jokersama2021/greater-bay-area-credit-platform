@@ -161,6 +161,188 @@ const enterpriseDatabase = [
       businessStatus: 85,
       enterpriseScale: 92
     }
+  },
+  // 澳門地區企業
+  {
+    id: 11,
+    name: '澳門博彩控股有限公司',
+    region: '澳門',
+    creditScore: 920,
+    creditLevel: 'AAA',
+    riskLevel: '低風險',
+    businessYears: 22,
+    scale: '大型企業',
+    crossBorderBusiness: '非常活躍',
+    complianceRecord: '優秀',
+    riskData: [10, 8, 6, 9, 7, 5],
+    creditMetrics: {
+      riskControl: 94,
+      creditHistory: 96,
+      developmentTrend: 88,
+      businessStatus: 93,
+      enterpriseScale: 97
+    }
+  },
+  {
+    id: 12,
+    name: '銀河娛樂集团有限公司',
+    region: '澳門',
+    creditScore: 910,
+    creditLevel: 'AAA',
+    riskLevel: '低風險',
+    businessYears: 30,
+    scale: '大型企業',
+    crossBorderBusiness: '活躍',
+    complianceRecord: '優秀',
+    riskData: [12, 9, 7, 10, 8, 6],
+    creditMetrics: {
+      riskControl: 92,
+      creditHistory: 94,
+      developmentTrend: 86,
+      businessStatus: 91,
+      enterpriseScale: 96
+    }
+  },
+  {
+    id: 13,
+    name: '新濠國際發展有限公司',
+    region: '澳門',
+    creditScore: 885,
+    creditLevel: 'AA',
+    riskLevel: '低風險',
+    businessYears: 18,
+    scale: '大型企業',
+    crossBorderBusiness: '活躍',
+    complianceRecord: '良好',
+    riskData: [14, 11, 8, 12, 9, 7],
+    creditMetrics: {
+      riskControl: 89,
+      creditHistory: 91,
+      developmentTrend: 84,
+      businessStatus: 88,
+      enterpriseScale: 94
+    }
+  },
+  {
+    id: 14,
+    name: '澳門電訊有限公司',
+    region: '澳門',
+    creditScore: 875,
+    creditLevel: 'AA',
+    riskLevel: '低風險',
+    businessYears: 25,
+    scale: '中型企業',
+    crossBorderBusiness: '一般',
+    complianceRecord: '優秀',
+    riskData: [8, 6, 5, 7, 6, 4],
+    creditMetrics: {
+      riskControl: 90,
+      creditHistory: 93,
+      developmentTrend: 82,
+      businessStatus: 87,
+      enterpriseScale: 85
+    }
+  },
+  {
+    id: 15,
+    name: '澳門國際機場專營股份有限公司',
+    region: '澳門',
+    creditScore: 890,
+    creditLevel: 'AA',
+    riskLevel: '低風險',
+    businessYears: 28,
+    scale: '中型企業',
+    crossBorderBusiness: '非常活躍',
+    complianceRecord: '優秀',
+    riskData: [6, 5, 4, 6, 5, 3],
+    creditMetrics: {
+      riskControl: 93,
+      creditHistory: 95,
+      developmentTrend: 85,
+      businessStatus: 89,
+      enterpriseScale: 88
+    }
+  },
+  {
+    id: 16,
+    name: '澳門自來水股份有限公司',
+    region: '澳門',
+    creditScore: 860,
+    creditLevel: 'AA',
+    riskLevel: '低風險',
+    businessYears: 35,
+    scale: '中型企業',
+    crossBorderBusiness: '一般',
+    complianceRecord: '優秀',
+    riskData: [5, 4, 3, 5, 4, 2],
+    creditMetrics: {
+      riskControl: 91,
+      creditHistory: 94,
+      developmentTrend: 80,
+      businessStatus: 86,
+      enterpriseScale: 82
+    }
+  },
+  {
+    id: 17,
+    name: '澳門通股份有限公司',
+    region: '澳門',
+    creditScore: 845,
+    creditLevel: 'AA',
+    riskLevel: '低風險',
+    businessYears: 15,
+    scale: '小型企業',
+    crossBorderBusiness: '活躍',
+    complianceRecord: '良好',
+    riskData: [7, 6, 5, 7, 6, 4],
+    creditMetrics: {
+      riskControl: 87,
+      creditHistory: 89,
+      developmentTrend: 83,
+      businessStatus: 85,
+      enterpriseScale: 78
+    }
+  },
+  {
+    id: 18,
+    name: '澳門金沙中國有限公司',
+    region: '澳門',
+    creditScore: 900,
+    creditLevel: 'AAA',
+    riskLevel: '低風險',
+    businessYears: 20,
+    scale: '大型企業',
+    crossBorderBusiness: '非常活躍',
+    complianceRecord: '優秀',
+    riskData: [11, 9, 7, 10, 8, 6],
+    creditMetrics: {
+      riskControl: 91,
+      creditHistory: 93,
+      developmentTrend: 87,
+      businessStatus: 90,
+      enterpriseScale: 95
+    }
+  },
+  // 澳門國際銀行股份有限公司
+  {
+    id: 45,
+    name: '澳門國際銀行股份有限公司',
+    region: '澳門',
+    creditScore: 930,
+    creditLevel: 'AA',
+    riskLevel: '低風險',
+    businessYears: 50,
+    scale: '大型企業',
+    crossBorderBusiness: '非常活躍',
+    complianceRecord: '優秀',
+    riskData: [5, 3, 2, 4, 3, 1],
+    creditMetrics: {
+      riskControl: 93,
+      creditHistory: 96,
+      developmentTrend: 89,
+      businessStatus: 94,
+      enterpriseScale: 97
+    }
   }
 ]
 
@@ -240,3 +422,7 @@ export const enterpriseDataService = {
 
 // 默認启動自動切换
 enterpriseDataService.startAutoSwitch()
+
+// 导出便捷函数
+export const getEnterprises = () => enterpriseDatabase
+export const getEnterpriseById = (id) => enterpriseDatabase.find(e => e.id === parseInt(id))

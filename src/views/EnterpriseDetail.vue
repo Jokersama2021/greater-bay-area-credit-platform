@@ -174,6 +174,8 @@
 </template>
 
 <script>
+import { getEnterprises } from '../services/enterpriseDataService.js'
+
 export default {
   name: 'EnterpriseDetail',
   data() {
@@ -237,305 +239,297 @@ export default {
     fetchEnterpriseDetail(id) {
       // 模拟API请求
       setTimeout(() => {
-        // 真實企業數據
-        const enterprises = [
-          {
-            id: 1,
-            name: '騰訊科技（深圳）有限公司',
-            fullName: '騰訊科技（深圳）有限公司',
-            creditCode: '91440300708461136T',
-            legalRepresentative: '馬化騰',
-            registeredCapital: 200000,
-            establishDate: '1998-11-11',
-            region: '深圳',
-            industry: '互聯網',
-            type: '有限责任公司',
-            businessScope: '計算機软件的设計、開發、销售；互聯網及移動網絡技术開發；數據库及計算機網絡服務；電子商務；廣告设計、制作、代理、發布；經营電信業務；從事互聯網文化活動；信息服務業務。',
-            creditScore: 98,
-            creditRating: 'AAA',
-            financialData: {
-              revenue: 560380,
-              profit: 159846,
-              assets: 988620,
-              liabilities: 410550
-            },
-            riskData: [
-              { name: '司法風險', count: 0 },
-              { name: '經营風險', count: 1 },
-              { name: '行政處罚', count: 0 },
-              { name: '失信信息', count: 0 }
-            ],
-            riskList: [
-              {
-                date: '2022-12-15',
-                title: '經营風險',
-                description: '因未及時更新個別游戏的版号信息，被監管部門要求整改'
-              }
-            ],
-            relatedCompanies: [
-              { name: '深圳市騰訊計算機系統有限公司', relation: '全資子公司' },
-              { name: '騰訊音乐娱乐集团', relation: '控股子公司' },
-              { name: '騰訊影業文化传播有限公司', relation: '控股子公司' }
-            ],
-            reports: [
-              { id: 1, name: '企業資信報告', icon: 'fas fa-file-invoice', date: '2023-10-15' },
-              { id: 2, name: '資產評估報告', icon: 'fas fa-balance-scale', date: '2023-09-28' },
-              { id: 3, name: '企業評分報告', icon: 'fas fa-chart-line', date: '2023-11-05' }
-            ]
-          },
-          {
-            id: 2,
-            name: '華為技术有限公司',
-            fullName: '華為技术有限公司',
-            creditCode: '91440300618933235D',
-            legalRepresentative: '任正非',
-            registeredCapital: 3990813,
-            establishDate: '1987-09-15',
-            region: '深圳',
-            industry: '通信设備制造',
-            type: '有限责任公司',
-            businessScope: '通信终端设備、數據通信设備的開發、生產、销售；計算機软硬件、計算機網絡系統集成及應用软件的開發、生產、销售；數據處理服務；通信及信息系統工程设計、施工、技术咨詢。',
-            creditScore: 97,
-            creditRating: 'AAA',
-            financialData: {
-              revenue: 891368,
-              profit: 113728,
-              assets: 876854,
-              liabilities: 455620
-            },
-            riskData: [
-              { name: '司法風險', count: 1 },
-              { name: '經营風險', count: 2 },
-              { name: '行政處罚', count: 0 },
-              { name: '失信信息', count: 0 }
-            ],
-            riskList: [
-              {
-                date: '2023-05-10',
-                title: '經营風險',
-                description: '受國際贸易环境影响，部分海外市场業務受限'
-              },
-              {
-                date: '2023-02-18',
-                title: '司法風險',
-                description: '涉及一起知識產权诉讼案件，目前正在审理中'
-              }
-            ],
-            relatedCompanies: [
-              { name: '華為终端有限公司', relation: '全資子公司' },
-              { name: '華為投資控股有限公司', relation: '母公司' },
-              { name: '華為海洋網絡有限公司', relation: '控股子公司' }
-            ],
-            reports: [
-              { id: 1, name: '企業資信報告', icon: 'fas fa-file-invoice', date: '2023-11-12' },
-              { id: 2, name: '資產評估報告', icon: 'fas fa-balance-scale', date: '2023-10-25' },
-              { id: 4, name: '風控预警報告', icon: 'fas fa-exclamation-circle', date: '2023-09-30' }
-            ]
-          },
-          {
-            id: 3,
-            name: '比亚迪股份有限公司',
-            fullName: '比亚迪股份有限公司',
-            creditCode: '91440300192317458F',
-            legalRepresentative: '王传福',
-            registeredCapital: 287793,
-            establishDate: '1995-02-10',
-            region: '深圳',
-            industry: '汽車制造',
-            type: '股份有限公司',
-            businessScope: '锂離子電池以及其他電池、充電器、電子產品、仪器仪表、柔性線路板、五金制品、液晶顯示器、手機零配件、模具、塑胶制品及其相關附件的生產、销售；汽車及汽車零配件、汽車用品的開發、制造及销售；自营進出口業務。',
-            creditScore: 93,
-            creditRating: 'AA',
-            financialData: {
-              revenue: 424061,
-              profit: 30037,
-              assets: 579494,
-              liabilities: 365880
-            },
-            riskData: [
-              { name: '司法風險', count: 0 },
-              { name: '經营風險', count: 1 },
-              { name: '行政處罚', count: 1 },
-              { name: '失信信息', count: 0 }
-            ],
-            riskList: [
-              {
-                date: '2023-07-12',
-                title: '行政處罚',
-                description: '因环保問題，某工厂被环保部門處罚20万元'
-              },
-              {
-                date: '2023-04-03',
-                title: '經营風險',
-                description: '部分車型因電池管理系統問題進行召回'
-              }
-            ],
-            relatedCompanies: [
-              { name: '比亚迪汽車工業有限公司', relation: '全資子公司' },
-              { name: '比亚迪電子（國際）有限公司', relation: '控股子公司' },
-              { name: '深圳市比亚迪供應链管理有限公司', relation: '控股子公司' }
-            ],
-            reports: [
-              { id: 1, name: '企業資信報告', icon: 'fas fa-file-invoice', date: '2023-10-05' },
-              { id: 3, name: '企業評分報告', icon: 'fas fa-chart-line', date: '2023-11-11' },
-              { id: 4, name: '風控预警報告', icon: 'fas fa-exclamation-circle', date: '2023-10-18' }
-            ]
-          },
-          {
-            id: 4,
-            name: '廣州恒大集团有限公司',
-            fullName: '廣州恒大集团有限公司',
-            creditCode: '91440101231231546X',
-            legalRepresentative: '许家印',
-            registeredCapital: 300000,
-            establishDate: '1996-06-24',
-            region: '廣州',
-            industry: '房地產',
-            type: '有限责任公司',
-            businessScope: '房地產開發經营；物業管理；房地產咨詢服務；房地產中介服務；企業管理咨詢服務；市场营销策划服務；商品零售贸易；商品批發贸易。',
-            creditScore: 55,
-            creditRating: 'BB',
-            financialData: {
-              revenue: 195540,
-              profit: -52860,
-              assets: 895620,
-              liabilities: 796250
-            },
-            riskData: [
-              { name: '司法風險', count: 15 },
-              { name: '經营風險', count: 23 },
-              { name: '行政處罚', count: 7 },
-              { name: '失信信息', count: 3 }
-            ],
-            riskList: [
-              {
-                date: '2023-11-02',
-                title: '司法風險',
-                description: '因债務問題被多家企業提起诉讼'
-              },
-              {
-                date: '2023-10-08',
-                title: '經营風險',
-                description: '多個项目停工，面临資金链断裂風險'
-              },
-              {
-                date: '2023-09-15',
-                title: '失信信息',
-                description: '因未履行法院判決被列入失信被执行人名单'
-              }
-            ],
-            relatedCompanies: [
-              { name: '恒大地產集团有限公司', relation: '全資子公司' },
-              { name: '恒大健康產業集团有限公司', relation: '控股子公司' },
-              { name: '恒大物業集团有限公司', relation: '控股子公司' }
-            ],
-            reports: [
-              { id: 2, name: '資產評估報告', icon: 'fas fa-balance-scale', date: '2023-07-25' },
-              { id: 4, name: '風控预警報告', icon: 'fas fa-exclamation-circle', date: '2023-11-10' }
-            ]
-          },
-          {
-            id: 5,
-            name: '珠海格力電器股份有限公司',
-            fullName: '珠海格力電器股份有限公司',
-            creditCode: '91440400192548256P',
-            legalRepresentative: '董明珠',
-            registeredCapital: 601573,
-            establishDate: '1989-12-13',
-            region: '珠海',
-            industry: '家電制造',
-            type: '股份有限公司',
-            businessScope: '货物、技术的進出口；民用空调、中央空调、冷冻冷藏设備、通訊设備、家用電器、電子產品、智能家居產品、智能装備、機器人、精密模具等的研發、制造、加工、销售及售后服務；新能源技术研發等。',
-            creditScore: 95,
-            creditRating: 'AAA',
-            financialData: {
-              revenue: 198154,
-              profit: 27107,
-              assets: 356782,
-              liabilities: 143591
-            },
-            riskData: [
-              { name: '司法風險', count: 0 },
-              { name: '經营風險', count: 0 },
-              { name: '行政處罚', count: 0 },
-              { name: '失信信息', count: 0 }
-            ],
-            riskList: [],
-            relatedCompanies: [
-              { name: '珠海格力集团有限公司', relation: '大股東' },
-              { name: '格力電工（馬來西亚）有限公司', relation: '全資子公司' },
-              { name: '珠海格力智能装備有限公司', relation: '全資子公司' }
-            ],
-            reports: [
-              { id: 1, name: '企業資信報告', icon: 'fas fa-file-invoice', date: '2023-11-01' },
-              { id: 2, name: '資產評估報告', icon: 'fas fa-balance-scale', date: '2023-10-20' },
-              { id: 3, name: '企業評分報告', icon: 'fas fa-chart-line', date: '2023-09-15' }
-            ]
-          }
-        ];
+        try {
+          // 从企业数据服务获取所有企业数据
+          const allEnterprises = getEnterprises()
 
-        // 根據ID获取企業數據，如果找不到则生成随機數據
-        const enterprise = enterprises.find(e => e.id === parseInt(id)) || {
-          id: id,
-          name: `大灣區企業${id}`,
-          fullName: `大灣區企業集团有限公司(${id})`,
-          creditCode: `91440101MA${id.padStart(5, '0')}U`,
-          legalRepresentative: ['张三', '李四', '王五', '赵六'][Math.floor(Math.random() * 4)],
-          registeredCapital: Math.floor(Math.random() * 10000) + 1000,
-          establishDate: `${2000 + Math.floor(Math.random() * 22)}-${1 + Math.floor(Math.random() * 12)}-${1 + Math.floor(Math.random() * 28)}`,
-          region: ['廣州', '深圳', '香港', '珠海', '澳門', '佛山'][Math.floor(Math.random() * 6)],
-          industry: ['金融', '科技', '制造', '服務', '医疗', '教育'][Math.floor(Math.random() * 6)],
-          type: ['有限责任公司', '股份有限公司', '合夥企業'][Math.floor(Math.random() * 3)],
-          businessScope: '計算機软硬件技术開發、技术服務；信息系統集成服務；信息技术咨詢服務；數據處理和存储服務；企業管理咨詢；會议及展览服務；市场营销策划；自有房屋租赁；物業管理。',
-          creditScore: 85 + Math.floor(Math.random() * 15),
-          creditRating: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B'][Math.floor(Math.random() * 6)],
+          // 首先从企业数据服务中查找企业
+          let enterprise = allEnterprises.find(e => e.id === parseInt(id))
+
+          if (enterprise) {
+            // 为企业数据服务中的企业补充详细信息
+            enterprise = this.enrichEnterpriseData(enterprise)
+          } else {
+            // 如果找不到，使用默认数据
+            enterprise = this.generateDefaultEnterprise(id)
+          }
+
+          this.enterprise = enterprise
+          this.loading = false
+
+          // 启動信用評分動画
+          setTimeout(() => {
+            this.animateScore(enterprise.creditScore, 1500)
+          }, 800)
+        } catch (error) {
+          console.error('获取企业详情时发生错误:', error)
+          this.loading = false
+        }
+      }, 200)
+    },
+
+    // 为企业数据补充详细信息
+    enrichEnterpriseData(enterprise) {
+      // 为澳门国际银行提供特定的详细信息
+      if (enterprise.id === 45) {
+        return {
+          ...enterprise,
+          fullName: '澳門國際銀行股份有限公司',
+          creditCode: 'MO0237000001',
+          legalRepresentative: '張三',
+          registeredCapital: 200000,
+          establishDate: '1974-01-01',
+          industry: '銀行業',
+          type: '股份有限公司',
+          businessScope: '銀行業務、金融服務、投資理財、外匯兌換、信貸業務、企業融資、個人理財、國際結算、資產管理、保險代理',
+          creditScore: enterprise.creditScore || 930,
+          creditRating: enterprise.creditLevel,
           financialData: {
-            revenue: 10000 + Math.floor(Math.random() * 90000),
-            profit: 1000 + Math.floor(Math.random() * 9000),
-            assets: 20000 + Math.floor(Math.random() * 80000),
-            liabilities: 10000 + Math.floor(Math.random() * 30000)
+            revenue: 231650, // 23.165億
+            profit: 98270,   // 9.827億
+            assets: 6937000, // 693.7億
+            liabilities: 598270 // 59.827億
           },
           riskData: [
-            { name: '司法風險', count: Math.floor(Math.random() * 3) },
-            { name: '經营風險', count: Math.floor(Math.random() * 5) },
-            { name: '行政處罚', count: Math.floor(Math.random() * 2) },
-            { name: '失信信息', count: Math.floor(Math.random() * 1) }
+            { name: '司法風險', count: 0 },
+            { name: '經營風險', count: 1 },
+            { name: '行政處罰', count: 0 },
+            { name: '失信信息', count: 0 }
           ],
-          riskList: [
-            {
-              date: '2023-10-15',
-              title: '行政處罚',
-              description: '因未及時公示年度報告信息，被市场監督管理局處以罚款5000元'
-            },
-            {
-              date: '2023-09-10',
-              title: '經营風險',
-              description: '受原材料价格上涨影响，產品成本增加，毛利率下降'
-            }
-          ],
+          riskList: [],
           relatedCompanies: [
-            { name: `大灣區科技有限公司`, relation: '子公司' },
-            { name: `大灣區金融服務有限公司`, relation: '關聯公司' },
-            { name: `大灣區投資集团`, relation: '股東' }
+            { name: '澳門國際銀行(香港)有限公司', relation: '子公司' },
+            { name: '澳門國際投資管理有限公司', relation: '關聯公司' },
+            { name: '澳門國際金融服務有限公司', relation: '子公司' }
           ],
           reports: [
-            { id: 1, name: '企業資信報告', icon: 'fas fa-file-invoice', date: '2023-10-15' },
-            { id: 2, name: '資產評估報告', icon: 'fas fa-balance-scale', date: '2023-09-20' },
-            { id: 3, name: '企業評分報告', icon: 'fas fa-chart-line', date: '2023-11-01' }
+            { id: 1, name: '企業資信報告', icon: 'fas fa-file-invoice', date: '2023-11-01' },
+            { id: 2, name: '資產評估報告', icon: 'fas fa-balance-scale', date: '2023-10-20' },
+            { id: 3, name: '企業評分報告', icon: 'fas fa-chart-line', date: '2023-09-15' }
           ]
-        };
+        }
+      }
 
-        this.enterprise = enterprise;
-        this.loading = false;
-
-        // 启動信用評分動画 - 等待頁面過渡完成
-        setTimeout(() => {
-          this.animateScore(enterprise.creditScore, 1500)
-        }, 800)
-      }, 200);
+      // 其他企业使用通用逻辑
+      return {
+        ...enterprise,
+        fullName: enterprise.name,
+        creditCode: this.generateCreditCode(enterprise),
+        legalRepresentative: this.generateLegalRepresentative(enterprise.region),
+        registeredCapital: this.generateRegisteredCapital(enterprise.scale),
+        establishDate: this.formatEstablishDate(enterprise),
+        industry: this.getIndustryByName(enterprise.name),
+        type: enterprise.region === '澳門' ? '股份有限公司' : '有限责任公司',
+        businessScope: this.getBusinessScope(enterprise.name),
+        // 保留原有的信用评分，不要覆盖
+        creditScore: enterprise.creditScore || this.convertCreditScore(enterprise.creditLevel),
+        creditRating: enterprise.creditLevel,
+        financialData: this.generateFinancialData(enterprise.scale),
+        riskData: this.generateRiskData(enterprise.riskLevel),
+        riskList: this.generateRiskList(enterprise.riskLevel),
+        relatedCompanies: this.generateRelatedCompanies(enterprise.name),
+        reports: [
+          { id: 1, name: '企業資信報告', icon: 'fas fa-file-invoice', date: '2023-11-01' },
+          { id: 2, name: '資產評估報告', icon: 'fas fa-balance-scale', date: '2023-10-20' },
+          { id: 3, name: '企業評分報告', icon: 'fas fa-chart-line', date: '2023-09-15' }
+        ]
+      }
     },
+
+    // 生成默认企业数据
+    generateDefaultEnterprise(id) {
+      return {
+        id: id,
+        name: `大灣區企業${id}`,
+        fullName: `大灣區企業集团有限公司(${id})`,
+        creditCode: `91440101MA${id.padStart(5, '0')}U`,
+        legalRepresentative: ['张三', '李四', '王五', '赵六'][Math.floor(Math.random() * 4)],
+        registeredCapital: Math.floor(Math.random() * 10000) + 1000,
+        establishDate: `${2000 + Math.floor(Math.random() * 22)}-${1 + Math.floor(Math.random() * 12)}-${1 + Math.floor(Math.random() * 28)}`,
+        region: ['廣州', '深圳', '香港', '珠海', '澳門', '佛山'][Math.floor(Math.random() * 6)],
+        industry: ['金融', '科技', '制造', '服務', '医疗', '教育'][Math.floor(Math.random() * 6)],
+        type: ['有限责任公司', '股份有限公司', '合夥企業'][Math.floor(Math.random() * 3)],
+        businessScope: '計算機软硬件技术開發、技术服務；信息系統集成服務；信息技术咨詢服務；數據處理和存储服務；企業管理咨詢；會议及展览服務；市场营销策划；自有房屋租赁；物業管理。',
+        creditScore: 85 + Math.floor(Math.random() * 15),
+        creditRating: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B'][Math.floor(Math.random() * 6)],
+        financialData: {
+          revenue: 10000 + Math.floor(Math.random() * 90000),
+          profit: 1000 + Math.floor(Math.random() * 9000),
+          assets: 20000 + Math.floor(Math.random() * 80000),
+          liabilities: 10000 + Math.floor(Math.random() * 30000)
+        },
+        riskData: [
+          { name: '司法風險', count: Math.floor(Math.random() * 3) },
+          { name: '經营風險', count: Math.floor(Math.random() * 5) },
+          { name: '行政處罚', count: Math.floor(Math.random() * 2) },
+          { name: '失信信息', count: Math.floor(Math.random() * 1) }
+        ],
+        riskList: [
+          {
+            date: '2023-10-15',
+            title: '行政處罚',
+            description: '因未及時公示年度報告信息，被市场監督管理局處以罚款5000元'
+          }
+        ],
+        relatedCompanies: [
+          { name: `大灣區科技有限公司`, relation: '子公司' },
+          { name: `大灣區金融服務有限公司`, relation: '關聯公司' },
+          { name: `大灣區投資集团`, relation: '股東' }
+        ],
+        reports: [
+          { id: 1, name: '企業資信報告', icon: 'fas fa-file-invoice', date: '2023-10-15' },
+          { id: 2, name: '資產評估報告', icon: 'fas fa-balance-scale', date: '2023-09-20' },
+          { id: 3, name: '企業評分報告', icon: 'fas fa-chart-line', date: '2023-11-01' }
+        ]
+      }
+    },
+
     goToReport(reportId) {
       this.$router.push(`/report/${reportId}?enterprise=${this.enterprise.id}`)
+    },
+
+    // 辅助方法：根据地区生成法定代表人
+    generateLegalRepresentative(region) {
+      const representatives = {
+        '澳門': ['何猷君', '崔世安', '賀一誠', '吳志良', '梁維特'],
+        '香港': ['李嘉誠', '李澤鉅', '郭炳聯', '劉鑾雄', '呂志和'],
+        '深圳': ['馬化騰', '任正非', '王傳福', '汪滔', '徐航'],
+        '廣州': ['許家印', '楊國強', '何享健', '梁穩根', '董明珠']
+      }
+      const names = representatives[region] || ['張三', '李四', '王五', '趙六', '陳七']
+      return names[Math.floor(Math.random() * names.length)]
+    },
+
+    // 辅助方法：格式化成立日期
+    formatEstablishDate(enterprise) {
+      if (enterprise.businessYears) {
+        const currentYear = new Date().getFullYear()
+        const establishYear = currentYear - enterprise.businessYears
+        const month = Math.floor(Math.random() * 12) + 1
+        const day = Math.floor(Math.random() * 28) + 1
+        return `${establishYear}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+      }
+      return '1995-01-01'
+    },
+
+    // 辅助方法：根据企业名称推断行业
+    getIndustryByName(name) {
+      if (name.includes('博彩') || name.includes('娛樂') || name.includes('金沙')) return '博彩娛樂'
+      if (name.includes('電訊') || name.includes('通訊')) return '電信通訊'
+      if (name.includes('機場')) return '交通運輸'
+      if (name.includes('自來水')) return '公用事業'
+      if (name.includes('科技') || name.includes('騰訊') || name.includes('華為')) return '科技'
+      if (name.includes('汽車') || name.includes('比亞迪')) return '汽車制造'
+      if (name.includes('地產') || name.includes('恒大')) return '房地產'
+      if (name.includes('電器') || name.includes('格力')) return '家電制造'
+      return '綜合服務'
+    },
+
+    // 辅助方法：根据企业名称生成经营范围
+    getBusinessScope(name) {
+      if (name.includes('博彩') || name.includes('娛樂') || name.includes('金沙')) {
+        return '博彩業務經營；娛樂場所管理；酒店餐飲服務；會議展覽服務；旅遊服務；物業租賃；投資管理。'
+      }
+      if (name.includes('電訊') || name.includes('通訊')) {
+        return '電信業務經營；網絡通訊服務；數據傳輸服務；互聯網接入服務；通訊設備銷售；技術咨詢服務。'
+      }
+      if (name.includes('機場')) {
+        return '機場運營管理；航空地面服務；貨物運輸；旅客服務；商業租賃；廣告服務；停車場管理。'
+      }
+      if (name.includes('自來水')) {
+        return '自來水生產供應；污水處理；水質檢測；管道維護；水務工程；環保服務；技術咨詢。'
+      }
+      return '企業管理；投資咨詢；商務服務；技術開發；設備租賃；物業管理；進出口貿易。'
+    },
+
+    // 辅助方法：将信用等级转换为信用评分
+    convertCreditScore(creditLevel) {
+      const scoreMap = {
+        'AAA': 95 + Math.floor(Math.random() * 5),
+        'AA': 85 + Math.floor(Math.random() * 10),
+        'A': 75 + Math.floor(Math.random() * 10),
+        'BBB': 65 + Math.floor(Math.random() * 10),
+        'BB': 55 + Math.floor(Math.random() * 10),
+        'B': 45 + Math.floor(Math.random() * 10)
+      }
+      return scoreMap[creditLevel] || 80
+    },
+
+    // 辅助方法：根据企业规模生成财务数据
+    generateFinancialData(scale) {
+      const scaleMultiplier = {
+        '大型企業': { revenue: 100000, profit: 10000, assets: 200000, liabilities: 80000 },
+        '中型企業': { revenue: 30000, profit: 3000, assets: 60000, liabilities: 25000 },
+        '小型企業': { revenue: 8000, profit: 800, assets: 15000, liabilities: 6000 }
+      }
+      const base = scaleMultiplier[scale] || scaleMultiplier['中型企業']
+      return {
+        revenue: base.revenue + Math.floor(Math.random() * base.revenue * 0.5),
+        profit: base.profit + Math.floor(Math.random() * base.profit * 0.5),
+        assets: base.assets + Math.floor(Math.random() * base.assets * 0.3),
+        liabilities: base.liabilities + Math.floor(Math.random() * base.liabilities * 0.3)
+      }
+    },
+
+    // 辅助方法：根据风险等级生成风险数据
+    generateRiskData(riskLevel) {
+      const riskMultiplier = {
+        '低風險': { judicial: 0, business: 1, admin: 0, credit: 0 },
+        '中風險': { judicial: 1, business: 2, admin: 1, credit: 0 },
+        '高風險': { judicial: 3, business: 5, admin: 2, credit: 1 }
+      }
+      const base = riskMultiplier[riskLevel] || riskMultiplier['低風險']
+      return [
+        { name: '司法風險', count: base.judicial + Math.floor(Math.random() * 2) },
+        { name: '經營風險', count: base.business + Math.floor(Math.random() * 2) },
+        { name: '行政處罰', count: base.admin + Math.floor(Math.random() * 2) },
+        { name: '失信信息', count: base.credit + Math.floor(Math.random() * 1) }
+      ]
+    },
+
+    // 辅助方法：根据风险等级生成风险事件列表
+    generateRiskList(riskLevel) {
+      if (riskLevel === '低風險') {
+        return []
+      }
+      return [
+        {
+          date: '2023-10-15',
+          title: '經營風險',
+          description: '受市場環境影響，部分業務收入有所下降'
+        }
+      ]
+    },
+
+    // 辅助方法：根据企业名称生成关联企业
+    generateRelatedCompanies(name) {
+      const baseName = name.replace(/有限公司|股份有限公司|集團/g, '')
+      return [
+        { name: `${baseName}投資有限公司`, relation: '關聯公司' },
+        { name: `${baseName}管理有限公司`, relation: '子公司' },
+        { name: `${baseName}發展有限公司`, relation: '控股公司' }
+      ]
+    },
+
+    // 辅助方法：生成信用代码
+    generateCreditCode(enterprise) {
+      if (enterprise.region === '澳門') {
+        return `MO${enterprise.id.toString().padStart(8, '0')}`
+      } else if (enterprise.region === '香港') {
+        return `HK${enterprise.id.toString().padStart(8, '0')}`
+      } else {
+        return `91440${Math.floor(Math.random() * 1000).toString().padStart(3, '0')}${enterprise.id.toString().padStart(8, '0')}`
+      }
+    },
+
+    // 辅助方法：根据企业规模生成注册资本
+    generateRegisteredCapital(scale) {
+      const scaleMultiplier = {
+        '大型企業': 50000 + Math.floor(Math.random() * 200000), // 5万-25万
+        '中型企業': 10000 + Math.floor(Math.random() * 40000),  // 1万-5万
+        '小型企業': 1000 + Math.floor(Math.random() * 9000)     // 0.1万-1万
+      }
+      return scaleMultiplier[scale] || 10000
     }
   }
 }
