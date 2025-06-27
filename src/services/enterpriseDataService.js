@@ -343,6 +343,207 @@ const enterpriseDatabase = [
       businessStatus: 94,
       enterpriseScale: 97
     }
+  },
+  // 澳門科技企業
+  {
+    id: 64,
+    name: '澳門科技大學科技園股份有限公司',
+    region: '澳門',
+    creditScore: 850,
+    creditLevel: 'AA',
+    riskLevel: '低風險',
+    businessYears: 13,
+    scale: '中型企業',
+    crossBorderBusiness: '活躍',
+    complianceRecord: '優秀',
+    riskData: [8, 6, 4, 7, 5, 3],
+    creditMetrics: {
+      riskControl: 85,
+      creditHistory: 88,
+      developmentTrend: 92,
+      businessStatus: 87,
+      enterpriseScale: 82
+    }
+  },
+  {
+    id: 65,
+    name: '澳門智慧城市科技有限公司',
+    region: '澳門',
+    creditScore: 780,
+    creditLevel: 'A',
+    riskLevel: '低風險',
+    businessYears: 6,
+    scale: '中型企業',
+    crossBorderBusiness: '一般',
+    complianceRecord: '良好',
+    riskData: [12, 9, 6, 10, 8, 5],
+    creditMetrics: {
+      riskControl: 78,
+      creditHistory: 75,
+      developmentTrend: 85,
+      businessStatus: 80,
+      enterpriseScale: 76
+    }
+  },
+  {
+    id: 66,
+    name: '澳門人工智能研究院有限公司',
+    region: '澳門',
+    creditScore: 760,
+    creditLevel: 'A',
+    riskLevel: '中低風險',
+    businessYears: 5,
+    scale: '小型企業',
+    crossBorderBusiness: '活躍',
+    complianceRecord: '良好',
+    riskData: [15, 12, 8, 13, 10, 7],
+    creditMetrics: {
+      riskControl: 76,
+      creditHistory: 72,
+      developmentTrend: 88,
+      businessStatus: 78,
+      enterpriseScale: 68
+    }
+  },
+  {
+    id: 67,
+    name: '澳門區塊鏈技術發展有限公司',
+    region: '澳門',
+    creditScore: 740,
+    creditLevel: 'A',
+    riskLevel: '中低風險',
+    businessYears: 4,
+    scale: '小型企業',
+    crossBorderBusiness: '一般',
+    complianceRecord: '良好',
+    riskData: [18, 14, 10, 16, 12, 8],
+    creditMetrics: {
+      riskControl: 74,
+      creditHistory: 70,
+      developmentTrend: 82,
+      businessStatus: 75,
+      enterpriseScale: 65
+    }
+  },
+  {
+    id: 68,
+    name: '澳門金融科技創新中心股份有限公司',
+    region: '澳門',
+    creditScore: 820,
+    creditLevel: 'AA',
+    riskLevel: '低風險',
+    businessYears: 7,
+    scale: '中型企業',
+    crossBorderBusiness: '活躍',
+    complianceRecord: '優秀',
+    riskData: [10, 8, 5, 9, 7, 4],
+    creditMetrics: {
+      riskControl: 82,
+      creditHistory: 85,
+      developmentTrend: 86,
+      businessStatus: 83,
+      enterpriseScale: 78
+    }
+  },
+  {
+    id: 69,
+    name: '澳門數字經濟發展有限公司',
+    region: '澳門',
+    creditScore: 770,
+    creditLevel: 'A',
+    riskLevel: '低風險',
+    businessYears: 3,
+    scale: '中型企業',
+    crossBorderBusiness: '一般',
+    complianceRecord: '良好',
+    riskData: [14, 11, 7, 12, 9, 6],
+    creditMetrics: {
+      riskControl: 77,
+      creditHistory: 73,
+      developmentTrend: 84,
+      businessStatus: 79,
+      enterpriseScale: 74
+    }
+  },
+  {
+    id: 70,
+    name: '澳門雲計算服務有限公司',
+    region: '澳門',
+    creditScore: 750,
+    creditLevel: 'A',
+    riskLevel: '中低風險',
+    businessYears: 5,
+    scale: '小型企業',
+    crossBorderBusiness: '活躍',
+    complianceRecord: '良好',
+    riskData: [16, 13, 9, 14, 11, 8],
+    creditMetrics: {
+      riskControl: 75,
+      creditHistory: 71,
+      developmentTrend: 80,
+      businessStatus: 76,
+      enterpriseScale: 70
+    }
+  },
+  {
+    id: 71,
+    name: '澳門物聯網技術股份有限公司',
+    region: '澳門',
+    creditScore: 730,
+    creditLevel: 'A',
+    riskLevel: '中低風險',
+    businessYears: 4,
+    scale: '小型企業',
+    crossBorderBusiness: '一般',
+    complianceRecord: '良好',
+    riskData: [19, 15, 11, 17, 13, 9],
+    creditMetrics: {
+      riskControl: 73,
+      creditHistory: 69,
+      developmentTrend: 78,
+      businessStatus: 74,
+      enterpriseScale: 67
+    }
+  },
+  {
+    id: 72,
+    name: '澳門大數據分析有限公司',
+    region: '澳門',
+    creditScore: 720,
+    creditLevel: 'A',
+    riskLevel: '中低風險',
+    businessYears: 3,
+    scale: '小型企業',
+    crossBorderBusiness: '一般',
+    complianceRecord: '良好',
+    riskData: [20, 16, 12, 18, 14, 10],
+    creditMetrics: {
+      riskControl: 72,
+      creditHistory: 68,
+      developmentTrend: 76,
+      businessStatus: 73,
+      enterpriseScale: 64
+    }
+  },
+  {
+    id: 73,
+    name: '澳門電子商務平臺有限公司',
+    region: '澳門',
+    creditScore: 790,
+    creditLevel: 'A',
+    riskLevel: '低風險',
+    businessYears: 8,
+    scale: '中型企業',
+    crossBorderBusiness: '活躍',
+    complianceRecord: '良好',
+    riskData: [11, 8, 6, 10, 7, 5],
+    creditMetrics: {
+      riskControl: 79,
+      creditHistory: 81,
+      developmentTrend: 83,
+      businessStatus: 80,
+      enterpriseScale: 75
+    }
   }
 ]
 
@@ -423,6 +624,6 @@ export const enterpriseDataService = {
 // 默認启動自動切换
 enterpriseDataService.startAutoSwitch()
 
-// 导出便捷函数
+// 导出便捷函數
 export const getEnterprises = () => enterpriseDatabase
 export const getEnterpriseById = (id) => enterpriseDatabase.find(e => e.id === parseInt(id))

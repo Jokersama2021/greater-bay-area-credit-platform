@@ -1058,6 +1058,127 @@ export default {
           registeredCapital: 1200000,
           establishDate: new Date(2004, 8, 10),
           lastUpdate: new Date(2025, 2, 6)
+        },
+        // 澳門科技企業
+        {
+          id: 64,
+          name: '澳門科技大學科技園股份有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000009',
+          region: '澳門',
+          creditLevel: 'AA',
+          scale: '中型',
+          registeredCapital: 150000,
+          establishDate: new Date(2011, 2, 15),
+          lastUpdate: new Date(2025, 1, 20)
+        },
+        {
+          id: 65,
+          name: '澳門智慧城市科技有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000010',
+          region: '澳門',
+          creditLevel: 'A',
+          scale: '中型',
+          registeredCapital: 80000,
+          establishDate: new Date(2018, 5, 8),
+          lastUpdate: new Date(2025, 1, 18)
+        },
+        {
+          id: 66,
+          name: '澳門人工智能研究院有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000011',
+          region: '澳門',
+          creditLevel: 'A',
+          scale: '小型',
+          registeredCapital: 50000,
+          establishDate: new Date(2019, 8, 22),
+          lastUpdate: new Date(2025, 1, 16)
+        },
+        {
+          id: 67,
+          name: '澳門區塊鏈技術發展有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000012',
+          region: '澳門',
+          creditLevel: 'A',
+          scale: '小型',
+          registeredCapital: 30000,
+          establishDate: new Date(2020, 3, 10),
+          lastUpdate: new Date(2025, 1, 14)
+        },
+        {
+          id: 68,
+          name: '澳門金融科技創新中心股份有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000013',
+          region: '澳門',
+          creditLevel: 'AA',
+          scale: '中型',
+          registeredCapital: 120000,
+          establishDate: new Date(2017, 11, 5),
+          lastUpdate: new Date(2025, 1, 12)
+        },
+        {
+          id: 69,
+          name: '澳門數字經濟發展有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000014',
+          region: '澳門',
+          creditLevel: 'A',
+          scale: '中型',
+          registeredCapital: 90000,
+          establishDate: new Date(2021, 1, 18),
+          lastUpdate: new Date(2025, 1, 10)
+        },
+        {
+          id: 70,
+          name: '澳門雲計算服務有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000015',
+          region: '澳門',
+          creditLevel: 'A',
+          scale: '小型',
+          registeredCapital: 40000,
+          establishDate: new Date(2019, 6, 12),
+          lastUpdate: new Date(2025, 1, 8)
+        },
+        {
+          id: 71,
+          name: '澳門物聯網技術股份有限公司',
+          type: '股份有限公司',
+          creditCode: 'MO000016',
+          region: '澳門',
+          creditLevel: 'A',
+          scale: '小型',
+          registeredCapital: 35000,
+          establishDate: new Date(2020, 9, 25),
+          lastUpdate: new Date(2025, 1, 6)
+        },
+        {
+          id: 72,
+          name: '澳門大數據分析有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000017',
+          region: '澳門',
+          creditLevel: 'A',
+          scale: '小型',
+          registeredCapital: 25000,
+          establishDate: new Date(2021, 4, 8),
+          lastUpdate: new Date(2025, 1, 4)
+        },
+        {
+          id: 73,
+          name: '澳門電子商務平臺有限公司',
+          type: '有限責任公司',
+          creditCode: 'MO000018',
+          region: '澳門',
+          creditLevel: 'A',
+          scale: '中型',
+          registeredCapital: 60000,
+          establishDate: new Date(2016, 7, 20),
+          lastUpdate: new Date(2025, 1, 2)
         }
       ]
 

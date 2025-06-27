@@ -118,6 +118,11 @@
         <div class="modern-card card-hover animate-fade-in-up" style="animation-delay: 0.4s">
           <cross-chain-info />
         </div>
+
+        <!-- 區块链信息查詢 -->
+        <div class="modern-card card-hover animate-fade-in-up" style="animation-delay: 0.5s">
+          <blockchain-query-module />
+        </div>
       </div>
 
       <!-- 右侧區域 -->
@@ -315,6 +320,7 @@ import GreaterBayAreaMap from '../components/GreaterBayAreaMap.vue'
 import PartnerLogos from '../components/PartnerLogos.vue'
 import CrossChainInfo from '../components/CrossChainInfo.vue'
 import CrossBorderDataFlow from '../components/CrossBorderDataFlow.vue'
+import BlockchainQueryModule from '../components/BlockchainQueryModule.vue'
 
 import ExpandableCard from '../components/ExpandableCard.vue'
 import CompactStatsCard from '../components/CompactStatsCard.vue'
@@ -338,6 +344,7 @@ export default {
     PartnerLogos,
     CrossChainInfo,
     CrossBorderDataFlow,
+    BlockchainQueryModule,
 
     ExpandableCard,
     CompactStatsCard,

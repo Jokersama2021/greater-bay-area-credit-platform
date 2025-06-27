@@ -240,17 +240,17 @@ export default {
       // 模拟API请求
       setTimeout(() => {
         try {
-          // 从企业数据服务获取所有企业数据
+          // 從企業數據服務获取所有企業數據
           const allEnterprises = getEnterprises()
 
-          // 首先从企业数据服务中查找企业
+          // 首先從企業數據服務中查找企業
           let enterprise = allEnterprises.find(e => e.id === parseInt(id))
 
           if (enterprise) {
-            // 为企业数据服务中的企业补充详细信息
+            // 為企業數據服務中的企業补充詳細信息
             enterprise = this.enrichEnterpriseData(enterprise)
           } else {
-            // 如果找不到，使用默认数据
+            // 如果找不到，使用默認數據
             enterprise = this.generateDefaultEnterprise(id)
           }
 
@@ -262,15 +262,15 @@ export default {
             this.animateScore(enterprise.creditScore, 1500)
           }, 800)
         } catch (error) {
-          console.error('获取企业详情时发生错误:', error)
+          console.error('获取企業詳情時發生错误:', error)
           this.loading = false
         }
       }, 200)
     },
 
-    // 为企业数据补充详细信息
+    // 為企業數據补充詳細信息
     enrichEnterpriseData(enterprise) {
-      // 为澳门国际银行提供特定的详细信息
+      // 為澳門國際銀行提供特定的詳細信息
       if (enterprise.id === 45) {
         return {
           ...enterprise,
@@ -310,7 +310,7 @@ export default {
         }
       }
 
-      // 其他企业使用通用逻辑
+      // 其他企業使用通用逻辑
       return {
         ...enterprise,
         fullName: enterprise.name,
@@ -321,7 +321,7 @@ export default {
         industry: this.getIndustryByName(enterprise.name),
         type: enterprise.region === '澳門' ? '股份有限公司' : '有限责任公司',
         businessScope: this.getBusinessScope(enterprise.name),
-        // 保留原有的信用评分，不要覆盖
+        // 保留原有的信用評分，不要覆盖
         creditScore: enterprise.creditScore || this.convertCreditScore(enterprise.creditLevel),
         creditRating: enterprise.creditLevel,
         financialData: this.generateFinancialData(enterprise.scale),
@@ -336,7 +336,7 @@ export default {
       }
     },
 
-    // 生成默认企业数据
+    // 生成默認企業數據
     generateDefaultEnterprise(id) {
       return {
         id: id,
@@ -388,7 +388,7 @@ export default {
       this.$router.push(`/report/${reportId}?enterprise=${this.enterprise.id}`)
     },
 
-    // 辅助方法：根据地区生成法定代表人
+    // 辅助方法：根據地區生成法定代表人
     generateLegalRepresentative(region) {
       const representatives = {
         '澳門': ['何猷君', '崔世安', '賀一誠', '吳志良', '梁維特'],
@@ -412,20 +412,28 @@ export default {
       return '1995-01-01'
     },
 
-    // 辅助方法：根据企业名称推断行业
+    // 辅助方法：根據企業名称推断行業
     getIndustryByName(name) {
       if (name.includes('博彩') || name.includes('娛樂') || name.includes('金沙')) return '博彩娛樂'
       if (name.includes('電訊') || name.includes('通訊')) return '電信通訊'
       if (name.includes('機場')) return '交通運輸'
       if (name.includes('自來水')) return '公用事業'
-      if (name.includes('科技') || name.includes('騰訊') || name.includes('華為')) return '科技'
+      if (name.includes('人工智能') || name.includes('AI')) return '人工智能'
+      if (name.includes('區塊鏈') || name.includes('blockchain')) return '區塊鏈技術'
+      if (name.includes('金融科技') || name.includes('FinTech')) return '金融科技'
+      if (name.includes('數字經濟') || name.includes('數位')) return '數字經濟'
+      if (name.includes('雲計算') || name.includes('雲端')) return '雲計算服務'
+      if (name.includes('物聯網') || name.includes('IoT')) return '物聯網技術'
+      if (name.includes('大數據') || name.includes('數據分析')) return '大數據分析'
+      if (name.includes('電子商務') || name.includes('電商')) return '電子商務'
+      if (name.includes('科技') || name.includes('騰訊') || name.includes('華為')) return '科技服務'
       if (name.includes('汽車') || name.includes('比亞迪')) return '汽車制造'
       if (name.includes('地產') || name.includes('恒大')) return '房地產'
       if (name.includes('電器') || name.includes('格力')) return '家電制造'
       return '綜合服務'
     },
 
-    // 辅助方法：根据企业名称生成经营范围
+    // 辅助方法：根據企業名称生成經营範围
     getBusinessScope(name) {
       if (name.includes('博彩') || name.includes('娛樂') || name.includes('金沙')) {
         return '博彩業務經營；娛樂場所管理；酒店餐飲服務；會議展覽服務；旅遊服務；物業租賃；投資管理。'
@@ -439,10 +447,40 @@ export default {
       if (name.includes('自來水')) {
         return '自來水生產供應；污水處理；水質檢測；管道維護；水務工程；環保服務；技術咨詢。'
       }
+      if (name.includes('科技園')) {
+        return '科技園區運營管理；科技企業孵化；技術轉移服務；創新創業支持；產學研合作；知識產權服務；投資管理。'
+      }
+      if (name.includes('智慧城市')) {
+        return '智慧城市解決方案；城市信息化建設；物聯網系統集成；智能交通系統；智慧政務服務；數據分析服務。'
+      }
+      if (name.includes('人工智能')) {
+        return '人工智能技術研發；機器學習算法開發；智能軟件開發；AI產品設計；技術咨詢服務；數據處理服務。'
+      }
+      if (name.includes('區塊鏈')) {
+        return '區塊鏈技術開發；分佈式系統設計；加密技術服務；數字資產管理；智能合約開發；技術咨詢服務。'
+      }
+      if (name.includes('金融科技')) {
+        return '金融科技解決方案；支付系統開發；風險管理系統；金融數據分析；投資管理平臺；技術咨詢服務。'
+      }
+      if (name.includes('數字經濟')) {
+        return '數字化轉型服務；電子商務平臺；數字營銷服務；在線教育平臺；數字內容創作；技術咨詢服務。'
+      }
+      if (name.includes('雲計算')) {
+        return '雲計算服務；雲端存儲服務；虛擬化技術；雲安全服務；雲平臺開發；技術運維服務。'
+      }
+      if (name.includes('物聯網')) {
+        return '物聯網系統開發；傳感器技術；智能設備製造；物聯網平臺運營；數據採集分析；技術咨詢服務。'
+      }
+      if (name.includes('大數據')) {
+        return '大數據分析服務；數據挖掘技術；商業智能解決方案；數據可視化；預測分析；數據咨詢服務。'
+      }
+      if (name.includes('電子商務')) {
+        return '電子商務平臺運營；在線零售服務；數字營銷；供應鏈管理；支付解決方案；客戶關係管理。'
+      }
       return '企業管理；投資咨詢；商務服務；技術開發；設備租賃；物業管理；進出口貿易。'
     },
 
-    // 辅助方法：将信用等级转换为信用评分
+    // 辅助方法：将信用等級转换為信用評分
     convertCreditScore(creditLevel) {
       const scoreMap = {
         'AAA': 95 + Math.floor(Math.random() * 5),
@@ -455,7 +493,7 @@ export default {
       return scoreMap[creditLevel] || 80
     },
 
-    // 辅助方法：根据企业规模生成财务数据
+    // 辅助方法：根據企業規模生成財務數據
     generateFinancialData(scale) {
       const scaleMultiplier = {
         '大型企業': { revenue: 100000, profit: 10000, assets: 200000, liabilities: 80000 },
@@ -471,7 +509,7 @@ export default {
       }
     },
 
-    // 辅助方法：根据风险等级生成风险数据
+    // 辅助方法：根據風險等級生成風險數據
     generateRiskData(riskLevel) {
       const riskMultiplier = {
         '低風險': { judicial: 0, business: 1, admin: 0, credit: 0 },
@@ -487,7 +525,7 @@ export default {
       ]
     },
 
-    // 辅助方法：根据风险等级生成风险事件列表
+    // 辅助方法：根據風險等級生成風險事件列表
     generateRiskList(riskLevel) {
       if (riskLevel === '低風險') {
         return []
@@ -501,7 +539,7 @@ export default {
       ]
     },
 
-    // 辅助方法：根据企业名称生成关联企业
+    // 辅助方法：根據企業名称生成關聯企業
     generateRelatedCompanies(name) {
       const baseName = name.replace(/有限公司|股份有限公司|集團/g, '')
       return [
@@ -511,7 +549,7 @@ export default {
       ]
     },
 
-    // 辅助方法：生成信用代码
+    // 辅助方法：生成信用代碼
     generateCreditCode(enterprise) {
       if (enterprise.region === '澳門') {
         return `MO${enterprise.id.toString().padStart(8, '0')}`
@@ -522,7 +560,7 @@ export default {
       }
     },
 
-    // 辅助方法：根据企业规模生成注册资本
+    // 辅助方法：根據企業規模生成注册資本
     generateRegisteredCapital(scale) {
       const scaleMultiplier = {
         '大型企業': 50000 + Math.floor(Math.random() * 200000), // 5万-25万
